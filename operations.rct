@@ -1,0 +1,77 @@
+operation go_to_pos_with_velocity ( dist : real, time_budget : real) {
+	requires exax_vars 
+	
+	initial i0
+	state update {
+		entry vel = dist / time_budget ; finish_time = vel / dist
+	}
+	final f0
+	
+	transition t0 {
+		from i0
+		to get_move_cmd
+	}
+	transition t1 {
+		from update
+		to f0
+	}
+	
+state get_move_cmd {
+	}
+	
+	transition t2 {
+		from get_move_cmd
+		to update
+		condition time_budget > 0
+	}
+	transition t3 {
+		from get_move_cmd
+		to f0
+		condition time_budget == 0
+		action finish_time = 0
+	}
+}
+
+operation moveJ ( jd1 : real, jd2 : real, goal_time : real) {
+	var jv1:real
+	var jv2:real
+	initial i0
+	state get_move_cmd {
+	}
+
+	state calc_vel {
+		entry jv1 = jd1 / goal_time ; jv2 = jd2 / goal_time
+	}
+
+	final f0
+	transition t0 {
+		from i0
+		to get_move_cmd
+	}
+	transition t1 {
+		from get_move_cmd
+		to calc_vel
+		condition goal_time > 0
+	}
+	state update_time {
+		entry finish_time1 = jd1 / jv1 ; finish_time2 = jd2 / jv2
+	}
+
+	transition t6 {
+		from update_time
+		to f0
+		}
+	transition t2 {
+		from get_move_cmd
+		to f0
+		condition goal_time == 0
+		action 
+	
+	finish_time1 = 0 ; finish_time1 = 0
+	}
+	transition t3 {
+		from calc_vel
+		to update_time
+	}
+	requires UR_vars }
+

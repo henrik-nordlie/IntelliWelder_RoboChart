@@ -1,0 +1,26 @@
+stm out_of_sync_relaySTM {
+	event EXAX_out_of_sync
+	event UR_out_of_sync
+	event system_out_of_sync
+	state in_sync {
+	}
+	state out_of_sync {
+		entry system_out_of_sync
+	}
+	initial i0
+	transition t0 {
+		from i0
+		to in_sync
+	}
+	transition t1 {
+		from in_sync
+		to out_of_sync
+		trigger EXAX_out_of_sync
+	}
+	transition t2 {
+		from in_sync
+		to out_of_sync
+		trigger UR_out_of_sync
+	}
+}
+

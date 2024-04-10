@@ -1,0 +1,38 @@
+
+--
+-- RoboChart generator version 3.0.0.202311281716
+-- Automatically generated on 10-04-2024 10:51:46
+--
+-- Iterated compression status: true
+-- Assertions compression status: false
+--
+
+include "out_of_sync_relaySTM.csp"
+include "core_timed_defs.csp"
+include "core_defs.csp"
+include "file_out_of_sync_relay_defs.csp"
+include "state_timed_defs.csp"
+include "robochart_defs.csp"
+include "../instantiations.csp"
+
+transparent wbisim
+channel r__
+-- generate out_of_sync_relaySTM
+P_out_of_sync_relaySTM = let
+	id__ = 0
+	
+	
+	
+within
+	out_of_sync_relaySTM::O__(
+		id__
+	)
+assert P_out_of_sync_relaySTM :[deadlock-free]	
+assert P_out_of_sync_relaySTM;RUN({r__}) :[deadlock-free]
+assert P_out_of_sync_relaySTM :[deterministic]
+assert P_out_of_sync_relaySTM :[divergence-free]
+-- timed deadlock free
+assert prioritise(P_out_of_sync_relaySTM[[tock<-tock,tock<-tock']],<diff(Events,{tock',tock}),{tock}>)\{tock} :[divergence free [FD]]
+
+-- timelock free
+assert RUN({tock}) ||| CHAOS(diff(Events,{|tock|})) [F= P_out_of_sync_relaySTM

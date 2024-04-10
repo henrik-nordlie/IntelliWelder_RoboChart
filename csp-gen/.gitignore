@@ -1,0 +1,13 @@
+/file_main.csp
+/file_main_coreassertions.csp
+/instantiations.csp
+/file_EXAX_STM.csp
+/file_EXAX_STM_coreassertions.csp
+/file_SystemSTM.csp
+/file_SystemSTM_coreassertions.csp
+/file_UR_STM.csp
+/file_UR_STM_coreassertions.csp
+/file_functions.csp
+/file_functions_coreassertions.csp
+/file_update_vals_STM.csp
+/file_update_vals_STM_coreassertions.csp

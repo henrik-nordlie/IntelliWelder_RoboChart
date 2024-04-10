@@ -1,0 +1,35 @@
+
+--
+-- RoboChart generator version 3.0.0.202311281716
+-- Automatically generated on 10-04-2024 13:26:36
+--
+-- Iterated compression status: true
+-- Assertions compression status: false
+--
+
+
+	include "defs/function_toolkit_defs.csp"
+	include "defs/robochart_defs.csp"
+	include "defs/state_defs.csp"
+	include "defs/core_defs.csp"
+	include "defs/file_UR_STM_defs.csp"
+	include "defs/sequence_toolkit_defs.csp"
+	include "defs/set_toolkit_defs.csp"
+	include "instantiations.csp"
+	include "defs/UR.csp"
+	include "defs/relation_toolkit_defs.csp"
+	include "defs/file_main_defs.csp"
+	
+	channel r__
+	
+	-- a1 - deterministic
+	assert let 
+		id__ = 0
+		
+		const_UR_ur_n_waypoints = 99
+		
+		
+	within
+		UR::D__(id__,
+				    const_UR_ur_n_waypoints) :[deterministic]
+	

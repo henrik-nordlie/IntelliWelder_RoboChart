@@ -1,0 +1,80 @@
+interface exax_vars {
+	var curr_angle : real
+	var goal_angle : real
+	var goal_time : real
+	var dist : real
+	var vel : real
+	var curr_waypoint : nat = 0
+	const n_waypoints : nat = 99
+	var finish_time : real
+}
+
+stm EXAX {
+	requires exax_ops transition t0 {
+		from i0
+		to wait_for_move
+	}
+initial i0
+	state wait_for_move {
+	}
+	transition t1 {
+		from wait_for_move
+		to choose_command
+		trigger move
+	}
+	transition t3 {
+		from choose_command
+		to by_position
+		condition goal_time >= 0
+	}
+state choose_command {
+		entry dist = goal_angle - curr_angle
+	}
+
+	state by_position {
+		entry go_to_pos_with_velocity ( dist , goal_time )
+	}
+	transition t4 {
+		from by_position
+		to j0
+	condition finish_time == goal_time
+	}
+	transition t6 {
+		from j0
+		to wait_for_move
+		condition curr_waypoint < n_waypoints
+		action curr_waypoint = curr_waypoint + 1
+	}
+	transition t7 {
+		from j0
+		to reset_EXAX
+		condition curr_waypoint >= n_waypoints
+	}
+requires exax_vars 
+	event move
+
+	event done
+	junction j0
+	state reset_EXAX {
+		entry curr_waypoint = 0 ; done
+	}
+	transition t8 {
+		from reset_EXAX
+		to wait_for_move
+	}
+transition t2 {
+		from choose_command
+		to f0
+		condition goal_time < 0
+		action out_of_sync
+	}
+	event out_of_sync
+final f0
+
+	transition t5 {
+		from by_position
+		to f0
+		condition finish_time != goal_time
+	}
+}
+

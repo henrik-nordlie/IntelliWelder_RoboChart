@@ -1,0 +1,89 @@
+interface UR_vars {
+	var curr_angle1 : real
+	var curr_angle2 : real
+	var goal_angle1 : real
+	var goal_angle2 : real
+	var time_budget : real
+	var curr_vel : real
+	var curr_planned_vel : real
+	var ur_curr_waypoint : nat = 0
+	var jd1:real
+	var jd2:real
+	var jv1:real
+	var jv2:real
+	const 
+
+
+ur_n_waypoints : nat = 99
+	var finish_time1 : real
+	var finish_time2 : real
+}
+
+stm UR {
+	requires ur_ops transition t0 {
+		from i0
+		to wait_for_move
+	}
+initial i0
+	state wait_for_move {
+	}
+	transition t1 {
+		from wait_for_move
+		to calc_args
+		trigger move
+	}
+	transition t2 {
+		from j0
+		to reset_UR
+	condition ur_curr_waypoint >= ur_n_waypoints
+	}
+	transition t3 {
+		from j0
+		to wait_for_move
+	condition ur_curr_waypoint < ur_n_waypoints
+		action ur_curr_waypoint = ur_curr_waypoint + 1
+	}
+	transition t4 {
+		from calc_args
+		to MoveJ
+	condition time_budget >= 0
+	}
+requires UR_vars 
+	event move
+	event done
+	state calc_args {
+		entry jd1 = curr_angle1 - goal_angle1 ; jd2 = goal_angle2 - curr_angle2
+	}
+	state MoveJ {
+		entry  moveJ ( jd1 , jd2 , time_budget )
+	}
+	state reset_UR {
+		entry ur_curr_waypoint = 0 ; done
+	}
+	transition t5 {
+		from reset_UR
+		to wait_for_move
+	}
+junction j0
+	transition t6 {
+		from MoveJ
+		to j0
+	condition finish_time1 == time_budget /\ finish_time2 == time_budget
+	}
+event out_of_sync
+
+	final f0
+
+	transition t7 {
+		from calc_args
+		to f0
+		condition time_budget < 0
+		action out_of_sync
+	}
+transition t8 {
+		from MoveJ
+		to f0
+		condition finish_time1 != time_budget \/ finish_time2 != time_budget
+	}
+}
+

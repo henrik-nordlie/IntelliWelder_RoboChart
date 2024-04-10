@@ -16,31 +16,31 @@
     <semanticResources>operations.rct</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_JrTh8OEXEe61uezzh_VB1w">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Jrcr4OEXEe61uezzh_VB1w" name="main" repPath="#_JrZokOEXEe61uezzh_VB1w" changeId="a9d96769-8275-4a27-9ce6-459486e95ae1">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Jrcr4OEXEe61uezzh_VB1w" name="main" repPath="#_JrZokOEXEe61uezzh_VB1w" changeId="0f48bce6-117c-4c66-877f-edd3db673980">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']"/>
         <target xmi:type="robochart:RCPackage" href="main.rct#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_LmByEOHvEe6AEP1DTliDwg" name="SystemSTM" repPath="#_Ll-uwOHvEe6AEP1DTliDwg" changeId="08c6c167-5bd6-4cb3-b8a2-9414d75dda8f">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_LmByEOHvEe6AEP1DTliDwg" name="SystemSTM" repPath="#_Ll-uwOHvEe6AEP1DTliDwg" changeId="1d22af90-ae8b-4e5e-8f3a-838d9e82b10a">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']"/>
         <target xmi:type="robochart:RCPackage" href="SystemSTM.rct#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_dbrdoOHyEe6AEP1DTliDwg" name="UR_STM" repPath="#_dbq2kOHyEe6AEP1DTliDwg" changeId="d39c4f22-af14-4d19-b703-7bfeed3b7304">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_dbrdoOHyEe6AEP1DTliDwg" name="UR_STM" repPath="#_dbq2kOHyEe6AEP1DTliDwg" changeId="11421177-edb1-4f4d-92ac-598c5ea0686c">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']"/>
         <target xmi:type="robochart:RCPackage" href="UR_STM.rct#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_5wuAkOHyEe6AEP1DTliDwg" name="EXAX_STM" repPath="#_5wsycOHyEe6AEP1DTliDwg" changeId="c68a97ec-11dd-493d-b4f4-739c4114e807">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_5wuAkOHyEe6AEP1DTliDwg" name="EXAX_STM" repPath="#_5wsycOHyEe6AEP1DTliDwg" changeId="1cdb5ae3-af9b-4d6a-aab9-48f5a1797f05">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']"/>
         <target xmi:type="robochart:RCPackage" href="EXAX_STM.rct#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_TrApQOH8Ee6AEP1DTliDwg" name="update_vals_STM" repPath="#_TrACMOH8Ee6AEP1DTliDwg" changeId="6cfac726-36aa-4c24-b054-e1cda4a2e82c">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_TrApQOH8Ee6AEP1DTliDwg" name="update_vals_STM" repPath="#_TrACMOH8Ee6AEP1DTliDwg" changeId="242d6147-26e4-474c-9e53-061bfdea92fa">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']"/>
         <target xmi:type="robochart:RCPackage" href="update_vals_STM.rct#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_nFWIEPaiEe6RCMBZd3wEJg" name="out_of_sync_relay" repPath="#_nFTr0PaiEe6RCMBZd3wEJg" changeId="48a3c35a-5637-4513-8417-0d9b7e34ad0b">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_nFWIEPaiEe6RCMBZd3wEJg" name="out_of_sync_relay" repPath="#_nFTr0PaiEe6RCMBZd3wEJg" changeId="6fdc3b15-b188-4a3b-8d37-0e7ab482bdb2">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']"/>
         <target xmi:type="robochart:RCPackage" href="out_of_sync_relay.rct#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Cjt_8PcrEe6d2tOMo-Sy7g" name="operations.rct" repPath="#_CjsKwPcrEe6d2tOMo-Sy7g" changeId="c49701fa-0afc-462c-afeb-0f8b1a36994c">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Cjt_8PcrEe6d2tOMo-Sy7g" name="operations.rct" repPath="#_CjsKwPcrEe6d2tOMo-Sy7g" changeId="0d3068a1-f0df-4930-b368-107c90d6c1ca">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']"/>
         <target xmi:type="robochart:RCPackage" href="operations.rct#/"/>
       </ownedRepresentationDescriptors>
@@ -563,7 +563,7 @@
             <styles xmi:type="notation:FilteringStyle" xmi:id="_FWe0xuOeEe6_fp0-cI3gSQ"/>
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_FWe0weOeEe6_fp0-cI3gSQ" fontName="Ubuntu" fontHeight="10"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_FWe0wuOeEe6_fp0-cI3gSQ" x="1020" y="348" width="279" height="51"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_FWe0wuOeEe6_fp0-cI3gSQ" x="1020" y="336" width="279" height="51"/>
         </children>
         <children xmi:type="notation:Node" xmi:id="_cS938OdqEe6itpWxpl3KSQ" type="2003" element="_cQzUwOdqEe6itpWxpl3KSQ">
           <children xmi:type="notation:Node" xmi:id="_cS-fAOdqEe6itpWxpl3KSQ" type="5007"/>
@@ -576,7 +576,7 @@
             <styles xmi:type="notation:FilteringStyle" xmi:id="_cS-fA-dqEe6itpWxpl3KSQ"/>
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_cS938edqEe6itpWxpl3KSQ" fontName="Ubuntu" fontHeight="10"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_cS938udqEe6itpWxpl3KSQ" x="1020" y="408" width="279" height="63"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_cS938udqEe6itpWxpl3KSQ" x="1020" y="396" width="279" height="63"/>
         </children>
         <styles xmi:type="notation:DiagramStyle" xmi:id="_JrwN4uEXEe61uezzh_VB1w"/>
         <edges xmi:type="notation:Edge" xmi:id="_5rmvsOH1Ee6AEP1DTliDwg" type="4001" element="_5rZUUOH1Ee6AEP1DTliDwg" source="_nfWM4OHwEe6AEP1DTliDwg" target="_HGkx8OH0Ee6AEP1DTliDwg">
@@ -1778,52 +1778,23 @@
                   <styles xmi:type="notation:ShapeStyle" xmi:id="_n0dREeddEe6itpWxpl3KSQ" fontName="Ubuntu" fontHeight="8"/>
                   <layoutConstraint xmi:type="notation:Bounds" xmi:id="_n0dREuddEe6itpWxpl3KSQ" x="270" y="418" width="24" height="24"/>
                 </children>
-                <children xmi:type="notation:Node" xmi:id="_zQiM4PWBEe6NROm9FZVaYA" type="3008" element="_zPuUkPWBEe6NROm9FZVaYA">
-                  <children xmi:type="notation:Node" xmi:id="_zQiz8PWBEe6NROm9FZVaYA" type="5005"/>
-                  <children xmi:type="notation:Node" xmi:id="_zQiz8fWBEe6NROm9FZVaYA" type="7002">
-                    <children xmi:type="notation:Node" xmi:id="_zQiz9PWBEe6NROm9FZVaYA" type="3009" element="_zPx_CfWBEe6NROm9FZVaYA">
-                      <children xmi:type="notation:Node" xmi:id="_zQjbAPWBEe6NROm9FZVaYA" visible="false" type="5004"/>
-                      <children xmi:type="notation:Node" xmi:id="_zQjbAfWBEe6NROm9FZVaYA" type="7003">
-                        <styles xmi:type="notation:SortingStyle" xmi:id="_zQjbAvWBEe6NROm9FZVaYA"/>
-                        <styles xmi:type="notation:FilteringStyle" xmi:id="_zQjbA_WBEe6NROm9FZVaYA"/>
-                        <styles xmi:type="notation:DrawerStyle" xmi:id="_zQjbBPWBEe6NROm9FZVaYA"/>
-                      </children>
-                      <styles xmi:type="notation:ShapeStyle" xmi:id="_zQiz9fWBEe6NROm9FZVaYA" fontName="Ubuntu" fontHeight="10"/>
-                      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zQiz9vWBEe6NROm9FZVaYA" width="83"/>
-                    </children>
-                    <children xmi:type="notation:Node" xmi:id="_zQkCEPWBEe6NROm9FZVaYA" type="3008" element="_zPymA_WBEe6NROm9FZVaYA">
-                      <children xmi:type="notation:Node" xmi:id="_zQkCE_WBEe6NROm9FZVaYA" visible="false" type="5005"/>
-                      <children xmi:type="notation:Node" xmi:id="_zQkCFPWBEe6NROm9FZVaYA" type="7002">
-                        <styles xmi:type="notation:SortingStyle" xmi:id="_zQkCFfWBEe6NROm9FZVaYA"/>
-                        <styles xmi:type="notation:FilteringStyle" xmi:id="_zQkCFvWBEe6NROm9FZVaYA"/>
-                        <styles xmi:type="notation:DrawerStyle" xmi:id="_zQkCF_WBEe6NROm9FZVaYA"/>
-                      </children>
-                      <styles xmi:type="notation:ShapeStyle" xmi:id="_zQkCEfWBEe6NROm9FZVaYA" fontName="Ubuntu" fontHeight="1"/>
-                      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zQkCEvWBEe6NROm9FZVaYA" y="40" width="83"/>
-                    </children>
-                    <styles xmi:type="notation:SortingStyle" xmi:id="_zQiz8vWBEe6NROm9FZVaYA"/>
-                    <styles xmi:type="notation:FilteringStyle" xmi:id="_zQiz8_WBEe6NROm9FZVaYA"/>
+                <children xmi:type="notation:Node" xmi:id="_Zhc2d_dsEe6d2tOMo-Sy7g" type="3007" element="_ZhWv3vdsEe6d2tOMo-Sy7g">
+                  <children xmi:type="notation:Node" xmi:id="_Zhc2evdsEe6d2tOMo-Sy7g" visible="false" type="5003">
+                    <layoutConstraint xmi:type="notation:Location" xmi:id="_Zhc2e_dsEe6d2tOMo-Sy7g" x="25" y="2"/>
                   </children>
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_zQiM4fWBEe6NROm9FZVaYA" fontName="Ubuntu" fontHeight="10"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zQiM4vWBEe6NROm9FZVaYA" x="702" y="118"/>
-                </children>
-                <children xmi:type="notation:Node" xmi:id="_reQG4PWCEe6NROm9FZVaYA" type="3007" element="_rb_dEPWCEe6NROm9FZVaYA">
-                  <children xmi:type="notation:Node" xmi:id="_reQG4_WCEe6NROm9FZVaYA" visible="false" type="5003">
-                    <layoutConstraint xmi:type="notation:Location" xmi:id="_reQG5PWCEe6NROm9FZVaYA" x="25" y="2"/>
+                  <children xmi:type="notation:Node" xmi:id="_ZheEkfdsEe6d2tOMo-Sy7g" type="3005" element="_ZhWv3_dsEe6d2tOMo-Sy7g">
+                    <styles xmi:type="notation:ShapeStyle" xmi:id="_ZheEkvdsEe6d2tOMo-Sy7g" fontName="Ubuntu"/>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ZheEk_dsEe6d2tOMo-Sy7g"/>
                   </children>
-                  <children xmi:type="notation:Node" xmi:id="_reQt8PWCEe6NROm9FZVaYA" type="3005" element="_rb_dEfWCEe6NROm9FZVaYA">
-                    <styles xmi:type="notation:ShapeStyle" xmi:id="_reQt8fWCEe6NROm9FZVaYA" fontName="Ubuntu"/>
-                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_reQt8vWCEe6NROm9FZVaYA"/>
-                  </children>
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_reQG4fWCEe6NROm9FZVaYA" fontName="Ubuntu" fontHeight="8"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_reQG4vWCEe6NROm9FZVaYA" x="763" y="36" width="24" height="24"/>
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_Zhc2ePdsEe6d2tOMo-Sy7g" fontName="Ubuntu" fontHeight="8"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Zhc2efdsEe6d2tOMo-Sy7g" x="666" y="263" width="24" height="24"/>
                 </children>
                 <styles xmi:type="notation:SortingStyle" xmi:id="_OcRmdeHvEe6AEP1DTliDwg"/>
                 <styles xmi:type="notation:FilteringStyle" xmi:id="_OcRmduHvEe6AEP1DTliDwg"/>
                 <styles xmi:type="notation:DrawerStyle" xmi:id="_OcRmd-HvEe6AEP1DTliDwg"/>
               </children>
               <styles xmi:type="notation:ShapeStyle" xmi:id="_OcRmceHvEe6AEP1DTliDwg" fontName="Ubuntu" fontHeight="1"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OcRmcuHvEe6AEP1DTliDwg" y="40" width="875" height="497"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OcRmcuHvEe6AEP1DTliDwg" y="40" width="767" height="497"/>
             </children>
             <styles xmi:type="notation:SortingStyle" xmi:id="_OcQ_YuHvEe6AEP1DTliDwg"/>
             <styles xmi:type="notation:FilteringStyle" xmi:id="_OcQ_Y-HvEe6AEP1DTliDwg"/>
@@ -1866,7 +1837,7 @@
         </edges>
         <edges xmi:type="notation:Edge" xmi:id="_ZD5m0OddEe6itpWxpl3KSQ" type="4001" element="_2k8P6uOZEe6IdZsGcIAz0A" source="_SGyJUOHvEe6AEP1DTliDwg" target="_U1NY0OddEe6itpWxpl3KSQ">
           <children xmi:type="notation:Node" xmi:id="_ZD5m1OddEe6itpWxpl3KSQ" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ZD5m1eddEe6itpWxpl3KSQ" x="-47" y="48"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ZD5m1eddEe6itpWxpl3KSQ" x="-46" y="-37"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_ZD6N4OddEe6itpWxpl3KSQ" type="6002">
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ZD6N4eddEe6itpWxpl3KSQ" x="31"/>
@@ -1942,70 +1913,55 @@
           <styles xmi:type="notation:FontStyle" xmi:id="_Ih-9UuznEe62nYlx-oDxUg" fontName="Ubuntu" fontHeight="10"/>
           <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Ih-9U-znEe62nYlx-oDxUg" points="[0, -1, 94, 326]$[-120, -1, -26, 326]$[-120, -273, -26, 54]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_IiYl8OznEe62nYlx-oDxUg" id="(0.0,0.5416666666666666)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_ZmgVkPdsEe6d2tOMo-Sy7g" id="(0.5,0.5)"/>
         </edges>
-        <edges xmi:type="notation:Edge" xmi:id="_05ypsPWBEe6NROm9FZVaYA" type="4001" element="_044DvPWBEe6NROm9FZVaYA" source="_SGyJUOHvEe6AEP1DTliDwg" target="_zQiM4PWBEe6NROm9FZVaYA">
-          <children xmi:type="notation:Node" xmi:id="_05yptPWBEe6NROm9FZVaYA" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_05yptfWBEe6NROm9FZVaYA" x="-24" y="-20"/>
+        <edges xmi:type="notation:Edge" xmi:id="_dpOkIPdsEe6d2tOMo-Sy7g" type="4001" element="_doIX_vdsEe6d2tOMo-Sy7g" source="_SGyJUOHvEe6AEP1DTliDwg" target="_Zhc2d_dsEe6d2tOMo-Sy7g">
+          <children xmi:type="notation:Node" xmi:id="_dpOkJPdsEe6d2tOMo-Sy7g" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dpOkJfdsEe6d2tOMo-Sy7g" x="-42" y="139"/>
           </children>
-          <children xmi:type="notation:Node" xmi:id="_05yptvWBEe6NROm9FZVaYA" type="6002">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_05ypt_WBEe6NROm9FZVaYA" x="-5" y="10"/>
+          <children xmi:type="notation:Node" xmi:id="_dpOkJvdsEe6d2tOMo-Sy7g" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dpOkJ_dsEe6d2tOMo-Sy7g" x="-22" y="10"/>
           </children>
-          <children xmi:type="notation:Node" xmi:id="_05ypuPWBEe6NROm9FZVaYA" type="6003">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_05ypufWBEe6NROm9FZVaYA" x="-103" y="10"/>
+          <children xmi:type="notation:Node" xmi:id="_dpOkKPdsEe6d2tOMo-Sy7g" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dpOkKfdsEe6d2tOMo-Sy7g" x="10"/>
           </children>
-          <styles xmi:type="notation:ConnectorStyle" xmi:id="_05ypsfWBEe6NROm9FZVaYA" routing="Rectilinear"/>
-          <styles xmi:type="notation:FontStyle" xmi:id="_05ypsvWBEe6NROm9FZVaYA" fontName="Ubuntu" fontHeight="10"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_05yps_WBEe6NROm9FZVaYA" points="[0, 48, -213, 0]$[213, 48, 0, 0]"/>
-          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_05zQwPWBEe6NROm9FZVaYA" id="(1.0,0.32710280373831774)"/>
-          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_05zQwfWBEe6NROm9FZVaYA" id="(0.0,0.22429906542056074)"/>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_dpOkIfdsEe6d2tOMo-Sy7g" routing="Rectilinear"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_dpOkIvdsEe6d2tOMo-Sy7g" fontName="Ubuntu" fontHeight="10"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_dpOkI_dsEe6d2tOMo-Sy7g" points="[0, 0, -177, -190]$[188, 0, 11, -190]$[188, 180, 11, -10]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_dpOkKvdsEe6d2tOMo-Sy7g" id="(1.0,0.22429906542056074)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_dpOkK_dsEe6d2tOMo-Sy7g" id="(0.0,0.4166666666666667)"/>
         </edges>
-        <edges xmi:type="notation:Edge" xmi:id="_6IAbAPWBEe6NROm9FZVaYA" type="4001" element="_6G-gXPWBEe6NROm9FZVaYA" source="_U1NY0OddEe6itpWxpl3KSQ" target="_zQiM4PWBEe6NROm9FZVaYA">
-          <children xmi:type="notation:Node" xmi:id="_6IBCEPWBEe6NROm9FZVaYA" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6IBCEfWBEe6NROm9FZVaYA" x="74" y="49"/>
+        <edges xmi:type="notation:Edge" xmi:id="_eUcrYPdsEe6d2tOMo-Sy7g" type="4001" element="_eThecPdsEe6d2tOMo-Sy7g" source="_UffngOddEe6itpWxpl3KSQ" target="_Zhc2d_dsEe6d2tOMo-Sy7g">
+          <children xmi:type="notation:Node" xmi:id="_eUdScPdsEe6d2tOMo-Sy7g" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_eUdScfdsEe6d2tOMo-Sy7g" x="72" y="18"/>
           </children>
-          <children xmi:type="notation:Node" xmi:id="_6IBCEvWBEe6NROm9FZVaYA" type="6002">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6IBCE_WBEe6NROm9FZVaYA" x="111" y="35"/>
+          <children xmi:type="notation:Node" xmi:id="_eUdScvdsEe6d2tOMo-Sy7g" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_eUdSc_dsEe6d2tOMo-Sy7g" x="11" y="10"/>
           </children>
-          <children xmi:type="notation:Node" xmi:id="_6IBCFPWBEe6NROm9FZVaYA" type="6003">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6IBCFfWBEe6NROm9FZVaYA" x="-125" y="14"/>
+          <children xmi:type="notation:Node" xmi:id="_eUdSdPdsEe6d2tOMo-Sy7g" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_eUdSdfdsEe6d2tOMo-Sy7g" x="-47" y="10"/>
           </children>
-          <styles xmi:type="notation:ConnectorStyle" xmi:id="_6IAbAfWBEe6NROm9FZVaYA" routing="Rectilinear"/>
-          <styles xmi:type="notation:FontStyle" xmi:id="_6IAbAvWBEe6NROm9FZVaYA" fontName="Ubuntu" fontHeight="10"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_6IAbA_WBEe6NROm9FZVaYA" points="[14, 54, -215, 175]$[61, 54, -168, 175]$[61, -132, -168, -11]$[181, -132, -48, -11]"/>
-          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_6IBCFvWBEe6NROm9FZVaYA" id="(0.8556701030927835,0.0)"/>
-          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_6IBCF_WBEe6NROm9FZVaYA" id="(0.5662650602409639,1.0)"/>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_eUcrYfdsEe6d2tOMo-Sy7g" routing="Rectilinear"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_eUcrYvdsEe6d2tOMo-Sy7g" fontName="Ubuntu" fontHeight="10"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_eUcrY_dsEe6d2tOMo-Sy7g" points="[0, 0, -262, 2]$[262, 0, 0, 2]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_eUdSdvdsEe6d2tOMo-Sy7g" id="(1.0,0.2336448598130841)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_eUdSd_dsEe6d2tOMo-Sy7g" id="(0.0,0.4166666666666667)"/>
         </edges>
-        <edges xmi:type="notation:Edge" xmi:id="_BFNdsPWCEe6NROm9FZVaYA" type="4001" element="_BEJt5PWCEe6NROm9FZVaYA" source="_UffngOddEe6itpWxpl3KSQ" target="_zQiM4PWBEe6NROm9FZVaYA">
-          <children xmi:type="notation:Node" xmi:id="_BFOEwPWCEe6NROm9FZVaYA" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_BFOEwfWCEe6NROm9FZVaYA" x="62" y="61"/>
+        <edges xmi:type="notation:Edge" xmi:id="_ezq-APdsEe6d2tOMo-Sy7g" type="4001" element="_eyhHkPdsEe6d2tOMo-Sy7g" source="_U1NY0OddEe6itpWxpl3KSQ" target="_Zhc2d_dsEe6d2tOMo-Sy7g">
+          <children xmi:type="notation:Node" xmi:id="_ezq-BPdsEe6d2tOMo-Sy7g" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ezq-BfdsEe6d2tOMo-Sy7g" x="-49" y="-90"/>
           </children>
-          <children xmi:type="notation:Node" xmi:id="_BFOEwvWCEe6NROm9FZVaYA" type="6002">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_BFOEw_WCEe6NROm9FZVaYA" x="105" y="-116"/>
+          <children xmi:type="notation:Node" xmi:id="_ezq-BvdsEe6d2tOMo-Sy7g" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ezq-B_dsEe6d2tOMo-Sy7g" y="10"/>
           </children>
-          <children xmi:type="notation:Node" xmi:id="_BFOExPWCEe6NROm9FZVaYA" type="6003">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_BFOExfWCEe6NROm9FZVaYA" x="2" y="10"/>
+          <children xmi:type="notation:Node" xmi:id="_ezq-CPdsEe6d2tOMo-Sy7g" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ezq-CfdsEe6d2tOMo-Sy7g" x="-10"/>
           </children>
-          <styles xmi:type="notation:ConnectorStyle" xmi:id="_BFNdsfWCEe6NROm9FZVaYA" routing="Rectilinear"/>
-          <styles xmi:type="notation:FontStyle" xmi:id="_BFNdsvWCEe6NROm9FZVaYA" fontName="Ubuntu" fontHeight="10"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_BFNds_WCEe6NROm9FZVaYA" points="[0, 17, -298, 138]$[130, 17, -168, 138]$[130, -109, -168, 12]$[298, -109, 0, 12]"/>
-          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_BFOr0PWCEe6NROm9FZVaYA" id="(1.0,0.34579439252336447)"/>
-          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_BFOr0fWCEe6NROm9FZVaYA" id="(0.0,0.4485981308411215)"/>
-        </edges>
-        <edges xmi:type="notation:Edge" xmi:id="_r4nHoPWCEe6NROm9FZVaYA" type="4001" element="_r2SzhPWCEe6NROm9FZVaYA" source="_zQiM4PWBEe6NROm9FZVaYA" target="_reQG4PWCEe6NROm9FZVaYA">
-          <children xmi:type="notation:Node" xmi:id="_r4nHpPWCEe6NROm9FZVaYA" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_r4nHpfWCEe6NROm9FZVaYA" x="2" y="-10"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_r4nHpvWCEe6NROm9FZVaYA" type="6002">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_r4nHp_WCEe6NROm9FZVaYA" x="1" y="10"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_r4nHqPWCEe6NROm9FZVaYA" type="6003">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_r4nHqfWCEe6NROm9FZVaYA" x="2" y="10"/>
-          </children>
-          <styles xmi:type="notation:ConnectorStyle" xmi:id="_r4nHofWCEe6NROm9FZVaYA" routing="Rectilinear"/>
-          <styles xmi:type="notation:FontStyle" xmi:id="_r4nHovWCEe6NROm9FZVaYA" fontName="Ubuntu" fontHeight="10"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_r4nHo_WCEe6NROm9FZVaYA" points="[11, 0, -7, 58]$[11, -59, -7, -1]"/>
-          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_r4nusPWCEe6NROm9FZVaYA" id="(0.7176470588235294,0.0)"/>
-          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_r4nusfWCEe6NROm9FZVaYA" id="(0.75,1.0)"/>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_ezq-AfdsEe6d2tOMo-Sy7g" routing="Rectilinear"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_ezq-AvdsEe6d2tOMo-Sy7g" fontName="Ubuntu" fontHeight="10"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_ezq-A_dsEe6d2tOMo-Sy7g" points="[25, 83, -143, 142]$[168, 83, 0, 142]$[168, -60, 0, -1]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_ezrlEPdsEe6d2tOMo-Sy7g" id="(0.7422680412371134,0.0)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_ezrlEfdsEe6d2tOMo-Sy7g" id="(0.5,1.0)"/>
         </edges>
       </data>
     </ownedAnnotationEntries>
@@ -2113,7 +2069,7 @@
             <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='NodesID']"/>
           </ownedDiagramElements>
         </ownedDiagramElements>
-        <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_SGdZMOHvEe6AEP1DTliDwg" name="working" outgoingEdges="_vEeIEOOZEe6IdZsGcIAz0A _2k8P6uOZEe6IdZsGcIAz0A _044DvPWBEe6NROm9FZVaYA" incomingEdges="_ag9gUOHvEe6AEP1DTliDwg" childrenPresentation="VerticalStack">
+        <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_SGdZMOHvEe6AEP1DTliDwg" name="working" outgoingEdges="_vEeIEOOZEe6IdZsGcIAz0A _2k8P6uOZEe6IdZsGcIAz0A _doIX_vdsEe6d2tOMo-Sy7g" incomingEdges="_ag9gUOHvEe6AEP1DTliDwg" childrenPresentation="VerticalStack">
           <target xmi:type="robochart:State" href="SystemSTM.rct#//@machines.0/@nodes.1"/>
           <semanticElements xmi:type="robochart:State" href="SystemSTM.rct#//@machines.0/@nodes.1"/>
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
@@ -2154,7 +2110,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='NodesID']/@subNodeMappings[name='InitialID']"/>
         </ownedDiagramElements>
-        <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_UdGa0OddEe6itpWxpl3KSQ" name="UR_finished" outgoingEdges="_oUqbMOddEe6itpWxpl3KSQ _BEJt5PWCEe6NROm9FZVaYA" incomingEdges="_vEeIEOOZEe6IdZsGcIAz0A" childrenPresentation="VerticalStack">
+        <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_UdGa0OddEe6itpWxpl3KSQ" name="UR_finished" outgoingEdges="_oUqbMOddEe6itpWxpl3KSQ _eThecPdsEe6d2tOMo-Sy7g" incomingEdges="_vEeIEOOZEe6IdZsGcIAz0A" childrenPresentation="VerticalStack">
           <target xmi:type="robochart:State" href="SystemSTM.rct#//@machines.0/@nodes.3"/>
           <semanticElements xmi:type="robochart:State" href="SystemSTM.rct#//@machines.0/@nodes.3"/>
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
@@ -2183,7 +2139,7 @@
             <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='NodesID']"/>
           </ownedDiagramElements>
         </ownedDiagramElements>
-        <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_U0Ae8OddEe6itpWxpl3KSQ" name="EXAX_finished" outgoingEdges="_pATZJOddEe6itpWxpl3KSQ _6G-gXPWBEe6NROm9FZVaYA" incomingEdges="_2k8P6uOZEe6IdZsGcIAz0A" childrenPresentation="VerticalStack">
+        <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_U0Ae8OddEe6itpWxpl3KSQ" name="EXAX_finished" outgoingEdges="_pATZJOddEe6itpWxpl3KSQ _eyhHkPdsEe6d2tOMo-Sy7g" incomingEdges="_2k8P6uOZEe6IdZsGcIAz0A" childrenPresentation="VerticalStack">
           <target xmi:type="robochart:State" href="SystemSTM.rct#//@machines.0/@nodes.4"/>
           <semanticElements xmi:type="robochart:State" href="SystemSTM.rct#//@machines.0/@nodes.4"/>
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
@@ -2224,43 +2180,14 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='NodesID']/@subNodeMappings[name='JunctionID']"/>
         </ownedDiagramElements>
-        <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_zPuUkPWBEe6NROm9FZVaYA" name="failed" outgoingEdges="_r2SzhPWCEe6NROm9FZVaYA" incomingEdges="_044DvPWBEe6NROm9FZVaYA _6G-gXPWBEe6NROm9FZVaYA _BEJt5PWCEe6NROm9FZVaYA" childrenPresentation="VerticalStack">
-          <target xmi:type="robochart:State" href="SystemSTM.rct#//@machines.0/@nodes.6"/>
-          <semanticElements xmi:type="robochart:State" href="SystemSTM.rct#//@machines.0/@nodes.6"/>
+        <ownedDiagramElements xmi:type="diagram:DNode" uid="_ZhWv3vdsEe6d2tOMo-Sy7g" name="f0" incomingEdges="_doIX_vdsEe6d2tOMo-Sy7g _eThecPdsEe6d2tOMo-Sy7g _eyhHkPdsEe6d2tOMo-Sy7g" width="-1" height="-1">
+          <target xmi:type="robochart:Final" href="SystemSTM.rct#//@machines.0/@nodes.6"/>
+          <semanticElements xmi:type="robochart:Final" href="SystemSTM.rct#//@machines.0/@nodes.6"/>
+          <graphicalFilters xmi:type="diagram:HideLabelFilter" uid="_ZhXW4fdsEe6d2tOMo-Sy7g"/>
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_zPuUkfWBEe6NROm9FZVaYA" labelSize="10" showIcon="false" borderSize="1" borderSizeComputationExpression="1" foregroundColor="255,255,255">
-            <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='NodesID']/@subContainerMappings[name='StateID']/@style"/>
-          </ownedStyle>
-          <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='NodesID']/@subContainerMappings[name='StateID']"/>
-          <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_zPx_CfWBEe6NROm9FZVaYA" name="failed">
-            <target xmi:type="robochart:State" href="SystemSTM.rct#//@machines.0/@nodes.6"/>
-            <semanticElements xmi:type="robochart:State" href="SystemSTM.rct#//@machines.0/@nodes.6"/>
-            <graphicalFilters xmi:type="diagram:HideLabelFilter" uid="_zPymAvWBEe6NROm9FZVaYA"/>
-            <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_zPymAPWBEe6NROm9FZVaYA" labelSize="10" showIcon="false" borderSize="1" borderSizeComputationExpression="1" hideLabelByDefault="true" foregroundColor="255,255,255">
-              <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='ActionsID']/@style"/>
-            </ownedStyle>
-            <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='ActionsID']"/>
-          </ownedDiagramElements>
-          <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_zPymA_WBEe6NROm9FZVaYA">
-            <target xmi:type="robochart:State" href="SystemSTM.rct#//@machines.0/@nodes.6"/>
-            <semanticElements xmi:type="robochart:State" href="SystemSTM.rct#//@machines.0/@nodes.6"/>
-            <graphicalFilters xmi:type="diagram:HideLabelFilter" uid="_zPymBvWBEe6NROm9FZVaYA"/>
-            <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_zPymBPWBEe6NROm9FZVaYA" labelSize="1" showIcon="false" borderSize="1" borderSizeComputationExpression="1" hideLabelByDefault="true" foregroundColor="255,255,255">
-              <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='NodesID']/@style"/>
-            </ownedStyle>
-            <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='NodesID']"/>
-          </ownedDiagramElements>
-        </ownedDiagramElements>
-        <ownedDiagramElements xmi:type="diagram:DNode" uid="_rb_dEPWCEe6NROm9FZVaYA" name="f0" incomingEdges="_r2SzhPWCEe6NROm9FZVaYA" width="-1" height="-1">
-          <target xmi:type="robochart:Final" href="SystemSTM.rct#//@machines.0/@nodes.7"/>
-          <semanticElements xmi:type="robochart:Final" href="SystemSTM.rct#//@machines.0/@nodes.7"/>
-          <graphicalFilters xmi:type="diagram:HideLabelFilter" uid="_rcAEIfWCEe6NROm9FZVaYA"/>
-          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
-          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
-          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_rb_dEfWCEe6NROm9FZVaYA" showIcon="false" hideLabelByDefault="true" workspacePath="/circus.robocalc.robochart.graphical/icons/final24.png">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_ZhWv3_dsEe6d2tOMo-Sy7g" showIcon="false" hideLabelByDefault="true" workspacePath="/circus.robocalc.robochart.graphical/icons/final24.png">
             <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='NodesID']/@subNodeMappings[name='FinallID']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='NodesID']/@subNodeMappings[name='FinallID']"/>
@@ -2330,39 +2257,30 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@edgeMappings[name='TransitionID']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_044DvPWBEe6NROm9FZVaYA" name="out_of_sync" sourceNode="_SGdZMOHvEe6AEP1DTliDwg" targetNode="_zPuUkPWBEe6NROm9FZVaYA">
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_doIX_vdsEe6d2tOMo-Sy7g" name="out_of_sync" sourceNode="_SGdZMOHvEe6AEP1DTliDwg" targetNode="_ZhWv3vdsEe6d2tOMo-Sy7g">
       <target xmi:type="robochart:Transition" href="SystemSTM.rct#//@machines.0/@transitions.7"/>
       <semanticElements xmi:type="robochart:Transition" href="SystemSTM.rct#//@machines.0/@transitions.7"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_044DvfWBEe6NROm9FZVaYA" size="2" routingStyle="manhattan">
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_doIX__dsEe6d2tOMo-Sy7g" size="2" routingStyle="manhattan">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@edgeMappings[name='TransitionID']/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_044DvvWBEe6NROm9FZVaYA" labelSize="10" showIcon="false"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_doIYAPdsEe6d2tOMo-Sy7g" labelSize="10" showIcon="false"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@edgeMappings[name='TransitionID']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_6G-gXPWBEe6NROm9FZVaYA" name="out_of_sync" sourceNode="_U0Ae8OddEe6itpWxpl3KSQ" targetNode="_zPuUkPWBEe6NROm9FZVaYA">
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_eThecPdsEe6d2tOMo-Sy7g" name="out_of_sync" sourceNode="_UdGa0OddEe6itpWxpl3KSQ" targetNode="_ZhWv3vdsEe6d2tOMo-Sy7g">
       <target xmi:type="robochart:Transition" href="SystemSTM.rct#//@machines.0/@transitions.8"/>
       <semanticElements xmi:type="robochart:Transition" href="SystemSTM.rct#//@machines.0/@transitions.8"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_6G_HUPWBEe6NROm9FZVaYA" size="2" routingStyle="manhattan">
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_eTiFYPdsEe6d2tOMo-Sy7g" size="2" routingStyle="manhattan">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@edgeMappings[name='TransitionID']/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_6G_HUfWBEe6NROm9FZVaYA" labelSize="10" showIcon="false"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_eTiFYfdsEe6d2tOMo-Sy7g" labelSize="10" showIcon="false"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@edgeMappings[name='TransitionID']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_BEJt5PWCEe6NROm9FZVaYA" name="out_of_sync" sourceNode="_UdGa0OddEe6itpWxpl3KSQ" targetNode="_zPuUkPWBEe6NROm9FZVaYA">
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_eyhHkPdsEe6d2tOMo-Sy7g" name="out_of_sync" sourceNode="_U0Ae8OddEe6itpWxpl3KSQ" targetNode="_ZhWv3vdsEe6d2tOMo-Sy7g">
       <target xmi:type="robochart:Transition" href="SystemSTM.rct#//@machines.0/@transitions.9"/>
       <semanticElements xmi:type="robochart:Transition" href="SystemSTM.rct#//@machines.0/@transitions.9"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_BEJt5fWCEe6NROm9FZVaYA" size="2" routingStyle="manhattan">
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_eyhugPdsEe6d2tOMo-Sy7g" size="2" routingStyle="manhattan">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@edgeMappings[name='TransitionID']/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_BEJt5vWCEe6NROm9FZVaYA" labelSize="10" showIcon="false"/>
-      </ownedStyle>
-      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@edgeMappings[name='TransitionID']"/>
-    </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_r2SzhPWCEe6NROm9FZVaYA" sourceNode="_zPuUkPWBEe6NROm9FZVaYA" targetNode="_rb_dEPWCEe6NROm9FZVaYA">
-      <target xmi:type="robochart:Transition" href="SystemSTM.rct#//@machines.0/@transitions.10"/>
-      <semanticElements xmi:type="robochart:Transition" href="SystemSTM.rct#//@machines.0/@transitions.10"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_r2SzhfWCEe6NROm9FZVaYA" size="2" routingStyle="manhattan">
-        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@edgeMappings[name='TransitionID']/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_r2SzhvWCEe6NROm9FZVaYA" labelSize="10" showIcon="false"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_eyhugfdsEe6d2tOMo-Sy7g" labelSize="10" showIcon="false"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@edgeMappings[name='TransitionID']"/>
     </ownedDiagramElements>
@@ -2534,9 +2452,9 @@
                     <children xmi:type="notation:Node" xmi:id="_d7jOEOdkEe6itpWxpl3KSQ" type="3009" element="_d7F7GudkEe6itpWxpl3KSQ">
                       <children xmi:type="notation:Node" xmi:id="_d7jOE-dkEe6itpWxpl3KSQ" visible="false" type="5004"/>
                       <children xmi:type="notation:Node" xmi:id="_d7jOFOdkEe6itpWxpl3KSQ" type="7003">
-                        <children xmi:type="notation:Node" xmi:id="_w4L3MOdkEe6itpWxpl3KSQ" type="3010" element="_w2_kbudkEe6itpWxpl3KSQ">
-                          <styles xmi:type="notation:FontStyle" xmi:id="_w4L3MedkEe6itpWxpl3KSQ" fontName="Ubuntu" fontHeight="10"/>
-                          <layoutConstraint xmi:type="notation:Location" xmi:id="_w4L3MudkEe6itpWxpl3KSQ"/>
+                        <children xmi:type="notation:Node" xmi:id="_9zvrMPdpEe6d2tOMo-Sy7g" type="3010" element="_9zGK9_dpEe6d2tOMo-Sy7g">
+                          <styles xmi:type="notation:FontStyle" xmi:id="_9zvrMfdpEe6d2tOMo-Sy7g" fontName="Ubuntu" fontHeight="10"/>
+                          <layoutConstraint xmi:type="notation:Location" xmi:id="_9zvrMvdpEe6d2tOMo-Sy7g"/>
                         </children>
                         <styles xmi:type="notation:SortingStyle" xmi:id="_d7jOFedkEe6itpWxpl3KSQ"/>
                         <styles xmi:type="notation:FilteringStyle" xmi:id="_d7jOFudkEe6itpWxpl3KSQ"/>
@@ -2601,6 +2519,14 @@
                   <styles xmi:type="notation:FontStyle" xmi:id="_qFLhYfcSEe6d2tOMo-Sy7g" fontName="Ubuntu" fontHeight="10"/>
                   <layoutConstraint xmi:type="notation:Location" xmi:id="_qFLhYvcSEe6d2tOMo-Sy7g"/>
                 </children>
+                <children xmi:type="notation:Node" xmi:id="_n4IIcPdpEe6d2tOMo-Sy7g" type="3010" element="_n3yxRfdpEe6d2tOMo-Sy7g">
+                  <styles xmi:type="notation:FontStyle" xmi:id="_n4IIcfdpEe6d2tOMo-Sy7g" fontName="Ubuntu" fontHeight="10"/>
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_n4IIcvdpEe6d2tOMo-Sy7g"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_8FyxEPdoEe6d2tOMo-Sy7g" type="3010" element="_8FdZ6fdoEe6d2tOMo-Sy7g">
+                  <styles xmi:type="notation:FontStyle" xmi:id="_8FyxEfdoEe6d2tOMo-Sy7g" fontName="Ubuntu" fontHeight="10"/>
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_8FyxEvdoEe6d2tOMo-Sy7g"/>
+                </children>
                 <styles xmi:type="notation:SortingStyle" xmi:id="_bsQ5AuHzEe6AEP1DTliDwg"/>
                 <styles xmi:type="notation:FilteringStyle" xmi:id="_bsQ5A-HzEe6AEP1DTliDwg"/>
                 <styles xmi:type="notation:DrawerStyle" xmi:id="_bsQ5BOHzEe6AEP1DTliDwg"/>
@@ -2637,18 +2563,6 @@
               <styles xmi:type="notation:FontStyle" xmi:id="_sbBx0eHyEe6AEP1DTliDwg" fontName="Ubuntu" fontHeight="10"/>
               <layoutConstraint xmi:type="notation:Location" xmi:id="_sbBx0uHyEe6AEP1DTliDwg"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_vq0HkOHyEe6AEP1DTliDwg" type="3010" element="_vqpvhOHyEe6AEP1DTliDwg">
-              <styles xmi:type="notation:FontStyle" xmi:id="_vq0HkeHyEe6AEP1DTliDwg" fontName="Ubuntu" fontHeight="10"/>
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_vq0HkuHyEe6AEP1DTliDwg"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_xJqEIOHyEe6AEP1DTliDwg" type="3010" element="_xJdP0OHyEe6AEP1DTliDwg">
-              <styles xmi:type="notation:FontStyle" xmi:id="_xJqEIeHyEe6AEP1DTliDwg" fontName="Ubuntu" fontHeight="10"/>
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_xJqEIuHyEe6AEP1DTliDwg"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_Rbc0wOOZEe6IdZsGcIAz0A" type="3010" element="_RbLH9eOZEe6IdZsGcIAz0A">
-              <styles xmi:type="notation:FontStyle" xmi:id="_Rbc0weOZEe6IdZsGcIAz0A" fontName="Ubuntu" fontHeight="10"/>
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_Rbc0wuOZEe6IdZsGcIAz0A"/>
-            </children>
             <children xmi:type="notation:Node" xmi:id="_TBQ8AOOZEe6IdZsGcIAz0A" type="3010" element="_TBDgquOZEe6IdZsGcIAz0A">
               <styles xmi:type="notation:FontStyle" xmi:id="_TBQ8AeOZEe6IdZsGcIAz0A" fontName="Ubuntu" fontHeight="10"/>
               <layoutConstraint xmi:type="notation:Location" xmi:id="_TBQ8AuOZEe6IdZsGcIAz0A"/>
@@ -2656,18 +2570,6 @@
             <children xmi:type="notation:Node" xmi:id="_GOIjkOOgEe6_fp0-cI3gSQ" type="3010" element="_GNUrQeOgEe6_fp0-cI3gSQ">
               <styles xmi:type="notation:FontStyle" xmi:id="_GOIjkeOgEe6_fp0-cI3gSQ" fontName="Ubuntu" fontHeight="10"/>
               <layoutConstraint xmi:type="notation:Location" xmi:id="_GOIjkuOgEe6_fp0-cI3gSQ"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_WIaO8OOgEe6_fp0-cI3gSQ" type="3010" element="_WHoy5-OgEe6_fp0-cI3gSQ">
-              <styles xmi:type="notation:FontStyle" xmi:id="_WIaO8eOgEe6_fp0-cI3gSQ" fontName="Ubuntu" fontHeight="10"/>
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_WIaO8uOgEe6_fp0-cI3gSQ"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_WIaO8-OgEe6_fp0-cI3gSQ" type="3010" element="_WHoy6eOgEe6_fp0-cI3gSQ">
-              <styles xmi:type="notation:FontStyle" xmi:id="_WIaO9OOgEe6_fp0-cI3gSQ" fontName="Ubuntu" fontHeight="10"/>
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_WIaO9eOgEe6_fp0-cI3gSQ"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_WIaO9uOgEe6_fp0-cI3gSQ" type="3010" element="_WHpZ8OOgEe6_fp0-cI3gSQ">
-              <styles xmi:type="notation:FontStyle" xmi:id="_WIaO9-OgEe6_fp0-cI3gSQ" fontName="Ubuntu" fontHeight="10"/>
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_WIaO-OOgEe6_fp0-cI3gSQ"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_Km2-sPclEe6d2tOMo-Sy7g" type="3010" element="_KmVaTPclEe6d2tOMo-Sy7g">
               <styles xmi:type="notation:FontStyle" xmi:id="_Km2-sfclEe6d2tOMo-Sy7g" fontName="Ubuntu" fontHeight="10"/>
@@ -2681,7 +2583,7 @@
             <styles xmi:type="notation:FilteringStyle" xmi:id="_gZZL9uHyEe6AEP1DTliDwg"/>
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_gZZL8eHyEe6AEP1DTliDwg" fontName="Ubuntu" fontHeight="10"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_gZZL8uHyEe6AEP1DTliDwg" x="1032" y="24" width="207" height="279"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_gZZL8uHyEe6AEP1DTliDwg" x="1032" y="24" width="147" height="207"/>
         </children>
         <styles xmi:type="notation:DiagramStyle" xmi:id="_dbsEsuHyEe6AEP1DTliDwg"/>
         <edges xmi:type="notation:Edge" xmi:id="_ktKRwOHzEe6AEP1DTliDwg" type="4001" element="_ks5zEOHzEe6AEP1DTliDwg" source="_j4BZgOHzEe6AEP1DTliDwg" target="_kORWUOHzEe6AEP1DTliDwg">
@@ -3025,10 +2927,10 @@
               <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='ActionsID']/@style"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='ActionsID']"/>
-            <ownedElements xmi:type="diagram:DNodeListElement" uid="_w2_kbudkEe6itpWxpl3KSQ" name="entry ur_curr_waypoint = 0; done">
+            <ownedElements xmi:type="diagram:DNodeListElement" uid="_9zGK9_dpEe6d2tOMo-Sy7g" name="entry ur_curr_waypoint = 0; done">
               <target xmi:type="robochart:EntryAction" href="UR_STM.rct#//@machines.0/@nodes.4/@actions.0"/>
               <semanticElements xmi:type="robochart:EntryAction" href="UR_STM.rct#//@machines.0/@nodes.4/@actions.0"/>
-              <ownedStyle xmi:type="diagram:Square" uid="_w3ALcOdkEe6itpWxpl3KSQ" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node" color="255,255,255">
+              <ownedStyle xmi:type="diagram:Square" uid="_9zGK-PdpEe6d2tOMo-Sy7g" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node" color="255,255,255">
                 <description xmi:type="style:SquareDescription" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='ActionsID']/@subNodeMappings[name='ActionID']/@style"/>
               </ownedStyle>
               <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='ActionsID']/@subNodeMappings[name='ActionID']"/>
@@ -3093,6 +2995,22 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='RoboticPlatformDefID']/@subNodeMappings[name='RequiredID']"/>
         </ownedElements>
+        <ownedElements xmi:type="diagram:DNodeListElement" uid="_n3yxRfdpEe6d2tOMo-Sy7g" name="ur_n_waypoints: nat = 10">
+          <target xmi:type="robochart:VariableList" href="UR_STM.rct#//@machines.0/@variableList.0"/>
+          <semanticElements xmi:type="robochart:VariableList" href="UR_STM.rct#//@machines.0/@variableList.0"/>
+          <ownedStyle xmi:type="diagram:Square" uid="_n3yxRvdpEe6d2tOMo-Sy7g" labelSize="10" iconPath="/circus.robocalc.robochart.graphical/icons/constant.png" labelAlignment="LEFT" labelPosition="node">
+            <description xmi:type="style:SquareDescription" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='InterfaceID']/@subNodeMappings[name='VariableID']/@conditionnalStyles.1/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='InterfaceID']/@subNodeMappings[name='VariableID']"/>
+        </ownedElements>
+        <ownedElements xmi:type="diagram:DNodeListElement" uid="_8FdZ6fdoEe6d2tOMo-Sy7g" name="ur_curr_waypoint: nat = 0">
+          <target xmi:type="robochart:VariableList" href="UR_STM.rct#//@machines.0/@variableList.1"/>
+          <semanticElements xmi:type="robochart:VariableList" href="UR_STM.rct#//@machines.0/@variableList.1"/>
+          <ownedStyle xmi:type="diagram:Square" uid="_8FdZ6vdoEe6d2tOMo-Sy7g" labelSize="10" iconPath="/circus.robocalc.robochart.graphical/icons/variable.png" labelAlignment="LEFT" labelPosition="node">
+            <description xmi:type="style:SquareDescription" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='InterfaceID']/@subNodeMappings[name='VariableID']/@conditionnalStyles.0/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='InterfaceID']/@subNodeMappings[name='VariableID']"/>
+        </ownedElements>
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_gY1yUOHyEe6AEP1DTliDwg" name="UR_vars">
@@ -3145,81 +3063,33 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='InterfaceID']/@subNodeMappings[name='VariableID']"/>
       </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" uid="_vqpvhOHyEe6AEP1DTliDwg" name="curr_vel: real">
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="_TBDgquOZEe6IdZsGcIAz0A" name="jd1: real">
         <target xmi:type="robochart:VariableList" href="UR_STM.rct#//@interfaces.0/@variableList.5"/>
         <semanticElements xmi:type="robochart:VariableList" href="UR_STM.rct#//@interfaces.0/@variableList.5"/>
-        <ownedStyle xmi:type="diagram:Square" uid="_vqpvheHyEe6AEP1DTliDwg" labelSize="10" iconPath="/circus.robocalc.robochart.graphical/icons/variable.png" labelAlignment="LEFT" labelPosition="node">
-          <description xmi:type="style:SquareDescription" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='InterfaceID']/@subNodeMappings[name='VariableID']/@conditionnalStyles.0/@style"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='InterfaceID']/@subNodeMappings[name='VariableID']"/>
-      </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" uid="_xJdP0OHyEe6AEP1DTliDwg" name="curr_planned_vel: real">
-        <target xmi:type="robochart:VariableList" href="UR_STM.rct#//@interfaces.0/@variableList.6"/>
-        <semanticElements xmi:type="robochart:VariableList" href="UR_STM.rct#//@interfaces.0/@variableList.6"/>
-        <ownedStyle xmi:type="diagram:Square" uid="_xJdP0eHyEe6AEP1DTliDwg" labelSize="10" iconPath="/circus.robocalc.robochart.graphical/icons/variable.png" labelAlignment="LEFT" labelPosition="node">
-          <description xmi:type="style:SquareDescription" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='InterfaceID']/@subNodeMappings[name='VariableID']/@conditionnalStyles.0/@style"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='InterfaceID']/@subNodeMappings[name='VariableID']"/>
-      </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" uid="_RbLH9eOZEe6IdZsGcIAz0A" name="ur_curr_waypoint: nat = 0">
-        <target xmi:type="robochart:VariableList" href="UR_STM.rct#//@interfaces.0/@variableList.7"/>
-        <semanticElements xmi:type="robochart:VariableList" href="UR_STM.rct#//@interfaces.0/@variableList.7"/>
-        <ownedStyle xmi:type="diagram:Square" uid="_RbLH9uOZEe6IdZsGcIAz0A" labelSize="10" iconPath="/circus.robocalc.robochart.graphical/icons/variable.png" labelAlignment="LEFT" labelPosition="node">
-          <description xmi:type="style:SquareDescription" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='InterfaceID']/@subNodeMappings[name='VariableID']/@conditionnalStyles.0/@style"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='InterfaceID']/@subNodeMappings[name='VariableID']"/>
-      </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" uid="_TBDgquOZEe6IdZsGcIAz0A" name="jd1: real">
-        <target xmi:type="robochart:VariableList" href="UR_STM.rct#//@interfaces.0/@variableList.8"/>
-        <semanticElements xmi:type="robochart:VariableList" href="UR_STM.rct#//@interfaces.0/@variableList.8"/>
         <ownedStyle xmi:type="diagram:Square" uid="_GNUrQOOgEe6_fp0-cI3gSQ" labelSize="10" iconPath="/circus.robocalc.robochart.graphical/icons/variable.png" labelAlignment="LEFT" labelPosition="node">
           <description xmi:type="style:SquareDescription" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='InterfaceID']/@subNodeMappings[name='VariableID']/@conditionnalStyles.0/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='InterfaceID']/@subNodeMappings[name='VariableID']"/>
       </ownedElements>
       <ownedElements xmi:type="diagram:DNodeListElement" uid="_GNUrQeOgEe6_fp0-cI3gSQ" name="jd2: real">
-        <target xmi:type="robochart:VariableList" href="UR_STM.rct#//@interfaces.0/@variableList.9"/>
-        <semanticElements xmi:type="robochart:VariableList" href="UR_STM.rct#//@interfaces.0/@variableList.9"/>
+        <target xmi:type="robochart:VariableList" href="UR_STM.rct#//@interfaces.0/@variableList.6"/>
+        <semanticElements xmi:type="robochart:VariableList" href="UR_STM.rct#//@interfaces.0/@variableList.6"/>
         <ownedStyle xmi:type="diagram:Square" uid="_WHoy5uOgEe6_fp0-cI3gSQ" labelSize="10" iconPath="/circus.robocalc.robochart.graphical/icons/variable.png" labelAlignment="LEFT" labelPosition="node">
           <description xmi:type="style:SquareDescription" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='InterfaceID']/@subNodeMappings[name='VariableID']/@conditionnalStyles.0/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='InterfaceID']/@subNodeMappings[name='VariableID']"/>
       </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" uid="_WHoy5-OgEe6_fp0-cI3gSQ" name="jv1: real">
-        <target xmi:type="robochart:VariableList" href="UR_STM.rct#//@interfaces.0/@variableList.10"/>
-        <semanticElements xmi:type="robochart:VariableList" href="UR_STM.rct#//@interfaces.0/@variableList.10"/>
-        <ownedStyle xmi:type="diagram:Square" uid="_WHoy6OOgEe6_fp0-cI3gSQ" labelSize="10" iconPath="/circus.robocalc.robochart.graphical/icons/variable.png" labelAlignment="LEFT" labelPosition="node">
-          <description xmi:type="style:SquareDescription" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='InterfaceID']/@subNodeMappings[name='VariableID']/@conditionnalStyles.0/@style"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='InterfaceID']/@subNodeMappings[name='VariableID']"/>
-      </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" uid="_WHoy6eOgEe6_fp0-cI3gSQ" name="jv2: real">
-        <target xmi:type="robochart:VariableList" href="UR_STM.rct#//@interfaces.0/@variableList.11"/>
-        <semanticElements xmi:type="robochart:VariableList" href="UR_STM.rct#//@interfaces.0/@variableList.11"/>
-        <ownedStyle xmi:type="diagram:Square" uid="_WHoy6uOgEe6_fp0-cI3gSQ" labelSize="10" iconPath="/circus.robocalc.robochart.graphical/icons/variable.png" labelAlignment="LEFT" labelPosition="node">
-          <description xmi:type="style:SquareDescription" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='InterfaceID']/@subNodeMappings[name='VariableID']/@conditionnalStyles.0/@style"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='InterfaceID']/@subNodeMappings[name='VariableID']"/>
-      </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" uid="_WHpZ8OOgEe6_fp0-cI3gSQ" name="ur_n_waypoints: nat = 99">
-        <target xmi:type="robochart:VariableList" href="UR_STM.rct#//@interfaces.0/@variableList.12"/>
-        <semanticElements xmi:type="robochart:VariableList" href="UR_STM.rct#//@interfaces.0/@variableList.12"/>
-        <ownedStyle xmi:type="diagram:Square" uid="_WHpZ8eOgEe6_fp0-cI3gSQ" labelSize="10" iconPath="/circus.robocalc.robochart.graphical/icons/constant.png" labelAlignment="LEFT" labelPosition="node">
-          <description xmi:type="style:SquareDescription" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='InterfaceID']/@subNodeMappings[name='VariableID']/@conditionnalStyles.1/@style"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='InterfaceID']/@subNodeMappings[name='VariableID']"/>
-      </ownedElements>
       <ownedElements xmi:type="diagram:DNodeListElement" uid="_KmVaTPclEe6d2tOMo-Sy7g" name="finish_time1: real">
-        <target xmi:type="robochart:VariableList" href="UR_STM.rct#//@interfaces.0/@variableList.13"/>
-        <semanticElements xmi:type="robochart:VariableList" href="UR_STM.rct#//@interfaces.0/@variableList.13"/>
+        <target xmi:type="robochart:VariableList" href="UR_STM.rct#//@interfaces.0/@variableList.7"/>
+        <semanticElements xmi:type="robochart:VariableList" href="UR_STM.rct#//@interfaces.0/@variableList.7"/>
         <ownedStyle xmi:type="diagram:Square" uid="_KmVaTfclEe6d2tOMo-Sy7g" labelSize="10" iconPath="/circus.robocalc.robochart.graphical/icons/variable.png" labelAlignment="LEFT" labelPosition="node">
           <description xmi:type="style:SquareDescription" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='InterfaceID']/@subNodeMappings[name='VariableID']/@conditionnalStyles.0/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='InterfaceID']/@subNodeMappings[name='VariableID']"/>
       </ownedElements>
       <ownedElements xmi:type="diagram:DNodeListElement" uid="_L8gjAfclEe6d2tOMo-Sy7g" name="finish_time2: real">
-        <target xmi:type="robochart:VariableList" href="UR_STM.rct#//@interfaces.0/@variableList.14"/>
-        <semanticElements xmi:type="robochart:VariableList" href="UR_STM.rct#//@interfaces.0/@variableList.14"/>
+        <target xmi:type="robochart:VariableList" href="UR_STM.rct#//@interfaces.0/@variableList.8"/>
+        <semanticElements xmi:type="robochart:VariableList" href="UR_STM.rct#//@interfaces.0/@variableList.8"/>
         <ownedStyle xmi:type="diagram:Square" uid="_L8gjAvclEe6d2tOMo-Sy7g" labelSize="10" iconPath="/circus.robocalc.robochart.graphical/icons/variable.png" labelAlignment="LEFT" labelPosition="node">
           <description xmi:type="style:SquareDescription" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='InterfaceID']/@subNodeMappings[name='VariableID']/@conditionnalStyles.0/@style"/>
         </ownedStyle>
@@ -3356,7 +3226,7 @@
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CTgSQvWBEe6NROm9FZVaYA"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_CTGpofWBEe6NROm9FZVaYA" fontName="Ubuntu" fontHeight="10"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CTGpovWBEe6NROm9FZVaYA" x="881" y="396" width="30" height="30"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CTGpovWBEe6NROm9FZVaYA" x="917" y="396" width="30" height="30"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_6deY4-HyEe6AEP1DTliDwg" type="5006"/>
           <children xmi:type="notation:Node" xmi:id="_6deY5OHyEe6AEP1DTliDwg" type="7001">
@@ -3434,7 +3304,7 @@
                     <styles xmi:type="notation:FilteringStyle" xmi:id="_Rm0nA-OIEe6IdZsGcIAz0A"/>
                   </children>
                   <styles xmi:type="notation:ShapeStyle" xmi:id="_Rmyx0eOIEe6IdZsGcIAz0A" fontName="Ubuntu" fontHeight="10"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Rmyx0uOIEe6IdZsGcIAz0A" x="571" y="11"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Rmyx0uOIEe6IdZsGcIAz0A" x="535" y="22"/>
                 </children>
                 <children xmi:type="notation:Node" xmi:id="_duUkUOOIEe6IdZsGcIAz0A" type="3008" element="_dtSCgOOIEe6IdZsGcIAz0A">
                   <children xmi:type="notation:Node" xmi:id="_duUkU-OIEe6IdZsGcIAz0A" type="5005"/>
@@ -3467,7 +3337,7 @@
                     <styles xmi:type="notation:FilteringStyle" xmi:id="_duUkVuOIEe6IdZsGcIAz0A"/>
                   </children>
                   <styles xmi:type="notation:ShapeStyle" xmi:id="_duUkUeOIEe6IdZsGcIAz0A" fontName="Ubuntu" fontHeight="10"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_duUkUuOIEe6IdZsGcIAz0A" x="655" y="191"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_duUkUuOIEe6IdZsGcIAz0A" x="499" y="205"/>
                 </children>
                 <children xmi:type="notation:Node" xmi:id="_DDKkwOOSEe6IdZsGcIAz0A" type="3007" element="_DBa4UOOSEe6IdZsGcIAz0A">
                   <children xmi:type="notation:Node" xmi:id="_DDKkw-OSEe6IdZsGcIAz0A" visible="false" type="5003">
@@ -3486,9 +3356,9 @@
                     <children xmi:type="notation:Node" xmi:id="_ErTR1OdkEe6itpWxpl3KSQ" type="3009" element="_EqdkUedkEe6itpWxpl3KSQ">
                       <children xmi:type="notation:Node" xmi:id="_ErT44OdkEe6itpWxpl3KSQ" visible="false" type="5004"/>
                       <children xmi:type="notation:Node" xmi:id="_ErT44edkEe6itpWxpl3KSQ" type="7003">
-                        <children xmi:type="notation:Node" xmi:id="_PRGL0OdkEe6itpWxpl3KSQ" type="3010" element="_PQZBQOdkEe6itpWxpl3KSQ">
-                          <styles xmi:type="notation:FontStyle" xmi:id="_PRGL0edkEe6itpWxpl3KSQ" fontName="Ubuntu" fontHeight="10"/>
-                          <layoutConstraint xmi:type="notation:Location" xmi:id="_PRGL0udkEe6itpWxpl3KSQ"/>
+                        <children xmi:type="notation:Node" xmi:id="_769koPdpEe6d2tOMo-Sy7g" type="3010" element="_76aLCvdpEe6d2tOMo-Sy7g">
+                          <styles xmi:type="notation:FontStyle" xmi:id="_769kofdpEe6d2tOMo-Sy7g" fontName="Ubuntu" fontHeight="10"/>
+                          <layoutConstraint xmi:type="notation:Location" xmi:id="_769kovdpEe6d2tOMo-Sy7g"/>
                         </children>
                         <styles xmi:type="notation:SortingStyle" xmi:id="_ErT44udkEe6itpWxpl3KSQ"/>
                         <styles xmi:type="notation:FilteringStyle" xmi:id="_ErT44-dkEe6itpWxpl3KSQ"/>
@@ -3522,14 +3392,14 @@
                     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_X0W_8vcTEe6d2tOMo-Sy7g"/>
                   </children>
                   <styles xmi:type="notation:ShapeStyle" xmi:id="_X0VKwfcTEe6d2tOMo-Sy7g" fontName="Ubuntu" fontHeight="8"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_X0VKwvcTEe6d2tOMo-Sy7g" x="331" y="227" width="24" height="24"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_X0VKwvcTEe6d2tOMo-Sy7g" x="811" y="370" width="24" height="24"/>
                 </children>
                 <styles xmi:type="notation:SortingStyle" xmi:id="_6de_9eHyEe6AEP1DTliDwg"/>
                 <styles xmi:type="notation:FilteringStyle" xmi:id="_6de_9uHyEe6AEP1DTliDwg"/>
                 <styles xmi:type="notation:DrawerStyle" xmi:id="_6de_9-HyEe6AEP1DTliDwg"/>
               </children>
               <styles xmi:type="notation:ShapeStyle" xmi:id="_6de_8eHyEe6AEP1DTliDwg" fontName="Ubuntu" fontHeight="1"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6de_8uHyEe6AEP1DTliDwg" y="40" width="887" height="414"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6de_8uHyEe6AEP1DTliDwg" y="65" width="923" height="414"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_iz5qEOHzEe6AEP1DTliDwg" type="3009" element="_iz2mxOHzEe6AEP1DTliDwg">
               <children xmi:type="notation:Node" xmi:id="_iz5qE-HzEe6AEP1DTliDwg" visible="false" type="5004"/>
@@ -3542,12 +3412,20 @@
                   <styles xmi:type="notation:FontStyle" xmi:id="_FWhoIfcSEe6d2tOMo-Sy7g" fontName="Ubuntu" fontHeight="10"/>
                   <layoutConstraint xmi:type="notation:Location" xmi:id="_FWhoIvcSEe6d2tOMo-Sy7g"/>
                 </children>
+                <children xmi:type="notation:Node" xmi:id="_qkEKQPdpEe6d2tOMo-Sy7g" type="3010" element="_qjeUavdpEe6d2tOMo-Sy7g">
+                  <styles xmi:type="notation:FontStyle" xmi:id="_qkEKQfdpEe6d2tOMo-Sy7g" fontName="Ubuntu" fontHeight="10"/>
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_qkEKQvdpEe6d2tOMo-Sy7g"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_n7vnsPdqEe6d2tOMo-Sy7g" type="3010" element="_n7DEIfdqEe6d2tOMo-Sy7g">
+                  <styles xmi:type="notation:FontStyle" xmi:id="_n7vnsfdqEe6d2tOMo-Sy7g" fontName="Ubuntu" fontHeight="10"/>
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_n7vnsvdqEe6d2tOMo-Sy7g"/>
+                </children>
                 <styles xmi:type="notation:SortingStyle" xmi:id="_iz6RIeHzEe6AEP1DTliDwg"/>
                 <styles xmi:type="notation:FilteringStyle" xmi:id="_iz6RIuHzEe6AEP1DTliDwg"/>
                 <styles xmi:type="notation:DrawerStyle" xmi:id="_iz6RI-HzEe6AEP1DTliDwg"/>
               </children>
               <styles xmi:type="notation:ShapeStyle" xmi:id="_iz5qEeHzEe6AEP1DTliDwg" fontName="Ubuntu" fontHeight="1"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_iz5qEuHzEe6AEP1DTliDwg" width="887"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_iz5qEuHzEe6AEP1DTliDwg" width="923"/>
             </children>
             <styles xmi:type="notation:SortingStyle" xmi:id="_6deY5eHyEe6AEP1DTliDwg"/>
             <styles xmi:type="notation:FilteringStyle" xmi:id="_6deY5uHyEe6AEP1DTliDwg"/>
@@ -3574,18 +3452,6 @@
               <styles xmi:type="notation:FontStyle" xmi:id="_nDEtMeOIEe6IdZsGcIAz0A" fontName="Ubuntu" fontHeight="10"/>
               <layoutConstraint xmi:type="notation:Location" xmi:id="_nDEtMuOIEe6IdZsGcIAz0A"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_6qDT0OOIEe6IdZsGcIAz0A" type="3010" element="_6pU7FuOIEe6IdZsGcIAz0A">
-              <styles xmi:type="notation:FontStyle" xmi:id="_6qDT0eOIEe6IdZsGcIAz0A" fontName="Ubuntu" fontHeight="10"/>
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_6qDT0uOIEe6IdZsGcIAz0A"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_7eJUIOOREe6IdZsGcIAz0A" type="3010" element="_7dzV5-OREe6IdZsGcIAz0A">
-              <styles xmi:type="notation:FontStyle" xmi:id="_7eJUIeOREe6IdZsGcIAz0A" fontName="Ubuntu" fontHeight="10"/>
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_7eJUIuOREe6IdZsGcIAz0A"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="__tNVkOOREe6IdZsGcIAz0A" type="3010" element="__s3-YeOREe6IdZsGcIAz0A">
-              <styles xmi:type="notation:FontStyle" xmi:id="__tNVkeOREe6IdZsGcIAz0A" fontName="Ubuntu" fontHeight="10"/>
-              <layoutConstraint xmi:type="notation:Location" xmi:id="__tNVkuOREe6IdZsGcIAz0A"/>
-            </children>
             <children xmi:type="notation:Node" xmi:id="_UigW4OdrEe6itpWxpl3KSQ" type="3010" element="_UhqpaedrEe6itpWxpl3KSQ">
               <styles xmi:type="notation:FontStyle" xmi:id="_UigW4edrEe6itpWxpl3KSQ" fontName="Ubuntu" fontHeight="10"/>
               <layoutConstraint xmi:type="notation:Location" xmi:id="_UigW4udrEe6itpWxpl3KSQ"/>
@@ -3594,7 +3460,7 @@
             <styles xmi:type="notation:FilteringStyle" xmi:id="_736WkuHyEe6AEP1DTliDwg"/>
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_735vgeHyEe6AEP1DTliDwg" fontName="Ubuntu" fontHeight="10"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_735vguHyEe6AEP1DTliDwg" x="948" y="96" width="183" height="159"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_735vguHyEe6AEP1DTliDwg" x="984" y="48" width="147" height="159"/>
         </children>
         <styles xmi:type="notation:DiagramStyle" xmi:id="_5wuAlOHyEe6AEP1DTliDwg"/>
         <edges xmi:type="notation:Edge" xmi:id="_Kt5TYOHzEe6AEP1DTliDwg" type="4001" element="_KtbZUOHzEe6AEP1DTliDwg" source="_IyjBAOHzEe6AEP1DTliDwg" target="_JJPpwOHzEe6AEP1DTliDwg">
@@ -3615,49 +3481,49 @@
         </edges>
         <edges xmi:type="notation:Edge" xmi:id="_VmgvsOOIEe6IdZsGcIAz0A" type="4001" element="_VkiZxOOIEe6IdZsGcIAz0A" source="_JJPpwOHzEe6AEP1DTliDwg" target="_Rmyx0OOIEe6IdZsGcIAz0A">
           <children xmi:type="notation:Node" xmi:id="_VmgvtOOIEe6IdZsGcIAz0A" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VmgvteOIEe6IdZsGcIAz0A" x="-74" y="-17"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VmgvteOIEe6IdZsGcIAz0A" x="-56" y="-17"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_VmgvtuOIEe6IdZsGcIAz0A" type="6002">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Vmgvt-OIEe6IdZsGcIAz0A" x="-27" y="10"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Vmgvt-OIEe6IdZsGcIAz0A" x="-21" y="10"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_VmgvuOOIEe6IdZsGcIAz0A" type="6003">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VmgvueOIEe6IdZsGcIAz0A" x="-163" y="10"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VmgvueOIEe6IdZsGcIAz0A" x="-133" y="10"/>
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_VmgvseOIEe6IdZsGcIAz0A" routing="Rectilinear"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_VmgvsuOIEe6IdZsGcIAz0A" fontName="Ubuntu" fontHeight="10"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Vmgvs-OIEe6IdZsGcIAz0A" points="[0, 0, -275, -12]$[275, 0, 0, -12]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Vmgvs-OIEe6IdZsGcIAz0A" points="[0, 11, -239, -12]$[239, 11, 0, -12]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_VmhWwOOIEe6IdZsGcIAz0A" id="(1.0,0.22429906542056074)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_VmhWweOIEe6IdZsGcIAz0A" id="(0.0,0.3364485981308411)"/>
         </edges>
         <edges xmi:type="notation:Edge" xmi:id="_0-dqAOOIEe6IdZsGcIAz0A" type="4001" element="_09ic-OOIEe6IdZsGcIAz0A" source="_Rmyx0OOIEe6IdZsGcIAz0A" target="_duUkUOOIEe6IdZsGcIAz0A">
           <children xmi:type="notation:Node" xmi:id="_0-dqBOOIEe6IdZsGcIAz0A" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0-dqBeOIEe6IdZsGcIAz0A" x="-4" y="-58"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0-dqBeOIEe6IdZsGcIAz0A" x="-7" y="-58"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_0-eREOOIEe6IdZsGcIAz0A" type="6002">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0-eREeOIEe6IdZsGcIAz0A" x="10"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0-eREeOIEe6IdZsGcIAz0A" x="-2"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_0-eREuOIEe6IdZsGcIAz0A" type="6003">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0-eRE-OIEe6IdZsGcIAz0A" x="10"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0-eRE-OIEe6IdZsGcIAz0A" x="-3"/>
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_0-dqAeOIEe6IdZsGcIAz0A" routing="Rectilinear"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_0-dqAuOIEe6IdZsGcIAz0A" fontName="Ubuntu" fontHeight="10"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_0-dqA-OIEe6IdZsGcIAz0A" points="[-12, 0, -12, -73]$[-12, 73, -12, 0]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_0-dqA-OIEe6IdZsGcIAz0A" points="[-108, 0, 12, -76]$[-108, 76, 12, 0]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_0-eRFOOIEe6IdZsGcIAz0A" id="(0.5813148788927336,1.0)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_0-eRFeOIEe6IdZsGcIAz0A" id="(0.3870967741935484,0.0)"/>
         </edges>
         <edges xmi:type="notation:Edge" xmi:id="_D6WEYOOSEe6IdZsGcIAz0A" type="4001" element="_D3u1ROOSEe6IdZsGcIAz0A" source="_duUkUOOIEe6IdZsGcIAz0A" target="_DDKkwOOSEe6IdZsGcIAz0A">
           <children xmi:type="notation:Node" xmi:id="_D6WrcOOSEe6IdZsGcIAz0A" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_D6WrceOSEe6IdZsGcIAz0A" x="76" y="17"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_D6WrceOSEe6IdZsGcIAz0A" x="-51" y="18"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_D6WrcuOSEe6IdZsGcIAz0A" type="6002">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_D6Wrc-OSEe6IdZsGcIAz0A" x="345" y="10"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_D6Wrc-OSEe6IdZsGcIAz0A" x="-1" y="167"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_D6WrdOOSEe6IdZsGcIAz0A" type="6003">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_D6WrdeOSEe6IdZsGcIAz0A" x="40" y="10"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_D6WrdeOSEe6IdZsGcIAz0A" x="2" y="10"/>
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_D6WEYeOSEe6IdZsGcIAz0A" routing="Rectilinear"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_D6WEYuOSEe6IdZsGcIAz0A" fontName="Ubuntu" fontHeight="10"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_D6WEY-OSEe6IdZsGcIAz0A" points="[109, 83, 468, -25]$[109, 156, 468, 48]$[-371, 156, -12, 48]$[-371, 119, -12, 11]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_D6WEY-OSEe6IdZsGcIAz0A" points="[72, 83, 275, -11]$[72, 152, 275, 58]$[-215, 152, -12, 58]$[-215, 105, -12, 11]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_D6WrduOSEe6IdZsGcIAz0A" id="(0.0,0.22429906542056074)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_D6Wrd-OSEe6IdZsGcIAz0A" id="(1.0,0.5)"/>
         </edges>
@@ -3711,32 +3577,32 @@
         </edges>
         <edges xmi:type="notation:Edge" xmi:id="_VfS18PcnEe6d2tOMo-Sy7g" type="4001" element="_k0PQ7PQgEe6Cbr7wlfpL6g" source="_Rmyx0OOIEe6IdZsGcIAz0A" target="_X0VKwPcTEe6d2tOMo-Sy7g">
           <children xmi:type="notation:Node" xmi:id="_VfS19PcnEe6d2tOMo-Sy7g" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VfS19fcnEe6d2tOMo-Sy7g" x="26" y="15"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VfS19fcnEe6d2tOMo-Sy7g" x="43" y="-90"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_VfS19vcnEe6d2tOMo-Sy7g" type="6002">
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VfS19_cnEe6d2tOMo-Sy7g" x="5" y="10"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_VfTdAPcnEe6d2tOMo-Sy7g" type="6003">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VfTdAfcnEe6d2tOMo-Sy7g" x="4" y="10"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VfTdAfcnEe6d2tOMo-Sy7g" x="16"/>
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_VfS18fcnEe6d2tOMo-Sy7g" routing="Rectilinear"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_VfS18vcnEe6d2tOMo-Sy7g" fontName="Ubuntu" fontHeight="10"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_VfS18_cnEe6d2tOMo-Sy7g" points="[-48, 0, 276, -121]$[-48, 120, 276, -1]$[-313, 120, 11, -1]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_VfS18_cnEe6d2tOMo-Sy7g" points="[108, 0, -84, -253]$[108, 121, -84, -132]$[191, 121, -1, -132]$[191, 241, -1, -12]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_VfTdAvcnEe6d2tOMo-Sy7g" id="(0.33217993079584773,1.0)"/>
         </edges>
         <edges xmi:type="notation:Edge" xmi:id="_HJwzcPcqEe6d2tOMo-Sy7g" type="4001" element="_HIluxPcqEe6d2tOMo-Sy7g" source="_duUkUOOIEe6IdZsGcIAz0A" target="_X0VKwPcTEe6d2tOMo-Sy7g">
           <children xmi:type="notation:Node" xmi:id="_HJwzdPcqEe6d2tOMo-Sy7g" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HJwzdfcqEe6d2tOMo-Sy7g" x="35" y="12"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HJwzdfcqEe6d2tOMo-Sy7g" x="24" y="-16"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_HJwzdvcqEe6d2tOMo-Sy7g" type="6002">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HJwzd_cqEe6d2tOMo-Sy7g" x="111" y="10"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HJwzd_cqEe6d2tOMo-Sy7g" x="13" y="-167"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_HJwzePcqEe6d2tOMo-Sy7g" type="6003">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HJwzefcqEe6d2tOMo-Sy7g" x="-2" y="51"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HJwzefcqEe6d2tOMo-Sy7g" x="34" y="-30"/>
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_HJwzcfcqEe6d2tOMo-Sy7g" routing="Rectilinear"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_HJwzcvcqEe6d2tOMo-Sy7g" fontName="Ubuntu" fontHeight="10"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_HJwzc_cqEe6d2tOMo-Sy7g" points="[48, 83, 348, 59]$[48, 119, 348, 95]$[-312, 119, -12, 95]$[-312, 35, -12, 11]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_HJwzc_cqEe6d2tOMo-Sy7g" points="[96, 83, -240, -70]$[96, 152, -240, -1]$[312, 152, -24, -1]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_HJwzevcqEe6d2tOMo-Sy7g" id="(0.0,0.22429906542056074)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_HJwze_cqEe6d2tOMo-Sy7g" id="(1.0,0.5)"/>
         </edges>
@@ -3951,10 +3817,10 @@
               <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='ActionsID']/@style"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='ActionsID']"/>
-            <ownedElements xmi:type="diagram:DNodeListElement" uid="_PQZBQOdkEe6itpWxpl3KSQ" name="entry curr_waypoint = 0; done">
+            <ownedElements xmi:type="diagram:DNodeListElement" uid="_76aLCvdpEe6d2tOMo-Sy7g" name="entry curr_waypoint = 0; done">
               <target xmi:type="robochart:EntryAction" href="EXAX_STM.rct#//@machines.0/@nodes.5/@actions.0"/>
               <semanticElements xmi:type="robochart:EntryAction" href="EXAX_STM.rct#//@machines.0/@nodes.5/@actions.0"/>
-              <ownedStyle xmi:type="diagram:Square" uid="_PQZoQOdkEe6itpWxpl3KSQ" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node" color="255,255,255">
+              <ownedStyle xmi:type="diagram:Square" uid="_76aLC_dpEe6d2tOMo-Sy7g" labelSize="10" showIcon="false" labelAlignment="LEFT" labelPosition="node" color="255,255,255">
                 <description xmi:type="style:SquareDescription" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='ActionsID']/@subNodeMappings[name='ActionID']/@style"/>
               </ownedStyle>
               <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='ActionsID']/@subNodeMappings[name='ActionID']"/>
@@ -4007,6 +3873,22 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='RoboticPlatformDefID']/@subNodeMappings[name='RequiredID']"/>
         </ownedElements>
+        <ownedElements xmi:type="diagram:DNodeListElement" uid="_qjeUavdpEe6d2tOMo-Sy7g" name="curr_waypoint: nat = 0">
+          <target xmi:type="robochart:VariableList" href="EXAX_STM.rct#//@machines.0/@variableList.0"/>
+          <semanticElements xmi:type="robochart:VariableList" href="EXAX_STM.rct#//@machines.0/@variableList.0"/>
+          <ownedStyle xmi:type="diagram:Square" uid="_qje7cPdpEe6d2tOMo-Sy7g" labelSize="10" iconPath="/circus.robocalc.robochart.graphical/icons/variable.png" labelAlignment="LEFT" labelPosition="node">
+            <description xmi:type="style:SquareDescription" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='InterfaceID']/@subNodeMappings[name='VariableID']/@conditionnalStyles.0/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='InterfaceID']/@subNodeMappings[name='VariableID']"/>
+        </ownedElements>
+        <ownedElements xmi:type="diagram:DNodeListElement" uid="_n7DEIfdqEe6d2tOMo-Sy7g" name="n_waypoints: nat = 10">
+          <target xmi:type="robochart:VariableList" href="EXAX_STM.rct#//@machines.0/@variableList.1"/>
+          <semanticElements xmi:type="robochart:VariableList" href="EXAX_STM.rct#//@machines.0/@variableList.1"/>
+          <ownedStyle xmi:type="diagram:Square" uid="_n7DEIvdqEe6d2tOMo-Sy7g" labelSize="10" iconPath="/circus.robocalc.robochart.graphical/icons/constant.png" labelAlignment="LEFT" labelPosition="node">
+            <description xmi:type="style:SquareDescription" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='InterfaceID']/@subNodeMappings[name='VariableID']/@conditionnalStyles.1/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='InterfaceID']/@subNodeMappings[name='VariableID']"/>
+        </ownedElements>
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_73ijIOHyEe6AEP1DTliDwg" name="exax_vars">
@@ -4051,33 +3933,9 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='InterfaceID']/@subNodeMappings[name='VariableID']"/>
       </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" uid="_6pU7FuOIEe6IdZsGcIAz0A" name="vel: real">
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="_UhqpaedrEe6itpWxpl3KSQ" name="finish_time: real">
         <target xmi:type="robochart:VariableList" href="EXAX_STM.rct#//@interfaces.0/@variableList.4"/>
         <semanticElements xmi:type="robochart:VariableList" href="EXAX_STM.rct#//@interfaces.0/@variableList.4"/>
-        <ownedStyle xmi:type="diagram:Square" uid="_6pU7F-OIEe6IdZsGcIAz0A" labelSize="10" iconPath="/circus.robocalc.robochart.graphical/icons/variable.png" labelAlignment="LEFT" labelPosition="node">
-          <description xmi:type="style:SquareDescription" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='InterfaceID']/@subNodeMappings[name='VariableID']/@conditionnalStyles.0/@style"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='InterfaceID']/@subNodeMappings[name='VariableID']"/>
-      </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" uid="_7dzV5-OREe6IdZsGcIAz0A" name="curr_waypoint: nat = 0">
-        <target xmi:type="robochart:VariableList" href="EXAX_STM.rct#//@interfaces.0/@variableList.5"/>
-        <semanticElements xmi:type="robochart:VariableList" href="EXAX_STM.rct#//@interfaces.0/@variableList.5"/>
-        <ownedStyle xmi:type="diagram:Square" uid="_7dz88OOREe6IdZsGcIAz0A" labelSize="10" iconPath="/circus.robocalc.robochart.graphical/icons/variable.png" labelAlignment="LEFT" labelPosition="node">
-          <description xmi:type="style:SquareDescription" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='InterfaceID']/@subNodeMappings[name='VariableID']/@conditionnalStyles.0/@style"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='InterfaceID']/@subNodeMappings[name='VariableID']"/>
-      </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" uid="__s3-YeOREe6IdZsGcIAz0A" name="n_waypoints: nat = 99">
-        <target xmi:type="robochart:VariableList" href="EXAX_STM.rct#//@interfaces.0/@variableList.6"/>
-        <semanticElements xmi:type="robochart:VariableList" href="EXAX_STM.rct#//@interfaces.0/@variableList.6"/>
-        <ownedStyle xmi:type="diagram:Square" uid="__s3-YuOREe6IdZsGcIAz0A" labelSize="10" iconPath="/circus.robocalc.robochart.graphical/icons/constant.png" labelAlignment="LEFT" labelPosition="node">
-          <description xmi:type="style:SquareDescription" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='InterfaceID']/@subNodeMappings[name='VariableID']/@conditionnalStyles.1/@style"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='InterfaceID']/@subNodeMappings[name='VariableID']"/>
-      </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" uid="_UhqpaedrEe6itpWxpl3KSQ" name="finish_time: real">
-        <target xmi:type="robochart:VariableList" href="EXAX_STM.rct#//@interfaces.0/@variableList.7"/>
-        <semanticElements xmi:type="robochart:VariableList" href="EXAX_STM.rct#//@interfaces.0/@variableList.7"/>
         <ownedStyle xmi:type="diagram:Square" uid="_UhqpaudrEe6itpWxpl3KSQ" labelSize="10" iconPath="/circus.robocalc.robochart.graphical/icons/variable.png" labelAlignment="LEFT" labelPosition="node">
           <description xmi:type="style:SquareDescription" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='InterfaceID']/@subNodeMappings[name='VariableID']/@conditionnalStyles.0/@style"/>
         </ownedStyle>
@@ -4336,7 +4194,7 @@
                     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MnkUMuOHEe6IdZsGcIAz0A"/>
                   </children>
                   <styles xmi:type="notation:ShapeStyle" xmi:id="_MndmgeOHEe6IdZsGcIAz0A" fontName="Ubuntu" fontHeight="8"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MndmguOHEe6IdZsGcIAz0A" x="55" y="46" width="24" height="24"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MndmguOHEe6IdZsGcIAz0A" x="55" y="58" width="24" height="24"/>
                 </children>
                 <styles xmi:type="notation:SortingStyle" xmi:id="_U2Vz_OH8Ee6AEP1DTliDwg"/>
                 <styles xmi:type="notation:FilteringStyle" xmi:id="_U2Vz_eH8Ee6AEP1DTliDwg"/>
@@ -4390,7 +4248,7 @@
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_P54ZgOOHEe6IdZsGcIAz0A" routing="Rectilinear"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_P54ZgeOHEe6IdZsGcIAz0A" fontName="Ubuntu" fontHeight="10"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_P54ZguOHEe6IdZsGcIAz0A" points="[11, 0, -193, -20]$[48, 0, -156, -20]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_P54ZguOHEe6IdZsGcIAz0A" points="[11, 0, -193, -8]$[48, 0, -156, -8]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_P58D4OOHEe6IdZsGcIAz0A" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_P58D4eOHEe6IdZsGcIAz0A" id="(0.6834061135371179,0.5)"/>
         </edges>
@@ -4854,7 +4712,7 @@
                     <styles xmi:type="notation:FilteringStyle" xmi:id="_xFhMg_aiEe6RCMBZd3wEJg"/>
                   </children>
                   <styles xmi:type="notation:ShapeStyle" xmi:id="_xFglcfaiEe6RCMBZd3wEJg" fontName="Ubuntu" fontHeight="10"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_xFglcvaiEe6RCMBZd3wEJg" x="474" y="50"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_xFglcvaiEe6RCMBZd3wEJg" x="462" y="51"/>
                 </children>
                 <children xmi:type="notation:Node" xmi:id="_y485APaiEe6RCMBZd3wEJg" type="3007" element="_y26RoPaiEe6RCMBZd3wEJg">
                   <children xmi:type="notation:Node" xmi:id="_y485A_aiEe6RCMBZd3wEJg" visible="false" type="5003">
@@ -4899,33 +4757,33 @@
         </edges>
         <edges xmi:type="notation:Edge" xmi:id="_0vot0PaiEe6RCMBZd3wEJg" type="4001" element="_0teKpPaiEe6RCMBZd3wEJg" source="_vW2rQPaiEe6RCMBZd3wEJg" target="_xFglcPaiEe6RCMBZd3wEJg">
           <children xmi:type="notation:Node" xmi:id="_0vot1PaiEe6RCMBZd3wEJg" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0vot1faiEe6RCMBZd3wEJg" x="4" y="-16"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0vot1faiEe6RCMBZd3wEJg" x="10" y="-16"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_0vot1vaiEe6RCMBZd3wEJg" type="6002">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0vot1_aiEe6RCMBZd3wEJg" x="23" y="10"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0vot1_aiEe6RCMBZd3wEJg" x="24" y="10"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_0vot2PaiEe6RCMBZd3wEJg" type="6003">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0vot2faiEe6RCMBZd3wEJg" x="-5" y="10"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0vot2faiEe6RCMBZd3wEJg" x="6" y="10"/>
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_0vot0faiEe6RCMBZd3wEJg" routing="Rectilinear"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_0vot0vaiEe6RCMBZd3wEJg" fontName="Ubuntu" fontHeight="10"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_0vot0_aiEe6RCMBZd3wEJg" points="[0, 12, -179, 13]$[179, 12, 0, 13]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_0vot0_aiEe6RCMBZd3wEJg" points="[0, 13, -167, 13]$[167, 13, 0, 13]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_0vpU4PaiEe6RCMBZd3wEJg" id="(1.0,0.22429906542056074)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_0vpU4faiEe6RCMBZd3wEJg" id="(0.0,0.3271028037383178)"/>
         </edges>
         <edges xmi:type="notation:Edge" xmi:id="_7AC78PaiEe6RCMBZd3wEJg" type="4001" element="_6_OcmPaiEe6RCMBZd3wEJg" source="_vW2rQPaiEe6RCMBZd3wEJg" target="_xFglcPaiEe6RCMBZd3wEJg">
           <children xmi:type="notation:Node" xmi:id="_7ADjAPaiEe6RCMBZd3wEJg" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ADjAfaiEe6RCMBZd3wEJg" y="-10"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ADjAfaiEe6RCMBZd3wEJg" x="6" y="-10"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_7ADjAvaiEe6RCMBZd3wEJg" type="6002">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ADjA_aiEe6RCMBZd3wEJg" x="49"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ADjA_aiEe6RCMBZd3wEJg" x="50"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_7ADjBPaiEe6RCMBZd3wEJg" type="6003">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ADjBfaiEe6RCMBZd3wEJg" x="-72" y="-5"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ADjBfaiEe6RCMBZd3wEJg" x="-61" y="-5"/>
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_7AC78faiEe6RCMBZd3wEJg" routing="Rectilinear"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_7AC78vaiEe6RCMBZd3wEJg" fontName="Ubuntu" fontHeight="10"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_7AC78_aiEe6RCMBZd3wEJg" points="[0, 12, -179, 24]$[179, 12, 0, 24]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_7AC78_aiEe6RCMBZd3wEJg" points="[0, 13, -167, 24]$[167, 13, 0, 24]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_7ADjBvaiEe6RCMBZd3wEJg" id="(1.0,0.4485981308411215)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_7ADjB_aiEe6RCMBZd3wEJg" id="(0.0,0.4485981308411215)"/>
         </edges>
@@ -5128,6 +4986,10 @@
                 <children xmi:type="notation:Node" xmi:id="_CkIPpPcrEe6d2tOMo-Sy7g" type="3010" element="_Cj0GkPcrEe6d2tOMo-Sy7g">
                   <styles xmi:type="notation:FontStyle" xmi:id="_CkIPpfcrEe6d2tOMo-Sy7g" fontName="Ubuntu" fontHeight="10"/>
                   <layoutConstraint xmi:type="notation:Location" xmi:id="_CkIPpvcrEe6d2tOMo-Sy7g"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_LeYEoPdpEe6d2tOMo-Sy7g" type="3010" element="_Ld15IvdpEe6d2tOMo-Sy7g">
+                  <styles xmi:type="notation:FontStyle" xmi:id="_LeYEofdpEe6d2tOMo-Sy7g" fontName="Ubuntu" fontHeight="10"/>
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_LeYEovdpEe6d2tOMo-Sy7g"/>
                 </children>
                 <styles xmi:type="notation:SortingStyle" xmi:id="_CkHBgvcrEe6d2tOMo-Sy7g"/>
                 <styles xmi:type="notation:FilteringStyle" xmi:id="_CkHBg_crEe6d2tOMo-Sy7g"/>
@@ -5429,7 +5291,7 @@
         </edges>
         <edges xmi:type="notation:Edge" xmi:id="_CkUc6PcrEe6d2tOMo-Sy7g" type="4001" element="_Cj-epfcrEe6d2tOMo-Sy7g" source="_CkI2sPcrEe6d2tOMo-Sy7g" target="_CkIPp_crEe6d2tOMo-Sy7g">
           <children xmi:type="notation:Node" xmi:id="_CkVD8PcrEe6d2tOMo-Sy7g" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CkVD8fcrEe6d2tOMo-Sy7g" x="6" y="-10"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CkVD8fcrEe6d2tOMo-Sy7g" x="-3" y="-14"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_CkVD8vcrEe6d2tOMo-Sy7g" type="6002">
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CkVD8_crEe6d2tOMo-Sy7g" x="30" y="10"/>
@@ -5579,6 +5441,14 @@
             <description xmi:type="style:SquareDescription" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='RoboticPlatformDefID']/@subNodeMappings[name='RequiredID']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='RoboticPlatformDefID']/@subNodeMappings[name='RequiredID']"/>
+        </ownedElements>
+        <ownedElements xmi:type="diagram:DNodeListElement" uid="_Ld15IvdpEe6d2tOMo-Sy7g" name="vel: real">
+          <target xmi:type="robochart:VariableList" href="operations.rct#//@operations.0/@variableList.0"/>
+          <semanticElements xmi:type="robochart:VariableList" href="operations.rct#//@operations.0/@variableList.0"/>
+          <ownedStyle xmi:type="diagram:Square" uid="_Ld15I_dpEe6d2tOMo-Sy7g" labelSize="10" iconPath="/circus.robocalc.robochart.graphical/icons/variable.png" labelAlignment="LEFT" labelPosition="node">
+            <description xmi:type="style:SquareDescription" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='InterfaceID']/@subNodeMappings[name='VariableID']/@conditionnalStyles.0/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='InterfaceID']/@subNodeMappings[name='VariableID']"/>
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_Cj0GkvcrEe6d2tOMo-Sy7g">

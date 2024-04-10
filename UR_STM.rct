@@ -4,17 +4,10 @@ interface UR_vars {
 	var goal_angle1 : real
 	var goal_angle2 : real
 	var time_budget : real
-	var curr_vel : real
-	var curr_planned_vel : real
-	var ur_curr_waypoint : nat = 0
+
 	var jd1:real
 	var jd2:real
-	var jv1:real
-	var jv2:real
-	const 
 
-
-ur_n_waypoints : nat = 99
 	var finish_time1 : real
 	var finish_time2 : real
 }
@@ -85,5 +78,7 @@ transition t8 {
 		to f0
 		condition finish_time1 != time_budget \/ finish_time2 != time_budget
 	}
+const ur_n_waypoints : nat = 10
+	var ur_curr_waypoint : nat = 0
 }
 

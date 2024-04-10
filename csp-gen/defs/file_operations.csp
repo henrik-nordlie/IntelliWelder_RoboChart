@@ -1,7 +1,7 @@
 
 --
 -- RoboChart generator version 3.0.0.202311281716
--- Automatically generated on 10-04-2024 13:10:53
+-- Automatically generated on 10-04-2024 21:16:34
 --
 -- Iterated compression status: true
 -- Assertions compression status: false
@@ -36,12 +36,11 @@ exports
 	channel terminate
 	
 	-- Variable channels
+	channel get_vel, set_vel, setL_vel, setR_vel: core_real
 	channel get_curr_angle, set_curr_angle, setL_curr_angle, setR_curr_angle: core_real
 	channel get_goal_angle, set_goal_angle, setL_goal_angle, setR_goal_angle: core_real
 	channel get_goal_time, set_goal_time, setL_goal_time, setR_goal_time: core_real
 	channel get_dist, set_dist, setL_dist, setR_dist: core_real
-	channel get_vel, set_vel, setL_vel, setR_vel: core_real
-	channel get_curr_waypoint, set_curr_waypoint, setL_curr_waypoint, setR_curr_waypoint: core_nat
 	channel get_finish_time, set_finish_time, setL_finish_time, setR_finish_time: core_real
 	
 	-- Shared variable channels
@@ -49,8 +48,6 @@ exports
 	channel set_EXT_goal_angle: core_real
 	channel set_EXT_goal_time: core_real
 	channel set_EXT_dist: core_real
-	channel set_EXT_vel: core_real
-	channel set_EXT_curr_waypoint: core_nat
 	channel set_EXT_finish_time: core_real
 	
 	-- Local variable channels for defined operations that are required by the state machine
@@ -79,8 +76,6 @@ exports
 		set_EXT_goal_angle,
 		set_EXT_goal_time,
 		set_EXT_dist,
-		set_EXT_vel,
-		set_EXT_curr_waypoint,
 		set_EXT_finish_time
 	|}
 	
@@ -91,8 +86,6 @@ exports
 		set_EXT_goal_angle, set_goal_angle,
 		set_EXT_goal_time, set_goal_time,
 		set_EXT_dist, set_dist,
-		set_EXT_vel, set_vel,
-		set_EXT_curr_waypoint, set_curr_waypoint,
 		set_EXT_finish_time, set_finish_time
 		, share__
 		|}
@@ -109,8 +102,7 @@ exports
 		
 		D__(id__,
 					param_dist,
-					param_time_budget,
-				    const_go_to_pos_with_velocity_n_waypoints) = 
+					param_time_budget) = 
 			dbisim(let
 				Inactive 	= share__choice(enter -> SKIP [] terminate -> SKIP) ; Active
 				
@@ -122,11 +114,9 @@ exports
 		
 		VS_O__(id__,
 					param_dist,
-					param_time_budget,
-				    const_go_to_pos_with_velocity_n_waypoints) = D__(id__,
+					param_time_budget) = D__(id__,
 					param_dist,
-					param_time_budget,
-				    const_go_to_pos_with_velocity_n_waypoints)
+					param_time_budget)
 	
 	endmodule
 	----------------------------------------------------------------------
@@ -158,8 +148,7 @@ exports
 		-- 	if using a different recursion pattern.
 		D__(id__,
 					param_dist,
-					param_time_budget,
-				    const_go_to_pos_with_velocity_n_waypoints) = 
+					param_time_budget) = 
 		dbisim(let
 			-- IMPLEMENTATION NOTE: 
 			-- The following should be defined as: Inactive = share__choice(Activation [] Termination),
@@ -182,8 +171,7 @@ exports
 			
 		VS_O__(id__,
 					param_dist,
-					param_time_budget,
-				    const_go_to_pos_with_velocity_n_waypoints) = 
+					param_time_budget) = 
 		dbisim(let
 			Inactive 	= share__choice(enter -> SKIP [] terminate -> SKIP) ; Active
 			
@@ -216,8 +204,7 @@ exports
 		--	Rule: behaviours(Node)
 		D__(id__,
 					param_dist,
-					param_time_budget,
-				    const_go_to_pos_with_velocity_n_waypoints) = 
+					param_time_budget) = 
 			dbisim(let
 				Inactive 	= share__choice(enter -> SKIP [] terminate -> SKIP) ; Entering
 				
@@ -229,11 +216,9 @@ exports
 			
 		VS_O__(id__,
 					param_dist,
-					param_time_budget,
-				    const_go_to_pos_with_velocity_n_waypoints) = D__(id__,
+					param_time_budget) = D__(id__,
 					param_dist,
-					param_time_budget,
-				    const_go_to_pos_with_velocity_n_waypoints)
+					param_time_budget)
 	
 	endmodule
 	----------------------------------------------------------------------
@@ -265,8 +250,7 @@ exports
 		-- 	if using a different recursion pattern.
 		D__(id__,
 					param_dist,
-					param_time_budget,
-				    const_go_to_pos_with_velocity_n_waypoints) = 
+					param_time_budget) = 
 		dbisim(let
 			-- IMPLEMENTATION NOTE: 
 			-- The following should be defined as: Inactive = share__choice(Activation [] Termination),
@@ -289,8 +273,7 @@ exports
 			
 		VS_O__(id__,
 					param_dist,
-					param_time_budget,
-				    const_go_to_pos_with_velocity_n_waypoints) = 
+					param_time_budget) = 
 		dbisim(let
 			Inactive 	= share__choice(enter -> SKIP [] terminate -> SKIP) ; Active
 			
@@ -324,27 +307,22 @@ exports
 	-- STM processes
 	STM(id__,
 				param_dist,
-				param_time_budget,
-			    const_go_to_pos_with_velocity_n_waypoints) = -- RULE: [[stm:OperationDef]]_STM^nops : CSPProcess
+				param_time_budget) = -- RULE: [[stm:OperationDef]]_STM^nops : CSPProcess
 	Stateful(id__,
 				param_dist,
-				param_time_budget,
-			    const_go_to_pos_with_velocity_n_waypoints) \ {terminate}
+				param_time_budget) \ {terminate}
 	
 	STM_VS_O(id__,
 				param_dist,
-				param_time_budget,
-			    const_go_to_pos_with_velocity_n_waypoints) = -- RULE: [[stm:OperationDef]]_STM^nops : CSPProcess
+				param_time_budget) = -- RULE: [[stm:OperationDef]]_STM^nops : CSPProcess
 	Stateful(id__,
 				param_dist,
-				param_time_budget,
-			    const_go_to_pos_with_velocity_n_waypoints) \ {terminate}
+				param_time_budget) \ {terminate}
 	
 	-- Transitions
 	Transitions(id__,
 				param_dist,
-				param_time_budget,
-			    const_go_to_pos_with_velocity_n_waypoints) = ((let
+				param_time_budget) = ((let
 		Trans = (
 			((share__ -> SKIP
 			 [] dbisim((true)&(internal__!NID_i0 -> SKIP ;  ((SKIP ; get_move_cmd::enter -> SKIP))))
@@ -368,8 +346,7 @@ exports
 	-- Named process definitions
 	MachineBody(id__,
 				param_dist,
-				param_time_budget,
-			    const_go_to_pos_with_velocity_n_waypoints) = 
+				param_time_budget) = 
 		dbisim((
 		let
 			finalNodesEntered = {|f0::entered|}
@@ -396,23 +373,19 @@ exports
 					 (((-- RULE composeNodes(nc:NodeContainer)^nops : CSPProcess
 					   i0::D__(id__,
 					   			param_dist,
-					   			param_time_budget,
-					   		    const_go_to_pos_with_velocity_n_waypoints)
+					   			param_time_budget)
 					   [| { share__, terminate } |] (
 					   update::D__(id__,
 					   			param_dist,
-					   			param_time_budget,
-					   		    const_go_to_pos_with_velocity_n_waypoints)
+					   			param_time_budget)
 					   [| { share__, terminate } |] (
 					   f0::D__(id__,
 					   			param_dist,
-					   			param_time_budget,
-					   		    const_go_to_pos_with_velocity_n_waypoints)
+					   			param_time_budget)
 					   [| { share__, terminate } |] (
 					   get_move_cmd::D__(id__,
 					   			param_dist,
-					   			param_time_budget,
-					   		    const_go_to_pos_with_velocity_n_waypoints)
+					   			param_time_budget)
 					   )
 					   )
 					   )
@@ -428,8 +401,7 @@ exports
 					|}) |]
 					 ((i0::enter -> Transitions(id__,
 					 			param_dist,
-					 			param_time_budget,
-					 		    const_go_to_pos_with_velocity_n_waypoints))
+					 			param_time_budget))
 					  [[ share__ <- x__ | x__ <- {| share__ |} ]]
 					 )
 					)
@@ -443,54 +415,51 @@ exports
 	
 	Behaviour(id__,
 				param_dist,
-				param_time_budget,
-			    const_go_to_pos_with_velocity_n_waypoints) = 
+				param_time_budget) = 
 		dbisim((MachineBody(id__,
 					param_dist,
-					param_time_budget,
-				    const_go_to_pos_with_velocity_n_waypoints)\ enteredSS)
+					param_time_budget)\ enteredSS)
 		)
 	
 	IteratedBehaviour(id__,
 				param_dist,
-				param_time_budget,
-			    const_go_to_pos_with_velocity_n_waypoints) = 
+				param_time_budget) = 
 		dbisim((MachineBody(id__,
 					param_dist,
-					param_time_budget,
-				    const_go_to_pos_with_velocity_n_waypoints)\ enteredSS)
+					param_time_budget)\ enteredSS)
 		)
 	
 	Stateful(id__,
 				param_dist,
-				param_time_budget,
-			    const_go_to_pos_with_velocity_n_waypoints) = 
+				param_time_budget) = 
 		((
 			(Behaviour(id__,
 						param_dist,
-						param_time_budget,
-					    const_go_to_pos_with_velocity_n_waypoints) [| union(getsetLocalChannels,{terminate}) |] varMemory(id__,
+						param_time_budget) [| union(getsetLocalChannels,{terminate}) |] varMemory(id__,
 						param_dist,
-						param_time_budget,
-					    const_go_to_pos_with_velocity_n_waypoints))
+						param_time_budget))
 		 	\getsetLocalChannels
 		)
 		)
 	
 	IteratedStateful(id__,
 				param_dist,
-				param_time_budget,
-			    const_go_to_pos_with_velocity_n_waypoints) =
-		(Behaviour(id__,
-					param_dist,
-					param_time_budget,
-				    const_go_to_pos_with_velocity_n_waypoints))
+				param_time_budget) =
+		(dbisim(
+			sbisim(
+				Behaviour(id__,
+							param_dist,
+							param_time_budget)
+				[| {|get_vel,set_vel,terminate|} |]
+				Memory_vel(0)
+			)\{|get_vel,set_vel|}
+		)
+		)
 	
 	-- Visible counterparts
 	MachineBody_VS_O(id__,
 				param_dist,
-				param_time_budget,
-			    const_go_to_pos_with_velocity_n_waypoints) = 
+				param_time_budget) = 
 		dbisim((
 		let
 			finalNodesEntered = {|f0::entered|}
@@ -517,23 +486,19 @@ exports
 					 (((-- RULE composeNodes(nc:NodeContainer)^nops : CSPProcess
 					   i0::VS_O__(id__,
 					   			param_dist,
-					   			param_time_budget,
-					   		    const_go_to_pos_with_velocity_n_waypoints)
+					   			param_time_budget)
 					   [| { share__, terminate } |] (
 					   update::VS_O__(id__,
 					   			param_dist,
-					   			param_time_budget,
-					   		    const_go_to_pos_with_velocity_n_waypoints)
+					   			param_time_budget)
 					   [| { share__, terminate } |] (
 					   f0::VS_O__(id__,
 					   			param_dist,
-					   			param_time_budget,
-					   		    const_go_to_pos_with_velocity_n_waypoints)
+					   			param_time_budget)
 					   [| { share__, terminate } |] (
 					   get_move_cmd::VS_O__(id__,
 					   			param_dist,
-					   			param_time_budget,
-					   		    const_go_to_pos_with_velocity_n_waypoints)
+					   			param_time_budget)
 					   )
 					   )
 					   )
@@ -549,8 +514,7 @@ exports
 					|}) |]
 					 ((i0::enter -> Transitions(id__,
 					 			param_dist,
-					 			param_time_budget,
-					 		    const_go_to_pos_with_velocity_n_waypoints))
+					 			param_time_budget))
 					  [[ share__ <- x__ | x__ <- {| share__ |} ]]
 					 )
 					)
@@ -564,113 +528,102 @@ exports
 	
 	Behaviour_VS_O(id__,
 				param_dist,
-				param_time_budget,
-			    const_go_to_pos_with_velocity_n_waypoints) = 
+				param_time_budget) = 
 		dbisim((MachineBody_VS_O(id__,
 					param_dist,
-					param_time_budget,
-				    const_go_to_pos_with_velocity_n_waypoints))
+					param_time_budget))
 		)
 	
 	IteratedBehaviour_VS_O(id__,
 				param_dist,
-				param_time_budget,
-			    const_go_to_pos_with_velocity_n_waypoints) = 
+				param_time_budget) = 
 		dbisim((MachineBody_VS_O(id__,
 					param_dist,
-					param_time_budget,
-				    const_go_to_pos_with_velocity_n_waypoints))
+					param_time_budget))
 		)
 	
 	Stateful_VS_O(id__,
 				param_dist,
-				param_time_budget,
-			    const_go_to_pos_with_velocity_n_waypoints) = 
+				param_time_budget) = 
 		dbisim((
 			(Behaviour_VS_O(id__,
 						param_dist,
-						param_time_budget,
-					    const_go_to_pos_with_velocity_n_waypoints) [| union(getsetLocalChannels,{terminate}) |] varMemory(id__,
+						param_time_budget) [| union(getsetLocalChannels,{terminate}) |] varMemory(id__,
 						param_dist,
-						param_time_budget,
-					    const_go_to_pos_with_velocity_n_waypoints))
+						param_time_budget))
 		 	\getsetLocalChannels
 		)
 		)
 	
 	IteratedStateful_VS_O(id__,
 				param_dist,
-				param_time_budget,
-			    const_go_to_pos_with_velocity_n_waypoints) =
-		(Behaviour_VS_O(id__,
-					param_dist,
-					param_time_budget,
-				    const_go_to_pos_with_velocity_n_waypoints))
+				param_time_budget) =
+		(dbisim(
+			sbisim(
+				Behaviour_VS_O(id__,
+							param_dist,
+							param_time_budget)
+				[| {|get_vel,set_vel,terminate|} |]
+				Memory_vel(0)
+			)\{|get_vel,set_vel|}
+		)
+		)
 	
 	-- END
 	
 	-- Memory
 	-- Memory variables
+	Memory_vel(vel) =
+		get_vel!vel -> Memory_vel(vel)
+		[]
+		set_vel?x__ -> Memory_vel(x__)
+		[]
+		terminate -> SKIP
 	
 	-- varMemory process
 	varMemory(id__,
 				param_dist,
-				param_time_budget,
-			    const_go_to_pos_with_velocity_n_waypoints) = terminate -> SKIP
+				param_time_budget) = Memory_vel(0)
 	
-	getsetLocalChannels = {||}
+	getsetLocalChannels = {|get_vel,set_vel|}
 	
 	-- Definition of the behaviour of state machines (default, optimised, visible, visible and optimised)
 	FVS__(id__,
 				param_dist,
-				param_time_budget,
-			    const_go_to_pos_with_velocity_n_waypoints) = STM_VS_O(id__,
+				param_time_budget) = STM_VS_O(id__,
 				param_dist,
-				param_time_budget,
-			    const_go_to_pos_with_velocity_n_waypoints)
+				param_time_budget)
 	
 	D__(id__,
 				param_dist,
-				param_time_budget,
-			    const_go_to_pos_with_velocity_n_waypoints) = STM(id__,
+				param_time_budget) = STM(id__,
 				param_dist,
-				param_time_budget,
-			    const_go_to_pos_with_velocity_n_waypoints) \ internal_events
+				param_time_budget) \ internal_events
 	O__(id__,
 				param_dist,
-				param_time_budget,
-			    const_go_to_pos_with_velocity_n_waypoints) = sbisim(diamond(D__(id__,
+				param_time_budget) = sbisim(diamond(D__(id__,
 				param_dist,
-				param_time_budget,
-			    const_go_to_pos_with_velocity_n_waypoints)))
+				param_time_budget)))
 	VS__(id__,
 				param_dist,
-				param_time_budget,
-			    const_go_to_pos_with_velocity_n_waypoints) = FVS__(id__,
+				param_time_budget) = FVS__(id__,
 				param_dist,
-				param_time_budget,
-			    const_go_to_pos_with_velocity_n_waypoints)
+				param_time_budget)
 	VS_O__(id__,
 				param_dist,
-				param_time_budget,
-			    const_go_to_pos_with_velocity_n_waypoints) = sbisim(diamond(FVS__(id__,
+				param_time_budget) = sbisim(diamond(FVS__(id__,
 				param_dist,
-				param_time_budget,
-			    const_go_to_pos_with_velocity_n_waypoints)))
+				param_time_budget)))
 	HEXT__(id__,
 				param_dist,
-				param_time_budget,
-			    const_go_to_pos_with_velocity_n_waypoints) = O__(id__,
+				param_time_budget) = O__(id__,
 				param_dist,
-				param_time_budget,
-			    const_go_to_pos_with_velocity_n_waypoints) [|shared_variable_events|] SKIP
+				param_time_budget) [|shared_variable_events|] SKIP
 	HUP__(id__,
 				param_dist,
-				param_time_budget,
-			    const_go_to_pos_with_velocity_n_waypoints) = O__(id__,
+				param_time_budget) = O__(id__,
 				param_dist,
-				param_time_budget,
-			    const_go_to_pos_with_velocity_n_waypoints) [|{share__}|] SKIP
+				param_time_budget) [|{share__}|] SKIP
 			endmodule
 -- compileSelfContainedOperation
 module OP_moveJ
@@ -705,13 +658,8 @@ exports
 	channel get_goal_angle1, set_goal_angle1, setL_goal_angle1, setR_goal_angle1: core_real
 	channel get_goal_angle2, set_goal_angle2, setL_goal_angle2, setR_goal_angle2: core_real
 	channel get_time_budget, set_time_budget, setL_time_budget, setR_time_budget: core_real
-	channel get_curr_vel, set_curr_vel, setL_curr_vel, setR_curr_vel: core_real
-	channel get_curr_planned_vel, set_curr_planned_vel, setL_curr_planned_vel, setR_curr_planned_vel: core_real
-	channel get_ur_curr_waypoint, set_ur_curr_waypoint, setL_ur_curr_waypoint, setR_ur_curr_waypoint: core_nat
 	channel get_jd1, set_jd1, setL_jd1, setR_jd1: core_real
 	channel get_jd2, set_jd2, setL_jd2, setR_jd2: core_real
-	channel get_jv1, set_jv1, setL_jv1, setR_jv1: core_real
-	channel get_jv2, set_jv2, setL_jv2, setR_jv2: core_real
 	channel get_finish_time1, set_finish_time1, setL_finish_time1, setR_finish_time1: core_real
 	channel get_finish_time2, set_finish_time2, setL_finish_time2, setR_finish_time2: core_real
 	
@@ -721,13 +669,8 @@ exports
 	channel set_EXT_goal_angle1: core_real
 	channel set_EXT_goal_angle2: core_real
 	channel set_EXT_time_budget: core_real
-	channel set_EXT_curr_vel: core_real
-	channel set_EXT_curr_planned_vel: core_real
-	channel set_EXT_ur_curr_waypoint: core_nat
 	channel set_EXT_jd1: core_real
 	channel set_EXT_jd2: core_real
-	channel set_EXT_jv1: core_real
-	channel set_EXT_jv2: core_real
 	channel set_EXT_finish_time1: core_real
 	channel set_EXT_finish_time2: core_real
 	
@@ -760,13 +703,8 @@ exports
 		set_EXT_goal_angle1,
 		set_EXT_goal_angle2,
 		set_EXT_time_budget,
-		set_EXT_curr_vel,
-		set_EXT_curr_planned_vel,
-		set_EXT_ur_curr_waypoint,
 		set_EXT_jd1,
 		set_EXT_jd2,
-		set_EXT_jv1,
-		set_EXT_jv2,
 		set_EXT_finish_time1,
 		set_EXT_finish_time2
 	|}
@@ -779,13 +717,8 @@ exports
 		set_EXT_goal_angle1, set_goal_angle1,
 		set_EXT_goal_angle2, set_goal_angle2,
 		set_EXT_time_budget, set_time_budget,
-		set_EXT_curr_vel, set_curr_vel,
-		set_EXT_curr_planned_vel, set_curr_planned_vel,
-		set_EXT_ur_curr_waypoint, set_ur_curr_waypoint,
 		set_EXT_jd1, set_jd1,
 		set_EXT_jd2, set_jd2,
-		set_EXT_jv1, set_jv1,
-		set_EXT_jv2, set_jv2,
 		set_EXT_finish_time1, set_finish_time1,
 		set_EXT_finish_time2, set_finish_time2
 		, share__
@@ -804,8 +737,7 @@ exports
 		D__(id__,
 					param_jd1,
 					param_jd2,
-					param_goal_time,
-				    const_moveJ_ur_n_waypoints) = 
+					param_goal_time) = 
 			dbisim(let
 				Inactive 	= share__choice(enter -> SKIP [] terminate -> SKIP) ; Active
 				
@@ -818,12 +750,10 @@ exports
 		VS_O__(id__,
 					param_jd1,
 					param_jd2,
-					param_goal_time,
-				    const_moveJ_ur_n_waypoints) = D__(id__,
+					param_goal_time) = D__(id__,
 					param_jd1,
 					param_jd2,
-					param_goal_time,
-				    const_moveJ_ur_n_waypoints)
+					param_goal_time)
 	
 	endmodule
 	----------------------------------------------------------------------
@@ -856,8 +786,7 @@ exports
 		D__(id__,
 					param_jd1,
 					param_jd2,
-					param_goal_time,
-				    const_moveJ_ur_n_waypoints) = 
+					param_goal_time) = 
 		dbisim(let
 			-- IMPLEMENTATION NOTE: 
 			-- The following should be defined as: Inactive = share__choice(Activation [] Termination),
@@ -881,8 +810,7 @@ exports
 		VS_O__(id__,
 					param_jd1,
 					param_jd2,
-					param_goal_time,
-				    const_moveJ_ur_n_waypoints) = 
+					param_goal_time) = 
 		dbisim(let
 			Inactive 	= share__choice(enter -> SKIP [] terminate -> SKIP) ; Active
 			
@@ -930,8 +858,7 @@ exports
 		D__(id__,
 					param_jd1,
 					param_jd2,
-					param_goal_time,
-				    const_moveJ_ur_n_waypoints) = 
+					param_goal_time) = 
 		dbisim(let
 			-- IMPLEMENTATION NOTE: 
 			-- The following should be defined as: Inactive = share__choice(Activation [] Termination),
@@ -955,8 +882,7 @@ exports
 		VS_O__(id__,
 					param_jd1,
 					param_jd2,
-					param_goal_time,
-				    const_moveJ_ur_n_waypoints) = 
+					param_goal_time) = 
 		dbisim(let
 			Inactive 	= share__choice(enter -> SKIP [] terminate -> SKIP) ; Active
 			
@@ -990,8 +916,7 @@ exports
 		D__(id__,
 					param_jd1,
 					param_jd2,
-					param_goal_time,
-				    const_moveJ_ur_n_waypoints) = 
+					param_goal_time) = 
 			dbisim(let
 				Inactive 	= share__choice(enter -> SKIP [] terminate -> SKIP) ; Entering
 				
@@ -1004,12 +929,10 @@ exports
 		VS_O__(id__,
 					param_jd1,
 					param_jd2,
-					param_goal_time,
-				    const_moveJ_ur_n_waypoints) = D__(id__,
+					param_goal_time) = D__(id__,
 					param_jd1,
 					param_jd2,
-					param_goal_time,
-				    const_moveJ_ur_n_waypoints)
+					param_goal_time)
 	
 	endmodule
 	----------------------------------------------------------------------
@@ -1042,8 +965,7 @@ exports
 		D__(id__,
 					param_jd1,
 					param_jd2,
-					param_goal_time,
-				    const_moveJ_ur_n_waypoints) = 
+					param_goal_time) = 
 		dbisim(let
 			-- IMPLEMENTATION NOTE: 
 			-- The following should be defined as: Inactive = share__choice(Activation [] Termination),
@@ -1054,7 +976,7 @@ exports
 			
 			Termination = terminate -> SKIP
 			
-			Active 		= share__choice(share__choice(get_jd1?jd1 -> share__choice(get_jv1?jv1 -> jv1 != 0 & (share__choice(set_finish_time1!Div(jd1, jv1, core_real) -> SKIP)))));share__choice(share__choice(get_jv2?jv2 -> share__choice(get_jd2?jd2 -> jv2 != 0 & (share__choice(set_finish_time2!Div(jd2, jv2, core_real) -> SKIP))))) ; 
+			Active 		= share__choice(share__choice(get_jv1?jv1 -> share__choice(get_jd1?jd1 -> jv1 != 0 & (share__choice(set_finish_time1!Div(jd1, jv1, core_real) -> SKIP)))));share__choice(share__choice(get_jd2?jd2 -> share__choice(get_jv2?jv2 -> jv2 != 0 & (share__choice(set_finish_time2!Div(jd2, jv2, core_real) -> SKIP))))) ; 
 					 	  Behaviour ; 
 					 	  share__choice(exit -> SKIP) ; SKIP ; 
 					 	  share__choice(exited -> SKIP) ; Inactive
@@ -1067,14 +989,13 @@ exports
 		VS_O__(id__,
 					param_jd1,
 					param_jd2,
-					param_goal_time,
-				    const_moveJ_ur_n_waypoints) = 
+					param_goal_time) = 
 		dbisim(let
 			Inactive 	= share__choice(enter -> SKIP [] terminate -> SKIP) ; Active
 			
 			Termination = terminate -> SKIP
 			
-			Active 		= share__choice(share__choice(get_jd1?jd1 -> share__choice(get_jv1?jv1 -> jv1 != 0 & (share__choice(set_finish_time1!Div(jd1, jv1, core_real) -> SKIP)))));share__choice(share__choice(get_jv2?jv2 -> share__choice(get_jd2?jd2 -> jv2 != 0 & (share__choice(set_finish_time2!Div(jd2, jv2, core_real) -> SKIP))))) ; 
+			Active 		= share__choice(share__choice(get_jv1?jv1 -> share__choice(get_jd1?jd1 -> jv1 != 0 & (share__choice(set_finish_time1!Div(jd1, jv1, core_real) -> SKIP)))));share__choice(share__choice(get_jd2?jd2 -> share__choice(get_jv2?jv2 -> jv2 != 0 & (share__choice(set_finish_time2!Div(jd2, jv2, core_real) -> SKIP))))) ; 
 					 	  Behaviour ; 
 					 	  share__choice(exit -> SKIP) ; SKIP ; 
 					 	  share__choice(exited -> SKIP) ; Inactive
@@ -1103,31 +1024,26 @@ exports
 	STM(id__,
 				param_jd1,
 				param_jd2,
-				param_goal_time,
-			    const_moveJ_ur_n_waypoints) = -- RULE: [[stm:OperationDef]]_STM^nops : CSPProcess
+				param_goal_time) = -- RULE: [[stm:OperationDef]]_STM^nops : CSPProcess
 	Stateful(id__,
 				param_jd1,
 				param_jd2,
-				param_goal_time,
-			    const_moveJ_ur_n_waypoints) \ {terminate}
+				param_goal_time) \ {terminate}
 	
 	STM_VS_O(id__,
 				param_jd1,
 				param_jd2,
-				param_goal_time,
-			    const_moveJ_ur_n_waypoints) = -- RULE: [[stm:OperationDef]]_STM^nops : CSPProcess
+				param_goal_time) = -- RULE: [[stm:OperationDef]]_STM^nops : CSPProcess
 	Stateful(id__,
 				param_jd1,
 				param_jd2,
-				param_goal_time,
-			    const_moveJ_ur_n_waypoints) \ {terminate}
+				param_goal_time) \ {terminate}
 	
 	-- Transitions
 	Transitions(id__,
 				param_jd1,
 				param_jd2,
-				param_goal_time,
-			    const_moveJ_ur_n_waypoints) = ((let
+				param_goal_time) = ((let
 		Trans = (
 			((share__ -> SKIP
 			 [] dbisim((true)&(internal__!NID_i0 -> SKIP ;  ((SKIP ; get_move_cmd::enter -> SKIP))))
@@ -1153,8 +1069,7 @@ exports
 	MachineBody(id__,
 				param_jd1,
 				param_jd2,
-				param_goal_time,
-			    const_moveJ_ur_n_waypoints) = 
+				param_goal_time) = 
 		dbisim((
 		let
 			finalNodesEntered = {|f0::entered|}
@@ -1183,32 +1098,27 @@ exports
 					   i0::D__(id__,
 					   			param_jd1,
 					   			param_jd2,
-					   			param_goal_time,
-					   		    const_moveJ_ur_n_waypoints)
+					   			param_goal_time)
 					   [| { share__, terminate } |] (
 					   get_move_cmd::D__(id__,
 					   			param_jd1,
 					   			param_jd2,
-					   			param_goal_time,
-					   		    const_moveJ_ur_n_waypoints)
+					   			param_goal_time)
 					   [| { share__, terminate } |] (
 					   calc_vel::D__(id__,
 					   			param_jd1,
 					   			param_jd2,
-					   			param_goal_time,
-					   		    const_moveJ_ur_n_waypoints)
+					   			param_goal_time)
 					   [| { share__, terminate } |] (
 					   f0::D__(id__,
 					   			param_jd1,
 					   			param_jd2,
-					   			param_goal_time,
-					   		    const_moveJ_ur_n_waypoints)
+					   			param_goal_time)
 					   [| { share__, terminate } |] (
 					   update_time::D__(id__,
 					   			param_jd1,
 					   			param_jd2,
-					   			param_goal_time,
-					   		    const_moveJ_ur_n_waypoints)
+					   			param_goal_time)
 					   )
 					   )
 					   )
@@ -1227,8 +1137,7 @@ exports
 					 ((i0::enter -> Transitions(id__,
 					 			param_jd1,
 					 			param_jd2,
-					 			param_goal_time,
-					 		    const_moveJ_ur_n_waypoints))
+					 			param_goal_time))
 					  [[ share__ <- x__ | x__ <- {| share__ |} ]]
 					 )
 					)
@@ -1243,42 +1152,35 @@ exports
 	Behaviour(id__,
 				param_jd1,
 				param_jd2,
-				param_goal_time,
-			    const_moveJ_ur_n_waypoints) = 
+				param_goal_time) = 
 		dbisim((MachineBody(id__,
 					param_jd1,
 					param_jd2,
-					param_goal_time,
-				    const_moveJ_ur_n_waypoints)\ enteredSS)
+					param_goal_time)\ enteredSS)
 		)
 	
 	IteratedBehaviour(id__,
 				param_jd1,
 				param_jd2,
-				param_goal_time,
-			    const_moveJ_ur_n_waypoints) = 
+				param_goal_time) = 
 		dbisim((MachineBody(id__,
 					param_jd1,
 					param_jd2,
-					param_goal_time,
-				    const_moveJ_ur_n_waypoints)\ enteredSS)
+					param_goal_time)\ enteredSS)
 		)
 	
 	Stateful(id__,
 				param_jd1,
 				param_jd2,
-				param_goal_time,
-			    const_moveJ_ur_n_waypoints) = 
+				param_goal_time) = 
 		((
 			(Behaviour(id__,
 						param_jd1,
 						param_jd2,
-						param_goal_time,
-					    const_moveJ_ur_n_waypoints) [| union(getsetLocalChannels,{terminate}) |] varMemory(id__,
+						param_goal_time) [| union(getsetLocalChannels,{terminate}) |] varMemory(id__,
 						param_jd1,
 						param_jd2,
-						param_goal_time,
-					    const_moveJ_ur_n_waypoints))
+						param_goal_time))
 		 	\getsetLocalChannels
 		)
 		)
@@ -1286,8 +1188,7 @@ exports
 	IteratedStateful(id__,
 				param_jd1,
 				param_jd2,
-				param_goal_time,
-			    const_moveJ_ur_n_waypoints) =
+				param_goal_time) =
 		(dbisim(
 			sbisim(
 				dbisim(
@@ -1295,8 +1196,7 @@ exports
 						Behaviour(id__,
 									param_jd1,
 									param_jd2,
-									param_goal_time,
-								    const_moveJ_ur_n_waypoints)
+									param_goal_time)
 						[| {|get_jv2,set_jv2,terminate|} |]
 						Memory_jv2(0)
 					)\{|get_jv2,set_jv2|}
@@ -1311,8 +1211,7 @@ exports
 	MachineBody_VS_O(id__,
 				param_jd1,
 				param_jd2,
-				param_goal_time,
-			    const_moveJ_ur_n_waypoints) = 
+				param_goal_time) = 
 		dbisim((
 		let
 			finalNodesEntered = {|f0::entered|}
@@ -1341,32 +1240,27 @@ exports
 					   i0::VS_O__(id__,
 					   			param_jd1,
 					   			param_jd2,
-					   			param_goal_time,
-					   		    const_moveJ_ur_n_waypoints)
+					   			param_goal_time)
 					   [| { share__, terminate } |] (
 					   get_move_cmd::VS_O__(id__,
 					   			param_jd1,
 					   			param_jd2,
-					   			param_goal_time,
-					   		    const_moveJ_ur_n_waypoints)
+					   			param_goal_time)
 					   [| { share__, terminate } |] (
 					   calc_vel::VS_O__(id__,
 					   			param_jd1,
 					   			param_jd2,
-					   			param_goal_time,
-					   		    const_moveJ_ur_n_waypoints)
+					   			param_goal_time)
 					   [| { share__, terminate } |] (
 					   f0::VS_O__(id__,
 					   			param_jd1,
 					   			param_jd2,
-					   			param_goal_time,
-					   		    const_moveJ_ur_n_waypoints)
+					   			param_goal_time)
 					   [| { share__, terminate } |] (
 					   update_time::VS_O__(id__,
 					   			param_jd1,
 					   			param_jd2,
-					   			param_goal_time,
-					   		    const_moveJ_ur_n_waypoints)
+					   			param_goal_time)
 					   )
 					   )
 					   )
@@ -1385,8 +1279,7 @@ exports
 					 ((i0::enter -> Transitions(id__,
 					 			param_jd1,
 					 			param_jd2,
-					 			param_goal_time,
-					 		    const_moveJ_ur_n_waypoints))
+					 			param_goal_time))
 					  [[ share__ <- x__ | x__ <- {| share__ |} ]]
 					 )
 					)
@@ -1401,42 +1294,35 @@ exports
 	Behaviour_VS_O(id__,
 				param_jd1,
 				param_jd2,
-				param_goal_time,
-			    const_moveJ_ur_n_waypoints) = 
+				param_goal_time) = 
 		dbisim((MachineBody_VS_O(id__,
 					param_jd1,
 					param_jd2,
-					param_goal_time,
-				    const_moveJ_ur_n_waypoints))
+					param_goal_time))
 		)
 	
 	IteratedBehaviour_VS_O(id__,
 				param_jd1,
 				param_jd2,
-				param_goal_time,
-			    const_moveJ_ur_n_waypoints) = 
+				param_goal_time) = 
 		dbisim((MachineBody_VS_O(id__,
 					param_jd1,
 					param_jd2,
-					param_goal_time,
-				    const_moveJ_ur_n_waypoints))
+					param_goal_time))
 		)
 	
 	Stateful_VS_O(id__,
 				param_jd1,
 				param_jd2,
-				param_goal_time,
-			    const_moveJ_ur_n_waypoints) = 
+				param_goal_time) = 
 		dbisim((
 			(Behaviour_VS_O(id__,
 						param_jd1,
 						param_jd2,
-						param_goal_time,
-					    const_moveJ_ur_n_waypoints) [| union(getsetLocalChannels,{terminate}) |] varMemory(id__,
+						param_goal_time) [| union(getsetLocalChannels,{terminate}) |] varMemory(id__,
 						param_jd1,
 						param_jd2,
-						param_goal_time,
-					    const_moveJ_ur_n_waypoints))
+						param_goal_time))
 		 	\getsetLocalChannels
 		)
 		)
@@ -1444,8 +1330,7 @@ exports
 	IteratedStateful_VS_O(id__,
 				param_jd1,
 				param_jd2,
-				param_goal_time,
-			    const_moveJ_ur_n_waypoints) =
+				param_goal_time) =
 		(dbisim(
 			sbisim(
 				dbisim(
@@ -1453,8 +1338,7 @@ exports
 						Behaviour_VS_O(id__,
 									param_jd1,
 									param_jd2,
-									param_goal_time,
-								    const_moveJ_ur_n_waypoints)
+									param_goal_time)
 						[| {|get_jv2,set_jv2,terminate|} |]
 						Memory_jv2(0)
 					)\{|get_jv2,set_jv2|}
@@ -1486,8 +1370,7 @@ exports
 	varMemory(id__,
 				param_jd1,
 				param_jd2,
-				param_goal_time,
-			    const_moveJ_ur_n_waypoints) = Memory_jv1(0)
+				param_goal_time) = Memory_jv1(0)
 	[| { terminate } |] (
 	Memory_jv2(0)
 	)
@@ -1498,66 +1381,52 @@ exports
 	FVS__(id__,
 				param_jd1,
 				param_jd2,
-				param_goal_time,
-			    const_moveJ_ur_n_waypoints) = STM_VS_O(id__,
+				param_goal_time) = STM_VS_O(id__,
 				param_jd1,
 				param_jd2,
-				param_goal_time,
-			    const_moveJ_ur_n_waypoints)
+				param_goal_time)
 	
 	D__(id__,
 				param_jd1,
 				param_jd2,
-				param_goal_time,
-			    const_moveJ_ur_n_waypoints) = STM(id__,
+				param_goal_time) = STM(id__,
 				param_jd1,
 				param_jd2,
-				param_goal_time,
-			    const_moveJ_ur_n_waypoints) \ internal_events
+				param_goal_time) \ internal_events
 	O__(id__,
 				param_jd1,
 				param_jd2,
-				param_goal_time,
-			    const_moveJ_ur_n_waypoints) = sbisim(diamond(D__(id__,
+				param_goal_time) = sbisim(diamond(D__(id__,
 				param_jd1,
 				param_jd2,
-				param_goal_time,
-			    const_moveJ_ur_n_waypoints)))
+				param_goal_time)))
 	VS__(id__,
 				param_jd1,
 				param_jd2,
-				param_goal_time,
-			    const_moveJ_ur_n_waypoints) = FVS__(id__,
+				param_goal_time) = FVS__(id__,
 				param_jd1,
 				param_jd2,
-				param_goal_time,
-			    const_moveJ_ur_n_waypoints)
+				param_goal_time)
 	VS_O__(id__,
 				param_jd1,
 				param_jd2,
-				param_goal_time,
-			    const_moveJ_ur_n_waypoints) = sbisim(diamond(FVS__(id__,
+				param_goal_time) = sbisim(diamond(FVS__(id__,
 				param_jd1,
 				param_jd2,
-				param_goal_time,
-			    const_moveJ_ur_n_waypoints)))
+				param_goal_time)))
 	HEXT__(id__,
 				param_jd1,
 				param_jd2,
-				param_goal_time,
-			    const_moveJ_ur_n_waypoints) = O__(id__,
+				param_goal_time) = O__(id__,
 				param_jd1,
 				param_jd2,
-				param_goal_time,
-			    const_moveJ_ur_n_waypoints) [|shared_variable_events|] SKIP
+				param_goal_time) [|shared_variable_events|] SKIP
 	HUP__(id__,
 				param_jd1,
 				param_jd2,
-				param_goal_time,
-			    const_moveJ_ur_n_waypoints) = O__(id__,
+				param_goal_time) = O__(id__,
 				param_jd1,
 				param_jd2,
-				param_goal_time,
-			    const_moveJ_ur_n_waypoints) [|{share__}|] SKIP
+				param_goal_time) [|{share__}|] SKIP
 			endmodule
 

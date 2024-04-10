@@ -1,5 +1,4 @@
 
-
 stm System {
 	event start_system
 
@@ -55,27 +54,23 @@ stm System {
 		to wait_for_start
 	}
 event out_of_sync
-	state failed {
-	}
+
 	final f0
+
 	transition t7 {
 		from working
-		to failed
+		to f0
 		trigger out_of_sync
 	}
 	transition t8 {
-		from EXAX_finished
-		to failed
+		from UR_finished
+		to f0
 		trigger out_of_sync
 	}
 	transition t9 {
-		from UR_finished
-		to failed
+		from EXAX_finished
+		to f0
 		trigger out_of_sync
 	}
-	transition t10 {
-		from failed
-		to f0
-	}
 }
- 
+

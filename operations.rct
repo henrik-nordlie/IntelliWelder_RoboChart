@@ -30,6 +30,7 @@ state get_move_cmd {
 		condition time_budget == 0
 		action finish_time = 0
 	}
+var vel : real
 }
 
 operation moveJ ( jd1 : real, jd2 : real, goal_time : real) {
@@ -65,9 +66,7 @@ operation moveJ ( jd1 : real, jd2 : real, goal_time : real) {
 		from get_move_cmd
 		to f0
 		condition goal_time == 0
-		action 
-	
-	finish_time1 = 0 ; finish_time1 = 0
+		action finish_time1 = 0 ; finish_time1 = 0
 	}
 	transition t3 {
 		from calc_vel

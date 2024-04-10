@@ -3,9 +3,7 @@ interface exax_vars {
 	var goal_angle : real
 	var goal_time : real
 	var dist : real
-	var vel : real
-	var curr_waypoint : nat = 0
-	const n_waypoints : nat = 99
+
 	var finish_time : real
 }
 
@@ -76,5 +74,7 @@ final f0
 		to f0
 		condition finish_time != goal_time
 	}
+	var curr_waypoint : nat = 0
+	const n_waypoints : nat = 10
 }
 

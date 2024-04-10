@@ -1,7 +1,7 @@
 
 --
 -- RoboChart generator version 3.0.0.202311281716
--- Automatically generated on 10-04-2024 13:10:53
+-- Automatically generated on 10-04-2024 21:16:34
 --
 -- Iterated compression status: true
 -- Assertions compression status: false
@@ -17,14 +17,12 @@ P_OP_go_to_pos_with_velocity = let
 	param_dist = 0
 	param_time_budget = 0
 	
-	const_go_to_pos_with_velocity_n_waypoints = 99
 	
 	
 within
 	OP_go_to_pos_with_velocity::O__(id__,
 				param_dist,
-				param_time_budget,
-			    const_go_to_pos_with_velocity_n_waypoints)
+				param_time_budget)
 assert P_OP_go_to_pos_with_velocity :[deadlock-free]	
 assert P_OP_go_to_pos_with_velocity;RUN({r__}) :[deadlock-free]
 assert P_OP_go_to_pos_with_velocity :[deterministic]
@@ -42,15 +40,13 @@ P_OP_moveJ = let
 	param_jd2 = 0
 	param_goal_time = 0
 	
-	const_moveJ_ur_n_waypoints = 99
 	
 	
 within
 	OP_moveJ::O__(id__,
 				param_jd1,
 				param_jd2,
-				param_goal_time,
-			    const_moveJ_ur_n_waypoints)
+				param_goal_time)
 assert P_OP_moveJ :[deadlock-free]	
 assert P_OP_moveJ;RUN({r__}) :[deadlock-free]
 assert P_OP_moveJ :[deterministic]

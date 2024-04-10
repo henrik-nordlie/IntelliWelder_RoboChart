@@ -1,0 +1,126 @@
+
+--
+-- RoboChart generator version 3.0.0.202311281716
+-- Automatically generated on 10-04-2024 21:16:33
+--
+-- Iterated compression status: true
+-- Assertions compression status: false
+--
+
+include "file_main.csp"
+
+
+
+
+-- generate main
+P_main = let
+	id__ = 0
+	
+	
+	
+	const_main_Controller_stm_ref2_n_waypoints = 10
+	const_main_Controller_stm_ref1_ur_n_waypoints = 10
+		
+	
+within
+	main::O__(id__,
+			    const_main_Controller_stm_ref1_ur_n_waypoints,
+			    const_main_Controller_stm_ref2_n_waypoints)
+assert P_main :[deadlock-free]	
+assert P_main;RUN({r__}) :[deadlock-free]
+assert P_main :[deterministic]
+assert P_main :[divergence-free]
+
+-- generate main_Controller
+P_main_Controller = let
+	id__ = 0
+	
+	
+	
+	const_main_Controller_stm_ref1_ur_n_waypoints = 10
+	const_main_Controller_stm_ref2_n_waypoints = 10
+		
+within
+	main::Controller::O__(id__,
+			    const_main_Controller_stm_ref1_ur_n_waypoints,
+			    const_main_Controller_stm_ref2_n_waypoints)
+
+assert P_main_Controller :[deadlock-free]	
+assert P_main_Controller;RUN({r__}) :[deadlock-free]
+assert P_main_Controller :[deterministic]
+assert P_main_Controller :[divergence-free]
+
+-- generate main_Controller_stm_ref0
+P_main_Controller_stm_ref0 = let
+	id__ = 0
+	
+	
+	
+within
+	main::Controller::stm_ref0::O__(
+		id__
+	)
+assert P_main_Controller_stm_ref0 :[deadlock-free]	
+assert P_main_Controller_stm_ref0;RUN({r__}) :[deadlock-free]
+assert P_main_Controller_stm_ref0 :[deterministic]
+assert P_main_Controller_stm_ref0 :[divergence-free]
+-- generate main_Controller_stm_ref1
+P_main_Controller_stm_ref1 = let
+	id__ = 0
+	
+	
+	const_UR_ur_n_waypoints = 10
+	
+within
+	main::Controller::stm_ref1::O__(
+		id__,
+		const_UR_ur_n_waypoints
+	)
+assert P_main_Controller_stm_ref1 :[deadlock-free]	
+assert P_main_Controller_stm_ref1;RUN({r__}) :[deadlock-free]
+assert P_main_Controller_stm_ref1 :[deterministic]
+assert P_main_Controller_stm_ref1 :[divergence-free]
+-- generate main_Controller_stm_ref2
+P_main_Controller_stm_ref2 = let
+	id__ = 0
+	
+	
+	const_EXAX_n_waypoints = 10
+	
+within
+	main::Controller::stm_ref2::O__(
+		id__,
+		const_EXAX_n_waypoints
+	)
+assert P_main_Controller_stm_ref2 :[deadlock-free]	
+assert P_main_Controller_stm_ref2;RUN({r__}) :[deadlock-free]
+assert P_main_Controller_stm_ref2 :[deterministic]
+assert P_main_Controller_stm_ref2 :[divergence-free]
+-- generate main_Controller_stm_ref3
+P_main_Controller_stm_ref3 = let
+	id__ = 0
+	
+	
+	
+within
+	main::Controller::stm_ref3::O__(
+		id__
+	)
+assert P_main_Controller_stm_ref3 :[deadlock-free]	
+assert P_main_Controller_stm_ref3;RUN({r__}) :[deadlock-free]
+assert P_main_Controller_stm_ref3 :[deterministic]
+assert P_main_Controller_stm_ref3 :[divergence-free]
+-- generate main_Controller_stm_ref4
+P_main_Controller_stm_ref4 = let
+	id__ = 0
+	
+	
+	
+within
+	main::Controller::stm_ref4::O__(
+		id__
+	)
+assert P_main_Controller_stm_ref4 :[deadlock-free]	
+assert P_main_Controller_stm_ref4;RUN({r__}) :[deadlock-free]
+assert P_main_Controller_stm_ref4 :[deterministic]
+assert P_main_Controller_stm_ref4 :[divergence-free]

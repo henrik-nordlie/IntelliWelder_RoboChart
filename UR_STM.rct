@@ -1,16 +1,4 @@
-interface UR_vars {
-	var curr_angle1 : real
-	var curr_angle2 : real
-	var goal_angle1 : real
-	var goal_angle2 : real
-	var time_budget : real
 
-	var jd1:real
-	var jd2:real
-
-	var finish_time1 : real
-	var finish_time2 : real
-}
 
 stm UR {
 	requires ur_ops transition t0 {
@@ -20,11 +8,7 @@ stm UR {
 initial i0
 	state wait_for_move {
 	}
-	transition t1 {
-		from wait_for_move
-		to calc_args
-		trigger move
-	}
+
 	transition t2 {
 		from j0
 		to reset_UR
@@ -36,49 +20,63 @@ initial i0
 	condition ur_curr_waypoint < ur_n_waypoints
 		action ur_curr_waypoint = ur_curr_waypoint + 1
 	}
-	transition t4 {
-		from calc_args
-		to MoveJ
-	condition time_budget >= 0
-	}
-requires UR_vars 
-	event move
-	event done
-	state calc_args {
-		entry jd1 = curr_angle1 - goal_angle1 ; jd2 = goal_angle2 - curr_angle2
-	}
-	state MoveJ {
-		entry  moveJ ( jd1 , jd2 , time_budget )
-	}
-	state reset_UR {
-		entry ur_curr_waypoint = 0 ; done
-	}
 	transition t5 {
 		from reset_UR
 		to wait_for_move
 	}
-junction j0
+state MoveJ {
+		entry  moveJ ( ur_move . goal_angle1 , ur_move . goal_angle2 , jv )
+	}
+	state reset_UR {
+		entry ur_curr_waypoint = 0 ; done
+	}
 	transition t6 {
 		from MoveJ
 		to j0
-	condition finish_time1 == time_budget /\ finish_time2 == time_budget
 	}
-event out_of_sync
+	event move : UR_move
+	event done
+
+	junction j0
+	transition t8 {
+		from calc_vel
+		to MoveJ
+	}
 
 	final f0
 
+	transition t1 {
+		from wait_for_move
+		to calc_dist
+		trigger move ? ur_move
+	}
+event out_of_sync
+	state calc_vel {
+	entry
+	if jd1 > jd2 then jv = jd1/ur_move.goal_time else jv = jd2/ur_move.goal_time end
+	}
+
+	transition t4 {
+		from calc_dist
+		to calc_vel
+		condition ur_move . goal_time >= 0
+	}
 	transition t7 {
-		from calc_args
+		from calc_dist
 		to f0
-		condition time_budget < 0
+		condition ur_move . goal_time < 0
 		action out_of_sync
 	}
-transition t8 {
-		from MoveJ
-		to f0
-		condition finish_time1 != time_budget \/ finish_time2 != time_budget
-	}
-const ur_n_waypoints : nat = 10
+	const ur_n_waypoints : nat = 10
 	var ur_curr_waypoint : nat = 0
+var ur_move : UR_move
+	var jd1 : real
+	var jd2 : real
+	var jv : real
+	state calc_dist {
+		entry
+		jd1 = ur_move.goal_angle1-ur_move.curr_angle1;
+		jd2 = ur_move.goal_angle2-ur_move.curr_angle2
+	}
 }
 

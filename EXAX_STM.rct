@@ -1,11 +1,4 @@
-interface exax_vars {
-	var curr_angle : real
-	var goal_angle : real
-	var goal_time : real
-	var dist : real
 
-	var finish_time : real
-}
 
 stm EXAX {
 	requires exax_ops transition t0 {
@@ -15,66 +8,60 @@ stm EXAX {
 initial i0
 	state wait_for_move {
 	}
-	transition t1 {
-		from wait_for_move
-		to choose_command
-		trigger move
-	}
-	transition t3 {
-		from choose_command
-		to by_position
-		condition goal_time >= 0
-	}
-state choose_command {
-		entry dist = goal_angle - curr_angle
-	}
 
-	state by_position {
-		entry go_to_pos_with_velocity ( dist , goal_time )
-	}
-	transition t4 {
-		from by_position
-		to j0
-	condition finish_time == goal_time
-	}
 	transition t6 {
-		from j0
+		from by_position
 		to wait_for_move
 		condition curr_waypoint < n_waypoints
 		action curr_waypoint = curr_waypoint + 1
 	}
 	transition t7 {
-		from j0
+		from by_position
 		to reset_EXAX
 		condition curr_waypoint >= n_waypoints
 	}
-requires exax_vars 
-	event move
+var curr_waypoint : nat = 0
+	const n_waypoints : nat = 10
+var exax_move : EXAX_move
+	var dist : real
+	var vel : real
+
+	event move : EXAX_move
 
 	event done
-	junction j0
-	state reset_EXAX {
-		entry curr_waypoint = 0 ; done
+	state by_position {
+		entry go_to_pos_with_velocity ( exax_move . goal_angle , vel )
 	}
 	transition t8 {
 		from reset_EXAX
 		to wait_for_move
 	}
-transition t2 {
-		from choose_command
-		to f0
-		condition goal_time < 0
-		action out_of_sync
+	transition t1 {
+		from wait_for_move
+		to calc_args
+	trigger move ? exax_move
 	}
 	event out_of_sync
+
+	state reset_EXAX {
+		entry curr_waypoint = 0 ; done
+	}
+	transition t2 {
+		from calc_args
+		to f0
+		condition exax_move . goal_time < 0
+		action out_of_sync
+	}
+	transition t3 {
+		from calc_args
+		to by_position
+		condition exax_move . goal_time >= 0
+	}
 final f0
 
-	transition t5 {
-		from by_position
-		to f0
-		condition finish_time != goal_time
+	state calc_args {
+		entry dist = exax_move.goal_angle - exax_move.curr_angle; 
+		vel = dist/exax_move.goal_time
 	}
-	var curr_waypoint : nat = 0
-	const n_waypoints : nat = 10
 }
 

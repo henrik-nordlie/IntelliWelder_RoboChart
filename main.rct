@@ -9,29 +9,25 @@ module main {
 	connection stm_ref1 on done to stm_ref0 on UR_done
 	event next_EXAX_move : EXAX_move
 	connection stm_ref2 on done to stm_ref0 on EXAX_done
-	requires exax_vars 
-	requires UR_vars 
-	sref stm_ref3 = UpdateVals
-	connection stm_ref3 on move_EXAX to stm_ref2 on move
-	connection Controller on next_UR_move to stm_ref3 on get_UR_move
 	requires ur_ops 
-	requires exax_ops
-
-	opref op_ref0 = moveJ
-	opref op_ref1 = go_to_pos_with_velocity
+	requires exax_ops 
+	
+	
+	
 	sref stm_ref4 = out_of_sync_relaySTM
-		connection Controller on next_EXAX_move to stm_ref3 on get_EXAX_move
-		connection stm_ref3 on move_UR to stm_ref1 on move
+
 		connection stm_ref1 on out_of_sync to stm_ref4 on UR_out_of_sync
 		connection stm_ref2 on out_of_sync to stm_ref4 on EXAX_out_of_sync
 		connection stm_ref4 on system_out_of_sync to stm_ref0 on out_of_sync
+	connection Controller on next_EXAX_move to stm_ref2 on move
+		connection Controller on next_UR_move to stm_ref1 on move
 	}
 
 	robotic platform Platform {
 	uses events 
-	provides exax_vars 
-	provides UR_vars 
-	provides ur_ops provides exax_ops }
+	provides ur_ops 
+	provides exax_ops 
+	}
 
 connection Platform on start_system to Controller on start_system ( _async )
 connection Platform on next_UR_move to Controller on next_UR_move ( _async )
@@ -56,7 +52,7 @@ datatype EXAX_move {
 	goal_angle:real
 	
  goal_time : real } interface ur_ops {
-	moveJ ( jd1 : real , jd2 : real , time_budget : real )
+	moveJ (  goal_angle1 : real ,  goal_angle2 : real ,  jv : real )
 }
 
 interface exax_ops {

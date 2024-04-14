@@ -6,7 +6,7 @@ module main {
 	sref stm_ref1 = UR
 	sref stm_ref2 = EXAX
 	connection Controller on start_system to stm_ref0 on start_system
-	connection stm_ref1 on done to stm_ref0 on UR_done
+	connection stm_ref1 on all_done to stm_ref0 on UR_done
 	event next_EXAX_move : EXAX_move
 	connection stm_ref2 on done to stm_ref0 on EXAX_done
 	requires ur_ops 
@@ -21,13 +21,13 @@ module main {
 		connection stm_ref4 on system_out_of_sync to stm_ref0 on out_of_sync
 	connection Controller on next_EXAX_move to stm_ref2 on move
 		connection Controller on next_UR_move to stm_ref1 on move
-	}
+	requires StateInf }
 
 	robotic platform Platform {
 	uses events 
 	provides ur_ops 
 	provides exax_ops 
-	}
+	provides StateInf }
 
 connection Platform on start_system to Controller on start_system ( _async )
 connection Platform on next_UR_move to Controller on next_UR_move ( _async )
@@ -58,5 +58,9 @@ datatype EXAX_move {
 interface exax_ops {
 	go_to_pos_with_velocity (   dist : real ,   time_budget : real )
 
+}
+
+enumeration SystemState { wait_for_start working UR_finished EXAX_finished } interface StateInf {
+	var sys_state : SystemState
 }
 

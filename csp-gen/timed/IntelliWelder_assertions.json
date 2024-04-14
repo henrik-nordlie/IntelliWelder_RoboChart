@@ -1,0 +1,10 @@
+[
+{ "name": "EXAX refines SpecA1 (A1) [traces model]",
+  "type": "refines",
+  "negated": false 
+},
+{ "name": "EXAX timelock free (A2) [failures divergences model]",
+  "type": "timelock-free",
+  "negated": false 
+}
+			]

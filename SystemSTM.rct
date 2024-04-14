@@ -6,11 +6,14 @@ stm System {
 
 	event EXAX_done
 	state wait_for_start {
+		entry sys_state = SystemState :: wait_for_start
 	}
 	state working {
+		entry sys_state = SystemState::working
 	}
 	initial i0
 	state UR_finished {
+		entry sys_state = SystemState :: UR_finished
 	}
 	transition t0 {
 		from i0
@@ -36,6 +39,7 @@ stm System {
 		EXAX_done
 	}
 	state EXAX_finished {
+		entry sys_state = SystemState::EXAX_finished
 	}
 	junction j0
 
@@ -72,5 +76,5 @@ event out_of_sync
 		to f0
 		trigger out_of_sync
 	}
-}
+requires StateInf }
 

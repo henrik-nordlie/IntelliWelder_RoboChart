@@ -1,7 +1,9 @@
 
 
 stm EXAX {
-	requires exax_ops transition t0 {
+	requires exax_ops 
+	requires StateInf
+	transition t0 {
 		from i0
 		to wait_for_move
 	}
@@ -39,7 +41,9 @@ var exax_move : EXAX_move
 	transition t1 {
 		from wait_for_move
 		to calc_args
-	trigger move ? exax_move
+	trigger 
+	move ? exax_move
+		condition sys_state == SystemState :: working \/ sys_state == SystemState :: UR_finished
 	}
 	event out_of_sync
 

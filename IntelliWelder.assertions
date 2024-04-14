@@ -1,0 +1,10 @@
+csp SpecA1 csp-begin
+Timed(OneStep) {
+SpecA1 = CHAOS(Events) [| {|EXAX::move.in|} |]> ADeadline({|EXAX::go_to_pos_with_velocityCall|}, 0); SpecA1
+}
+csp-end
+
+assertion A1: EXAX refines SpecA1 in the traces model.
+assertion A2: EXAX is timelock-free
+
+

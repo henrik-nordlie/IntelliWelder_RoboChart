@@ -1,7 +1,9 @@
 
 
 stm UR {
-	requires ur_ops transition t0 {
+	requires ur_ops 
+	requires StateInf
+	transition t0 {
 		from i0
 		to wait_for_move
 	}
@@ -25,17 +27,18 @@ initial i0
 		to wait_for_move
 	}
 state MoveJ {
-		entry  moveJ ( ur_move . goal_angle1 , ur_move . goal_angle2 , jv )
+		entry  moveJ ( ur_move . goal_angle1 , ur_move . goal_angle2 , jv ) ; move_done
 	}
 	state reset_UR {
-		entry ur_curr_waypoint = 0 ; done
+		entry ur_curr_waypoint = 0 ; all_done
 	}
 	transition t6 {
 		from MoveJ
 		to j0
 	}
 	event move : UR_move
-	event done
+
+	event all_done
 
 	junction j0
 	transition t8 {
@@ -48,7 +51,9 @@ state MoveJ {
 	transition t1 {
 		from wait_for_move
 		to calc_dist
-		trigger move ? ur_move
+		trigger 
+	move ? ur_move
+		condition sys_state == SystemState :: working \/ sys_state == SystemState :: EXAX_finished
 	}
 event out_of_sync
 	state calc_vel {
@@ -78,5 +83,6 @@ var ur_move : UR_move
 		jd1 = ur_move.goal_angle1-ur_move.curr_angle1;
 		jd2 = ur_move.goal_angle2-ur_move.curr_angle2
 	}
+event move_done
 }
 

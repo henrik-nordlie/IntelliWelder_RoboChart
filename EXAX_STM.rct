@@ -23,16 +23,14 @@ initial i0
 		condition curr_waypoint >= n_waypoints
 	}
 var curr_waypoint : nat = 0
-	const n_waypoints : nat = 10
-var exax_move : EXAX_move
-	var dist : real
-	var vel : real
+	const n_waypoints : nat = 3
+	var exax_move : EXAX_move
 
 	event move : EXAX_move
 
 	event done
 	state by_position {
-		entry go_to_pos_with_velocity ( exax_move . goal_angle , vel )
+		entry go_to_pos ( exax_move . goal_time , exax_move . dist )
 	}
 	transition t8 {
 		from reset_EXAX
@@ -40,9 +38,10 @@ var exax_move : EXAX_move
 	}
 	transition t1 {
 		from wait_for_move
-		to calc_args
+		to j0
 	trigger 
-	move ? exax_move
+	
+		move ? exax_move
 		condition sys_state == SystemState :: working \/ sys_state == SystemState :: UR_finished
 	}
 	event out_of_sync
@@ -51,21 +50,24 @@ var exax_move : EXAX_move
 		entry curr_waypoint = 0 ; done
 	}
 	transition t2 {
-		from calc_args
+		from j0
 		to f0
 		condition exax_move . goal_time < 0
 		action out_of_sync
 	}
 	transition t3 {
-		from calc_args
+		from j0
 		to by_position
 		condition exax_move . goal_time >= 0
 	}
 final f0
-
-	state calc_args {
-		entry dist = exax_move.goal_angle - exax_move.curr_angle; 
-		vel = dist/exax_move.goal_time
+	junction j0
+transition t4 {
+		from wait_for_move
+		to wait_for_move
+		trigger 
+		move ? exax_move
+		condition sys_state == SystemState :: EXAX_finished \/ sys_state == SystemState :: wait_for_start
 	}
 }
 

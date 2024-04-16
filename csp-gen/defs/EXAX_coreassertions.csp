@@ -1,0 +1,32 @@
+
+--
+-- RoboChart generator version 3.0.0.202311281716
+-- Automatically generated on 16-04-2024 18:02:11
+--
+-- Iterated compression status: true
+-- Assertions compression status: false
+--
+
+include "core_defs.csp"
+include "state_defs.csp"
+include "EXAX.csp"
+include "file_EXAX_STM_defs.csp"
+include "robochart_defs.csp"
+include "../instantiations.csp"
+channel r__
+-- generate EXAX
+P_EXAX = let
+	id__ = 0
+	
+	
+	const_EXAX_n_waypoints = 3
+	
+within
+	EXAX::O__(
+		id__,
+		const_EXAX_n_waypoints
+	)
+assert P_EXAX :[deadlock-free]	
+assert P_EXAX;RUN({r__}) :[deadlock-free]
+assert P_EXAX :[deterministic]
+assert P_EXAX :[divergence-free]

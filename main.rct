@@ -6,7 +6,7 @@ module main {
 	sref stm_ref1 = UR
 	sref stm_ref2 = EXAX
 	connection Controller on start_system to stm_ref0 on start_system
-	connection stm_ref1 on all_done to stm_ref0 on UR_done
+	connection stm_ref1 on done to stm_ref0 on UR_done
 	event next_EXAX_move : EXAX_move
 	connection stm_ref2 on done to stm_ref0 on EXAX_done
 	requires ur_ops 
@@ -42,21 +42,27 @@ event next_EXAX_move : EXAX_move
 }
 
 datatype UR_move {
-	curr_angle1:real
-	goal_angle1:real
-	curr_angle2:real
-	goal_angle2:real
-	 goal_time : real } 
+	blending: boolean
+	large_offset: boolean
+	sharp_corner:boolean
+	jd1:real
+	jd2:real
+	goal_time : real 
+	} 
 datatype EXAX_move {
-	curr_angle:real
-	goal_angle:real
+	dist:real
+	goal_time: real 
+	} 
 	
- goal_time : real } interface ur_ops {
-	moveJ (  goal_angle1 : real ,  goal_angle2 : real ,  jv : real )
+ interface ur_ops {
+	moveJ (  jd1: real, jd2:real, time : real )
+	moveP ( jd1: real, jd2:real, time:real )
+	moveL ( jd1:real, jd2:real, time:real )
+	moveL_with_t ( jd1: real, jd2:real, time:real )
 }
 
 interface exax_ops {
-	go_to_pos_with_velocity (   dist : real ,   time_budget : real )
+	go_to_pos (    dist : real ,    time_budget : real )
 
 }
 
@@ -64,3 +70,5 @@ enumeration SystemState { wait_for_start working UR_finished EXAX_finished } int
 	var sys_state : SystemState
 }
 
+function check_big_dist ( jd1 : real , jd2 : real ) : boolean { }
+function abs ( num : real ) : real { postcondition result >= 0 }

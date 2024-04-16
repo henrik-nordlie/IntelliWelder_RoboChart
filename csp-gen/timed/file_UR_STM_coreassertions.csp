@@ -1,0 +1,35 @@
+
+--
+-- RoboChart generator version 3.0.0.202311281716
+-- Automatically generated on 16-04-2024 18:57:16
+--
+-- Iterated compression status: true
+-- Assertions compression status: false
+--
+
+include "file_UR_STM.csp"
+
+-- generate UR
+P_UR = let
+	id__ = 0
+	
+	
+	const_UR_ur_n_waypoints = 5
+	
+within
+	UR::O__(
+		id__,
+		const_UR_ur_n_waypoints
+	)
+assert P_UR :[deadlock-free]	
+assert P_UR;RUN({r__}) :[deadlock-free]
+assert P_UR :[deterministic]
+assert P_UR :[divergence-free]
+-- timed deadlock free
+assert prioritise(P_UR[[tock<-tock,tock<-tock']],<diff(Events,{tock',tock}),{tock}>)\{tock} :[divergence free [FD]]
+
+-- timelock free
+assert RUN({tock}) ||| CHAOS(diff(Events,{|tock|})) [F= P_UR
+
+
+

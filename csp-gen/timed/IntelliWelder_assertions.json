@@ -1,10 +1,30 @@
 [
-{ "name": "EXAX refines SpecA1 (A1) [traces model]",
+{ "name": "timed EXAX refines SpecA1 (A1) [traces model]",
   "type": "refines",
   "negated": false 
 },
 { "name": "EXAX timelock free (A2) [failures divergences model]",
   "type": "timelock-free",
+  "negated": false 
+},
+{ "name": "timed UR refines SpecA3 (A3) [traces model]",
+  "type": "refines",
+  "negated": false 
+},
+{ "name": "UR timelock free (A4) [failures divergences model]",
+  "type": "timelock-free",
+  "negated": false 
+},
+{ "name": "SysTerminates refines Stop (A5) [traces model]",
+  "type": "refines",
+  "negated": false 
+},
+{ "name": "EXAXTerminates refines Stop (A6) [traces model]",
+  "type": "refines",
+  "negated": false 
+},
+{ "name": "URTerminates refines Stop (A7) [traces model]",
+  "type": "refines",
   "negated": false 
 }
 			]

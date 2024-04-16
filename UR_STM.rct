@@ -26,63 +26,147 @@ initial i0
 		from reset_UR
 		to wait_for_move
 	}
-state MoveJ {
-		entry  moveJ ( ur_move . goal_angle1 , ur_move . goal_angle2 , jv ) ; move_done
-	}
 	state reset_UR {
-		entry ur_curr_waypoint = 0 ; all_done
+		entry ur_curr_waypoint = 0 ; done
 	}
-	transition t6 {
-		from MoveJ
-		to j0
-	}
-	event move : UR_move
-
-	event all_done
-
-	junction j0
-	transition t8 {
-		from calc_vel
-		to MoveJ
-	}
-
-	final f0
 
 	transition t1 {
 		from wait_for_move
-		to calc_dist
+		to check_time
 		trigger 
-	move ? ur_move
+	
+		
+		move ? ur_move
 		condition sys_state == SystemState :: working \/ sys_state == SystemState :: EXAX_finished
 	}
-event out_of_sync
-	state calc_vel {
-	entry
-	if jd1 > jd2 then jv = jd1/ur_move.goal_time else jv = jd2/ur_move.goal_time end
-	}
+event move : UR_move
+
+	event done
+
+	junction j0
 
 	transition t4 {
-		from calc_dist
-		to calc_vel
+		from check_time
+		to choose_cmd
 		condition ur_move . goal_time >= 0
 	}
 	transition t7 {
-		from calc_dist
+		from check_time
 		to f0
 		condition ur_move . goal_time < 0
 		action out_of_sync
 	}
-	const ur_n_waypoints : nat = 10
+	const ur_n_waypoints : nat = 5
 	var ur_curr_waypoint : nat = 0
 var ur_move : UR_move
-	var jd1 : real
-	var jd2 : real
-	var jv : real
-	state calc_dist {
-		entry
-		jd1 = ur_move.goal_angle1-ur_move.curr_angle1;
-		jd2 = ur_move.goal_angle2-ur_move.curr_angle2
+
+	var big_dist : boolean
+event out_of_sync
+	final f0
+
+	transition t6 {
+		from choose_cmd
+		to j0
+	}state choose_cmd {
+		initial i0
+		state moveP {
+			entry moveP( ur_move .jd1, ur_move .jd2, ur_move .goal_time)
+		}
+		state check_big_dist {
+			entry big_dist = true
+			//entry big_dist = check_big_dist ( ur_move . jd1 , ur_move . jd2 )
+		}
+		state moveL {
+			entry moveL( ur_move .jd1, ur_move .jd2, ur_move .goal_time)
+		}
+		final f0
+		junction j0
+		junction j1
+		state moveL_with_t {
+			entry moveL_with_t( ur_move .jd1, ur_move .jd2, ur_move .goal_time)
+		}
+		state moveJ {
+			entry moveJ( ur_move .jd1, ur_move .jd2, ur_move .goal_time)
+		}
+		junction j2
+		junction j3
+		junction j4
+		transition t0 {
+			from j4
+			to check_big_dist
+			condition not ur_move . blending
+		}
+		transition t1 {
+			from j4
+			to j0
+			condition ur_move . blending
+		}
+		transition t2 {
+			from check_big_dist
+			to j1
+		}
+		transition t3 {
+			from j1
+			to moveL_with_t
+			condition not big_dist
+		}
+		transition t4 {
+			from j1
+			to moveL
+			condition big_dist
+		}
+		transition t5 {
+			from j0
+			to moveJ
+			condition not ur_move . large_offset
+		}
+		transition t6 {
+			from j0
+			to j2
+			condition ur_move . large_offset
+		}
+		transition t7 {
+			from j2
+			to moveL_with_t
+			condition ur_move . sharp_corner
+		}
+		transition t8 {
+			from j2
+			to moveP
+			condition not ur_move . sharp_corner
+		}
+		transition t9 {
+			from moveL
+			to f0
+		}
+		transition t10 {
+			from moveL_with_t
+			to j3
+		}
+		transition t11 {
+			from moveP
+			to j3
+		}
+		transition t12 {
+			from j3
+			to f0
+		}
+		transition t13 {
+			from moveJ
+			to f0
+		}
+		transition t14 {
+			from i0
+			to j4
+		}
 	}
-event move_done
+	state check_time {
+	}
+transition t8 {
+		from wait_for_move
+		to wait_for_move
+		trigger move ? ur_move
+		condition sys_state == SystemState :: wait_for_start \/ sys_state == SystemState :: UR_finished
+	}
 }
 

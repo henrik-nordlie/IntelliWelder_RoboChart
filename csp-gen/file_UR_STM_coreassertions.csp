@@ -1,7 +1,7 @@
 
 --
 -- RoboChart generator version 3.0.0.202311281716
--- Automatically generated on 14-04-2024 12:56:00
+-- Automatically generated on 16-04-2024 18:57:16
 --
 -- Iterated compression status: true
 -- Assertions compression status: false
@@ -14,7 +14,7 @@ P_UR = let
 	id__ = 0
 	
 	
-	const_UR_ur_n_waypoints = 10
+	const_UR_ur_n_waypoints = 5
 	
 within
 	UR::O__(

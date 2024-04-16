@@ -1,0 +1,42 @@
+
+--
+-- RoboChart generator version 3.0.0.202311281716
+-- Automatically generated on 16-04-2024 18:11:46
+--
+-- Iterated compression status: true
+-- Assertions compression status: false
+--
+
+-- data definitions used by platform:/resource/fifth_version/main.rct
+nametype UR_move = (core_boolean,core_boolean,core_boolean,core_real,core_real,core_real)
+UR_move_blending((blending,large_offset,sharp_corner,jd1,jd2,goal_time)) = blending
+update_UR_move_blending((blending,large_offset,sharp_corner,jd1,jd2,goal_time),v__) = (v__,large_offset,sharp_corner,jd1,jd2,goal_time)
+UR_move_large_offset((blending,large_offset,sharp_corner,jd1,jd2,goal_time)) = large_offset
+update_UR_move_large_offset((blending,large_offset,sharp_corner,jd1,jd2,goal_time),v__) = (blending,v__,sharp_corner,jd1,jd2,goal_time)
+UR_move_sharp_corner((blending,large_offset,sharp_corner,jd1,jd2,goal_time)) = sharp_corner
+update_UR_move_sharp_corner((blending,large_offset,sharp_corner,jd1,jd2,goal_time),v__) = (blending,large_offset,v__,jd1,jd2,goal_time)
+UR_move_jd1((blending,large_offset,sharp_corner,jd1,jd2,goal_time)) = jd1
+update_UR_move_jd1((blending,large_offset,sharp_corner,jd1,jd2,goal_time),v__) = (blending,large_offset,sharp_corner,v__,jd2,goal_time)
+UR_move_jd2((blending,large_offset,sharp_corner,jd1,jd2,goal_time)) = jd2
+update_UR_move_jd2((blending,large_offset,sharp_corner,jd1,jd2,goal_time),v__) = (blending,large_offset,sharp_corner,jd1,v__,goal_time)
+UR_move_goal_time((blending,large_offset,sharp_corner,jd1,jd2,goal_time)) = goal_time
+update_UR_move_goal_time((blending,large_offset,sharp_corner,jd1,jd2,goal_time),v__) = (blending,large_offset,sharp_corner,jd1,jd2,v__)
+nametype EXAX_move = (core_real,core_real)
+EXAX_move_dist((dist,goal_time)) = dist
+update_EXAX_move_dist((dist,goal_time),v__) = (v__,goal_time)
+EXAX_move_goal_time((dist,goal_time)) = goal_time
+update_EXAX_move_goal_time((dist,goal_time),v__) = (dist,v__)
+datatype SystemState = SystemState_wait_for_start | SystemState_working | SystemState_UR_finished | SystemState_EXAX_finished
+SystemState_is(SystemState_wait_for_start,SystemState_wait_for_start) = true
+SystemState_is(_,SystemState_wait_for_start) = false
+SystemState_is(SystemState_working,SystemState_working) = true
+SystemState_is(_,SystemState_working) = false
+SystemState_is(SystemState_UR_finished,SystemState_UR_finished) = true
+SystemState_is(_,SystemState_UR_finished) = false
+SystemState_is(SystemState_EXAX_finished,SystemState_EXAX_finished) = true
+SystemState_is(_,SystemState_EXAX_finished) = false
+
+
+pre_check_big_dist(param_jd1,param_jd2) = true
+pre_abs(param_num) = true
+	

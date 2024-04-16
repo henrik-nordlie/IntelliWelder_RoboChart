@@ -1,0 +1,169 @@
+-- generate const_main_Controller_n_waypoints
+const_main_Controller_n_waypoints = 0
+
+-- STATEMACHINE CONSTANTS
+
+-- generate string
+nametype core_string = LSeq(Char,2)
+
+-- generate get_diff
+get_diff(a,b) = 0
+
+-- generate const_main_Controller_ur_n_waypoints
+const_main_Controller_ur_n_waypoints = 0
+
+-- STATEMACHINE CONSTANTS
+
+-- generate -- OPERATION BOUNDS
+
+-- MODULE CONSTANTS
+
+-- CONTROLLER CONSTANTS
+
+-- STATEMACHINE CONSTANTS
+
+-- OPERATION CONSTANTS
+
+-- BASIC TYPES
+
+-- VECTOR TYPES AND OPERATIONS
+
+
+-- CLOCKS
+
+-- generate calc_vel
+calc_vel(dist,time) = 0
+
+-- generate const_UpdateVals_n_waypoints
+const_UpdateVals_n_waypoints = 0
+
+-- OPERATION CONSTANTS
+
+-- generate const_UpdateVals_ur_n_waypoints
+const_UpdateVals_ur_n_waypoints = 0
+
+-- generate const_moveJ_ur_n_waypoints
+const_moveJ_ur_n_waypoints = 0
+
+-- BASIC TYPES
+
+-- generate const_main_Controller_stm_ref1_n_waypoints
+const_main_Controller_stm_ref1_n_waypoints = 0
+
+-- generate const_main_Controller_stm_ref2_n_waypoints
+const_main_Controller_stm_ref2_n_waypoints = 0
+
+-- OPERATION CONSTANTS
+
+-- generate Plus
+Plus(e1,e2,T) = if member(e1+e2,T) then e1+e2 else e1
+
+-- generate const_UR_n_waypoints
+const_UR_n_waypoints = 0
+
+-- generate --
+
+-- MODULE CONSTANTS
+
+-- CONTROLLER CONSTANTS
+
+-- STATEMACHINE CONSTANTS
+
+-- OPERATION CONSTANTS
+
+-- BASIC TYPES
+
+-- generate nat
+nametype core_nat = union({0..2},{calc_type_min(Union(
+			{{0},{Plus(ur_curr_waypoint, 1, {0..2})|ur_curr_waypoint <- {0..2}},{0},{Plus(curr_waypoint, 1, {0..2})|curr_waypoint <- {0..2}},{5},{0..2},{0},{0..2},{0},{0..2},{3},{0..2}}))..calc_type_max(Union({{0},{Plus(ur_curr_waypoint, 1, {0..2})|ur_curr_waypoint <- {0..2}},{0},{Plus(curr_waypoint, 1, {0..2})|curr_waypoint <- {0..2}},{5},{0..2},{0},{0..2},{0},{0..2},{3},{0..2}}))})
+
+-- generate const_main_Platform_ur_n_waypoints
+const_main_Platform_ur_n_waypoints = 0
+
+-- CONTROLLER CONSTANTS
+
+-- generate go_to_pos_with_velocity_BOUND
+go_to_pos_with_velocity_BOUND = 2
+
+-- MODULE CONSTANTS
+
+-- generate core_clock_type
+nametype core_clock_type = {0..10}
+
+-- BASIC FUNCTIONS
+
+-- generate const_EXAX_n_waypoints
+const_EXAX_n_waypoints = 0
+
+-- generate const_main_Controller_stm_ref1_ur_n_waypoints
+const_main_Controller_stm_ref1_ur_n_waypoints = 0
+
+-- OPERATION CONSTANTS
+
+-- generate const_UR_ur_n_waypoints
+const_UR_ur_n_waypoints = 0
+
+-- generate real
+nametype core_real = union({ -2..2},{calc_type_min(Union(
+			{{0},{Plus(ur_curr_waypoint, 1, core_nat)|ur_curr_waypoint <- {0..2}},{0},{Plus(curr_waypoint, 1, core_nat)|curr_waypoint <- {0..2}},{5},{0..2},{0},{0..2},{ -2..2},{ -2..2},{ -2..2},{ -2..2},{ -2..2},{ -2..2},{ -2..2},{ -2..2},{ -2..2},{ -2..2},{ -2..2},{ -2..2},{ -2..2},{ -2..2},{ -2..2},{ -2..2},{ -2..2},{0},{0..2},{3},{0..2},{UR_move_goal_time(ur_move)|ur_move <- {(f_blending,f_large_offset,f_sharp_corner,f_jd1,f_jd2,f_goal_time)|f_blending <- Bool,f_large_offset <- Bool,f_sharp_corner <- Bool,f_jd1 <- { -2..2},f_jd2 <- { -2..2},f_goal_time <- { -2..2}}},{UR_move_jd1(ur_move)|ur_move <- {(f_blending,f_large_offset,f_sharp_corner,f_jd1,f_jd2,f_goal_time)|f_blending <- Bool,f_large_offset <- Bool,f_sharp_corner <- Bool,f_jd1 <- { -2..2},f_jd2 <- { -2..2},f_goal_time <- { -2..2}}},{UR_move_goal_time(ur_move)|ur_move <- {(f_blending,f_large_offset,f_sharp_corner,f_jd1,f_jd2,f_goal_time)|f_blending <- Bool,f_large_offset <- Bool,f_sharp_corner <- Bool,f_jd1 <- { -2..2},f_jd2 <- { -2..2},f_goal_time <- { -2..2}}},{UR_move_jd1(ur_move)|ur_move <- {(f_blending,f_large_offset,f_sharp_corner,f_jd1,f_jd2,f_goal_time)|f_blending <- Bool,f_large_offset <- Bool,f_sharp_corner <- Bool,f_jd1 <- { -2..2},f_jd2 <- { -2..2},f_goal_time <- { -2..2}}},{UR_move_jd2(ur_move)|ur_move <- {(f_blending,f_large_offset,f_sharp_corner,f_jd1,f_jd2,f_goal_time)|f_blending <- Bool,f_large_offset <- Bool,f_sharp_corner <- Bool,f_jd1 <- { -2..2},f_jd2 <- { -2..2},f_goal_time <- { -2..2}}},{UR_move_jd2(ur_move)|ur_move <- {(f_blending,f_large_offset,f_sharp_corner,f_jd1,f_jd2,f_goal_time)|f_blending <- Bool,f_large_offset <- Bool,f_sharp_corner <- Bool,f_jd1 <- { -2..2},f_jd2 <- { -2..2},f_goal_time <- { -2..2}}},{UR_move_goal_time(ur_move)|ur_move <- {(f_blending,f_large_offset,f_sharp_corner,f_jd1,f_jd2,f_goal_time)|f_blending <- Bool,f_large_offset <- Bool,f_sharp_corner <- Bool,f_jd1 <- { -2..2},f_jd2 <- { -2..2},f_goal_time <- { -2..2}}},{UR_move_jd1(ur_move)|ur_move <- {(f_blending,f_large_offset,f_sharp_corner,f_jd1,f_jd2,f_goal_time)|f_blending <- Bool,f_large_offset <- Bool,f_sharp_corner <- Bool,f_jd1 <- { -2..2},f_jd2 <- { -2..2},f_goal_time <- { -2..2}}},{UR_move_jd1(ur_move)|ur_move <- {(f_blending,f_large_offset,f_sharp_corner,f_jd1,f_jd2,f_goal_time)|f_blending <- Bool,f_large_offset <- Bool,f_sharp_corner <- Bool,f_jd1 <- { -2..2},f_jd2 <- { -2..2},f_goal_time <- { -2..2}}},{UR_move_jd2(ur_move)|ur_move <- {(f_blending,f_large_offset,f_sharp_corner,f_jd1,f_jd2,f_goal_time)|f_blending <- Bool,f_large_offset <- Bool,f_sharp_corner <- Bool,f_jd1 <- { -2..2},f_jd2 <- { -2..2},f_goal_time <- { -2..2}}},{UR_move_jd2(ur_move)|ur_move <- {(f_blending,f_large_offset,f_sharp_corner,f_jd1,f_jd2,f_goal_time)|f_blending <- Bool,f_large_offset <- Bool,f_sharp_corner <- Bool,f_jd1 <- { -2..2},f_jd2 <- { -2..2},f_goal_time <- { -2..2}}},{UR_move_goal_time(ur_move)|ur_move <- {(f_blending,f_large_offset,f_sharp_corner,f_jd1,f_jd2,f_goal_time)|f_blending <- Bool,f_large_offset <- Bool,f_sharp_corner <- Bool,f_jd1 <- { -2..2},f_jd2 <- { -2..2},f_goal_time <- { -2..2}}},{EXAX_move_dist(exax_move)|exax_move <- {(f_dist,f_goal_time)|f_dist <- { -2..2},f_goal_time <- { -2..2}}},{EXAX_move_goal_time(exax_move)|exax_move <- {(f_dist,f_goal_time)|f_dist <- { -2..2},f_goal_time <- { -2..2}}}}))..calc_type_max(Union({{0},{Plus(ur_curr_waypoint, 1, core_nat)|ur_curr_waypoint <- {0..2}},{0},{Plus(curr_waypoint, 1, core_nat)|curr_waypoint <- {0..2}},{5},{0..2},{0},{0..2},{ -2..2},{ -2..2},{ -2..2},{ -2..2},{ -2..2},{ -2..2},{ -2..2},{ -2..2},{ -2..2},{ -2..2},{ -2..2},{ -2..2},{ -2..2},{ -2..2},{ -2..2},{ -2..2},{ -2..2},{0},{0..2},{3},{0..2},{UR_move_goal_time(ur_move)|ur_move <- {(f_blending,f_large_offset,f_sharp_corner,f_jd1,f_jd2,f_goal_time)|f_blending <- Bool,f_large_offset <- Bool,f_sharp_corner <- Bool,f_jd1 <- { -2..2},f_jd2 <- { -2..2},f_goal_time <- { -2..2}}},{UR_move_jd1(ur_move)|ur_move <- {(f_blending,f_large_offset,f_sharp_corner,f_jd1,f_jd2,f_goal_time)|f_blending <- Bool,f_large_offset <- Bool,f_sharp_corner <- Bool,f_jd1 <- { -2..2},f_jd2 <- { -2..2},f_goal_time <- { -2..2}}},{UR_move_goal_time(ur_move)|ur_move <- {(f_blending,f_large_offset,f_sharp_corner,f_jd1,f_jd2,f_goal_time)|f_blending <- Bool,f_large_offset <- Bool,f_sharp_corner <- Bool,f_jd1 <- { -2..2},f_jd2 <- { -2..2},f_goal_time <- { -2..2}}},{UR_move_jd1(ur_move)|ur_move <- {(f_blending,f_large_offset,f_sharp_corner,f_jd1,f_jd2,f_goal_time)|f_blending <- Bool,f_large_offset <- Bool,f_sharp_corner <- Bool,f_jd1 <- { -2..2},f_jd2 <- { -2..2},f_goal_time <- { -2..2}}},{UR_move_jd2(ur_move)|ur_move <- {(f_blending,f_large_offset,f_sharp_corner,f_jd1,f_jd2,f_goal_time)|f_blending <- Bool,f_large_offset <- Bool,f_sharp_corner <- Bool,f_jd1 <- { -2..2},f_jd2 <- { -2..2},f_goal_time <- { -2..2}}},{UR_move_jd2(ur_move)|ur_move <- {(f_blending,f_large_offset,f_sharp_corner,f_jd1,f_jd2,f_goal_time)|f_blending <- Bool,f_large_offset <- Bool,f_sharp_corner <- Bool,f_jd1 <- { -2..2},f_jd2 <- { -2..2},f_goal_time <- { -2..2}}},{UR_move_goal_time(ur_move)|ur_move <- {(f_blending,f_large_offset,f_sharp_corner,f_jd1,f_jd2,f_goal_time)|f_blending <- Bool,f_large_offset <- Bool,f_sharp_corner <- Bool,f_jd1 <- { -2..2},f_jd2 <- { -2..2},f_goal_time <- { -2..2}}},{UR_move_jd1(ur_move)|ur_move <- {(f_blending,f_large_offset,f_sharp_corner,f_jd1,f_jd2,f_goal_time)|f_blending <- Bool,f_large_offset <- Bool,f_sharp_corner <- Bool,f_jd1 <- { -2..2},f_jd2 <- { -2..2},f_goal_time <- { -2..2}}},{UR_move_jd1(ur_move)|ur_move <- {(f_blending,f_large_offset,f_sharp_corner,f_jd1,f_jd2,f_goal_time)|f_blending <- Bool,f_large_offset <- Bool,f_sharp_corner <- Bool,f_jd1 <- { -2..2},f_jd2 <- { -2..2},f_goal_time <- { -2..2}}},{UR_move_jd2(ur_move)|ur_move <- {(f_blending,f_large_offset,f_sharp_corner,f_jd1,f_jd2,f_goal_time)|f_blending <- Bool,f_large_offset <- Bool,f_sharp_corner <- Bool,f_jd1 <- { -2..2},f_jd2 <- { -2..2},f_goal_time <- { -2..2}}},{UR_move_jd2(ur_move)|ur_move <- {(f_blending,f_large_offset,f_sharp_corner,f_jd1,f_jd2,f_goal_time)|f_blending <- Bool,f_large_offset <- Bool,f_sharp_corner <- Bool,f_jd1 <- { -2..2},f_jd2 <- { -2..2},f_goal_time <- { -2..2}}},{UR_move_goal_time(ur_move)|ur_move <- {(f_blending,f_large_offset,f_sharp_corner,f_jd1,f_jd2,f_goal_time)|f_blending <- Bool,f_large_offset <- Bool,f_sharp_corner <- Bool,f_jd1 <- { -2..2},f_jd2 <- { -2..2},f_goal_time <- { -2..2}}},{EXAX_move_dist(exax_move)|exax_move <- {(f_dist,f_goal_time)|f_dist <- { -2..2},f_goal_time <- { -2..2}}},{EXAX_move_goal_time(exax_move)|exax_move <- {(f_dist,f_goal_time)|f_dist <- { -2..2},f_goal_time <- { -2..2}}}}))}) 
+
+-- VECTOR TYPES AND OPERATIONS
+
+
+-- CLOCKS
+
+-- generate go_to_velocity_BOUND
+go_to_velocity_BOUND = 2
+
+-- generate int
+nametype core_int = union({ -2..2},{calc_type_min(Union(
+			{{0},{Plus(ur_curr_waypoint, 1, core_nat)|ur_curr_waypoint <- {0..2}},{0},{Plus(curr_waypoint, 1, core_nat)|curr_waypoint <- {0..2}},{5},{0..2},{0},{0..2},{0},{0..2},{3},{0..2}}))..calc_type_max(Union({{0},{Plus(ur_curr_waypoint, 1, core_nat)|ur_curr_waypoint <- {0..2}},{0},{Plus(curr_waypoint, 1, core_nat)|curr_waypoint <- {0..2}},{5},{0..2},{0},{0..2},{0},{0..2},{3},{0..2}}))})
+
+-- generate Div
+Div(e1,e2,T) = if member(e1/e2,T) then e1/e2 else e1
+
+-- generate check_big_dist
+check_big_dist(jd1,jd2) = true
+
+-- generate Neg
+Neg(e1,T) = if member(-e1,T) then -e1 else e1
+
+-- generate const_main_Platform_n_waypoints
+const_main_Platform_n_waypoints = 0
+
+-- CONTROLLER CONSTANTS
+
+-- generate moveJ_BOUND
+moveJ_BOUND = 2
+
+-- MODULE CONSTANTS
+
+-- generate boolean
+nametype core_boolean = Bool
+
+-- generate abs
+abs(num) = 0
+
+-- generate const_go_to_pos_with_velocity_n_waypoints
+const_go_to_pos_with_velocity_n_waypoints = 0
+
+-- generate Mult
+Mult(e1,e2,T) = if member(e1*e2,T) then e1*e2 else e1
+
+-- generate Modulus
+Modulus(e1,e2,T) = if member(e1%e2,T) then e1%e2 else e1
+
+-- generate const_go_to_velocity_n_waypoints
+const_go_to_velocity_n_waypoints = 0
+
+-- BASIC TYPES
+
+-- generate calc_time
+calc_time(dist,vel) = 0
+
+-- generate Minus
+Minus(e1,e2,T) = if member(e1-e2,T) then e1-e2 else e1
+
+-- generate update_pos
+update_pos(curr_pos,goal_time) = 0
+

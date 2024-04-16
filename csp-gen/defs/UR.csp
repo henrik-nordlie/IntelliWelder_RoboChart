@@ -1,0 +1,1806 @@
+
+--
+-- RoboChart generator version 3.0.0.202311281716
+-- Automatically generated on 16-04-2024 18:57:16
+--
+-- Iterated compression status: true
+-- Assertions compression status: false
+--
+
+module UR
+exports
+	transparent diamond
+	transparent sbisim
+	transparent dbisim
+	transparent chase
+
+	-- Transition identifiers
+	-- declaring identifiers of transitions
+	datatype NIDS = 
+	              NID_i0|
+	              NID_wait_for_move|
+	              NID_reset_UR|
+	              NID_j0|
+	              NID_f0|
+	              NID_choose_cmd|
+	              NID_check_time
+	
+	channel internal__ : NIDS
+	
+	-- Flow channels		
+	channel interrupt
+	channel exited
+	channel exit
+	channel terminate
+	
+	-- Variable channels
+	channel get_ur_curr_waypoint, set_ur_curr_waypoint, setL_ur_curr_waypoint, setR_ur_curr_waypoint: core_nat
+	channel get_ur_move, set_ur_move, setL_ur_move, setR_ur_move: UR_move
+	channel get_big_dist, set_big_dist, setL_big_dist, setR_big_dist: core_boolean
+	channel get_sys_state, set_sys_state, setL_sys_state, setR_sys_state: SystemState
+	
+	-- Shared variable channels
+	channel set_EXT_sys_state: SystemState
+	
+	-- Local variable channels for defined operations that are required by the state machine
+	
+	-- Declaring state machine events
+	channel move__: NIDS.InOut.UR_move
+	channel move: InOut.UR_move
+	channel done__: NIDS.InOut
+	channel done: InOut
+	channel out_of_sync__: NIDS.InOut
+	channel out_of_sync: InOut
+	
+	-- Declaring call and ret events for undefined operations
+	channel moveLCall: core_real.core_real.core_real
+	channel movePCall: core_real.core_real.core_real
+	channel moveL_with_tCall: core_real.core_real.core_real
+	channel moveJCall: core_real.core_real.core_real
+	
+	enterSS = {|
+	i0::enter,
+	wait_for_move::enter,
+	reset_UR::enter,
+	j0::enter,
+	f0::enter,
+	choose_cmd::enter,
+	check_time::enter
+	|}
+	
+	enteredSS = 	{|
+	wait_for_move::entered,
+	reset_UR::entered,
+	f0::entered,
+	choose_cmd::entered,
+	check_time::entered
+	|}
+	
+	internal_events = union(enteredSS,union(enterSS,{|interrupt,exited|}))
+	
+	shared_variable_events = {|
+		set_EXT_sys_state
+	|}
+	
+	-- channel set with all visible events
+	sem__events = {|
+		terminate
+	,	set_EXT_sys_state, set_sys_state
+	,	move,
+		done,
+		out_of_sync
+	,	moveLCall,
+		movePCall,
+		moveL_with_tCall,
+		moveJCall
+		|}
+
+	-- Nodes --
+	-- declaring all nodes
+	
+	----------------------------------------------------------------------
+	-- Initial: i0
+	module i0
+	exports
+	
+		channel enter, interrupt
+		
+		D__(id__,
+				    const_UR_ur_n_waypoints) = 
+			dbisim(let
+				Inactive 	= share__choice(enter -> SKIP [] terminate -> SKIP) ; Active
+				
+				Termination = terminate -> SKIP
+				
+				Active 		= share__choice(interrupt -> SKIP) ; Inactive
+			within
+				Inactive [| {terminate} |> SKIP)
+		
+		VS_O__(id__,
+				    const_UR_ur_n_waypoints) = D__(id__,
+				    const_UR_ur_n_waypoints)
+	
+	endmodule
+	----------------------------------------------------------------------
+	
+	
+	----------------------------------------------------------------------
+	-- State: wait_for_move
+	module wait_for_move
+	
+	enterSS = {}
+	
+	enteredSS = {}
+	
+	exports
+	
+		--  Declarations
+		
+		channel enter, entered, interrupt
+		channel enteredL, enteredR
+		
+						
+		
+		--	Nodes
+		-- declaring all nodes
+		
+		
+		--	Rule: behaviours(Node)
+		--  Note that FDR has problems with efficiently compiling the process below
+		-- 	if using a different recursion pattern.
+		D__(id__,
+				    const_UR_ur_n_waypoints) = 
+		dbisim(let
+			-- IMPLEMENTATION NOTE: 
+			-- The following should be defined as: Inactive = share__choice(Activation [] Termination),
+			-- however FDR struggles with that form in certain cases. So we use the exception operator
+			-- instead to 'terminate'.
+			
+			Inactive 	= share__choice(enter -> SKIP [] terminate -> SKIP) ; Active
+			
+			Termination = terminate -> SKIP
+			
+			Active 		= SKIP ; 
+					 	  Behaviour ; 
+					 	  share__choice(exit -> SKIP) ; SKIP ; 
+					 	  share__choice(exited -> SKIP) ; Inactive
+		
+			Behaviour 	= entered -> During
+			During 		= ((SKIP ; SStop) /\ interrupt -> SKIP)
+		within
+			Inactive [| {terminate} |> SKIP)
+			
+		VS_O__(id__,
+				    const_UR_ur_n_waypoints) = 
+		dbisim(let
+			Inactive 	= share__choice(enter -> SKIP [] terminate -> SKIP) ; Active
+			
+			Termination = terminate -> SKIP
+			
+			Active 		= SKIP ; 
+					 	  Behaviour ; 
+					 	  share__choice(exit -> SKIP) ; SKIP ; 
+					 	  share__choice(exited -> SKIP) ; Inactive
+		
+			Behaviour 	= entered -> During
+			During 		= ((SKIP ; SStop) /\ interrupt -> SKIP)
+		within
+			Inactive [| {terminate} |> SKIP)
+		
+	
+	endmodule
+	----------------------------------------------------------------------
+	
+	
+	----------------------------------------------------------------------
+	-- State: reset_UR
+	module reset_UR
+	
+	enterSS = {}
+	
+	enteredSS = {}
+	
+	exports
+	
+		--  Declarations
+		
+		channel enter, entered, interrupt
+		channel enteredL, enteredR
+		
+						
+		
+		--	Nodes
+		-- declaring all nodes
+		
+		
+		--	Rule: behaviours(Node)
+		--  Note that FDR has problems with efficiently compiling the process below
+		-- 	if using a different recursion pattern.
+		D__(id__,
+				    const_UR_ur_n_waypoints) = 
+		dbisim(let
+			-- IMPLEMENTATION NOTE: 
+			-- The following should be defined as: Inactive = share__choice(Activation [] Termination),
+			-- however FDR struggles with that form in certain cases. So we use the exception operator
+			-- instead to 'terminate'.
+			
+			Inactive 	= share__choice(enter -> SKIP [] terminate -> SKIP) ; Active
+			
+			Termination = terminate -> SKIP
+			
+			Active 		= share__choice(true & (share__choice(set_ur_curr_waypoint!0 -> SKIP)));true&(share__choice(done.out -> SKIP)) ; 
+					 	  Behaviour ; 
+					 	  share__choice(exit -> SKIP) ; SKIP ; 
+					 	  share__choice(exited -> SKIP) ; Inactive
+		
+			Behaviour 	= entered -> During
+			During 		= ((SKIP ; SStop) /\ interrupt -> SKIP)
+		within
+			Inactive [| {terminate} |> SKIP)
+			
+		VS_O__(id__,
+				    const_UR_ur_n_waypoints) = 
+		dbisim(let
+			Inactive 	= share__choice(enter -> SKIP [] terminate -> SKIP) ; Active
+			
+			Termination = terminate -> SKIP
+			
+			Active 		= share__choice(true & (share__choice(set_ur_curr_waypoint!0 -> SKIP)));true&(share__choice(done.out -> SKIP)) ; 
+					 	  Behaviour ; 
+					 	  share__choice(exit -> SKIP) ; SKIP ; 
+					 	  share__choice(exited -> SKIP) ; Inactive
+		
+			Behaviour 	= entered -> During
+			During 		= ((SKIP ; SStop) /\ interrupt -> SKIP)
+		within
+			Inactive [| {terminate} |> SKIP)
+		
+	
+	endmodule
+	----------------------------------------------------------------------
+	
+	
+	----------------------------------------------------------------------
+	-- Junction: j0
+	module j0
+	exports
+	
+		channel enter, interrupt
+		
+		D__(id__,
+				    const_UR_ur_n_waypoints) = 
+			dbisim(let
+				Inactive 	= share__choice(enter -> SKIP [] terminate -> SKIP) ; Active
+				
+				Active 		= share__choice(interrupt -> SKIP) ; Inactive
+			within
+				Inactive [| {terminate} |> SKIP)
+			
+		VS_O__(id__,
+				    const_UR_ur_n_waypoints) = D__(id__,
+				    const_UR_ur_n_waypoints)
+	
+	endmodule
+	----------------------------------------------------------------------
+	
+	
+	----------------------------------------------------------------------
+	-- Final state: f0
+	module f0
+	
+	exports
+	
+		channel enter, entered, interrupt
+		channel enteredL, enteredR
+		
+		--	Rule: behaviours(Node)
+		D__(id__,
+				    const_UR_ur_n_waypoints) = 
+			dbisim(let
+				Inactive 	= share__choice(enter -> SKIP [] terminate -> SKIP) ; Entering
+				
+				Entering 	= entered -> SKIP ; Active
+				Active		= share__choice(terminate -> SKIP [] interrupt -> SKIP) ; Interrupted
+				Interrupted	= share__choice(exit -> exited -> Inactive)
+			within
+				Inactive [| {terminate} |> SKIP)
+			
+		VS_O__(id__,
+				    const_UR_ur_n_waypoints) = D__(id__,
+				    const_UR_ur_n_waypoints)
+	
+	endmodule
+	----------------------------------------------------------------------
+	
+	
+	----------------------------------------------------------------------
+	-- State: choose_cmd
+	module choose_cmd
+	
+	enterSS = 
+			{|			i0::enter,
+				moveP::enter,
+				check_big_dist::enter,
+				moveL::enter,
+				f0::enter,
+				j0::enter,
+				j1::enter,
+				moveL_with_t::enter,
+				moveJ::enter,
+				j2::enter,
+				j3::enter,
+				j4::enter
+			|}
+	enteredSS = 
+			{|			moveP::entered,
+				check_big_dist::entered,
+				moveL::entered,
+				f0::entered,
+				moveL_with_t::entered,
+				moveJ::entered
+			|}
+	exports
+	
+		--  Declarations
+		
+		channel enter, entered, interrupt
+		channel enteredL, enteredR
+		
+						
+		-- declaring identifiers of transitions
+		datatype NIDS = 
+		              NID_i0|
+		              NID_moveP|
+		              NID_check_big_dist|
+		              NID_moveL|
+		              NID_f0|
+		              NID_j0|
+		              NID_j1|
+		              NID_moveL_with_t|
+		              NID_moveJ|
+		              NID_j2|
+		              NID_j3|
+		              NID_j4
+		
+		channel internal__ : NIDS
+		channel move__: NIDS.InOut.UR_move
+		channel done__: NIDS.InOut
+		channel out_of_sync__: NIDS.InOut
+		
+		--	Nodes
+		-- declaring all nodes
+		
+		----------------------------------------------------------------------
+		-- Initial: i0
+		module i0
+		exports
+		
+			channel enter, interrupt
+			
+			D__(id__,
+					    const_UR_ur_n_waypoints) = 
+				dbisim(let
+					Inactive 	= share__choice(enter -> SKIP [] terminate -> SKIP) ; Active
+					
+					Termination = terminate -> SKIP
+					
+					Active 		= share__choice(interrupt -> SKIP) ; Inactive
+				within
+					Inactive [| {terminate} |> SKIP)
+			
+			VS_O__(id__,
+					    const_UR_ur_n_waypoints) = D__(id__,
+					    const_UR_ur_n_waypoints)
+		
+		endmodule
+		----------------------------------------------------------------------
+		
+		
+		----------------------------------------------------------------------
+		-- State: moveP
+		module moveP
+		
+		enterSS = {}
+		
+		enteredSS = {}
+		
+		exports
+		
+			--  Declarations
+			
+			channel enter, entered, interrupt
+			channel enteredL, enteredR
+			
+							
+			
+			--	Nodes
+			-- declaring all nodes
+			
+			
+			--	Rule: behaviours(Node)
+			--  Note that FDR has problems with efficiently compiling the process below
+			-- 	if using a different recursion pattern.
+			D__(id__,
+					    const_UR_ur_n_waypoints) = 
+			dbisim(let
+				-- IMPLEMENTATION NOTE: 
+				-- The following should be defined as: Inactive = share__choice(Activation [] Termination),
+				-- however FDR struggles with that form in certain cases. So we use the exception operator
+				-- instead to 'terminate'.
+				
+				Inactive 	= share__choice(enter -> SKIP [] terminate -> SKIP) ; Active
+				
+				Termination = terminate -> SKIP
+				
+				Active 		= share__choice(get_ur_move?ur_move -> true&CALL__moveP(
+							id__,
+						    const_UR_ur_n_waypoints,
+							UR_move_jd1(ur_move),
+							UR_move_jd2(ur_move),
+							UR_move_goal_time(ur_move)
+						)) ; 
+						 	  Behaviour ; 
+						 	  share__choice(exit -> SKIP) ; SKIP ; 
+						 	  share__choice(exited -> SKIP) ; Inactive
+			
+				Behaviour 	= entered -> During
+				During 		= ((SKIP ; SStop) /\ interrupt -> SKIP)
+			within
+				Inactive [| {terminate} |> SKIP)
+				
+			VS_O__(id__,
+					    const_UR_ur_n_waypoints) = 
+			dbisim(let
+				Inactive 	= share__choice(enter -> SKIP [] terminate -> SKIP) ; Active
+				
+				Termination = terminate -> SKIP
+				
+				Active 		= share__choice(get_ur_move?ur_move -> true&CALL__moveP(
+							id__,
+						    const_UR_ur_n_waypoints,
+							UR_move_jd1(ur_move),
+							UR_move_jd2(ur_move),
+							UR_move_goal_time(ur_move)
+						)) ; 
+						 	  Behaviour ; 
+						 	  share__choice(exit -> SKIP) ; SKIP ; 
+						 	  share__choice(exited -> SKIP) ; Inactive
+			
+				Behaviour 	= entered -> During
+				During 		= ((SKIP ; SStop) /\ interrupt -> SKIP)
+			within
+				Inactive [| {terminate} |> SKIP)
+			
+		
+		endmodule
+		----------------------------------------------------------------------
+		
+		
+		----------------------------------------------------------------------
+		-- State: check_big_dist
+		module check_big_dist
+		
+		enterSS = {}
+		
+		enteredSS = {}
+		
+		exports
+		
+			--  Declarations
+			
+			channel enter, entered, interrupt
+			channel enteredL, enteredR
+			
+							
+			
+			--	Nodes
+			-- declaring all nodes
+			
+			
+			--	Rule: behaviours(Node)
+			--  Note that FDR has problems with efficiently compiling the process below
+			-- 	if using a different recursion pattern.
+			D__(id__,
+					    const_UR_ur_n_waypoints) = 
+			dbisim(let
+				-- IMPLEMENTATION NOTE: 
+				-- The following should be defined as: Inactive = share__choice(Activation [] Termination),
+				-- however FDR struggles with that form in certain cases. So we use the exception operator
+				-- instead to 'terminate'.
+				
+				Inactive 	= share__choice(enter -> SKIP [] terminate -> SKIP) ; Active
+				
+				Termination = terminate -> SKIP
+				
+				Active 		= share__choice(true & (share__choice(set_big_dist!true -> SKIP))) ; 
+						 	  Behaviour ; 
+						 	  share__choice(exit -> SKIP) ; SKIP ; 
+						 	  share__choice(exited -> SKIP) ; Inactive
+			
+				Behaviour 	= entered -> During
+				During 		= ((SKIP ; SStop) /\ interrupt -> SKIP)
+			within
+				Inactive [| {terminate} |> SKIP)
+				
+			VS_O__(id__,
+					    const_UR_ur_n_waypoints) = 
+			dbisim(let
+				Inactive 	= share__choice(enter -> SKIP [] terminate -> SKIP) ; Active
+				
+				Termination = terminate -> SKIP
+				
+				Active 		= share__choice(true & (share__choice(set_big_dist!true -> SKIP))) ; 
+						 	  Behaviour ; 
+						 	  share__choice(exit -> SKIP) ; SKIP ; 
+						 	  share__choice(exited -> SKIP) ; Inactive
+			
+				Behaviour 	= entered -> During
+				During 		= ((SKIP ; SStop) /\ interrupt -> SKIP)
+			within
+				Inactive [| {terminate} |> SKIP)
+			
+		
+		endmodule
+		----------------------------------------------------------------------
+		
+		
+		----------------------------------------------------------------------
+		-- State: moveL
+		module moveL
+		
+		enterSS = {}
+		
+		enteredSS = {}
+		
+		exports
+		
+			--  Declarations
+			
+			channel enter, entered, interrupt
+			channel enteredL, enteredR
+			
+							
+			
+			--	Nodes
+			-- declaring all nodes
+			
+			
+			--	Rule: behaviours(Node)
+			--  Note that FDR has problems with efficiently compiling the process below
+			-- 	if using a different recursion pattern.
+			D__(id__,
+					    const_UR_ur_n_waypoints) = 
+			dbisim(let
+				-- IMPLEMENTATION NOTE: 
+				-- The following should be defined as: Inactive = share__choice(Activation [] Termination),
+				-- however FDR struggles with that form in certain cases. So we use the exception operator
+				-- instead to 'terminate'.
+				
+				Inactive 	= share__choice(enter -> SKIP [] terminate -> SKIP) ; Active
+				
+				Termination = terminate -> SKIP
+				
+				Active 		= share__choice(get_ur_move?ur_move -> true&CALL__moveL(
+							id__,
+						    const_UR_ur_n_waypoints,
+							UR_move_jd1(ur_move),
+							UR_move_jd2(ur_move),
+							UR_move_goal_time(ur_move)
+						)) ; 
+						 	  Behaviour ; 
+						 	  share__choice(exit -> SKIP) ; SKIP ; 
+						 	  share__choice(exited -> SKIP) ; Inactive
+			
+				Behaviour 	= entered -> During
+				During 		= ((SKIP ; SStop) /\ interrupt -> SKIP)
+			within
+				Inactive [| {terminate} |> SKIP)
+				
+			VS_O__(id__,
+					    const_UR_ur_n_waypoints) = 
+			dbisim(let
+				Inactive 	= share__choice(enter -> SKIP [] terminate -> SKIP) ; Active
+				
+				Termination = terminate -> SKIP
+				
+				Active 		= share__choice(get_ur_move?ur_move -> true&CALL__moveL(
+							id__,
+						    const_UR_ur_n_waypoints,
+							UR_move_jd1(ur_move),
+							UR_move_jd2(ur_move),
+							UR_move_goal_time(ur_move)
+						)) ; 
+						 	  Behaviour ; 
+						 	  share__choice(exit -> SKIP) ; SKIP ; 
+						 	  share__choice(exited -> SKIP) ; Inactive
+			
+				Behaviour 	= entered -> During
+				During 		= ((SKIP ; SStop) /\ interrupt -> SKIP)
+			within
+				Inactive [| {terminate} |> SKIP)
+			
+		
+		endmodule
+		----------------------------------------------------------------------
+		
+		
+		----------------------------------------------------------------------
+		-- Final state: f0
+		module f0
+		
+		exports
+		
+			channel enter, entered, interrupt
+			channel enteredL, enteredR
+			
+			--	Rule: behaviours(Node)
+			D__(id__,
+					    const_UR_ur_n_waypoints) = 
+				dbisim(let
+					Inactive 	= share__choice(enter -> SKIP [] terminate -> SKIP) ; Entering
+					
+					Entering 	= entered -> SKIP ; Active
+					Active		= share__choice(terminate -> SKIP [] interrupt -> SKIP) ; Interrupted
+					Interrupted	= share__choice(exit -> exited -> Inactive)
+				within
+					Inactive [| {terminate} |> SKIP)
+				
+			VS_O__(id__,
+					    const_UR_ur_n_waypoints) = D__(id__,
+					    const_UR_ur_n_waypoints)
+		
+		endmodule
+		----------------------------------------------------------------------
+		
+		
+		----------------------------------------------------------------------
+		-- Junction: j0
+		module j0
+		exports
+		
+			channel enter, interrupt
+			
+			D__(id__,
+					    const_UR_ur_n_waypoints) = 
+				dbisim(let
+					Inactive 	= share__choice(enter -> SKIP [] terminate -> SKIP) ; Active
+					
+					Active 		= share__choice(interrupt -> SKIP) ; Inactive
+				within
+					Inactive [| {terminate} |> SKIP)
+				
+			VS_O__(id__,
+					    const_UR_ur_n_waypoints) = D__(id__,
+					    const_UR_ur_n_waypoints)
+		
+		endmodule
+		----------------------------------------------------------------------
+		
+		
+		----------------------------------------------------------------------
+		-- Junction: j1
+		module j1
+		exports
+		
+			channel enter, interrupt
+			
+			D__(id__,
+					    const_UR_ur_n_waypoints) = 
+				dbisim(let
+					Inactive 	= share__choice(enter -> SKIP [] terminate -> SKIP) ; Active
+					
+					Active 		= share__choice(interrupt -> SKIP) ; Inactive
+				within
+					Inactive [| {terminate} |> SKIP)
+				
+			VS_O__(id__,
+					    const_UR_ur_n_waypoints) = D__(id__,
+					    const_UR_ur_n_waypoints)
+		
+		endmodule
+		----------------------------------------------------------------------
+		
+		
+		----------------------------------------------------------------------
+		-- State: moveL_with_t
+		module moveL_with_t
+		
+		enterSS = {}
+		
+		enteredSS = {}
+		
+		exports
+		
+			--  Declarations
+			
+			channel enter, entered, interrupt
+			channel enteredL, enteredR
+			
+							
+			
+			--	Nodes
+			-- declaring all nodes
+			
+			
+			--	Rule: behaviours(Node)
+			--  Note that FDR has problems with efficiently compiling the process below
+			-- 	if using a different recursion pattern.
+			D__(id__,
+					    const_UR_ur_n_waypoints) = 
+			dbisim(let
+				-- IMPLEMENTATION NOTE: 
+				-- The following should be defined as: Inactive = share__choice(Activation [] Termination),
+				-- however FDR struggles with that form in certain cases. So we use the exception operator
+				-- instead to 'terminate'.
+				
+				Inactive 	= share__choice(enter -> SKIP [] terminate -> SKIP) ; Active
+				
+				Termination = terminate -> SKIP
+				
+				Active 		= share__choice(get_ur_move?ur_move -> true&CALL__moveL_with_t(
+							id__,
+						    const_UR_ur_n_waypoints,
+							UR_move_jd1(ur_move),
+							UR_move_jd2(ur_move),
+							UR_move_goal_time(ur_move)
+						)) ; 
+						 	  Behaviour ; 
+						 	  share__choice(exit -> SKIP) ; SKIP ; 
+						 	  share__choice(exited -> SKIP) ; Inactive
+			
+				Behaviour 	= entered -> During
+				During 		= ((SKIP ; SStop) /\ interrupt -> SKIP)
+			within
+				Inactive [| {terminate} |> SKIP)
+				
+			VS_O__(id__,
+					    const_UR_ur_n_waypoints) = 
+			dbisim(let
+				Inactive 	= share__choice(enter -> SKIP [] terminate -> SKIP) ; Active
+				
+				Termination = terminate -> SKIP
+				
+				Active 		= share__choice(get_ur_move?ur_move -> true&CALL__moveL_with_t(
+							id__,
+						    const_UR_ur_n_waypoints,
+							UR_move_jd1(ur_move),
+							UR_move_jd2(ur_move),
+							UR_move_goal_time(ur_move)
+						)) ; 
+						 	  Behaviour ; 
+						 	  share__choice(exit -> SKIP) ; SKIP ; 
+						 	  share__choice(exited -> SKIP) ; Inactive
+			
+				Behaviour 	= entered -> During
+				During 		= ((SKIP ; SStop) /\ interrupt -> SKIP)
+			within
+				Inactive [| {terminate} |> SKIP)
+			
+		
+		endmodule
+		----------------------------------------------------------------------
+		
+		
+		----------------------------------------------------------------------
+		-- State: moveJ
+		module moveJ
+		
+		enterSS = {}
+		
+		enteredSS = {}
+		
+		exports
+		
+			--  Declarations
+			
+			channel enter, entered, interrupt
+			channel enteredL, enteredR
+			
+							
+			
+			--	Nodes
+			-- declaring all nodes
+			
+			
+			--	Rule: behaviours(Node)
+			--  Note that FDR has problems with efficiently compiling the process below
+			-- 	if using a different recursion pattern.
+			D__(id__,
+					    const_UR_ur_n_waypoints) = 
+			dbisim(let
+				-- IMPLEMENTATION NOTE: 
+				-- The following should be defined as: Inactive = share__choice(Activation [] Termination),
+				-- however FDR struggles with that form in certain cases. So we use the exception operator
+				-- instead to 'terminate'.
+				
+				Inactive 	= share__choice(enter -> SKIP [] terminate -> SKIP) ; Active
+				
+				Termination = terminate -> SKIP
+				
+				Active 		= share__choice(get_ur_move?ur_move -> true&CALL__moveJ(
+							id__,
+						    const_UR_ur_n_waypoints,
+							UR_move_jd1(ur_move),
+							UR_move_jd2(ur_move),
+							UR_move_goal_time(ur_move)
+						)) ; 
+						 	  Behaviour ; 
+						 	  share__choice(exit -> SKIP) ; SKIP ; 
+						 	  share__choice(exited -> SKIP) ; Inactive
+			
+				Behaviour 	= entered -> During
+				During 		= ((SKIP ; SStop) /\ interrupt -> SKIP)
+			within
+				Inactive [| {terminate} |> SKIP)
+				
+			VS_O__(id__,
+					    const_UR_ur_n_waypoints) = 
+			dbisim(let
+				Inactive 	= share__choice(enter -> SKIP [] terminate -> SKIP) ; Active
+				
+				Termination = terminate -> SKIP
+				
+				Active 		= share__choice(get_ur_move?ur_move -> true&CALL__moveJ(
+							id__,
+						    const_UR_ur_n_waypoints,
+							UR_move_jd1(ur_move),
+							UR_move_jd2(ur_move),
+							UR_move_goal_time(ur_move)
+						)) ; 
+						 	  Behaviour ; 
+						 	  share__choice(exit -> SKIP) ; SKIP ; 
+						 	  share__choice(exited -> SKIP) ; Inactive
+			
+				Behaviour 	= entered -> During
+				During 		= ((SKIP ; SStop) /\ interrupt -> SKIP)
+			within
+				Inactive [| {terminate} |> SKIP)
+			
+		
+		endmodule
+		----------------------------------------------------------------------
+		
+		
+		----------------------------------------------------------------------
+		-- Junction: j2
+		module j2
+		exports
+		
+			channel enter, interrupt
+			
+			D__(id__,
+					    const_UR_ur_n_waypoints) = 
+				dbisim(let
+					Inactive 	= share__choice(enter -> SKIP [] terminate -> SKIP) ; Active
+					
+					Active 		= share__choice(interrupt -> SKIP) ; Inactive
+				within
+					Inactive [| {terminate} |> SKIP)
+				
+			VS_O__(id__,
+					    const_UR_ur_n_waypoints) = D__(id__,
+					    const_UR_ur_n_waypoints)
+		
+		endmodule
+		----------------------------------------------------------------------
+		
+		
+		----------------------------------------------------------------------
+		-- Junction: j3
+		module j3
+		exports
+		
+			channel enter, interrupt
+			
+			D__(id__,
+					    const_UR_ur_n_waypoints) = 
+				dbisim(let
+					Inactive 	= share__choice(enter -> SKIP [] terminate -> SKIP) ; Active
+					
+					Active 		= share__choice(interrupt -> SKIP) ; Inactive
+				within
+					Inactive [| {terminate} |> SKIP)
+				
+			VS_O__(id__,
+					    const_UR_ur_n_waypoints) = D__(id__,
+					    const_UR_ur_n_waypoints)
+		
+		endmodule
+		----------------------------------------------------------------------
+		
+		
+		----------------------------------------------------------------------
+		-- Junction: j4
+		module j4
+		exports
+		
+			channel enter, interrupt
+			
+			D__(id__,
+					    const_UR_ur_n_waypoints) = 
+				dbisim(let
+					Inactive 	= share__choice(enter -> SKIP [] terminate -> SKIP) ; Active
+					
+					Active 		= share__choice(interrupt -> SKIP) ; Inactive
+				within
+					Inactive [| {terminate} |> SKIP)
+				
+			VS_O__(id__,
+					    const_UR_ur_n_waypoints) = D__(id__,
+					    const_UR_ur_n_waypoints)
+		
+		endmodule
+		----------------------------------------------------------------------
+		
+		
+		
+		--	Rule: behaviours(Node)
+		--  Note that FDR has problems with efficiently compiling the process below
+		-- 	if using a different recursion pattern.
+		D__(id__,
+				    const_UR_ur_n_waypoints) = 
+		dbisim(let
+			-- IMPLEMENTATION NOTE: 
+			-- The following should be defined as: Inactive = share__choice(Activation [] Termination),
+			-- however FDR struggles with that form in certain cases. So we use the exception operator
+			-- instead to 'terminate'.
+			
+			Inactive 	= share__choice(enter -> SKIP [] terminate -> SKIP) ; Active
+			
+			Termination = terminate -> SKIP
+			
+			Active 		= SKIP ; 
+					 	  Behaviour ; 
+					 	  share__choice(exit -> SKIP) ; SKIP ; 
+					 	  share__choice(exited -> SKIP) ; Inactive
+		
+		
+			Behaviour 	= dbisim(
+				((
+				 (((let
+				 	-- IMPLEMENTATION NOTE:
+				 	-- Here the 'enter' channel set is calculated explicitly because of the use of CSPM 
+				 	-- modules for defining the semantics of each node.
+				 	enterSS = {|
+				 	i0::enter,
+				 	moveP::enter,
+				 	check_big_dist::enter,
+				 	moveL::enter,
+				 	f0::enter,
+				 	j0::enter,
+				 	j1::enter,
+				 	moveL_with_t::enter,
+				 	moveJ::enter,
+				 	j2::enter,
+				 	j3::enter,
+				 	j4::enter
+				 	|}
+				 	hideSet = union(enterSS,{|exit,exited,internal__|})
+				 within 
+				 	((let
+				 		-- IMPLEMENTATION NOTE: the channel set 'enter' is calculated explicitly
+				 		-- because CSPM modules are used for the semantics of Node.
+				 		flowevts = union(enterSS,{|exit,exited,interrupt|})
+				 		transSync = {|internal__.NID_j4,internal__.NID_j4,internal__.NID_check_big_dist,internal__.NID_j1,internal__.NID_j1,internal__.NID_j0,internal__.NID_j0,internal__.NID_j2,internal__.NID_j2,internal__.NID_moveL,internal__.NID_moveL_with_t,internal__.NID_moveP,internal__.NID_j3,internal__.NID_moveJ,internal__.NID_i0|}
+				 	within
+				 		((
+				 		 (((-- RULE composeNodes(nc:NodeContainer)^nops : CSPProcess
+				 		   i0::D__(id__,
+				 		   		    const_UR_ur_n_waypoints)
+				 		   [| { share__, terminate } |] (
+				 		   moveP::D__(id__,
+				 		   		    const_UR_ur_n_waypoints)
+				 		   [| { share__, terminate } |] (
+				 		   check_big_dist::D__(id__,
+				 		   		    const_UR_ur_n_waypoints)
+				 		   [| { share__, terminate } |] (
+				 		   moveL::D__(id__,
+				 		   		    const_UR_ur_n_waypoints)
+				 		   [| { share__, terminate } |] (
+				 		   f0::D__(id__,
+				 		   		    const_UR_ur_n_waypoints)
+				 		   [| { share__, terminate } |] (
+				 		   j0::D__(id__,
+				 		   		    const_UR_ur_n_waypoints)
+				 		   [| { share__, terminate } |] (
+				 		   j1::D__(id__,
+				 		   		    const_UR_ur_n_waypoints)
+				 		   [| { share__, terminate } |] (
+				 		   moveL_with_t::D__(id__,
+				 		   		    const_UR_ur_n_waypoints)
+				 		   [| { share__, terminate } |] (
+				 		   moveJ::D__(id__,
+				 		   		    const_UR_ur_n_waypoints)
+				 		   [| { share__, terminate } |] (
+				 		   j2::D__(id__,
+				 		   		    const_UR_ur_n_waypoints)
+				 		   [| { share__, terminate } |] (
+				 		   j3::D__(id__,
+				 		   		    const_UR_ur_n_waypoints)
+				 		   [| { share__, terminate } |] (
+				 		   j4::D__(id__,
+				 		   		    const_UR_ur_n_waypoints)
+				 		   )
+				 		   )
+				 		   )
+				 		   )
+				 		   )
+				 		   )
+				 		   )
+				 		   )
+				 		   )
+				 		   )
+				 		   )
+				 		 )
+				 		 [[moveP::interrupt <- x__ | x__ <- {|interrupt,internal__.NID_moveP|}]]
+				 		 [[check_big_dist::interrupt <- x__ | x__ <- {|interrupt,internal__.NID_check_big_dist|}]]
+				 		 [[moveL::interrupt <- x__ | x__ <- {|interrupt,internal__.NID_moveL|}]]
+				 		 [[f0::interrupt <- x__ | x__ <- {|interrupt|}]]
+				 		 [[moveL_with_t::interrupt <- x__ | x__ <- {|interrupt,internal__.NID_moveL_with_t|}]]
+				 		 [[moveJ::interrupt <- x__ | x__ <- {|interrupt,internal__.NID_moveJ|}]]
+				 		 [[i0::interrupt <- x__ | x__ <- {|internal__.NID_i0|}]]
+				 		 [[j0::interrupt <- x__ | x__ <- {|internal__.NID_j0,internal__.NID_j0|}]]
+				 		 [[j1::interrupt <- x__ | x__ <- {|internal__.NID_j1,internal__.NID_j1|}]]
+				 		 [[j2::interrupt <- x__ | x__ <- {|internal__.NID_j2,internal__.NID_j2|}]]
+				 		 [[j3::interrupt <- x__ | x__ <- {|internal__.NID_j3|}]]
+				 		 [[j4::interrupt <- x__ | x__ <- {|internal__.NID_j4,internal__.NID_j4|}]]
+				 		 )
+				 		  [[ share__ <- x__ | x__ <- {| share__ |} ]] 
+				 		  [[set_big_dist <- setL_big_dist,set_ur_move <- setL_ur_move]]
+				 		 )
+				 		 [| union(union(union(flowevts,transSync),{terminate}),{|share__
+				 		 			,setL_big_dist
+				 		 			,setL_ur_move
+				 		|}) |]
+				 		 ((i0::enter -> Transitions(id__,
+				 		 		    const_UR_ur_n_waypoints))
+				 		  [[ share__ <- x__ | x__ <- {| share__,setL_big_dist,setL_ur_move |} ]]
+				 		 )
+				 		)[[setL_big_dist <- set_big_dist,setL_ur_move <- set_ur_move]]
+				 		)
+				 	)
+				 	 \ hideSet)
+				 	[[
+				 		move__.x____ <- move,
+				 		done__.x____ <- done,
+				 		out_of_sync__.x____ <- out_of_sync
+				 		| x____ <- NIDS
+				 	]]
+				 )
+				 )
+				  [[ share__ <- x__ | x__ <- {| share__,setR_ur_curr_waypoint,setR_sys_state,setR_big_dist,setR_ur_move |} ]] 
+				  [[set_ur_curr_waypoint <- setL_ur_curr_waypoint,set_sys_state <- setL_sys_state,set_big_dist <- setL_big_dist,set_ur_move <- setL_ur_move]]
+				 )
+				 [| union(union(enteredSS,{| interrupt, terminate |}),{|share__
+				 			,setL_ur_curr_waypoint
+				 			,setL_sys_state
+				 			,setL_big_dist
+				 			,setL_ur_move
+				 			,setR_ur_curr_waypoint
+				 			 			,setR_sys_state
+				 			 			,setR_big_dist
+				 			 			,setR_ur_move
+				 			|}) |]
+				 ((During)
+				  [[ share__ <- x__ | x__ <- {| share__,setL_ur_curr_waypoint,setL_sys_state,setL_big_dist,setL_ur_move |} ]]
+				  [[set_ur_curr_waypoint <- setR_ur_curr_waypoint,set_sys_state <- setR_sys_state,set_big_dist <- setR_big_dist,set_ur_move <- setR_ur_move]]
+				 )
+				)[[setL_ur_curr_waypoint <- set_ur_curr_waypoint,setL_sys_state <- set_sys_state,setL_big_dist <- set_big_dist,setL_ur_move <- set_ur_move]]
+				 [[setR_ur_curr_waypoint <- set_ur_curr_waypoint,setR_sys_state <- set_sys_state,setR_big_dist <- set_big_dist,setR_ur_move <- set_ur_move]]
+				)\union(enteredSS,{terminate}) 
+			)
+			During 		= share__choice(([] e__ : enteredSS @ e__ -> SKIP))
+					 	  ; entered -> ((CRUN(enteredSS) ||| SKIP ; SStop) /\ interrupt -> share__choice(terminate -> SKIP))
+		within
+			Inactive [| {terminate} |> SKIP)
+			
+		VS_O__(id__,
+				    const_UR_ur_n_waypoints) = 
+		dbisim(let
+			Inactive 	= share__choice(enter -> SKIP [] terminate -> SKIP) ; Active
+			
+			Termination = terminate -> SKIP
+			
+			Active 		= SKIP ; 
+					 	  Behaviour ; 
+					 	  share__choice(exit -> SKIP) ; SKIP ; 
+					 	  share__choice(exited -> SKIP) ; Inactive
+		
+		
+			Behaviour 	= dbisim(
+				((
+				 (((let
+				 	-- IMPLEMENTATION NOTE:
+				 	-- Here the 'enter' channel set is calculated explicitly because of the use of CSPM 
+				 	-- modules for defining the semantics of each node.
+				 	enterSS = {|
+				 	i0::enter,
+				 	moveP::enter,
+				 	check_big_dist::enter,
+				 	moveL::enter,
+				 	f0::enter,
+				 	j0::enter,
+				 	j1::enter,
+				 	moveL_with_t::enter,
+				 	moveJ::enter,
+				 	j2::enter,
+				 	j3::enter,
+				 	j4::enter
+				 	|}
+				 	hideSet = union(enterSS,{|exit,exited,internal__|})
+				 within 
+				 	((let
+				 		-- IMPLEMENTATION NOTE: the channel set 'enter' is calculated explicitly
+				 		-- because CSPM modules are used for the semantics of Node.
+				 		flowevts = union(enterSS,{|exit,exited,interrupt|})
+				 		transSync = {|internal__.NID_j4,internal__.NID_j4,internal__.NID_check_big_dist,internal__.NID_j1,internal__.NID_j1,internal__.NID_j0,internal__.NID_j0,internal__.NID_j2,internal__.NID_j2,internal__.NID_moveL,internal__.NID_moveL_with_t,internal__.NID_moveP,internal__.NID_j3,internal__.NID_moveJ,internal__.NID_i0|}
+				 	within
+				 		((
+				 		 (((-- RULE composeNodes(nc:NodeContainer)^nops : CSPProcess
+				 		   i0::VS_O__(id__,
+				 		   		    const_UR_ur_n_waypoints)
+				 		   [| { share__, terminate } |] (
+				 		   moveP::VS_O__(id__,
+				 		   		    const_UR_ur_n_waypoints)
+				 		   [| { share__, terminate } |] (
+				 		   check_big_dist::VS_O__(id__,
+				 		   		    const_UR_ur_n_waypoints)
+				 		   [| { share__, terminate } |] (
+				 		   moveL::VS_O__(id__,
+				 		   		    const_UR_ur_n_waypoints)
+				 		   [| { share__, terminate } |] (
+				 		   f0::VS_O__(id__,
+				 		   		    const_UR_ur_n_waypoints)
+				 		   [| { share__, terminate } |] (
+				 		   j0::VS_O__(id__,
+				 		   		    const_UR_ur_n_waypoints)
+				 		   [| { share__, terminate } |] (
+				 		   j1::VS_O__(id__,
+				 		   		    const_UR_ur_n_waypoints)
+				 		   [| { share__, terminate } |] (
+				 		   moveL_with_t::VS_O__(id__,
+				 		   		    const_UR_ur_n_waypoints)
+				 		   [| { share__, terminate } |] (
+				 		   moveJ::VS_O__(id__,
+				 		   		    const_UR_ur_n_waypoints)
+				 		   [| { share__, terminate } |] (
+				 		   j2::VS_O__(id__,
+				 		   		    const_UR_ur_n_waypoints)
+				 		   [| { share__, terminate } |] (
+				 		   j3::VS_O__(id__,
+				 		   		    const_UR_ur_n_waypoints)
+				 		   [| { share__, terminate } |] (
+				 		   j4::VS_O__(id__,
+				 		   		    const_UR_ur_n_waypoints)
+				 		   )
+				 		   )
+				 		   )
+				 		   )
+				 		   )
+				 		   )
+				 		   )
+				 		   )
+				 		   )
+				 		   )
+				 		   )
+				 		 )
+				 		 [[moveP::interrupt <- x__ | x__ <- {|interrupt,internal__.NID_moveP|}]]
+				 		 [[check_big_dist::interrupt <- x__ | x__ <- {|interrupt,internal__.NID_check_big_dist|}]]
+				 		 [[moveL::interrupt <- x__ | x__ <- {|interrupt,internal__.NID_moveL|}]]
+				 		 [[f0::interrupt <- x__ | x__ <- {|interrupt|}]]
+				 		 [[moveL_with_t::interrupt <- x__ | x__ <- {|interrupt,internal__.NID_moveL_with_t|}]]
+				 		 [[moveJ::interrupt <- x__ | x__ <- {|interrupt,internal__.NID_moveJ|}]]
+				 		 [[i0::interrupt <- x__ | x__ <- {|internal__.NID_i0|}]]
+				 		 [[j0::interrupt <- x__ | x__ <- {|internal__.NID_j0,internal__.NID_j0|}]]
+				 		 [[j1::interrupt <- x__ | x__ <- {|internal__.NID_j1,internal__.NID_j1|}]]
+				 		 [[j2::interrupt <- x__ | x__ <- {|internal__.NID_j2,internal__.NID_j2|}]]
+				 		 [[j3::interrupt <- x__ | x__ <- {|internal__.NID_j3|}]]
+				 		 [[j4::interrupt <- x__ | x__ <- {|internal__.NID_j4,internal__.NID_j4|}]]
+				 		 )
+				 		  [[ share__ <- x__ | x__ <- {| share__ |} ]] 
+				 		  [[set_big_dist <- setL_big_dist,set_ur_move <- setL_ur_move]]
+				 		 )
+				 		 [| union(union(union(flowevts,transSync),{terminate}),{|share__
+				 		 			,setL_big_dist
+				 		 			,setL_ur_move
+				 		|}) |]
+				 		 ((i0::enter -> Transitions(id__,
+				 		 		    const_UR_ur_n_waypoints))
+				 		  [[ share__ <- x__ | x__ <- {| share__,setL_big_dist,setL_ur_move |} ]]
+				 		 )
+				 		)[[setL_big_dist <- set_big_dist,setL_ur_move <- set_ur_move]]
+				 		)
+				 	)
+				 	 \ hideSet)
+				 	[[
+				 		move__.x____ <- move,
+				 		done__.x____ <- done,
+				 		out_of_sync__.x____ <- out_of_sync
+				 		| x____ <- NIDS
+				 	]]
+				 )
+				 )
+				  [[ share__ <- x__ | x__ <- {| share__,setR_ur_curr_waypoint,setR_sys_state,setR_big_dist,setR_ur_move |} ]] 
+				  [[set_ur_curr_waypoint <- setL_ur_curr_waypoint,set_sys_state <- setL_sys_state,set_big_dist <- setL_big_dist,set_ur_move <- setL_ur_move]]
+				 )
+				 [| union(union(enteredSS,{| interrupt, terminate |}),{|share__
+				 			,setL_ur_curr_waypoint
+				 			,setL_sys_state
+				 			,setL_big_dist
+				 			,setL_ur_move
+				 			,setR_ur_curr_waypoint
+				 			 			,setR_sys_state
+				 			 			,setR_big_dist
+				 			 			,setR_ur_move
+				 			|}) |]
+				 ((During)
+				  [[ share__ <- x__ | x__ <- {| share__,setL_ur_curr_waypoint,setL_sys_state,setL_big_dist,setL_ur_move |} ]]
+				  [[set_ur_curr_waypoint <- setR_ur_curr_waypoint,set_sys_state <- setR_sys_state,set_big_dist <- setR_big_dist,set_ur_move <- setR_ur_move]]
+				 )
+				)[[setL_ur_curr_waypoint <- set_ur_curr_waypoint,setL_sys_state <- set_sys_state,setL_big_dist <- set_big_dist,setL_ur_move <- set_ur_move]]
+				 [[setR_ur_curr_waypoint <- set_ur_curr_waypoint,setR_sys_state <- set_sys_state,setR_big_dist <- set_big_dist,setR_ur_move <- set_ur_move]]
+				)\{terminate} 
+			)
+			During 		= share__choice(([] e__ : enteredSS @ e__ -> SKIP))
+					 	  ; entered -> ((CRUN(enteredSS) ||| SKIP ; SStop) /\ interrupt -> share__choice(terminate -> SKIP))
+		within
+			Inactive [| {terminate} |> SKIP)
+		
+		Transitions(id__,
+				    const_UR_ur_n_waypoints) = ((let
+			Trans = share__choice(get_big_dist?big_dist -> get_ur_move?ur_move -> (
+				((share__ -> SKIP
+				 [] dbisim(((not (UR_move_blending(ur_move))))&(internal__!NID_j4 -> SKIP ;  ((SKIP ; check_big_dist::enter -> SKIP))))
+				 	 [] dbisim((UR_move_blending(ur_move))&(internal__!NID_j4 -> SKIP ;  ((SKIP ; j0::enter -> SKIP))))
+				 	 [] dbisim((true)&(internal__!NID_check_big_dist -> SKIP ;  share__choice(exit -> SKIP) ; (share__choice(exited -> SKIP) ; SKIP ; j1::enter -> SKIP)))
+				 	 [] dbisim(((not (big_dist)))&(internal__!NID_j1 -> SKIP ;  ((SKIP ; moveL_with_t::enter -> SKIP))))
+				 	 [] dbisim((big_dist)&(internal__!NID_j1 -> SKIP ;  ((SKIP ; moveL::enter -> SKIP))))
+				 	 [] dbisim(((not (UR_move_large_offset(ur_move))))&(internal__!NID_j0 -> SKIP ;  ((SKIP ; moveJ::enter -> SKIP))))
+				 	 [] dbisim((UR_move_large_offset(ur_move))&(internal__!NID_j0 -> SKIP ;  ((SKIP ; j2::enter -> SKIP))))
+				 	 [] dbisim((UR_move_sharp_corner(ur_move))&(internal__!NID_j2 -> SKIP ;  ((SKIP ; moveL_with_t::enter -> SKIP))))
+				 	 [] dbisim(((not (UR_move_sharp_corner(ur_move))))&(internal__!NID_j2 -> SKIP ;  ((SKIP ; moveP::enter -> SKIP))))
+				 	 [] dbisim((true)&(internal__!NID_moveL -> SKIP ;  share__choice(exit -> SKIP) ; (share__choice(exited -> SKIP) ; SKIP ; f0::enter -> SKIP)))
+				 	 [] dbisim((true)&(internal__!NID_moveL_with_t -> SKIP ;  share__choice(exit -> SKIP) ; (share__choice(exited -> SKIP) ; SKIP ; j3::enter -> SKIP)))
+				 	 [] dbisim((true)&(internal__!NID_moveP -> SKIP ;  share__choice(exit -> SKIP) ; (share__choice(exited -> SKIP) ; SKIP ; j3::enter -> SKIP)))
+				 	 [] dbisim((true)&(internal__!NID_j3 -> SKIP ;  ((SKIP ; f0::enter -> SKIP))))
+				 	 [] dbisim((true)&(internal__!NID_moveJ -> SKIP ;  share__choice(exit -> SKIP) ; (share__choice(exited -> SKIP) ; SKIP ; f0::enter -> SKIP)))
+				 	 [] dbisim((true)&(internal__!NID_i0 -> SKIP ;  ((SKIP ; j4::enter -> SKIP))))
+				 ) ; Trans)
+				 []
+				 (interrupt -> share__choice(exit -> SKIP) ; share__choice(exited -> terminate -> SKIP))
+				 []
+				 terminate -> SKIP
+			)
+			)
+		within
+			Trans
+		)
+		)
+		
+	
+	endmodule
+	----------------------------------------------------------------------
+	
+	
+	----------------------------------------------------------------------
+	-- State: check_time
+	module check_time
+	
+	enterSS = {}
+	
+	enteredSS = {}
+	
+	exports
+	
+		--  Declarations
+		
+		channel enter, entered, interrupt
+		channel enteredL, enteredR
+		
+						
+		
+		--	Nodes
+		-- declaring all nodes
+		
+		
+		--	Rule: behaviours(Node)
+		--  Note that FDR has problems with efficiently compiling the process below
+		-- 	if using a different recursion pattern.
+		D__(id__,
+				    const_UR_ur_n_waypoints) = 
+		dbisim(let
+			-- IMPLEMENTATION NOTE: 
+			-- The following should be defined as: Inactive = share__choice(Activation [] Termination),
+			-- however FDR struggles with that form in certain cases. So we use the exception operator
+			-- instead to 'terminate'.
+			
+			Inactive 	= share__choice(enter -> SKIP [] terminate -> SKIP) ; Active
+			
+			Termination = terminate -> SKIP
+			
+			Active 		= SKIP ; 
+					 	  Behaviour ; 
+					 	  share__choice(exit -> SKIP) ; SKIP ; 
+					 	  share__choice(exited -> SKIP) ; Inactive
+		
+			Behaviour 	= entered -> During
+			During 		= ((SKIP ; SStop) /\ interrupt -> SKIP)
+		within
+			Inactive [| {terminate} |> SKIP)
+			
+		VS_O__(id__,
+				    const_UR_ur_n_waypoints) = 
+		dbisim(let
+			Inactive 	= share__choice(enter -> SKIP [] terminate -> SKIP) ; Active
+			
+			Termination = terminate -> SKIP
+			
+			Active 		= SKIP ; 
+					 	  Behaviour ; 
+					 	  share__choice(exit -> SKIP) ; SKIP ; 
+					 	  share__choice(exited -> SKIP) ; Inactive
+		
+			Behaviour 	= entered -> During
+			During 		= ((SKIP ; SStop) /\ interrupt -> SKIP)
+		within
+			Inactive [| {terminate} |> SKIP)
+		
+	
+	endmodule
+	----------------------------------------------------------------------
+	
+	-- END of Nodes --
+	
+	-- Operation calls --
+	-- Only the undefined operations are declared here.
+	-- If the state machine is in isolation, all required operations will be undefined.
+	-- If it is in the context of a controller, the required operations not provided by the
+	-- controller will be declared here, and the defined operations will be defined in the
+	-- context of the Controller module, and therefore within scope of the state machine module.
+	CALL__moveL(id__,
+			    const_UR_ur_n_waypoints,
+				param_jd1,
+				param_jd2,
+				param_time) 	= moveLCall.param_jd1.param_jd2.param_time -> SKIP
+	CALL__moveP(id__,
+			    const_UR_ur_n_waypoints,
+				param_jd1,
+				param_jd2,
+				param_time) 	= movePCall.param_jd1.param_jd2.param_time -> SKIP
+	CALL__moveL_with_t(id__,
+			    const_UR_ur_n_waypoints,
+				param_jd1,
+				param_jd2,
+				param_time) 	= moveL_with_tCall.param_jd1.param_jd2.param_time -> SKIP
+	CALL__moveJ(id__,
+			    const_UR_ur_n_waypoints,
+				param_jd1,
+				param_jd2,
+				param_time) 	= moveJCall.param_jd1.param_jd2.param_time -> SKIP
+	
+	-- END of Operation calls --
+	
+	-- STM processes
+	STM(id__,
+			    const_UR_ur_n_waypoints) = -- RULE: [[stm:StateMachineDef]]_STM^nops : CSPProcess
+	( 
+		(
+			(
+				(IteratedStateful(id__,
+						    const_UR_ur_n_waypoints) \ {terminate} ; share__choice(terminate -> SKIP))
+			 	[[ share__ <- x__ | x__ <- {|set_EXT_sys_state|} ]]
+			)
+		[| {share__} |]
+		SKIP
+		)
+		[| union(sharedVarSync,{terminate}) |]
+		dbisim(sharedVarMemory(id__,
+				    const_UR_ur_n_waypoints))
+	)\sharedVarHide
+	
+	STM_VS_O(id__,
+			    const_UR_ur_n_waypoints) = -- RULE: [[stm:StateMachineDef]]_STM^nops : CSPProcess
+	( 
+		(
+			(
+				(IteratedStateful_VS_O(id__,
+						    const_UR_ur_n_waypoints) \ {terminate} ; share__choice(terminate -> SKIP))
+			 	[[ share__ <- x__ | x__ <- {|set_EXT_sys_state|} ]]
+			)
+		[| {share__} |]
+		SKIP
+		)
+		[| union(sharedVarSync,{terminate}) |]
+		dbisim(sharedVarMemory(id__,
+				    const_UR_ur_n_waypoints))
+	)\sharedVarHide
+	
+	-- Transitions
+	Transitions(id__,
+			    const_UR_ur_n_waypoints) = ((let
+		Trans = share__choice(get_ur_curr_waypoint?ur_curr_waypoint -> get_sys_state?sys_state -> get_ur_move?ur_move -> (
+			((share__ -> SKIP
+			 [] dbisim((true)&(internal__!NID_i0 -> SKIP ;  ((SKIP ; wait_for_move::enter -> SKIP))))
+			 	 [] dbisim(((ur_curr_waypoint>=const_UR_ur_n_waypoints))&(internal__!NID_j0 -> SKIP ;  ((SKIP ; reset_UR::enter -> SKIP))))
+			 	 [] dbisim(((ur_curr_waypoint<const_UR_ur_n_waypoints))&(internal__!NID_j0 -> SKIP ;  ((share__choice(share__choice(get_ur_curr_waypoint?ur_curr_waypoint -> true & (share__choice(set_ur_curr_waypoint!Plus(ur_curr_waypoint, 1, core_nat) -> SKIP)))) ; wait_for_move::enter -> SKIP))))
+			 	 [] dbisim((true)&(internal__!NID_reset_UR -> SKIP ;  share__choice(exit -> SKIP) ; (share__choice(exited -> SKIP) ; SKIP ; wait_for_move::enter -> SKIP)))
+			 	 [] dbisim((move__!NID_wait_for_move.in?ur_move:{ur_move|ur_move <- UR_move, ((sys_state==SystemState_working) or (sys_state==SystemState_EXAX_finished))} -> share__choice(set_ur_move!ur_move -> SKIP) ;  share__choice(exit -> SKIP) ; (share__choice(exited -> SKIP) ; SKIP ; check_time::enter -> SKIP)))
+			 	 [] dbisim(((UR_move_goal_time(ur_move)>=0))&(internal__!NID_check_time -> SKIP ;  share__choice(exit -> SKIP) ; (share__choice(exited -> SKIP) ; SKIP ; choose_cmd::enter -> SKIP)))
+			 	 [] dbisim(((UR_move_goal_time(ur_move)<0))&(internal__!NID_check_time -> SKIP ;  share__choice(exit -> SKIP) ; (share__choice(exited -> SKIP) ; true&(share__choice(out_of_sync.out -> SKIP)) ; f0::enter -> SKIP)))
+			 	 [] dbisim((true)&(internal__!NID_choose_cmd -> SKIP ;  share__choice(exit -> SKIP) ; (share__choice(exited -> SKIP) ; SKIP ; j0::enter -> SKIP)))
+			 	 [] dbisim((move__!NID_wait_for_move.in?ur_move:{ur_move|ur_move <- UR_move, ((sys_state==SystemState_wait_for_start) or (sys_state==SystemState_UR_finished))} -> share__choice(set_ur_move!ur_move -> SKIP) ;  share__choice(exit -> SKIP) ; (share__choice(exited -> SKIP) ; SKIP ; wait_for_move::enter -> SKIP)))
+			 ) ; Trans)
+			 []
+			 (interrupt -> share__choice(exit -> SKIP) ; share__choice(exited -> terminate -> SKIP))
+			 []
+			 terminate -> SKIP
+		)
+		)
+	within
+		Trans
+	)
+	)
+	
+	-- Stateful
+	-- RULE: Stateful(stm:StateMachineBody) : CSPProcess
+	
+	-- Named process definitions
+	MachineBody(id__,
+			    const_UR_ur_n_waypoints) = 
+		dbisim((
+		let
+			finalNodesEntered = {|f0::entered|}
+		within
+			((let
+				-- IMPLEMENTATION NOTE:
+				-- Here the 'enter' channel set is calculated explicitly because of the use of CSPM 
+				-- modules for defining the semantics of each node.
+				enterSS = {|
+				i0::enter,
+				wait_for_move::enter,
+				reset_UR::enter,
+				j0::enter,
+				f0::enter,
+				choose_cmd::enter,
+				check_time::enter
+				|}
+				hideSet = union(enterSS,{|exit,exited,internal__|})
+			within 
+				((let
+					-- IMPLEMENTATION NOTE: the channel set 'enter' is calculated explicitly
+					-- because CSPM modules are used for the semantics of Node.
+					flowevts = union(enterSS,{|exit,exited,interrupt|})
+					transSync = {|internal__.NID_i0,internal__.NID_j0,internal__.NID_j0,internal__.NID_reset_UR,move__.NID_wait_for_move.in,internal__.NID_check_time,internal__.NID_check_time,internal__.NID_choose_cmd,move__.NID_wait_for_move.in|}
+				within
+					((
+					 (((-- RULE composeNodes(nc:NodeContainer)^nops : CSPProcess
+					   i0::D__(id__,
+					   		    const_UR_ur_n_waypoints)
+					   [| { share__, terminate } |] (
+					   wait_for_move::D__(id__,
+					   		    const_UR_ur_n_waypoints)
+					   [| { share__, terminate } |] (
+					   reset_UR::D__(id__,
+					   		    const_UR_ur_n_waypoints)
+					   [| { share__, terminate } |] (
+					   j0::D__(id__,
+					   		    const_UR_ur_n_waypoints)
+					   [| { share__, terminate } |] (
+					   f0::D__(id__,
+					   		    const_UR_ur_n_waypoints)
+					   [| { share__, terminate } |] (
+					   choose_cmd::D__(id__,
+					   		    const_UR_ur_n_waypoints)
+					   [| { share__, terminate } |] (
+					   check_time::D__(id__,
+					   		    const_UR_ur_n_waypoints)
+					   )
+					   )
+					   )
+					   )
+					   )
+					   )
+					 )
+					 [[wait_for_move::interrupt <- x__ | x__ <- {|interrupt,move__.NID_wait_for_move.in,move__.NID_wait_for_move.in|}]]
+					 [[reset_UR::interrupt <- x__ | x__ <- {|interrupt,internal__.NID_reset_UR|}]]
+					 [[f0::interrupt <- x__ | x__ <- {|interrupt|}]]
+					 [[choose_cmd::interrupt <- x__ | x__ <- {|interrupt,internal__.NID_choose_cmd|}]]
+					 [[check_time::interrupt <- x__ | x__ <- {|interrupt,internal__.NID_check_time,internal__.NID_check_time|}]]
+					 [[i0::interrupt <- x__ | x__ <- {|internal__.NID_i0|}]]
+					 [[j0::interrupt <- x__ | x__ <- {|internal__.NID_j0,internal__.NID_j0|}]]
+					 )
+					  [[ share__ <- x__ | x__ <- {| share__,setR_ur_move |} ]] 
+					  [[set_ur_curr_waypoint <- setL_ur_curr_waypoint,set_sys_state <- setL_sys_state,set_ur_move <- setL_ur_move]]
+					 )
+					 [| union(union(union(flowevts,transSync),{terminate}),{|share__
+					 			,setL_ur_curr_waypoint
+					 			,setL_sys_state
+					 			,setL_ur_move
+					 			,setR_ur_move
+					 			|}) |]
+					 ((i0::enter -> Transitions(id__,
+					 		    const_UR_ur_n_waypoints))
+					  [[ share__ <- x__ | x__ <- {| share__,setL_ur_curr_waypoint,setL_sys_state,setL_ur_move |} ]]
+					  [[set_ur_move <- setR_ur_move]]
+					 )
+					)[[setL_ur_curr_waypoint <- set_ur_curr_waypoint,setL_sys_state <- set_sys_state,setL_ur_move <- set_ur_move]]
+					 [[setR_ur_move <- set_ur_move]]
+					)
+				)
+				 \ hideSet)
+				[[
+					move__.x____ <- move,
+					done__.x____ <- done,
+					out_of_sync__.x____ <- out_of_sync
+					| x____ <- NIDS
+				]]
+			)
+			 [| {| interrupt |} |] SKIP)
+		)
+		)
+	
+	Behaviour(id__,
+			    const_UR_ur_n_waypoints) = 
+		dbisim((MachineBody(id__,
+				    const_UR_ur_n_waypoints)\ enteredSS)
+		)
+	
+	IteratedBehaviour(id__,
+			    const_UR_ur_n_waypoints) = 
+		dbisim((MachineBody(id__,
+				    const_UR_ur_n_waypoints)\ enteredSS)
+		)
+	
+	Stateful(id__,
+			    const_UR_ur_n_waypoints) = 
+		((
+			(Behaviour(id__,
+					    const_UR_ur_n_waypoints) [| union(getsetLocalChannels,{terminate}) |] varMemory(id__,
+					    const_UR_ur_n_waypoints))
+		 	\getsetLocalChannels
+		)
+		)
+	
+	IteratedStateful(id__,
+			    const_UR_ur_n_waypoints) =
+		(dbisim(
+			sbisim(
+				dbisim(
+					sbisim(
+						dbisim(
+							sbisim(
+								Behaviour(id__,
+										    const_UR_ur_n_waypoints)
+								[| {|get_big_dist,set_big_dist,terminate|} |]
+								Memory_big_dist(true)
+							)\{|get_big_dist,set_big_dist|}
+						)
+						[| {|get_ur_move,set_ur_move,terminate|} |]
+						Memory_ur_move((true,true,true,0,0,0))
+					)\{|get_ur_move,set_ur_move|}
+				)
+				[| {|get_ur_curr_waypoint,set_ur_curr_waypoint,terminate|} |]
+				Memory_ur_curr_waypoint(0)
+			)\{|get_ur_curr_waypoint,set_ur_curr_waypoint|}
+		)
+		)
+	
+	-- Visible counterparts
+	MachineBody_VS_O(id__,
+			    const_UR_ur_n_waypoints) = 
+		dbisim((
+		let
+			finalNodesEntered = {|f0::entered|}
+		within
+			((let
+				-- IMPLEMENTATION NOTE:
+				-- Here the 'enter' channel set is calculated explicitly because of the use of CSPM 
+				-- modules for defining the semantics of each node.
+				enterSS = {|
+				i0::enter,
+				wait_for_move::enter,
+				reset_UR::enter,
+				j0::enter,
+				f0::enter,
+				choose_cmd::enter,
+				check_time::enter
+				|}
+				hideSet = union(enterSS,{|exit,exited,internal__|})
+			within 
+				((let
+					-- IMPLEMENTATION NOTE: the channel set 'enter' is calculated explicitly
+					-- because CSPM modules are used for the semantics of Node.
+					flowevts = union(enterSS,{|exit,exited,interrupt|})
+					transSync = {|internal__.NID_i0,internal__.NID_j0,internal__.NID_j0,internal__.NID_reset_UR,move__.NID_wait_for_move.in,internal__.NID_check_time,internal__.NID_check_time,internal__.NID_choose_cmd,move__.NID_wait_for_move.in|}
+				within
+					((
+					 (((-- RULE composeNodes(nc:NodeContainer)^nops : CSPProcess
+					   i0::VS_O__(id__,
+					   		    const_UR_ur_n_waypoints)
+					   [| { share__, terminate } |] (
+					   wait_for_move::VS_O__(id__,
+					   		    const_UR_ur_n_waypoints)
+					   [| { share__, terminate } |] (
+					   reset_UR::VS_O__(id__,
+					   		    const_UR_ur_n_waypoints)
+					   [| { share__, terminate } |] (
+					   j0::VS_O__(id__,
+					   		    const_UR_ur_n_waypoints)
+					   [| { share__, terminate } |] (
+					   f0::VS_O__(id__,
+					   		    const_UR_ur_n_waypoints)
+					   [| { share__, terminate } |] (
+					   choose_cmd::VS_O__(id__,
+					   		    const_UR_ur_n_waypoints)
+					   [| { share__, terminate } |] (
+					   check_time::VS_O__(id__,
+					   		    const_UR_ur_n_waypoints)
+					   )
+					   )
+					   )
+					   )
+					   )
+					   )
+					 )
+					 [[wait_for_move::interrupt <- x__ | x__ <- {|interrupt,move__.NID_wait_for_move.in,move__.NID_wait_for_move.in|}]]
+					 [[reset_UR::interrupt <- x__ | x__ <- {|interrupt,internal__.NID_reset_UR|}]]
+					 [[f0::interrupt <- x__ | x__ <- {|interrupt|}]]
+					 [[choose_cmd::interrupt <- x__ | x__ <- {|interrupt,internal__.NID_choose_cmd|}]]
+					 [[check_time::interrupt <- x__ | x__ <- {|interrupt,internal__.NID_check_time,internal__.NID_check_time|}]]
+					 [[i0::interrupt <- x__ | x__ <- {|internal__.NID_i0|}]]
+					 [[j0::interrupt <- x__ | x__ <- {|internal__.NID_j0,internal__.NID_j0|}]]
+					 )
+					  [[ share__ <- x__ | x__ <- {| share__,setR_ur_move |} ]] 
+					  [[set_ur_curr_waypoint <- setL_ur_curr_waypoint,set_sys_state <- setL_sys_state,set_ur_move <- setL_ur_move]]
+					 )
+					 [| union(union(union(flowevts,transSync),{terminate}),{|share__
+					 			,setL_ur_curr_waypoint
+					 			,setL_sys_state
+					 			,setL_ur_move
+					 			,setR_ur_move
+					 			|}) |]
+					 ((i0::enter -> Transitions(id__,
+					 		    const_UR_ur_n_waypoints))
+					  [[ share__ <- x__ | x__ <- {| share__,setL_ur_curr_waypoint,setL_sys_state,setL_ur_move |} ]]
+					  [[set_ur_move <- setR_ur_move]]
+					 )
+					)[[setL_ur_curr_waypoint <- set_ur_curr_waypoint,setL_sys_state <- set_sys_state,setL_ur_move <- set_ur_move]]
+					 [[setR_ur_move <- set_ur_move]]
+					)
+				)
+				 \ hideSet)
+				[[
+					move__.x____ <- move,
+					done__.x____ <- done,
+					out_of_sync__.x____ <- out_of_sync
+					| x____ <- NIDS
+				]]
+			)
+			 [| {| interrupt |} |] SKIP)
+		)
+		)
+	
+	Behaviour_VS_O(id__,
+			    const_UR_ur_n_waypoints) = 
+		dbisim((MachineBody_VS_O(id__,
+				    const_UR_ur_n_waypoints))
+		)
+	
+	IteratedBehaviour_VS_O(id__,
+			    const_UR_ur_n_waypoints) = 
+		dbisim((MachineBody_VS_O(id__,
+				    const_UR_ur_n_waypoints))
+		)
+	
+	Stateful_VS_O(id__,
+			    const_UR_ur_n_waypoints) = 
+		dbisim((
+			(Behaviour_VS_O(id__,
+					    const_UR_ur_n_waypoints) [| union(getsetLocalChannels,{terminate}) |] varMemory(id__,
+					    const_UR_ur_n_waypoints))
+		 	\getsetLocalChannels
+		)
+		)
+	
+	IteratedStateful_VS_O(id__,
+			    const_UR_ur_n_waypoints) =
+		(dbisim(
+			sbisim(
+				dbisim(
+					sbisim(
+						dbisim(
+							sbisim(
+								Behaviour_VS_O(id__,
+										    const_UR_ur_n_waypoints)
+								[| {|get_big_dist,set_big_dist,terminate|} |]
+								Memory_big_dist(true)
+							)\{|get_big_dist,set_big_dist|}
+						)
+						[| {|get_ur_move,set_ur_move,terminate|} |]
+						Memory_ur_move((true,true,true,0,0,0))
+					)\{|get_ur_move,set_ur_move|}
+				)
+				[| {|get_ur_curr_waypoint,set_ur_curr_waypoint,terminate|} |]
+				Memory_ur_curr_waypoint(0)
+			)\{|get_ur_curr_waypoint,set_ur_curr_waypoint|}
+		)
+		)
+	
+	-- END
+	
+	-- Memory
+	-- Memory variables
+	Memory_ur_curr_waypoint(ur_curr_waypoint) =
+		get_ur_curr_waypoint!ur_curr_waypoint -> Memory_ur_curr_waypoint(ur_curr_waypoint)
+		[]
+		set_ur_curr_waypoint?x__ -> Memory_ur_curr_waypoint(x__)
+		[]
+		terminate -> SKIP
+	Memory_ur_move(ur_move) =
+		get_ur_move!ur_move -> Memory_ur_move(ur_move)
+		[]
+		set_ur_move?x__ -> Memory_ur_move(x__)
+		[]
+		terminate -> SKIP
+	Memory_big_dist(big_dist) =
+		get_big_dist!big_dist -> Memory_big_dist(big_dist)
+		[]
+		set_big_dist?x__ -> Memory_big_dist(x__)
+		[]
+		terminate -> SKIP
+	
+	-- varMemory process
+	varMemory(id__,
+			    const_UR_ur_n_waypoints) = Memory_ur_curr_waypoint(0)
+	[| { terminate } |] (
+	Memory_ur_move((true,true,true,0,0,0))
+	[| { terminate } |] (
+	Memory_big_dist(true)
+	)
+	)
+	
+	getsetLocalChannels = {|get_ur_curr_waypoint,set_ur_curr_waypoint,get_ur_move,set_ur_move,get_big_dist,set_big_dist|}
+	
+	-- Definition of the behaviour of state machines (default, optimised, visible, visible and optimised)
+	FVS__(id__,
+			    const_UR_ur_n_waypoints) = STM_VS_O(id__,
+			    const_UR_ur_n_waypoints)
+	
+	D__(id__,
+			    const_UR_ur_n_waypoints) = STM(id__,
+			    const_UR_ur_n_waypoints) \ internal_events
+	O__(id__,
+			    const_UR_ur_n_waypoints) = sbisim(diamond(D__(id__,
+			    const_UR_ur_n_waypoints)))
+	VS__(id__,
+			    const_UR_ur_n_waypoints) = FVS__(id__,
+			    const_UR_ur_n_waypoints)
+	VS_O__(id__,
+			    const_UR_ur_n_waypoints) = sbisim(diamond(FVS__(id__,
+			    const_UR_ur_n_waypoints)))
+	HEXT__(id__,
+			    const_UR_ur_n_waypoints) = O__(id__,
+			    const_UR_ur_n_waypoints) [|shared_variable_events|] SKIP
+	HUP__(id__,
+			    const_UR_ur_n_waypoints) = O__(id__,
+			    const_UR_ur_n_waypoints) [|{share__}|] SKIP
+	
+	-- Shared memory
+	-- Shared memory variables
+	Memory_sys_state(sys_state) =
+		get_sys_state!sys_state -> Memory_sys_state(sys_state)
+		[]
+		set_sys_state?x__ -> Memory_sys_state(x__)
+		[]
+		set_EXT_sys_state?x__ -> Memory_sys_state(x__)
+		[]
+		terminate -> SKIP
+	
+	-- sharedVarMemory process
+	sharedVarMemory(id__,
+			    const_UR_ur_n_waypoints) = Memory_sys_state(SystemState_wait_for_start)
+	
+	sharedVarSync = {|get_sys_state,set_sys_state,set_EXT_sys_state|}
+	
+	sharedVarHide = {|get_sys_state|}
+endmodule

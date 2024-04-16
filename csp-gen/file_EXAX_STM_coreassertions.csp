@@ -1,7 +1,7 @@
 
 --
 -- RoboChart generator version 3.0.0.202311281716
--- Automatically generated on 14-04-2024 12:55:58
+-- Automatically generated on 16-04-2024 18:02:11
 --
 -- Iterated compression status: true
 -- Assertions compression status: false
@@ -14,7 +14,7 @@ P_EXAX = let
 	id__ = 0
 	
 	
-	const_EXAX_n_waypoints = 10
+	const_EXAX_n_waypoints = 3
 	
 within
 	EXAX::O__(

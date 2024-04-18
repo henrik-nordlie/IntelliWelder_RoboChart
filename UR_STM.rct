@@ -72,10 +72,8 @@ event out_of_sync
 		state moveP {
 			entry moveP( ur_move .jd1, ur_move .jd2, ur_move .goal_time)
 		}
-		state check_big_dist {
-			entry big_dist = true
-			//entry big_dist = check_big_dist ( ur_move . jd1 , ur_move . jd2 )
-		}
+		state big_dist_check {
+		entry big_dist = check_big_dist ( ur_move . jd1 , ur_move . jd2 )		}
 		state moveL {
 			entry moveL( ur_move .jd1, ur_move .jd2, ur_move .goal_time)
 		}
@@ -93,7 +91,7 @@ event out_of_sync
 		junction j4
 		transition t0 {
 			from j4
-			to check_big_dist
+			to big_dist_check
 			condition not ur_move . blending
 		}
 		transition t1 {
@@ -102,7 +100,7 @@ event out_of_sync
 			condition ur_move . blending
 		}
 		transition t2 {
-			from check_big_dist
+			from big_dist_check
 			to j1
 		}
 		transition t3 {

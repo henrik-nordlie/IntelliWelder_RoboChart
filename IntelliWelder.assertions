@@ -49,4 +49,3 @@ csp-end
 assertion A5: SysTerminates refines Stop in the traces model.
 assertion A6: EXAXTerminates refines Stop in the traces model.
 assertion A7: URTerminates refines Stop in the traces model.
-

@@ -1,7 +1,7 @@
 
 --
 -- RoboChart generator version 3.0.0.202311281716
--- Automatically generated on 16-04-2024 18:57:16
+-- Automatically generated on 18-04-2024 11:09:57
 --
 -- Iterated compression status: true
 -- Assertions compression status: false
@@ -57,9 +57,9 @@ exports
 	
 	-- Declaring call and ret events for undefined operations
 	channel moveLCall: core_real.core_real.core_real
-	channel movePCall: core_real.core_real.core_real
 	channel moveL_with_tCall: core_real.core_real.core_real
 	channel moveJCall: core_real.core_real.core_real
+	channel movePCall: core_real.core_real.core_real
 	
 	enterSS = {|
 	i0::enter,
@@ -93,9 +93,9 @@ exports
 		done,
 		out_of_sync
 	,	moveLCall,
-		movePCall,
 		moveL_with_tCall,
-		moveJCall
+		moveJCall,
+		movePCall
 		|}
 
 	-- Nodes --
@@ -323,7 +323,7 @@ exports
 	enterSS = 
 			{|			i0::enter,
 				moveP::enter,
-				check_big_dist::enter,
+				big_dist_check::enter,
 				moveL::enter,
 				f0::enter,
 				j0::enter,
@@ -336,7 +336,7 @@ exports
 			|}
 	enteredSS = 
 			{|			moveP::entered,
-				check_big_dist::entered,
+				big_dist_check::entered,
 				moveL::entered,
 				f0::entered,
 				moveL_with_t::entered,
@@ -354,7 +354,7 @@ exports
 		datatype NIDS = 
 		              NID_i0|
 		              NID_moveP|
-		              NID_check_big_dist|
+		              NID_big_dist_check|
 		              NID_moveL|
 		              NID_f0|
 		              NID_j0|
@@ -480,8 +480,8 @@ exports
 		
 		
 		----------------------------------------------------------------------
-		-- State: check_big_dist
-		module check_big_dist
+		-- State: big_dist_check
+		module big_dist_check
 		
 		enterSS = {}
 		
@@ -515,7 +515,7 @@ exports
 				
 				Termination = terminate -> SKIP
 				
-				Active 		= share__choice(true & (share__choice(set_big_dist!true -> SKIP))) ; 
+				Active 		= share__choice(share__choice(get_ur_move?ur_move -> true & (share__choice(set_big_dist!check_big_dist(UR_move_jd1(ur_move),UR_move_jd2(ur_move)) -> SKIP)))) ; 
 						 	  Behaviour ; 
 						 	  share__choice(exit -> SKIP) ; SKIP ; 
 						 	  share__choice(exited -> SKIP) ; Inactive
@@ -532,7 +532,7 @@ exports
 				
 				Termination = terminate -> SKIP
 				
-				Active 		= share__choice(true & (share__choice(set_big_dist!true -> SKIP))) ; 
+				Active 		= share__choice(share__choice(get_ur_move?ur_move -> true & (share__choice(set_big_dist!check_big_dist(UR_move_jd1(ur_move),UR_move_jd2(ur_move)) -> SKIP)))) ; 
 						 	  Behaviour ; 
 						 	  share__choice(exit -> SKIP) ; SKIP ; 
 						 	  share__choice(exited -> SKIP) ; Inactive
@@ -967,7 +967,7 @@ exports
 				 	enterSS = {|
 				 	i0::enter,
 				 	moveP::enter,
-				 	check_big_dist::enter,
+				 	big_dist_check::enter,
 				 	moveL::enter,
 				 	f0::enter,
 				 	j0::enter,
@@ -984,7 +984,7 @@ exports
 				 		-- IMPLEMENTATION NOTE: the channel set 'enter' is calculated explicitly
 				 		-- because CSPM modules are used for the semantics of Node.
 				 		flowevts = union(enterSS,{|exit,exited,interrupt|})
-				 		transSync = {|internal__.NID_j4,internal__.NID_j4,internal__.NID_check_big_dist,internal__.NID_j1,internal__.NID_j1,internal__.NID_j0,internal__.NID_j0,internal__.NID_j2,internal__.NID_j2,internal__.NID_moveL,internal__.NID_moveL_with_t,internal__.NID_moveP,internal__.NID_j3,internal__.NID_moveJ,internal__.NID_i0|}
+				 		transSync = {|internal__.NID_j4,internal__.NID_j4,internal__.NID_big_dist_check,internal__.NID_j1,internal__.NID_j1,internal__.NID_j0,internal__.NID_j0,internal__.NID_j2,internal__.NID_j2,internal__.NID_moveL,internal__.NID_moveL_with_t,internal__.NID_moveP,internal__.NID_j3,internal__.NID_moveJ,internal__.NID_i0|}
 				 	within
 				 		((
 				 		 (((-- RULE composeNodes(nc:NodeContainer)^nops : CSPProcess
@@ -994,7 +994,7 @@ exports
 				 		   moveP::D__(id__,
 				 		   		    const_UR_ur_n_waypoints)
 				 		   [| { share__, terminate } |] (
-				 		   check_big_dist::D__(id__,
+				 		   big_dist_check::D__(id__,
 				 		   		    const_UR_ur_n_waypoints)
 				 		   [| { share__, terminate } |] (
 				 		   moveL::D__(id__,
@@ -1036,7 +1036,7 @@ exports
 				 		   )
 				 		 )
 				 		 [[moveP::interrupt <- x__ | x__ <- {|interrupt,internal__.NID_moveP|}]]
-				 		 [[check_big_dist::interrupt <- x__ | x__ <- {|interrupt,internal__.NID_check_big_dist|}]]
+				 		 [[big_dist_check::interrupt <- x__ | x__ <- {|interrupt,internal__.NID_big_dist_check|}]]
 				 		 [[moveL::interrupt <- x__ | x__ <- {|interrupt,internal__.NID_moveL|}]]
 				 		 [[f0::interrupt <- x__ | x__ <- {|interrupt|}]]
 				 		 [[moveL_with_t::interrupt <- x__ | x__ <- {|interrupt,internal__.NID_moveL_with_t|}]]
@@ -1049,17 +1049,17 @@ exports
 				 		 [[j4::interrupt <- x__ | x__ <- {|internal__.NID_j4,internal__.NID_j4|}]]
 				 		 )
 				 		  [[ share__ <- x__ | x__ <- {| share__ |} ]] 
-				 		  [[set_big_dist <- setL_big_dist,set_ur_move <- setL_ur_move]]
+				 		  [[set_ur_move <- setL_ur_move,set_big_dist <- setL_big_dist]]
 				 		 )
 				 		 [| union(union(union(flowevts,transSync),{terminate}),{|share__
-				 		 			,setL_big_dist
 				 		 			,setL_ur_move
+				 		 			,setL_big_dist
 				 		|}) |]
 				 		 ((i0::enter -> Transitions(id__,
 				 		 		    const_UR_ur_n_waypoints))
-				 		  [[ share__ <- x__ | x__ <- {| share__,setL_big_dist,setL_ur_move |} ]]
+				 		  [[ share__ <- x__ | x__ <- {| share__,setL_ur_move,setL_big_dist |} ]]
 				 		 )
-				 		)[[setL_big_dist <- set_big_dist,setL_ur_move <- set_ur_move]]
+				 		)[[setL_ur_move <- set_ur_move,setL_big_dist <- set_big_dist]]
 				 		)
 				 	)
 				 	 \ hideSet)
@@ -1071,25 +1071,25 @@ exports
 				 	]]
 				 )
 				 )
-				  [[ share__ <- x__ | x__ <- {| share__,setR_ur_curr_waypoint,setR_sys_state,setR_big_dist,setR_ur_move |} ]] 
-				  [[set_ur_curr_waypoint <- setL_ur_curr_waypoint,set_sys_state <- setL_sys_state,set_big_dist <- setL_big_dist,set_ur_move <- setL_ur_move]]
+				  [[ share__ <- x__ | x__ <- {| share__,setR_ur_curr_waypoint,setR_sys_state,setR_ur_move,setR_big_dist |} ]] 
+				  [[set_ur_curr_waypoint <- setL_ur_curr_waypoint,set_sys_state <- setL_sys_state,set_ur_move <- setL_ur_move,set_big_dist <- setL_big_dist]]
 				 )
 				 [| union(union(enteredSS,{| interrupt, terminate |}),{|share__
 				 			,setL_ur_curr_waypoint
 				 			,setL_sys_state
-				 			,setL_big_dist
 				 			,setL_ur_move
+				 			,setL_big_dist
 				 			,setR_ur_curr_waypoint
 				 			 			,setR_sys_state
-				 			 			,setR_big_dist
 				 			 			,setR_ur_move
+				 			 			,setR_big_dist
 				 			|}) |]
 				 ((During)
-				  [[ share__ <- x__ | x__ <- {| share__,setL_ur_curr_waypoint,setL_sys_state,setL_big_dist,setL_ur_move |} ]]
-				  [[set_ur_curr_waypoint <- setR_ur_curr_waypoint,set_sys_state <- setR_sys_state,set_big_dist <- setR_big_dist,set_ur_move <- setR_ur_move]]
+				  [[ share__ <- x__ | x__ <- {| share__,setL_ur_curr_waypoint,setL_sys_state,setL_ur_move,setL_big_dist |} ]]
+				  [[set_ur_curr_waypoint <- setR_ur_curr_waypoint,set_sys_state <- setR_sys_state,set_ur_move <- setR_ur_move,set_big_dist <- setR_big_dist]]
 				 )
-				)[[setL_ur_curr_waypoint <- set_ur_curr_waypoint,setL_sys_state <- set_sys_state,setL_big_dist <- set_big_dist,setL_ur_move <- set_ur_move]]
-				 [[setR_ur_curr_waypoint <- set_ur_curr_waypoint,setR_sys_state <- set_sys_state,setR_big_dist <- set_big_dist,setR_ur_move <- set_ur_move]]
+				)[[setL_ur_curr_waypoint <- set_ur_curr_waypoint,setL_sys_state <- set_sys_state,setL_ur_move <- set_ur_move,setL_big_dist <- set_big_dist]]
+				 [[setR_ur_curr_waypoint <- set_ur_curr_waypoint,setR_sys_state <- set_sys_state,setR_ur_move <- set_ur_move,setR_big_dist <- set_big_dist]]
 				)\union(enteredSS,{terminate}) 
 			)
 			During 		= share__choice(([] e__ : enteredSS @ e__ -> SKIP))
@@ -1119,7 +1119,7 @@ exports
 				 	enterSS = {|
 				 	i0::enter,
 				 	moveP::enter,
-				 	check_big_dist::enter,
+				 	big_dist_check::enter,
 				 	moveL::enter,
 				 	f0::enter,
 				 	j0::enter,
@@ -1136,7 +1136,7 @@ exports
 				 		-- IMPLEMENTATION NOTE: the channel set 'enter' is calculated explicitly
 				 		-- because CSPM modules are used for the semantics of Node.
 				 		flowevts = union(enterSS,{|exit,exited,interrupt|})
-				 		transSync = {|internal__.NID_j4,internal__.NID_j4,internal__.NID_check_big_dist,internal__.NID_j1,internal__.NID_j1,internal__.NID_j0,internal__.NID_j0,internal__.NID_j2,internal__.NID_j2,internal__.NID_moveL,internal__.NID_moveL_with_t,internal__.NID_moveP,internal__.NID_j3,internal__.NID_moveJ,internal__.NID_i0|}
+				 		transSync = {|internal__.NID_j4,internal__.NID_j4,internal__.NID_big_dist_check,internal__.NID_j1,internal__.NID_j1,internal__.NID_j0,internal__.NID_j0,internal__.NID_j2,internal__.NID_j2,internal__.NID_moveL,internal__.NID_moveL_with_t,internal__.NID_moveP,internal__.NID_j3,internal__.NID_moveJ,internal__.NID_i0|}
 				 	within
 				 		((
 				 		 (((-- RULE composeNodes(nc:NodeContainer)^nops : CSPProcess
@@ -1146,7 +1146,7 @@ exports
 				 		   moveP::VS_O__(id__,
 				 		   		    const_UR_ur_n_waypoints)
 				 		   [| { share__, terminate } |] (
-				 		   check_big_dist::VS_O__(id__,
+				 		   big_dist_check::VS_O__(id__,
 				 		   		    const_UR_ur_n_waypoints)
 				 		   [| { share__, terminate } |] (
 				 		   moveL::VS_O__(id__,
@@ -1188,7 +1188,7 @@ exports
 				 		   )
 				 		 )
 				 		 [[moveP::interrupt <- x__ | x__ <- {|interrupt,internal__.NID_moveP|}]]
-				 		 [[check_big_dist::interrupt <- x__ | x__ <- {|interrupt,internal__.NID_check_big_dist|}]]
+				 		 [[big_dist_check::interrupt <- x__ | x__ <- {|interrupt,internal__.NID_big_dist_check|}]]
 				 		 [[moveL::interrupt <- x__ | x__ <- {|interrupt,internal__.NID_moveL|}]]
 				 		 [[f0::interrupt <- x__ | x__ <- {|interrupt|}]]
 				 		 [[moveL_with_t::interrupt <- x__ | x__ <- {|interrupt,internal__.NID_moveL_with_t|}]]
@@ -1201,17 +1201,17 @@ exports
 				 		 [[j4::interrupt <- x__ | x__ <- {|internal__.NID_j4,internal__.NID_j4|}]]
 				 		 )
 				 		  [[ share__ <- x__ | x__ <- {| share__ |} ]] 
-				 		  [[set_big_dist <- setL_big_dist,set_ur_move <- setL_ur_move]]
+				 		  [[set_ur_move <- setL_ur_move,set_big_dist <- setL_big_dist]]
 				 		 )
 				 		 [| union(union(union(flowevts,transSync),{terminate}),{|share__
-				 		 			,setL_big_dist
 				 		 			,setL_ur_move
+				 		 			,setL_big_dist
 				 		|}) |]
 				 		 ((i0::enter -> Transitions(id__,
 				 		 		    const_UR_ur_n_waypoints))
-				 		  [[ share__ <- x__ | x__ <- {| share__,setL_big_dist,setL_ur_move |} ]]
+				 		  [[ share__ <- x__ | x__ <- {| share__,setL_ur_move,setL_big_dist |} ]]
 				 		 )
-				 		)[[setL_big_dist <- set_big_dist,setL_ur_move <- set_ur_move]]
+				 		)[[setL_ur_move <- set_ur_move,setL_big_dist <- set_big_dist]]
 				 		)
 				 	)
 				 	 \ hideSet)
@@ -1223,25 +1223,25 @@ exports
 				 	]]
 				 )
 				 )
-				  [[ share__ <- x__ | x__ <- {| share__,setR_ur_curr_waypoint,setR_sys_state,setR_big_dist,setR_ur_move |} ]] 
-				  [[set_ur_curr_waypoint <- setL_ur_curr_waypoint,set_sys_state <- setL_sys_state,set_big_dist <- setL_big_dist,set_ur_move <- setL_ur_move]]
+				  [[ share__ <- x__ | x__ <- {| share__,setR_ur_curr_waypoint,setR_sys_state,setR_ur_move,setR_big_dist |} ]] 
+				  [[set_ur_curr_waypoint <- setL_ur_curr_waypoint,set_sys_state <- setL_sys_state,set_ur_move <- setL_ur_move,set_big_dist <- setL_big_dist]]
 				 )
 				 [| union(union(enteredSS,{| interrupt, terminate |}),{|share__
 				 			,setL_ur_curr_waypoint
 				 			,setL_sys_state
-				 			,setL_big_dist
 				 			,setL_ur_move
+				 			,setL_big_dist
 				 			,setR_ur_curr_waypoint
 				 			 			,setR_sys_state
-				 			 			,setR_big_dist
 				 			 			,setR_ur_move
+				 			 			,setR_big_dist
 				 			|}) |]
 				 ((During)
-				  [[ share__ <- x__ | x__ <- {| share__,setL_ur_curr_waypoint,setL_sys_state,setL_big_dist,setL_ur_move |} ]]
-				  [[set_ur_curr_waypoint <- setR_ur_curr_waypoint,set_sys_state <- setR_sys_state,set_big_dist <- setR_big_dist,set_ur_move <- setR_ur_move]]
+				  [[ share__ <- x__ | x__ <- {| share__,setL_ur_curr_waypoint,setL_sys_state,setL_ur_move,setL_big_dist |} ]]
+				  [[set_ur_curr_waypoint <- setR_ur_curr_waypoint,set_sys_state <- setR_sys_state,set_ur_move <- setR_ur_move,set_big_dist <- setR_big_dist]]
 				 )
-				)[[setL_ur_curr_waypoint <- set_ur_curr_waypoint,setL_sys_state <- set_sys_state,setL_big_dist <- set_big_dist,setL_ur_move <- set_ur_move]]
-				 [[setR_ur_curr_waypoint <- set_ur_curr_waypoint,setR_sys_state <- set_sys_state,setR_big_dist <- set_big_dist,setR_ur_move <- set_ur_move]]
+				)[[setL_ur_curr_waypoint <- set_ur_curr_waypoint,setL_sys_state <- set_sys_state,setL_ur_move <- set_ur_move,setL_big_dist <- set_big_dist]]
+				 [[setR_ur_curr_waypoint <- set_ur_curr_waypoint,setR_sys_state <- set_sys_state,setR_ur_move <- set_ur_move,setR_big_dist <- set_big_dist]]
 				)\{terminate} 
 			)
 			During 		= share__choice(([] e__ : enteredSS @ e__ -> SKIP))
@@ -1251,11 +1251,11 @@ exports
 		
 		Transitions(id__,
 				    const_UR_ur_n_waypoints) = ((let
-			Trans = share__choice(get_big_dist?big_dist -> get_ur_move?ur_move -> (
+			Trans = share__choice(get_ur_move?ur_move -> get_big_dist?big_dist -> (
 				((share__ -> SKIP
-				 [] dbisim(((not (UR_move_blending(ur_move))))&(internal__!NID_j4 -> SKIP ;  ((SKIP ; check_big_dist::enter -> SKIP))))
+				 [] dbisim(((not (UR_move_blending(ur_move))))&(internal__!NID_j4 -> SKIP ;  ((SKIP ; big_dist_check::enter -> SKIP))))
 				 	 [] dbisim((UR_move_blending(ur_move))&(internal__!NID_j4 -> SKIP ;  ((SKIP ; j0::enter -> SKIP))))
-				 	 [] dbisim((true)&(internal__!NID_check_big_dist -> SKIP ;  share__choice(exit -> SKIP) ; (share__choice(exited -> SKIP) ; SKIP ; j1::enter -> SKIP)))
+				 	 [] dbisim((true)&(internal__!NID_big_dist_check -> SKIP ;  share__choice(exit -> SKIP) ; (share__choice(exited -> SKIP) ; SKIP ; j1::enter -> SKIP)))
 				 	 [] dbisim(((not (big_dist)))&(internal__!NID_j1 -> SKIP ;  ((SKIP ; moveL_with_t::enter -> SKIP))))
 				 	 [] dbisim((big_dist)&(internal__!NID_j1 -> SKIP ;  ((SKIP ; moveL::enter -> SKIP))))
 				 	 [] dbisim(((not (UR_move_large_offset(ur_move))))&(internal__!NID_j0 -> SKIP ;  ((SKIP ; moveJ::enter -> SKIP))))
@@ -1365,11 +1365,6 @@ exports
 				param_jd1,
 				param_jd2,
 				param_time) 	= moveLCall.param_jd1.param_jd2.param_time -> SKIP
-	CALL__moveP(id__,
-			    const_UR_ur_n_waypoints,
-				param_jd1,
-				param_jd2,
-				param_time) 	= movePCall.param_jd1.param_jd2.param_time -> SKIP
 	CALL__moveL_with_t(id__,
 			    const_UR_ur_n_waypoints,
 				param_jd1,
@@ -1380,6 +1375,11 @@ exports
 				param_jd1,
 				param_jd2,
 				param_time) 	= moveJCall.param_jd1.param_jd2.param_time -> SKIP
+	CALL__moveP(id__,
+			    const_UR_ur_n_waypoints,
+				param_jd1,
+				param_jd2,
+				param_time) 	= movePCall.param_jd1.param_jd2.param_time -> SKIP
 	
 	-- END of Operation calls --
 	

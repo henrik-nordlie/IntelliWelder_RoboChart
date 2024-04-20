@@ -16,7 +16,7 @@ timed csp SpecA3 csp-begin
 	Timed (OneStep) {
 	BDeadline(E,d) = (CHAOS(Events) ||| WAIT(d)) [|E|> SKIP
 	SpecA3 = let
-				Def = CHAOS(Events) [| {|UR::move.in|} |> BDeadline({|UR::moveJCall, UR::movePCall,UR::moveLCall, UR::moveL_with_tCall, UR::out_of_sync|}, 0); Def
+				Def = CHAOS(Events) [| {|UR::move.in|} |> BDeadline({|UR::moveJCall, UR::movePCall,UR::moveLCall, UR::moveL_with_tCall|}, 0); Def
 			 within
 			 	timed_priority(Def)
 	}

@@ -22,11 +22,7 @@
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']"/>
         <target xmi:type="robochart:RCPackage" href="SystemSTM.rct#/"/>
       </ownedRepresentationDescriptors>
-<<<<<<< HEAD
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_dbrdoOHyEe6AEP1DTliDwg" name="UR_STM" repPath="#_dbq2kOHyEe6AEP1DTliDwg" changeId="66982aee-1144-4a99-9879-f3b7dfcfd2db">
-=======
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_dbrdoOHyEe6AEP1DTliDwg" name="UR_STM" repPath="#_dbq2kOHyEe6AEP1DTliDwg" changeId="b2c01761-1f2f-4887-bc81-209f06268b24">
->>>>>>> 616dd9a145ad80632e56d34c1bd0fd140e2bc679
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']"/>
         <target xmi:type="robochart:RCPackage" href="UR_STM.rct#/"/>
       </ownedRepresentationDescriptors>

@@ -95,12 +95,6 @@ const_UR_n_waypoints = 0
 
 -- BASIC TYPES
 
-<<<<<<< HEAD
-=======
--- generate nat not
-nametype core_nat = {0..5} 
-
->>>>>>> 616dd9a145ad80632e56d34c1bd0fd140e2bc679
 -- generate const_main_Platform_ur_n_waypoints
 const_main_Platform_ur_n_waypoints = 0
 
@@ -127,17 +121,6 @@ const_main_Controller_stm_ref1_ur_n_waypoints = 0
 -- generate const_UR_ur_n_waypoints
 const_UR_ur_n_waypoints = 0
 
-<<<<<<< HEAD
-=======
--- generate real not
-nametype core_real = { -2..2}
-
--- VECTOR TYPES AND OPERATIONS
-
-
--- CLOCKS
-
->>>>>>> 616dd9a145ad80632e56d34c1bd0fd140e2bc679
 -- generate go_to_velocity_BOUND
 go_to_velocity_BOUND = 2
 
@@ -148,20 +131,6 @@ nametype core_int = union({ -2..2},{calc_type_min(Union(
 -- generate Div
 Div(e1,e2,T) = if member(e1/e2,T) then e1/e2 else e1
 
-<<<<<<< HEAD
-=======
--- generate check_big_dist not
-check_big_dist(jd1,jd2) =
-  let
-    jd1L = abs(jd1)
-    jd2L = abs(jd2)
-  within
-    jd1L == 2 or jd2L == 2
-
--- generate abs not
-abs(num) = if (num >= 0) then num else -num
-
->>>>>>> 616dd9a145ad80632e56d34c1bd0fd140e2bc679
 -- generate Neg
 Neg(e1,T) = if member(-e1,T) then -e1 else e1
 

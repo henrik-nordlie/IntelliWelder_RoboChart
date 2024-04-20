@@ -90,12 +90,6 @@ const_UR_n_waypoints = 0
 
 -- BASIC TYPES
 
-<<<<<<< HEAD
-=======
--- generate nat not
-nametype core_nat = {0..5}
-
->>>>>>> 616dd9a145ad80632e56d34c1bd0fd140e2bc679
 -- generate const_main_Platform_ur_n_waypoints
 const_main_Platform_ur_n_waypoints = 0
 
@@ -122,12 +116,6 @@ const_main_Controller_stm_ref1_ur_n_waypoints = 0
 -- generate const_UR_ur_n_waypoints
 const_UR_ur_n_waypoints = 0
 
-<<<<<<< HEAD
-=======
--- generate real not
-nametype core_real = { -2..2}
-
->>>>>>> 616dd9a145ad80632e56d34c1bd0fd140e2bc679
 -- VECTOR TYPES AND OPERATIONS
 
 

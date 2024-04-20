@@ -1,7 +1,11 @@
 
 --
 -- RoboChart generator version 3.0.0.202311281716
+<<<<<<< HEAD
+-- Automatically generated on 20-04-2024 11:37:58
+=======
 -- Automatically generated on 18-04-2024 11:09:57
+>>>>>>> 616dd9a145ad80632e56d34c1bd0fd140e2bc679
 --
 -- Iterated compression status: true
 -- Assertions compression status: false
@@ -55,6 +59,7 @@ exports
 	-- Declaring call and ret events for undefined operations
 	channel moveLCall: core_real.core_real.core_real
 	channel moveL_with_tCall: core_real.core_real.core_real
+	channel movePCall: core_real.core_real.core_real
 	channel moveJCall: core_real.core_real.core_real
 	channel movePCall: core_real.core_real.core_real
 	
@@ -91,8 +96,13 @@ exports
 		out_of_sync
 	,	moveLCall,
 		moveL_with_tCall,
+<<<<<<< HEAD
+		movePCall,
+		moveJCall
+=======
 		moveJCall,
 		movePCall
+>>>>>>> 616dd9a145ad80632e56d34c1bd0fd140e2bc679
 		|}
 	
 	channel clockReset, clockResetL, clockResetR 
@@ -100,14 +110,24 @@ exports
 	localClockResets = {||}
 	
 	
+<<<<<<< HEAD
+	channel get_CLID_wait_for_move : core_clock_type 
+=======
+>>>>>>> 616dd9a145ad80632e56d34c1bd0fd140e2bc679
 	channel get_CLID_reset_UR : core_clock_type 
+	channel get_CLID_f0 : core_clock_type 
+	channel get_CLID_choose_cmd : core_clock_type 
 	channel get_CLID_check_time : core_clock_type 
 	channel get_CLID_wait_for_move : core_clock_type 
 	channel get_CLID_choose_cmd : core_clock_type 
 	channel get_CLID_f0 : core_clock_type 
 	--channel increment__
 	
+<<<<<<< HEAD
+	CLID_wait_for_move_clock_type(id__,
+=======
 	CLID_reset_UR_clock_type(id__,
+>>>>>>> 616dd9a145ad80632e56d34c1bd0fd140e2bc679
 			          const_UR_ur_n_waypoints) = 
 		let
 			max = (clock_type_max(Union({
@@ -117,7 +137,11 @@ exports
 	within
 		if member(max,core_clock_type) then ctype else error("core_clock_type is not wide enough")
 	
+<<<<<<< HEAD
+	CLID_reset_UR_clock_type(id__,
+=======
 	CLID_check_time_clock_type(id__,
+>>>>>>> 616dd9a145ad80632e56d34c1bd0fd140e2bc679
 			          const_UR_ur_n_waypoints) = 
 		let
 			max = (clock_type_max(Union({
@@ -462,10 +486,17 @@ exports
 			channel out_of_sync__: NIDS.InOut
 			
 			channel get_CLID_moveJ : core_clock_type 
+<<<<<<< HEAD
+			channel get_CLID_big_dist_check : core_clock_type 
+			channel get_CLID_moveL_with_t : core_clock_type 
+			channel get_CLID_moveL : core_clock_type 
+			channel get_CLID_moveP : core_clock_type 
+=======
 			channel get_CLID_moveP : core_clock_type 
 			channel get_CLID_moveL_with_t : core_clock_type 
 			channel get_CLID_big_dist_check : core_clock_type 
 			channel get_CLID_moveL : core_clock_type 
+>>>>>>> 616dd9a145ad80632e56d34c1bd0fd140e2bc679
 			--channel increment__
 			
 			CLID_moveJ_clock_type(id__,
@@ -478,7 +509,11 @@ exports
 			within
 				if member(max,core_clock_type) then ctype else error("core_clock_type is not wide enough")
 			
+<<<<<<< HEAD
+			CLID_big_dist_check_clock_type(id__,
+=======
 			CLID_moveP_clock_type(id__,
+>>>>>>> 616dd9a145ad80632e56d34c1bd0fd140e2bc679
 					          const_UR_ur_n_waypoints) = 
 				let
 					max = (clock_type_max(Union({
@@ -498,7 +533,11 @@ exports
 			within
 				if member(max,core_clock_type) then ctype else error("core_clock_type is not wide enough")
 			
+<<<<<<< HEAD
+			CLID_moveL_clock_type(id__,
+=======
 			CLID_big_dist_check_clock_type(id__,
+>>>>>>> 616dd9a145ad80632e56d34c1bd0fd140e2bc679
 					          const_UR_ur_n_waypoints) = 
 				let
 					max = (clock_type_max(Union({
@@ -508,7 +547,11 @@ exports
 			within
 				if member(max,core_clock_type) then ctype else error("core_clock_type is not wide enough")
 			
+<<<<<<< HEAD
+			CLID_moveP_clock_type(id__,
+=======
 			CLID_moveL_clock_type(id__,
+>>>>>>> 616dd9a145ad80632e56d34c1bd0fd140e2bc679
 					          const_UR_ur_n_waypoints) = 
 				let
 					max = (clock_type_max(Union({
@@ -1304,6 +1347,17 @@ exports
 						 												| x____ <- NIDS
 						 											]]
 						 										)
+<<<<<<< HEAD
+						 										[| {|get_CLID_moveP,moveP::entered,terminate|} |]
+						 										dbisim(Clock_CLID_moveP(id__,0,
+						 												          const_UR_ur_n_waypoints))
+						 									)\{|get_CLID_moveP|}
+						 								)
+						 								[| {|get_CLID_moveL,moveL::entered,terminate|} |]
+						 								dbisim(Clock_CLID_moveL(id__,0,
+						 										          const_UR_ur_n_waypoints))
+						 							)\{|get_CLID_moveL|}
+=======
 						 										[| {|get_CLID_moveL,moveL::entered,terminate|} |]
 						 										dbisim(Clock_CLID_moveL(id__,0,
 						 												          const_UR_ur_n_waypoints))
@@ -1313,16 +1367,24 @@ exports
 						 								dbisim(Clock_CLID_big_dist_check(id__,0,
 						 										          const_UR_ur_n_waypoints))
 						 							)\{|get_CLID_big_dist_check|}
+>>>>>>> 616dd9a145ad80632e56d34c1bd0fd140e2bc679
 						 						)
 						 						[| {|get_CLID_moveL_with_t,moveL_with_t::entered,terminate|} |]
 						 						dbisim(Clock_CLID_moveL_with_t(id__,0,
 						 								          const_UR_ur_n_waypoints))
 						 					)\{|get_CLID_moveL_with_t|}
 						 				)
+<<<<<<< HEAD
+						 				[| {|get_CLID_big_dist_check,big_dist_check::entered,terminate|} |]
+						 				dbisim(Clock_CLID_big_dist_check(id__,0,
+						 						          const_UR_ur_n_waypoints))
+						 			)\{|get_CLID_big_dist_check|}
+=======
 						 				[| {|get_CLID_moveP,moveP::entered,terminate|} |]
 						 				dbisim(Clock_CLID_moveP(id__,0,
 						 						          const_UR_ur_n_waypoints))
 						 			)\{|get_CLID_moveP|}
+>>>>>>> 616dd9a145ad80632e56d34c1bd0fd140e2bc679
 						 		)
 						 		[| {|get_CLID_moveJ,moveJ::entered,terminate|} |]
 						 		dbisim(Clock_CLID_moveJ(id__,0,
@@ -1330,6 +1392,27 @@ exports
 						 	)\{|get_CLID_moveJ|}
 						 )
 						 ))
+<<<<<<< HEAD
+						  [[ share__ <- x__ | x__ <- {| share__,setR_big_dist,setR_ur_move,setR_ur_curr_waypoint,setR_sys_state |} ]] 
+						  [[set_big_dist <- setL_big_dist,set_ur_move <- setL_ur_move,set_ur_curr_waypoint <- setL_ur_curr_waypoint,set_sys_state <- setL_sys_state]]
+						 )
+						 [| union(union(enteredSS,{| interrupt, terminate |}),{|share__
+						 			,setL_big_dist
+						 			,setL_ur_move
+						 			,setL_ur_curr_waypoint
+						 			,setL_sys_state
+						 			,setR_big_dist
+						 			 			,setR_ur_move
+						 			 			,setR_ur_curr_waypoint
+						 			 			,setR_sys_state
+						 			|}) |]
+						 ((During)
+						  [[ share__ <- x__ | x__ <- {| share__,setL_big_dist,setL_ur_move,setL_ur_curr_waypoint,setL_sys_state |} ]]
+						  [[set_big_dist <- setR_big_dist,set_ur_move <- setR_ur_move,set_ur_curr_waypoint <- setR_ur_curr_waypoint,set_sys_state <- setR_sys_state]]
+						 )
+						)[[setL_big_dist <- set_big_dist,setL_ur_move <- set_ur_move,setL_ur_curr_waypoint <- set_ur_curr_waypoint,setL_sys_state <- set_sys_state]]
+						 [[setR_big_dist <- set_big_dist,setR_ur_move <- set_ur_move,setR_ur_curr_waypoint <- set_ur_curr_waypoint,setR_sys_state <- set_sys_state]]
+=======
 						  [[ share__ <- x__ | x__ <- {| share__,setR_ur_curr_waypoint,setR_sys_state,setR_ur_move,setR_big_dist |} ]] 
 						  [[set_ur_curr_waypoint <- setL_ur_curr_waypoint,set_sys_state <- setL_sys_state,set_ur_move <- setL_ur_move,set_big_dist <- setL_big_dist]]
 						 )
@@ -1349,6 +1432,7 @@ exports
 						 )
 						)[[setL_ur_curr_waypoint <- set_ur_curr_waypoint,setL_sys_state <- set_sys_state,setL_ur_move <- set_ur_move,setL_big_dist <- set_big_dist]]
 						 [[setR_ur_curr_waypoint <- set_ur_curr_waypoint,setR_sys_state <- set_sys_state,setR_ur_move <- set_ur_move,setR_big_dist <- set_big_dist]]
+>>>>>>> 616dd9a145ad80632e56d34c1bd0fd140e2bc679
 						)\union(enteredSS,{terminate}) 
 					)
 					During 		= share__choice(([] e__ : enteredSS @ e__ -> SKIP))
@@ -1491,6 +1575,17 @@ exports
 						 												| x____ <- NIDS
 						 											]]
 						 										)
+<<<<<<< HEAD
+						 										[| {|get_CLID_moveP,moveP::entered,terminate|} |]
+						 										dbisim(Clock_CLID_moveP(id__,0,
+						 												          const_UR_ur_n_waypoints))
+						 									)\{|get_CLID_moveP|}
+						 								)
+						 								[| {|get_CLID_moveL,moveL::entered,terminate|} |]
+						 								dbisim(Clock_CLID_moveL(id__,0,
+						 										          const_UR_ur_n_waypoints))
+						 							)\{|get_CLID_moveL|}
+=======
 						 										[| {|get_CLID_moveL,moveL::entered,terminate|} |]
 						 										dbisim(Clock_CLID_moveL(id__,0,
 						 												          const_UR_ur_n_waypoints))
@@ -1500,16 +1595,24 @@ exports
 						 								dbisim(Clock_CLID_big_dist_check(id__,0,
 						 										          const_UR_ur_n_waypoints))
 						 							)\{|get_CLID_big_dist_check|}
+>>>>>>> 616dd9a145ad80632e56d34c1bd0fd140e2bc679
 						 						)
 						 						[| {|get_CLID_moveL_with_t,moveL_with_t::entered,terminate|} |]
 						 						dbisim(Clock_CLID_moveL_with_t(id__,0,
 						 								          const_UR_ur_n_waypoints))
 						 					)\{|get_CLID_moveL_with_t|}
 						 				)
+<<<<<<< HEAD
+						 				[| {|get_CLID_big_dist_check,big_dist_check::entered,terminate|} |]
+						 				dbisim(Clock_CLID_big_dist_check(id__,0,
+						 						          const_UR_ur_n_waypoints))
+						 			)\{|get_CLID_big_dist_check|}
+=======
 						 				[| {|get_CLID_moveP,moveP::entered,terminate|} |]
 						 				dbisim(Clock_CLID_moveP(id__,0,
 						 						          const_UR_ur_n_waypoints))
 						 			)\{|get_CLID_moveP|}
+>>>>>>> 616dd9a145ad80632e56d34c1bd0fd140e2bc679
 						 		)
 						 		[| {|get_CLID_moveJ,moveJ::entered,terminate|} |]
 						 		dbisim(Clock_CLID_moveJ(id__,0,
@@ -1517,6 +1620,27 @@ exports
 						 	)\{|get_CLID_moveJ|}
 						 )
 						 ))
+<<<<<<< HEAD
+						  [[ share__ <- x__ | x__ <- {| share__,setR_big_dist,setR_ur_move,setR_ur_curr_waypoint,setR_sys_state |} ]] 
+						  [[set_big_dist <- setL_big_dist,set_ur_move <- setL_ur_move,set_ur_curr_waypoint <- setL_ur_curr_waypoint,set_sys_state <- setL_sys_state]]
+						 )
+						 [| union(union(enteredSS,{| interrupt, terminate |}),{|share__
+						 			,setL_big_dist
+						 			,setL_ur_move
+						 			,setL_ur_curr_waypoint
+						 			,setL_sys_state
+						 			,setR_big_dist
+						 			 			,setR_ur_move
+						 			 			,setR_ur_curr_waypoint
+						 			 			,setR_sys_state
+						 			|}) |]
+						 ((During)
+						  [[ share__ <- x__ | x__ <- {| share__,setL_big_dist,setL_ur_move,setL_ur_curr_waypoint,setL_sys_state |} ]]
+						  [[set_big_dist <- setR_big_dist,set_ur_move <- setR_ur_move,set_ur_curr_waypoint <- setR_ur_curr_waypoint,set_sys_state <- setR_sys_state]]
+						 )
+						)[[setL_big_dist <- set_big_dist,setL_ur_move <- set_ur_move,setL_ur_curr_waypoint <- set_ur_curr_waypoint,setL_sys_state <- set_sys_state]]
+						 [[setR_big_dist <- set_big_dist,setR_ur_move <- set_ur_move,setR_ur_curr_waypoint <- set_ur_curr_waypoint,setR_sys_state <- set_sys_state]]
+=======
 						  [[ share__ <- x__ | x__ <- {| share__,setR_ur_curr_waypoint,setR_sys_state,setR_ur_move,setR_big_dist |} ]] 
 						  [[set_ur_curr_waypoint <- setL_ur_curr_waypoint,set_sys_state <- setL_sys_state,set_ur_move <- setL_ur_move,set_big_dist <- setL_big_dist]]
 						 )
@@ -1536,6 +1660,7 @@ exports
 						 )
 						)[[setL_ur_curr_waypoint <- set_ur_curr_waypoint,setL_sys_state <- set_sys_state,setL_ur_move <- set_ur_move,setL_big_dist <- set_big_dist]]
 						 [[setR_ur_curr_waypoint <- set_ur_curr_waypoint,setR_sys_state <- set_sys_state,setR_ur_move <- set_ur_move,setR_big_dist <- set_big_dist]]
+>>>>>>> 616dd9a145ad80632e56d34c1bd0fd140e2bc679
 						)\{terminate} 
 					)
 					During 		= share__choice(([] e__ : enteredSS @ e__ -> SKIP))
@@ -1588,6 +1713,18 @@ exports
 						terminate -> SKIP,Clock_CLID_moveJ(id__,clock_type_plus(x__,1,CLID_moveJ_clock_type(id__,
 								          const_UR_ur_n_waypoints)),
 								          const_UR_ur_n_waypoints))
+<<<<<<< HEAD
+				Clock_CLID_big_dist_check(id__,x__,
+						          const_UR_ur_n_waypoints) = 
+					TimeOut_1(
+						big_dist_check::entered -> Clock_CLID_big_dist_check(id__,0,
+								          const_UR_ur_n_waypoints)
+						[]
+						get_CLID_big_dist_check!x__ -> Clock_CLID_big_dist_check(id__,x__,
+								          const_UR_ur_n_waypoints)
+						[]
+						terminate -> SKIP,Clock_CLID_big_dist_check(id__,clock_type_plus(x__,1,CLID_big_dist_check_clock_type(id__,
+=======
 				Clock_CLID_moveP(id__,x__,
 						          const_UR_ur_n_waypoints) = 
 					TimeOut_1(
@@ -1598,6 +1735,7 @@ exports
 								          const_UR_ur_n_waypoints)
 						[]
 						terminate -> SKIP,Clock_CLID_moveP(id__,clock_type_plus(x__,1,CLID_moveP_clock_type(id__,
+>>>>>>> 616dd9a145ad80632e56d34c1bd0fd140e2bc679
 								          const_UR_ur_n_waypoints)),
 								          const_UR_ur_n_waypoints))
 				Clock_CLID_moveL_with_t(id__,x__,
@@ -1612,6 +1750,30 @@ exports
 						terminate -> SKIP,Clock_CLID_moveL_with_t(id__,clock_type_plus(x__,1,CLID_moveL_with_t_clock_type(id__,
 								          const_UR_ur_n_waypoints)),
 								          const_UR_ur_n_waypoints))
+<<<<<<< HEAD
+				Clock_CLID_moveL(id__,x__,
+						          const_UR_ur_n_waypoints) = 
+					TimeOut_1(
+						moveL::entered -> Clock_CLID_moveL(id__,0,
+								          const_UR_ur_n_waypoints)
+						[]
+						get_CLID_moveL!x__ -> Clock_CLID_moveL(id__,x__,
+								          const_UR_ur_n_waypoints)
+						[]
+						terminate -> SKIP,Clock_CLID_moveL(id__,clock_type_plus(x__,1,CLID_moveL_clock_type(id__,
+								          const_UR_ur_n_waypoints)),
+								          const_UR_ur_n_waypoints))
+				Clock_CLID_moveP(id__,x__,
+						          const_UR_ur_n_waypoints) = 
+					TimeOut_1(
+						moveP::entered -> Clock_CLID_moveP(id__,0,
+								          const_UR_ur_n_waypoints)
+						[]
+						get_CLID_moveP!x__ -> Clock_CLID_moveP(id__,x__,
+								          const_UR_ur_n_waypoints)
+						[]
+						terminate -> SKIP,Clock_CLID_moveP(id__,clock_type_plus(x__,1,CLID_moveP_clock_type(id__,
+=======
 				Clock_CLID_big_dist_check(id__,x__,
 						          const_UR_ur_n_waypoints) = 
 					TimeOut_1(
@@ -1634,6 +1796,7 @@ exports
 								          const_UR_ur_n_waypoints)
 						[]
 						terminate -> SKIP,Clock_CLID_moveL(id__,clock_type_plus(x__,1,CLID_moveL_clock_type(id__,
+>>>>>>> 616dd9a145ad80632e56d34c1bd0fd140e2bc679
 								          const_UR_ur_n_waypoints)),
 								          const_UR_ur_n_waypoints))
 				
@@ -1641,23 +1804,38 @@ exports
 						          const_UR_ur_n_waypoints) = dbisim(Clock_CLID_moveJ(id__,0,
 						          const_UR_ur_n_waypoints))
 				[| { terminate } |] (
+<<<<<<< HEAD
+				dbisim(Clock_CLID_big_dist_check(id__,0,
+=======
 				dbisim(Clock_CLID_moveP(id__,0,
+>>>>>>> 616dd9a145ad80632e56d34c1bd0fd140e2bc679
 						          const_UR_ur_n_waypoints))
 				[| { terminate } |] (
 				dbisim(Clock_CLID_moveL_with_t(id__,0,
 						          const_UR_ur_n_waypoints))
 				[| { terminate } |] (
+<<<<<<< HEAD
+				dbisim(Clock_CLID_moveL(id__,0,
+						          const_UR_ur_n_waypoints))
+				[| { terminate } |] (
+				dbisim(Clock_CLID_moveP(id__,0,
+=======
 				dbisim(Clock_CLID_big_dist_check(id__,0,
 						          const_UR_ur_n_waypoints))
 				[| { terminate } |] (
 				dbisim(Clock_CLID_moveL(id__,0,
+>>>>>>> 616dd9a145ad80632e56d34c1bd0fd140e2bc679
 						          const_UR_ur_n_waypoints))
 				)
 				)
 				)
 				)
 				
+<<<<<<< HEAD
+				stateClockSync = {|get_CLID_moveJ,moveJ::entered,get_CLID_big_dist_check,big_dist_check::entered,get_CLID_moveL_with_t,moveL_with_t::entered,get_CLID_moveL,moveL::entered,get_CLID_moveP,moveP::entered|}
+=======
 				stateClockSync = {|get_CLID_moveJ,moveJ::entered,get_CLID_moveP,moveP::entered,get_CLID_moveL_with_t,moveL_with_t::entered,get_CLID_big_dist_check,big_dist_check::entered,get_CLID_moveL,moveL::entered|}
+>>>>>>> 616dd9a145ad80632e56d34c1bd0fd140e2bc679
 			}
 		
 		endmodule
@@ -1758,10 +1936,18 @@ exports
 					param_jd2,
 					param_time) = EDeadline(moveLCall.param_jd1.param_jd2.param_time,0)
 		CALL__moveL_with_t(id__,
+<<<<<<< HEAD
 				    const_UR_ur_n_waypoints,
 					param_jd1,
 					param_jd2,
 					param_time) = EDeadline(moveL_with_tCall.param_jd1.param_jd2.param_time,0)
+		CALL__moveP(id__,
+=======
+>>>>>>> 616dd9a145ad80632e56d34c1bd0fd140e2bc679
+				    const_UR_ur_n_waypoints,
+					param_jd1,
+					param_jd2,
+					param_time) = EDeadline(movePCall.param_jd1.param_jd2.param_time,0)
 		CALL__moveJ(id__,
 				    const_UR_ur_n_waypoints,
 					param_jd1,
@@ -1815,7 +2001,7 @@ exports
 		-- Transitions
 		Transitions(id__,
 				    const_UR_ur_n_waypoints) = ((let
-			Trans = share__choice(get_ur_curr_waypoint?ur_curr_waypoint -> get_sys_state?sys_state -> get_ur_move?ur_move -> TimeOut_1(
+			Trans = share__choice(get_ur_move?ur_move -> get_ur_curr_waypoint?ur_curr_waypoint -> get_sys_state?sys_state -> TimeOut_1(
 				 (share__ -> SKIP
 				 [] dbisim((true)&(internal__!NID_i0 -> SKIP ;  ((SKIP ; wait_for_move::enter -> SKIP))))
 				 [] dbisim(((ur_curr_waypoint>=const_UR_ur_n_waypoints))&(internal__!NID_j0 -> SKIP ;  ((SKIP ; reset_UR::enter -> SKIP))))
@@ -1907,20 +2093,20 @@ exports
 						 [[j0::interrupt <- x__ | x__ <- {|internal__.NID_j0,internal__.NID_j0|}]]
 						 )
 						  [[ share__ <- x__ | x__ <- {| share__,setR_ur_move |} ]] 
-						  [[set_ur_curr_waypoint <- setL_ur_curr_waypoint,set_sys_state <- setL_sys_state,set_ur_move <- setL_ur_move]]
+						  [[set_ur_move <- setL_ur_move,set_ur_curr_waypoint <- setL_ur_curr_waypoint,set_sys_state <- setL_sys_state]]
 						 )
 						 [| union(union(union(flowevts,transSync),{terminate}),{|share__
+						 			,setL_ur_move
 						 			,setL_ur_curr_waypoint
 						 			,setL_sys_state
-						 			,setL_ur_move
 						 			,setR_ur_move
 						 			|}) |]
 						 ((i0::enter -> Transitions(id__,
 						 		    const_UR_ur_n_waypoints))
-						  [[ share__ <- x__ | x__ <- {| share__,setL_ur_curr_waypoint,setL_sys_state,setL_ur_move |} ]]
+						  [[ share__ <- x__ | x__ <- {| share__,setL_ur_move,setL_ur_curr_waypoint,setL_sys_state |} ]]
 						  [[set_ur_move <- setR_ur_move]]
 						 )
-						)[[setL_ur_curr_waypoint <- set_ur_curr_waypoint,setL_sys_state <- set_sys_state,setL_ur_move <- set_ur_move]]
+						)[[setL_ur_move <- set_ur_move,setL_ur_curr_waypoint <- set_ur_curr_waypoint,setL_sys_state <- set_sys_state]]
 						 [[setR_ur_move <- set_ur_move]]
 						)
 					)
@@ -1944,7 +2130,11 @@ exports
 		Behaviour(id__,
 				    const_UR_ur_n_waypoints) = 
 			dbisim((let
+<<<<<<< HEAD
+				stateClockSync = {|get_CLID_wait_for_move,wait_for_move::entered,get_CLID_reset_UR,reset_UR::entered,get_CLID_choose_cmd,choose_cmd::entered,get_CLID_check_time,check_time::entered|}
+=======
 				stateClockSync = {|get_CLID_reset_UR,reset_UR::entered,get_CLID_check_time,check_time::entered,get_CLID_wait_for_move,wait_for_move::entered,get_CLID_choose_cmd,choose_cmd::entered|}
+>>>>>>> 616dd9a145ad80632e56d34c1bd0fd140e2bc679
 			 within
 				(MachineBody(id__,
 						    const_UR_ur_n_waypoints) [| union(stateClockSync,{terminate}) |] StateClocks(id__,
@@ -1955,7 +2145,11 @@ exports
 		IteratedBehaviour(id__,
 				    const_UR_ur_n_waypoints) = 
 			dbisim((let
+<<<<<<< HEAD
+				stateClockSync = {|get_CLID_wait_for_move,wait_for_move::entered,get_CLID_reset_UR,reset_UR::entered,get_CLID_choose_cmd,choose_cmd::entered,get_CLID_check_time,check_time::entered|}
+=======
 				stateClockSync = {|get_CLID_reset_UR,reset_UR::entered,get_CLID_check_time,check_time::entered,get_CLID_wait_for_move,wait_for_move::entered,get_CLID_choose_cmd,choose_cmd::entered|}
+>>>>>>> 616dd9a145ad80632e56d34c1bd0fd140e2bc679
 			 within
 				(dbisim(
 					sbisim(
@@ -1972,6 +2166,22 @@ exports
 														          const_UR_ur_n_waypoints))
 											)\{|get_CLID_choose_cmd|}
 										)
+<<<<<<< HEAD
+										[| {|get_CLID_choose_cmd,choose_cmd::entered,terminate|} |]
+										dbisim(Clock_CLID_choose_cmd(id__,0,
+												          const_UR_ur_n_waypoints))
+									)\{|get_CLID_choose_cmd|}
+								)
+								[| {|get_CLID_reset_UR,reset_UR::entered,terminate|} |]
+								dbisim(Clock_CLID_reset_UR(id__,0,
+										          const_UR_ur_n_waypoints))
+							)\{|get_CLID_reset_UR|}
+						)
+						[| {|get_CLID_wait_for_move,wait_for_move::entered,terminate|} |]
+						dbisim(Clock_CLID_wait_for_move(id__,0,
+								          const_UR_ur_n_waypoints))
+					)\{|get_CLID_wait_for_move|}
+=======
 										[| {|get_CLID_wait_for_move,wait_for_move::entered,terminate|} |]
 										dbisim(Clock_CLID_wait_for_move(id__,0,
 												          const_UR_ur_n_waypoints))
@@ -1986,6 +2196,7 @@ exports
 						dbisim(Clock_CLID_reset_UR(id__,0,
 								          const_UR_ur_n_waypoints))
 					)\{|get_CLID_reset_UR|}
+>>>>>>> 616dd9a145ad80632e56d34c1bd0fd140e2bc679
 				)
 				) \ union(stateClockSync,enteredSS)
 			)
@@ -2099,20 +2310,20 @@ exports
 						 [[j0::interrupt <- x__ | x__ <- {|internal__.NID_j0,internal__.NID_j0|}]]
 						 )
 						  [[ share__ <- x__ | x__ <- {| share__,setR_ur_move |} ]] 
-						  [[set_ur_curr_waypoint <- setL_ur_curr_waypoint,set_sys_state <- setL_sys_state,set_ur_move <- setL_ur_move]]
+						  [[set_ur_move <- setL_ur_move,set_ur_curr_waypoint <- setL_ur_curr_waypoint,set_sys_state <- setL_sys_state]]
 						 )
 						 [| union(union(union(flowevts,transSync),{terminate}),{|share__
+						 			,setL_ur_move
 						 			,setL_ur_curr_waypoint
 						 			,setL_sys_state
-						 			,setL_ur_move
 						 			,setR_ur_move
 						 			|}) |]
 						 ((i0::enter -> Transitions(id__,
 						 		    const_UR_ur_n_waypoints))
-						  [[ share__ <- x__ | x__ <- {| share__,setL_ur_curr_waypoint,setL_sys_state,setL_ur_move |} ]]
+						  [[ share__ <- x__ | x__ <- {| share__,setL_ur_move,setL_ur_curr_waypoint,setL_sys_state |} ]]
 						  [[set_ur_move <- setR_ur_move]]
 						 )
-						)[[setL_ur_curr_waypoint <- set_ur_curr_waypoint,setL_sys_state <- set_sys_state,setL_ur_move <- set_ur_move]]
+						)[[setL_ur_move <- set_ur_move,setL_ur_curr_waypoint <- set_ur_curr_waypoint,setL_sys_state <- set_sys_state]]
 						 [[setR_ur_move <- set_ur_move]]
 						)
 					)
@@ -2136,7 +2347,11 @@ exports
 		Behaviour_VS_O(id__,
 				    const_UR_ur_n_waypoints) = 
 			dbisim((let
+<<<<<<< HEAD
+				stateClockSync = {|get_CLID_wait_for_move,wait_for_move::entered,get_CLID_reset_UR,reset_UR::entered,get_CLID_choose_cmd,choose_cmd::entered,get_CLID_check_time,check_time::entered|}
+=======
 				stateClockSync = {|get_CLID_reset_UR,reset_UR::entered,get_CLID_check_time,check_time::entered,get_CLID_wait_for_move,wait_for_move::entered,get_CLID_choose_cmd,choose_cmd::entered|}
+>>>>>>> 616dd9a145ad80632e56d34c1bd0fd140e2bc679
 			 within
 				(MachineBody_VS_O(id__,
 						    const_UR_ur_n_waypoints) [| union(stateClockSync,{terminate}) |] StateClocks(id__,
@@ -2147,7 +2362,11 @@ exports
 		IteratedBehaviour_VS_O(id__,
 				    const_UR_ur_n_waypoints) = 
 			dbisim((let
+<<<<<<< HEAD
+				stateClockSync = {|get_CLID_wait_for_move,wait_for_move::entered,get_CLID_reset_UR,reset_UR::entered,get_CLID_choose_cmd,choose_cmd::entered,get_CLID_check_time,check_time::entered|}
+=======
 				stateClockSync = {|get_CLID_reset_UR,reset_UR::entered,get_CLID_check_time,check_time::entered,get_CLID_wait_for_move,wait_for_move::entered,get_CLID_choose_cmd,choose_cmd::entered|}
+>>>>>>> 616dd9a145ad80632e56d34c1bd0fd140e2bc679
 			 within
 				(dbisim(
 					sbisim(
@@ -2164,6 +2383,22 @@ exports
 														          const_UR_ur_n_waypoints))
 											)\{|get_CLID_choose_cmd|}
 										)
+<<<<<<< HEAD
+										[| {|get_CLID_choose_cmd,choose_cmd::entered,terminate|} |]
+										dbisim(Clock_CLID_choose_cmd(id__,0,
+												          const_UR_ur_n_waypoints))
+									)\{|get_CLID_choose_cmd|}
+								)
+								[| {|get_CLID_reset_UR,reset_UR::entered,terminate|} |]
+								dbisim(Clock_CLID_reset_UR(id__,0,
+										          const_UR_ur_n_waypoints))
+							)\{|get_CLID_reset_UR|}
+						)
+						[| {|get_CLID_wait_for_move,wait_for_move::entered,terminate|} |]
+						dbisim(Clock_CLID_wait_for_move(id__,0,
+								          const_UR_ur_n_waypoints))
+					)\{|get_CLID_wait_for_move|}
+=======
 										[| {|get_CLID_wait_for_move,wait_for_move::entered,terminate|} |]
 										dbisim(Clock_CLID_wait_for_move(id__,0,
 												          const_UR_ur_n_waypoints))
@@ -2178,6 +2413,7 @@ exports
 						dbisim(Clock_CLID_reset_UR(id__,0,
 								          const_UR_ur_n_waypoints))
 					)\{|get_CLID_reset_UR|}
+>>>>>>> 616dd9a145ad80632e56d34c1bd0fd140e2bc679
 				)
 				) \ diff(union(stateClockSync,enteredSS),enteredSS)
 			)
@@ -2293,6 +2529,9 @@ exports
 		
 		clockSync = {||}
 		
+<<<<<<< HEAD
+		Clock_CLID_wait_for_move(id__,x__,
+=======
 		Clock_CLID_reset_UR(id__,x__,
 				          const_UR_ur_n_waypoints) = 
 			TimeOut_1(
@@ -2306,6 +2545,7 @@ exports
 						          const_UR_ur_n_waypoints)),
 						          const_UR_ur_n_waypoints))
 		Clock_CLID_check_time(id__,x__,
+>>>>>>> 616dd9a145ad80632e56d34c1bd0fd140e2bc679
 				          const_UR_ur_n_waypoints) = 
 			TimeOut_1(
 				check_time::entered -> Clock_CLID_check_time(id__,0,
@@ -2330,6 +2570,21 @@ exports
 						          const_UR_ur_n_waypoints)),
 						          const_UR_ur_n_waypoints))
 		Clock_CLID_choose_cmd(id__,x__,
+<<<<<<< HEAD
+				          const_UR_ur_n_waypoints) = 
+			TimeOut_1(
+				choose_cmd::entered -> Clock_CLID_choose_cmd(id__,0,
+						          const_UR_ur_n_waypoints)
+				[]
+				get_CLID_choose_cmd!x__ -> Clock_CLID_choose_cmd(id__,x__,
+						          const_UR_ur_n_waypoints)
+				[]
+				terminate -> SKIP,Clock_CLID_choose_cmd(id__,clock_type_plus(x__,1,CLID_choose_cmd_clock_type(id__,
+						          const_UR_ur_n_waypoints)),
+						          const_UR_ur_n_waypoints))
+		Clock_CLID_check_time(id__,x__,
+=======
+>>>>>>> 616dd9a145ad80632e56d34c1bd0fd140e2bc679
 				          const_UR_ur_n_waypoints) = 
 			TimeOut_1(
 				choose_cmd::entered -> Clock_CLID_choose_cmd(id__,0,
@@ -2343,6 +2598,15 @@ exports
 						          const_UR_ur_n_waypoints))
 		
 		StateClocks(id__,
+<<<<<<< HEAD
+				          const_UR_ur_n_waypoints) = dbisim(Clock_CLID_wait_for_move(id__,0,
+				          const_UR_ur_n_waypoints))
+		[| { terminate } |] (
+		dbisim(Clock_CLID_reset_UR(id__,0,
+				          const_UR_ur_n_waypoints))
+		[| { terminate } |] (
+		dbisim(Clock_CLID_choose_cmd(id__,0,
+=======
 				          const_UR_ur_n_waypoints) = dbisim(Clock_CLID_reset_UR(id__,0,
 				          const_UR_ur_n_waypoints))
 		[| { terminate } |] (
@@ -2350,6 +2614,7 @@ exports
 				          const_UR_ur_n_waypoints))
 		[| { terminate } |] (
 		dbisim(Clock_CLID_wait_for_move(id__,0,
+>>>>>>> 616dd9a145ad80632e56d34c1bd0fd140e2bc679
 				          const_UR_ur_n_waypoints))
 		[| { terminate } |] (
 		dbisim(Clock_CLID_choose_cmd(id__,0,
@@ -2358,7 +2623,11 @@ exports
 		)
 		)
 		
+<<<<<<< HEAD
+		stateClockSync = {|get_CLID_wait_for_move,wait_for_move::entered,get_CLID_reset_UR,reset_UR::entered,get_CLID_choose_cmd,choose_cmd::entered,get_CLID_check_time,check_time::entered|}
+=======
 		stateClockSync = {|get_CLID_reset_UR,reset_UR::entered,get_CLID_check_time,check_time::entered,get_CLID_wait_for_move,wait_for_move::entered,get_CLID_choose_cmd,choose_cmd::entered|}
+>>>>>>> 616dd9a145ad80632e56d34c1bd0fd140e2bc679
 		
 		-- Shared memory
 		-- Shared memory variables

@@ -9,6 +9,12 @@ check_big_dist(jd1,jd2) =
 -- generate abs not
 abs(num) = if (num >= 0) then num else -num
 
+-- generate real not
+nametype core_real = { -1..1}
+
+-- generate nat not
+nametype core_nat = {0..3}
+
 -- generate const_main_Controller_n_waypoints
 const_main_Controller_n_waypoints = 0
 
@@ -84,9 +90,12 @@ const_UR_n_waypoints = 0
 
 -- BASIC TYPES
 
+<<<<<<< HEAD
+=======
 -- generate nat not
 nametype core_nat = {0..5}
 
+>>>>>>> 616dd9a145ad80632e56d34c1bd0fd140e2bc679
 -- generate const_main_Platform_ur_n_waypoints
 const_main_Platform_ur_n_waypoints = 0
 
@@ -113,9 +122,12 @@ const_main_Controller_stm_ref1_ur_n_waypoints = 0
 -- generate const_UR_ur_n_waypoints
 const_UR_ur_n_waypoints = 0
 
+<<<<<<< HEAD
+=======
 -- generate real not
 nametype core_real = { -2..2}
 
+>>>>>>> 616dd9a145ad80632e56d34c1bd0fd140e2bc679
 -- VECTOR TYPES AND OPERATIONS
 
 
@@ -126,7 +138,7 @@ go_to_velocity_BOUND = 2
 
 -- generate int
 nametype core_int = union({ -2..2},{calc_type_min(Union(
-			{{0},{Plus(ur_curr_waypoint, 1, core_nat)|ur_curr_waypoint <- {0..2}},{0},{Plus(curr_waypoint, 1, core_nat)|curr_waypoint <- {0..2}},{5},{0..2},{0},{0..2},{0},{0..2},{3},{0..2}}))..calc_type_max(Union({{0},{Plus(ur_curr_waypoint, 1, core_nat)|ur_curr_waypoint <- {0..2}},{0},{Plus(curr_waypoint, 1, core_nat)|curr_waypoint <- {0..2}},{5},{0..2},{0},{0..2},{0},{0..2},{3},{0..2}}))})
+			{{0},{Plus(curr_waypoint, 1, core_nat)|curr_waypoint <- {0..2}},{0},{Plus(ur_curr_waypoint, 1, core_nat)|ur_curr_waypoint <- {0..2}},{0},{0..2},{1},{0..2},{3},{0..2},{0},{0..2}}))..calc_type_max(Union({{0},{Plus(curr_waypoint, 1, core_nat)|curr_waypoint <- {0..2}},{0},{Plus(ur_curr_waypoint, 1, core_nat)|ur_curr_waypoint <- {0..2}},{0},{0..2},{1},{0..2},{3},{0..2},{0},{0..2}}))})
 
 -- generate Div
 Div(e1,e2,T) = if member(e1/e2,T) then e1/e2 else e1

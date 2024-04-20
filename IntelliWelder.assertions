@@ -16,7 +16,7 @@ timed csp SpecA3 csp-begin
 	Timed (OneStep) {
 	BDeadline(E,d) = (CHAOS(Events) ||| WAIT(d)) [|E|> SKIP
 	SpecA3 = let
-				Def = CHAOS(Events) [| {|UR::move.in|} |> BDeadline({|UR::moveJCall, UR::movePCall,UR::moveLCall, UR::moveL_with_tCall|}, 0); Def
+				Def = CHAOS(Events) [| {|UR::move.in|} |> BDeadline({|UR::moveJCall, UR::movePCall,UR::moveLCall, UR::moveL_with_tCall, UR::out_of_sync|}, 0); Def
 			 within
 			 	timed_priority(Def)
 	}
@@ -32,13 +32,13 @@ csp SysTerminates associated to System csp-begin
 csp-end
 
 csp EXAXTerminates associated to EXAX csp-begin
-	EXAXConstrained = (EXAX::D__(0, 3) [| {| EXAX::out_of_sync |} |] SKIP)
+	EXAXConstrained = (EXAX::D__(0, 1) [| {| EXAX::out_of_sync |} |] SKIP)
 	EXAXTerminates = (EXAXConstrained ; EXAX::terminate -> SKIP) |\ {| EXAX::terminate |}
 csp-end
 
 
 csp URTerminates associated to UR csp-begin
-	URConstrained = (UR::D__(0, 5) [| {| UR::out_of_sync |} |] SKIP)
+	URConstrained = (UR::D__(0, 3) [| {| UR::out_of_sync |} |] SKIP)
 	URTerminates = (URConstrained ; UR::terminate -> SKIP) |\ {| UR::terminate |}
 csp-end
 

@@ -23,7 +23,7 @@ initial i0
 		condition curr_waypoint >= n_waypoints
 	}
 var curr_waypoint : nat = 0
-	const n_waypoints : nat = 3
+	const n_waypoints : nat = 1
 	var exax_move : EXAX_move
 
 	event move : EXAX_move
@@ -41,6 +41,7 @@ var curr_waypoint : nat = 0
 		to j0
 	trigger 
 	
+		
 		move ? exax_move
 		condition sys_state == SystemState :: working \/ sys_state == SystemState :: UR_finished
 	}
@@ -66,6 +67,7 @@ transition t4 {
 		from wait_for_move
 		to wait_for_move
 		trigger 
+		
 		move ? exax_move
 		condition sys_state == SystemState :: EXAX_finished \/ sys_state == SystemState :: wait_for_start
 	}

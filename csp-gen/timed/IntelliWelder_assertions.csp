@@ -1,7 +1,7 @@
 
 --
 -- RoboChart generator version 3.0.0.202311281716
--- Automatically generated on 20-04-2024 13:28:16
+-- Automatically generated on 22-04-2024 22:04:25
 --
 -- Iterated compression status: true
 -- Assertions compression status: false
@@ -26,18 +26,32 @@ include "defs/relation_toolkit_defs.csp"
 
 channel r__
 
+Timed(OneStep) {
+  EXAX2 = EXAX::D__(0, 1) \ {| EXAX::go_to_posCall |}
+}
+
+EXAXConstrained = (EXAX::D__(0, 1) [| {| EXAX::out_of_sync |} |] SKIP)
+
+Timed(OneStep) {
+	ADeadline(E,d) = (CHAOS(Events) ||| Deadline(SKIP,d)) [|E|> SKIP
+}
+
 Timed (OneStep) {
-	ADeadline(E,d) = (CHAOS(Events) ||| WAIT(d)) [|E|> SKIP
 	SpecA1 = let
-				Def = CHAOS(Events) [| {|EXAX::move.in|} |> ADeadline({|EXAX::go_to_posCall|}, 0); Def
+				Def = (CHAOS(Events) [| {|EXAX::move.in|} |> ADeadline({|EXAX::go_to_posCall|}, 0)); Def
 			 within
 				timed_priority(Def)
 }
 
-Timed (OneStep) {
-	BDeadline(E,d) = (CHAOS(Events) ||| WAIT(d)) [|E|> SKIP
+Timed(OneStep) {
+  UR2 = UR::D__(0, 3) \ {| UR::moveJCall, UR::movePCall, UR::moveLCall, UR::moveL_with_tCall |}
+}
+
+URConstrained = (UR::D__(0, 3) [| {| UR::out_of_sync |} |] SKIP)
+
+Timed(OneStep) {
 	SpecA3 = let
-				Def = CHAOS(Events) [| {|UR::move.in|} |> BDeadline({|UR::moveJCall, UR::movePCall,UR::moveLCall, UR::moveL_with_tCall|}, 0); Def
+				Def = (CHAOS(Events) [| {|UR::move.in|} |> ADeadline({|UR::moveJCall, UR::movePCall, UR::moveLCall, UR::moveL_with_tCall|}, 0)); Def
 			 within
 			 	timed_priority(Def)
 	}
@@ -45,11 +59,9 @@ Timed (OneStep) {
 SysConstrained = (System::D__(0) [| {| System::out_of_sync |} |] SKIP)
 	SysTerminates = (SysConstrained ; System::terminate -> SKIP) |\ {| System::terminate |}
 
-EXAXConstrained = (EXAX::D__(0, 1) [| {| EXAX::out_of_sync |} |] SKIP)
-	EXAXTerminates = (EXAXConstrained ; EXAX::terminate -> SKIP) |\ {| EXAX::terminate |}
+EXAXTerminates = (EXAXConstrained ; EXAX::terminate -> SKIP) |\ {| EXAX::terminate |}
 
-URConstrained = (UR::D__(0, 3) [| {| UR::out_of_sync |} |] SKIP)
-	URTerminates = (URConstrained ; UR::terminate -> SKIP) |\ {| UR::terminate |}
+URTerminates = (URConstrained ; UR::terminate -> SKIP) |\ {| UR::terminate |}
 
 Stop = STOP
 
@@ -65,15 +77,7 @@ within
 			    const_EXAX_n_waypoints)
 
 -- A2 - timelock free
-assert RUN({tock}) ||| CHAOS(diff(Events,{|tock|})) [F= let 
-	id__ = 0
-	
-	
-	const_EXAX_n_waypoints = 1
-	
-within
-	EXAX::D__(id__,
-			    const_EXAX_n_waypoints)
+assert RUN({tock}) ||| CHAOS(diff(Events,{|tock|})) [F= EXAX2
 
 -- A3 - refinement
 assert SpecA3 [T= let 
@@ -87,15 +91,7 @@ within
 			    const_UR_ur_n_waypoints)
 
 -- A4 - timelock free
-assert RUN({tock}) ||| CHAOS(diff(Events,{|tock|})) [F= let 
-	id__ = 0
-	
-	
-	const_UR_ur_n_waypoints = 3
-	
-within
-	UR::D__(id__,
-			    const_UR_ur_n_waypoints)
+assert RUN({tock}) ||| CHAOS(diff(Events,{|tock|})) [F= UR2
 
 -- A5 - refinement
 assert Stop [T= SysTerminates

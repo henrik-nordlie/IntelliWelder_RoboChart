@@ -19,9 +19,14 @@ module main {
 		connection stm_ref1 on out_of_sync to stm_ref4 on UR_out_of_sync
 		connection stm_ref2 on out_of_sync to stm_ref4 on EXAX_out_of_sync
 		connection stm_ref4 on system_out_of_sync to stm_ref0 on out_of_sync
-	connection Controller on next_EXAX_move to stm_ref2 on move
-		connection Controller on next_UR_move to stm_ref1 on move
-	requires StateInf }
+
+		connection Controller on next_UR_move to stm_ref3 on ur_move_in
+
+		connection Controller on next_EXAX_move to stm_ref3 on exax_move_in
+	requires StateInf sref stm_ref3 = state_check
+		connection stm_ref3 on exax_move_out to stm_ref2 on move
+		connection stm_ref3 on ur_move_out to stm_ref1 on move
+	}
 
 	robotic platform Platform {
 	uses events 
@@ -47,23 +52,21 @@ datatype UR_move {
 	sharp_corner:boolean
 	jd1:real
 	jd2:real
-	goal_time : real 
-	} 
+	goal_time : int }
+	 
 datatype EXAX_move {
 	dist:real
-	goal_time: real 
-	} 
+	time : int } 
 	
  interface ur_ops {
-	moveJ (  jd1: real, jd2:real, time : real )
-	moveP ( jd1: real, jd2:real, time:real )
-	moveL ( jd1:real, jd2:real, time:real )
-	moveL_with_t ( jd1: real, jd2:real, time:real )
+	moveJ (  jd1: real, jd2:real, time : int )
+	moveP ( jd1: real, jd2:real, time:int )
+	moveL ( jd1:real, jd2:real, time:int )
+	moveL_with_t ( jd1: real, jd2:real, time:int )
 }
 
 interface exax_ops {
-	go_to_pos (    dist : real ,    time_budget : real )
-
+	go_to_pos (dist : real , time_budget : int)
 }
 
 enumeration SystemState { wait_for_start working UR_finished EXAX_finished } interface StateInf {

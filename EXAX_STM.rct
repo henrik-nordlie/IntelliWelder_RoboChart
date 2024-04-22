@@ -30,7 +30,7 @@ var curr_waypoint : nat = 0
 
 	event done
 	state by_position {
-		entry go_to_pos ( exax_move . goal_time , exax_move . dist )
+		entry go_to_pos(exax_move.dist, exax_move.time)
 	}
 	transition t8 {
 		from reset_EXAX
@@ -43,7 +43,7 @@ var curr_waypoint : nat = 0
 	
 		
 		move ? exax_move
-		condition sys_state == SystemState :: working \/ sys_state == SystemState :: UR_finished
+		//condition (sys_state == SystemState :: working) \/ (sys_state == SystemState :: UR_finished)
 	}
 	event out_of_sync
 
@@ -53,23 +53,25 @@ var curr_waypoint : nat = 0
 	transition t2 {
 		from j0
 		to f0
-		condition exax_move . goal_time < 0
+		condition exax_move . time < 0
 		action out_of_sync
 	}
 	transition t3 {
 		from j0
 		to by_position
-		condition exax_move . goal_time >= 0
+		condition exax_move . time >= 0
 	}
 final f0
-	junction j0
+junction j0
+/*
 transition t4 {
 		from wait_for_move
 		to wait_for_move
 		trigger 
 		
 		move ? exax_move
-		condition sys_state == SystemState :: EXAX_finished \/ sys_state == SystemState :: wait_for_start
+		//condition (sys_state == SystemState :: EXAX_finished) \/ (sys_state == SystemState :: wait_for_start)
 	}
+	*/
 }
 

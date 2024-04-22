@@ -1,5 +1,3 @@
-
-
 stm UR {
 	requires ur_ops 
 	requires StateInf
@@ -30,29 +28,18 @@ initial i0
 		entry ur_curr_waypoint = 0 ; done
 	}
 
+	transition t6 {
+		from choose_cmd
+		to j0
+	}junction j0
+
 	transition t1 {
 		from wait_for_move
-		to check_time
-		trigger 
-	
-		
-		
-		move ? ur_move
-		condition sys_state == SystemState :: working \/ sys_state == SystemState :: EXAX_finished
+		to j1
+		trigger move ? ur_move
 	}
-event move : UR_move
-
-	event done
-
-	junction j0
-
 	transition t4 {
-		from check_time
-		to choose_cmd
-		condition ur_move . goal_time >= 0
-	}
-	transition t7 {
-		from check_time
+		from j1
 		to f0
 		condition ur_move . goal_time < 0
 		action out_of_sync
@@ -62,13 +49,16 @@ event move : UR_move
 var ur_move : UR_move
 
 	var big_dist : boolean
-event out_of_sync
+event move : UR_move
+	event done
 	final f0
 
-	transition t6 {
-		from choose_cmd
-		to j0
-	}state choose_cmd {
+	transition t7 {
+		from j1
+		to choose_cmd
+		condition ur_move . goal_time >= 0
+	}
+	state choose_cmd {
 		initial i0
 		state moveP {
 			entry moveP( ur_move .jd1, ur_move .jd2, ur_move .goal_time)
@@ -159,14 +149,7 @@ event out_of_sync
 			to j4
 		}
 	}
-	state check_time {
-	}
-transition t8 {
-		from wait_for_move
-		to wait_for_move
-		trigger 
-		move ? ur_move
-		condition sys_state == SystemState :: wait_for_start \/ sys_state == SystemState :: UR_finished
-	}
+	junction j1
+event out_of_sync
 }
 

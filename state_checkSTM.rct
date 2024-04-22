@@ -1,0 +1,30 @@
+stm state_check {
+	requires StateInf var exax_move : EXAX_move
+	var ur_move : UR_move
+	event exax_move_in : EXAX_move
+	event ur_move_in : UR_move
+	event ur_move_out : UR_move
+	event exax_move_out : EXAX_move
+	initial i0
+	state checker {
+	}
+	transition t0 {
+		from i0
+		to checker
+	}
+	transition t1 {
+		from checker
+		to checker
+		trigger exax_move_in ? exax_move
+		condition (sys_state == SystemState::working) \/ (sys_state == SystemState::UR_finished)
+		action exax_move_out ! exax_move
+	}
+	transition t2 {
+		from checker
+		to checker
+		trigger ur_move_in ? ur_move
+		condition (sys_state == SystemState::working) \/ (sys_state == SystemState::EXAX_finished)
+		action ur_move_out ! ur_move
+	}
+}
+

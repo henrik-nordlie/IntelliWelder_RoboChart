@@ -3,7 +3,7 @@
   "type": "refines",
   "negated": false 
 },
-{ "name": "EXAX timelock free (A2) [failures divergences model]",
+{ "name": "EXAX2 timelock free (A2) [failures divergences model]",
   "type": "timelock-free",
   "negated": false 
 },
@@ -11,7 +11,7 @@
   "type": "refines",
   "negated": false 
 },
-{ "name": "UR timelock free (A4) [failures divergences model]",
+{ "name": "UR2 timelock free (A4) [failures divergences model]",
   "type": "timelock-free",
   "negated": false 
 },

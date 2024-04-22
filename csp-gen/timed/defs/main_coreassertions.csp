@@ -1,7 +1,7 @@
 
 --
 -- RoboChart generator version 3.0.0.202311281716
--- Automatically generated on 18-04-2024 11:09:30
+-- Automatically generated on 22-04-2024 21:58:24
 --
 -- Iterated compression status: true
 -- Assertions compression status: false
@@ -23,8 +23,8 @@ P_main = let
 	
 	
 	
-	const_main_Controller_stm_ref2_n_waypoints = 3
-	const_main_Controller_stm_ref1_ur_n_waypoints = 5
+	const_main_Controller_stm_ref2_n_waypoints = 1
+	const_main_Controller_stm_ref1_ur_n_waypoints = 3
 		
 	
 within
@@ -42,8 +42,8 @@ P_main_Controller = let
 	
 	
 	
-	const_main_Controller_stm_ref1_ur_n_waypoints = 5
-	const_main_Controller_stm_ref2_n_waypoints = 3
+	const_main_Controller_stm_ref1_ur_n_waypoints = 3
+	const_main_Controller_stm_ref2_n_waypoints = 1
 		
 within
 	main::Controller::O__(id__,
@@ -79,7 +79,7 @@ P_main_Controller_stm_ref1 = let
 	id__ = 0
 	
 	
-	const_UR_ur_n_waypoints = 5
+	const_UR_ur_n_waypoints = 3
 	
 within
 	main::Controller::stm_ref1::O__(
@@ -100,7 +100,7 @@ P_main_Controller_stm_ref2 = let
 	id__ = 0
 	
 	
-	const_EXAX_n_waypoints = 3
+	const_EXAX_n_waypoints = 1
 	
 within
 	main::Controller::stm_ref2::O__(
@@ -135,6 +135,25 @@ assert prioritise(P_main_Controller_stm_ref4[[tock<-tock,tock<-tock']],<diff(Eve
 
 -- timelock free
 assert RUN({tock}) ||| CHAOS(diff(Events,{|tock|})) [F= P_main_Controller_stm_ref4
+-- generate main_Controller_stm_ref3
+P_main_Controller_stm_ref3 = let
+	id__ = 0
+	
+	
+	
+within
+	main::Controller::stm_ref3::O__(
+		id__
+	)
+assert P_main_Controller_stm_ref3 :[deadlock-free]	
+assert P_main_Controller_stm_ref3;RUN({r__}) :[deadlock-free]
+assert P_main_Controller_stm_ref3 :[deterministic]
+assert P_main_Controller_stm_ref3 :[divergence-free]
+-- timed deadlock free
+assert prioritise(P_main_Controller_stm_ref3[[tock<-tock,tock<-tock']],<diff(Events,{tock',tock}),{tock}>)\{tock} :[divergence free [FD]]
+
+-- timelock free
+assert RUN({tock}) ||| CHAOS(diff(Events,{|tock|})) [F= P_main_Controller_stm_ref3
 -- timed deadlock free
 assert prioritise(P_main_Controller[[tock<-tock,tock<-tock']],<diff(Events,{tock',tock}),{tock}>)\{tock} :[divergence free [FD]]
 

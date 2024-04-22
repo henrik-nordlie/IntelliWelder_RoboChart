@@ -1,7 +1,7 @@
 
 --
 -- RoboChart generator version 3.0.0.202311281716
--- Automatically generated on 18-04-2024 11:09:29
+-- Automatically generated on 22-04-2024 21:58:23
 --
 -- Iterated compression status: true
 -- Assertions compression status: false
@@ -22,11 +22,11 @@ module main
 	channel next_UR_move: InOut.UR_move
 	channel next_EXAX_move: InOut.EXAX_move
 	
-	channel moveJCall: core_real.core_real.core_real
-	channel movePCall: core_real.core_real.core_real
-	channel moveLCall: core_real.core_real.core_real
-	channel moveL_with_tCall: core_real.core_real.core_real
-	channel go_to_posCall: core_real.core_real
+	channel moveJCall: core_real.core_real.core_int
+	channel movePCall: core_real.core_real.core_int
+	channel moveLCall: core_real.core_real.core_int
+	channel moveL_with_tCall: core_real.core_real.core_int
+	channel go_to_posCall: core_real.core_int
 	
 	-- declaring module termination channel
 	channel terminate
@@ -69,11 +69,11 @@ module main
 			channel set_EXT_sys_state: SystemState
 			
 			-- declaring call and ret events for undefined operations
-			channel moveJCall: core_real.core_real.core_real
-			channel moveLCall: core_real.core_real.core_real
-			channel go_to_posCall: core_real.core_real
-			channel movePCall: core_real.core_real.core_real
-			channel moveL_with_tCall: core_real.core_real.core_real
+			channel go_to_posCall: core_real.core_int
+			channel moveLCall: core_real.core_real.core_int
+			channel moveL_with_tCall: core_real.core_real.core_int
+			channel movePCall: core_real.core_real.core_int
+			channel moveJCall: core_real.core_real.core_int
 			
 			-- declaring controller termination channel
 			channel terminate
@@ -85,11 +85,11 @@ module main
 				next_UR_move,
 				next_EXAX_move
 			,	set_EXT_sys_state, set_sys_state
-			,	moveJCall,
+			,	go_to_posCall,
 				moveLCall,
-				go_to_posCall,
+				moveL_with_tCall,
 				movePCall,
-				moveL_with_tCall
+				moveJCall
 			|}
 	
 			-- defined operations
@@ -829,7 +829,7 @@ module main
 				              NID_j0|
 				              NID_f0|
 				              NID_choose_cmd|
-				              NID_check_time
+				              NID_j1
 				
 				channel internal__ : NIDS
 				
@@ -859,10 +859,10 @@ module main
 				channel out_of_sync: InOut
 				
 				-- Declaring call and ret events for undefined operations
-				channel moveJCall: core_real.core_real.core_real
-				channel moveLCall: core_real.core_real.core_real
-				channel movePCall: core_real.core_real.core_real
-				channel moveL_with_tCall: core_real.core_real.core_real
+				channel moveLCall: core_real.core_real.core_int
+				channel moveL_with_tCall: core_real.core_real.core_int
+				channel movePCall: core_real.core_real.core_int
+				channel moveJCall: core_real.core_real.core_int
 				
 				enterSS = {|
 				i0::enter,
@@ -871,15 +871,14 @@ module main
 				j0::enter,
 				f0::enter,
 				choose_cmd::enter,
-				check_time::enter
+				j1::enter
 				|}
 				
 				enteredSS = 	{|
 				wait_for_move::entered,
 				reset_UR::entered,
 				f0::entered,
-				choose_cmd::entered,
-				check_time::entered
+				choose_cmd::entered
 				|}
 				
 				internal_events = union(enteredSS,union(enterSS,{|interrupt,exited|}))
@@ -895,10 +894,10 @@ module main
 				,	move,
 					done,
 					out_of_sync
-				,	moveJCall,
-					moveLCall,
+				,	moveLCall,
+					moveL_with_tCall,
 					movePCall,
-					moveL_with_tCall
+					moveJCall
 					|}
 			
 				-- Nodes --
@@ -1874,25 +1873,25 @@ module main
 							 	]]
 							 )
 							 )
-							  [[ share__ <- x__ | x__ <- {| share__,setR_ur_curr_waypoint,setR_big_dist,setR_ur_move,setR_sys_state |} ]] 
-							  [[set_ur_curr_waypoint <- setL_ur_curr_waypoint,set_big_dist <- setL_big_dist,set_ur_move <- setL_ur_move,set_sys_state <- setL_sys_state]]
+							  [[ share__ <- x__ | x__ <- {| share__,setR_big_dist,setR_sys_state,setR_ur_move,setR_ur_curr_waypoint |} ]] 
+							  [[set_big_dist <- setL_big_dist,set_sys_state <- setL_sys_state,set_ur_move <- setL_ur_move,set_ur_curr_waypoint <- setL_ur_curr_waypoint]]
 							 )
 							 [| union(union(enteredSS,{| interrupt, terminate |}),{|share__
-							 			,setL_ur_curr_waypoint
 							 			,setL_big_dist
-							 			,setL_ur_move
 							 			,setL_sys_state
-							 			,setR_ur_curr_waypoint
-							 			 			,setR_big_dist
-							 			 			,setR_ur_move
+							 			,setL_ur_move
+							 			,setL_ur_curr_waypoint
+							 			,setR_big_dist
 							 			 			,setR_sys_state
+							 			 			,setR_ur_move
+							 			 			,setR_ur_curr_waypoint
 							 			|}) |]
 							 ((During)
-							  [[ share__ <- x__ | x__ <- {| share__,setL_ur_curr_waypoint,setL_big_dist,setL_ur_move,setL_sys_state |} ]]
-							  [[set_ur_curr_waypoint <- setR_ur_curr_waypoint,set_big_dist <- setR_big_dist,set_ur_move <- setR_ur_move,set_sys_state <- setR_sys_state]]
+							  [[ share__ <- x__ | x__ <- {| share__,setL_big_dist,setL_sys_state,setL_ur_move,setL_ur_curr_waypoint |} ]]
+							  [[set_big_dist <- setR_big_dist,set_sys_state <- setR_sys_state,set_ur_move <- setR_ur_move,set_ur_curr_waypoint <- setR_ur_curr_waypoint]]
 							 )
-							)[[setL_ur_curr_waypoint <- set_ur_curr_waypoint,setL_big_dist <- set_big_dist,setL_ur_move <- set_ur_move,setL_sys_state <- set_sys_state]]
-							 [[setR_ur_curr_waypoint <- set_ur_curr_waypoint,setR_big_dist <- set_big_dist,setR_ur_move <- set_ur_move,setR_sys_state <- set_sys_state]]
+							)[[setL_big_dist <- set_big_dist,setL_sys_state <- set_sys_state,setL_ur_move <- set_ur_move,setL_ur_curr_waypoint <- set_ur_curr_waypoint]]
+							 [[setR_big_dist <- set_big_dist,setR_sys_state <- set_sys_state,setR_ur_move <- set_ur_move,setR_ur_curr_waypoint <- set_ur_curr_waypoint]]
 							)\union(enteredSS,{terminate}) 
 						)
 						During 		= share__choice(([] e__ : enteredSS @ e__ -> SKIP))
@@ -2026,25 +2025,25 @@ module main
 							 	]]
 							 )
 							 )
-							  [[ share__ <- x__ | x__ <- {| share__,setR_ur_curr_waypoint,setR_big_dist,setR_ur_move,setR_sys_state |} ]] 
-							  [[set_ur_curr_waypoint <- setL_ur_curr_waypoint,set_big_dist <- setL_big_dist,set_ur_move <- setL_ur_move,set_sys_state <- setL_sys_state]]
+							  [[ share__ <- x__ | x__ <- {| share__,setR_big_dist,setR_sys_state,setR_ur_move,setR_ur_curr_waypoint |} ]] 
+							  [[set_big_dist <- setL_big_dist,set_sys_state <- setL_sys_state,set_ur_move <- setL_ur_move,set_ur_curr_waypoint <- setL_ur_curr_waypoint]]
 							 )
 							 [| union(union(enteredSS,{| interrupt, terminate |}),{|share__
-							 			,setL_ur_curr_waypoint
 							 			,setL_big_dist
-							 			,setL_ur_move
 							 			,setL_sys_state
-							 			,setR_ur_curr_waypoint
-							 			 			,setR_big_dist
-							 			 			,setR_ur_move
+							 			,setL_ur_move
+							 			,setL_ur_curr_waypoint
+							 			,setR_big_dist
 							 			 			,setR_sys_state
+							 			 			,setR_ur_move
+							 			 			,setR_ur_curr_waypoint
 							 			|}) |]
 							 ((During)
-							  [[ share__ <- x__ | x__ <- {| share__,setL_ur_curr_waypoint,setL_big_dist,setL_ur_move,setL_sys_state |} ]]
-							  [[set_ur_curr_waypoint <- setR_ur_curr_waypoint,set_big_dist <- setR_big_dist,set_ur_move <- setR_ur_move,set_sys_state <- setR_sys_state]]
+							  [[ share__ <- x__ | x__ <- {| share__,setL_big_dist,setL_sys_state,setL_ur_move,setL_ur_curr_waypoint |} ]]
+							  [[set_big_dist <- setR_big_dist,set_sys_state <- setR_sys_state,set_ur_move <- setR_ur_move,set_ur_curr_waypoint <- setR_ur_curr_waypoint]]
 							 )
-							)[[setL_ur_curr_waypoint <- set_ur_curr_waypoint,setL_big_dist <- set_big_dist,setL_ur_move <- set_ur_move,setL_sys_state <- set_sys_state]]
-							 [[setR_ur_curr_waypoint <- set_ur_curr_waypoint,setR_big_dist <- set_big_dist,setR_ur_move <- set_ur_move,setR_sys_state <- set_sys_state]]
+							)[[setL_big_dist <- set_big_dist,setL_sys_state <- set_sys_state,setL_ur_move <- set_ur_move,setL_ur_curr_waypoint <- set_ur_curr_waypoint]]
+							 [[setR_big_dist <- set_big_dist,setR_sys_state <- set_sys_state,setR_ur_move <- set_ur_move,setR_ur_curr_waypoint <- set_ur_curr_waypoint]]
 							)\{terminate} 
 						)
 						During 		= share__choice(([] e__ : enteredSS @ e__ -> SKIP))
@@ -2089,68 +2088,24 @@ module main
 				
 				
 				----------------------------------------------------------------------
-				-- State: check_time
-				module check_time
-				
-				enterSS = {}
-				
-				enteredSS = {}
-				
+				-- Junction: j1
+				module j1
 				exports
 				
-					--  Declarations
+					channel enter, interrupt
 					
-					channel enter, entered, interrupt
-					channel enteredL, enteredR
-					
-									
-					
-					--	Nodes
-					-- declaring all nodes
-					
-					
-					--	Rule: behaviours(Node)
-					--  Note that FDR has problems with efficiently compiling the process below
-					-- 	if using a different recursion pattern.
 					D__(id__,
 							    const_UR_ur_n_waypoints) = 
-					dbisim(let
-						-- IMPLEMENTATION NOTE: 
-						-- The following should be defined as: Inactive = share__choice(Activation [] Termination),
-						-- however FDR struggles with that form in certain cases. So we use the exception operator
-						-- instead to 'terminate'.
-						
-						Inactive 	= share__choice(enter -> SKIP [] terminate -> SKIP) ; Active
-						
-						Termination = terminate -> SKIP
-						
-						Active 		= SKIP ; 
-								 	  Behaviour ; 
-								 	  share__choice(exit -> SKIP) ; SKIP ; 
-								 	  share__choice(exited -> SKIP) ; Inactive
-					
-						Behaviour 	= entered -> During
-						During 		= ((SKIP ; SStop) /\ interrupt -> SKIP)
-					within
-						Inactive [| {terminate} |> SKIP)
+						dbisim(let
+							Inactive 	= share__choice(enter -> SKIP [] terminate -> SKIP) ; Active
+							
+							Active 		= share__choice(interrupt -> SKIP) ; Inactive
+						within
+							Inactive [| {terminate} |> SKIP)
 						
 					VS_O__(id__,
-							    const_UR_ur_n_waypoints) = 
-					dbisim(let
-						Inactive 	= share__choice(enter -> SKIP [] terminate -> SKIP) ; Active
-						
-						Termination = terminate -> SKIP
-						
-						Active 		= SKIP ; 
-								 	  Behaviour ; 
-								 	  share__choice(exit -> SKIP) ; SKIP ; 
-								 	  share__choice(exited -> SKIP) ; Inactive
-					
-						Behaviour 	= entered -> During
-						During 		= ((SKIP ; SStop) /\ interrupt -> SKIP)
-					within
-						Inactive [| {terminate} |> SKIP)
-					
+							    const_UR_ur_n_waypoints) = D__(id__,
+							    const_UR_ur_n_waypoints)
 				
 				endmodule
 				----------------------------------------------------------------------
@@ -2163,26 +2118,26 @@ module main
 				-- If it is in the context of a controller, the required operations not provided by the
 				-- controller will be declared here, and the defined operations will be defined in the
 				-- context of the Controller module, and therefore within scope of the state machine module.
-				CALL__moveJ(id__,
-						    const_UR_ur_n_waypoints,
-							param_jd1,
-							param_jd2,
-							param_time) 	= moveJCall.param_jd1.param_jd2.param_time -> SKIP
 				CALL__moveL(id__,
 						    const_UR_ur_n_waypoints,
 							param_jd1,
 							param_jd2,
 							param_time) 	= moveLCall.param_jd1.param_jd2.param_time -> SKIP
-				CALL__moveP(id__,
-						    const_UR_ur_n_waypoints,
-							param_jd1,
-							param_jd2,
-							param_time) 	= movePCall.param_jd1.param_jd2.param_time -> SKIP
 				CALL__moveL_with_t(id__,
 						    const_UR_ur_n_waypoints,
 							param_jd1,
 							param_jd2,
 							param_time) 	= moveL_with_tCall.param_jd1.param_jd2.param_time -> SKIP
+				CALL__moveP(id__,
+						    const_UR_ur_n_waypoints,
+							param_jd1,
+							param_jd2,
+							param_time) 	= movePCall.param_jd1.param_jd2.param_time -> SKIP
+				CALL__moveJ(id__,
+						    const_UR_ur_n_waypoints,
+							param_jd1,
+							param_jd2,
+							param_time) 	= moveJCall.param_jd1.param_jd2.param_time -> SKIP
 				
 				-- END of Operation calls --
 				
@@ -2224,17 +2179,16 @@ module main
 				-- Transitions
 				Transitions(id__,
 						    const_UR_ur_n_waypoints) = ((let
-					Trans = share__choice(get_ur_curr_waypoint?ur_curr_waypoint -> get_ur_move?ur_move -> get_sys_state?sys_state -> (
+					Trans = share__choice(get_ur_move?ur_move -> get_ur_curr_waypoint?ur_curr_waypoint -> (
 						((share__ -> SKIP
 						 [] dbisim((true)&(internal__!NID_i0 -> SKIP ;  ((SKIP ; wait_for_move::enter -> SKIP))))
 						 	 [] dbisim(((ur_curr_waypoint>=const_UR_ur_n_waypoints))&(internal__!NID_j0 -> SKIP ;  ((SKIP ; reset_UR::enter -> SKIP))))
 						 	 [] dbisim(((ur_curr_waypoint<const_UR_ur_n_waypoints))&(internal__!NID_j0 -> SKIP ;  ((share__choice(share__choice(get_ur_curr_waypoint?ur_curr_waypoint -> true & (share__choice(set_ur_curr_waypoint!Plus(ur_curr_waypoint, 1, core_nat) -> SKIP)))) ; wait_for_move::enter -> SKIP))))
 						 	 [] dbisim((true)&(internal__!NID_reset_UR -> SKIP ;  share__choice(exit -> SKIP) ; (share__choice(exited -> SKIP) ; SKIP ; wait_for_move::enter -> SKIP)))
-						 	 [] dbisim((move__!NID_wait_for_move.in?ur_move:{ur_move|ur_move <- UR_move, ((sys_state==SystemState_working) or (sys_state==SystemState_EXAX_finished))} -> share__choice(set_ur_move!ur_move -> SKIP) ;  share__choice(exit -> SKIP) ; (share__choice(exited -> SKIP) ; SKIP ; check_time::enter -> SKIP)))
-						 	 [] dbisim(((UR_move_goal_time(ur_move)>=0))&(internal__!NID_check_time -> SKIP ;  share__choice(exit -> SKIP) ; (share__choice(exited -> SKIP) ; SKIP ; choose_cmd::enter -> SKIP)))
-						 	 [] dbisim(((UR_move_goal_time(ur_move)<0))&(internal__!NID_check_time -> SKIP ;  share__choice(exit -> SKIP) ; (share__choice(exited -> SKIP) ; true&(share__choice(out_of_sync.out -> SKIP)) ; f0::enter -> SKIP)))
 						 	 [] dbisim((true)&(internal__!NID_choose_cmd -> SKIP ;  share__choice(exit -> SKIP) ; (share__choice(exited -> SKIP) ; SKIP ; j0::enter -> SKIP)))
-						 	 [] dbisim((move__!NID_wait_for_move.in?ur_move:{ur_move|ur_move <- UR_move, ((sys_state==SystemState_wait_for_start) or (sys_state==SystemState_UR_finished))} -> share__choice(set_ur_move!ur_move -> SKIP) ;  share__choice(exit -> SKIP) ; (share__choice(exited -> SKIP) ; SKIP ; wait_for_move::enter -> SKIP)))
+						 	 [] dbisim((true)&(move__!NID_wait_for_move.in?ur_move:{ur_move|ur_move <- UR_move, true} -> share__choice(set_ur_move!ur_move -> SKIP) ;  share__choice(exit -> SKIP) ; (share__choice(exited -> SKIP) ; SKIP ; j1::enter -> SKIP)))
+						 	 [] dbisim(((UR_move_goal_time(ur_move)<0))&(internal__!NID_j1 -> SKIP ;  ((true&(share__choice(out_of_sync.out -> SKIP)) ; f0::enter -> SKIP))))
+						 	 [] dbisim(((UR_move_goal_time(ur_move)>=0))&(internal__!NID_j1 -> SKIP ;  ((SKIP ; choose_cmd::enter -> SKIP))))
 						 ) ; Trans)
 						 []
 						 (interrupt -> share__choice(exit -> SKIP) ; share__choice(exited -> terminate -> SKIP))
@@ -2268,7 +2222,7 @@ module main
 							j0::enter,
 							f0::enter,
 							choose_cmd::enter,
-							check_time::enter
+							j1::enter
 							|}
 							hideSet = union(enterSS,{|exit,exited,internal__|})
 						within 
@@ -2276,7 +2230,7 @@ module main
 								-- IMPLEMENTATION NOTE: the channel set 'enter' is calculated explicitly
 								-- because CSPM modules are used for the semantics of Node.
 								flowevts = union(enterSS,{|exit,exited,interrupt|})
-								transSync = {|internal__.NID_i0,internal__.NID_j0,internal__.NID_j0,internal__.NID_reset_UR,move__.NID_wait_for_move.in,internal__.NID_check_time,internal__.NID_check_time,internal__.NID_choose_cmd,move__.NID_wait_for_move.in|}
+								transSync = {|internal__.NID_i0,internal__.NID_j0,internal__.NID_j0,internal__.NID_reset_UR,internal__.NID_choose_cmd,move__.NID_wait_for_move.in,internal__.NID_j1,internal__.NID_j1|}
 							within
 								((
 								 (((-- RULE composeNodes(nc:NodeContainer)^nops : CSPProcess
@@ -2298,7 +2252,7 @@ module main
 								   choose_cmd::D__(id__,
 								   		    const_UR_ur_n_waypoints)
 								   [| { share__, terminate } |] (
-								   check_time::D__(id__,
+								   j1::D__(id__,
 								   		    const_UR_ur_n_waypoints)
 								   )
 								   )
@@ -2307,29 +2261,28 @@ module main
 								   )
 								   )
 								 )
-								 [[wait_for_move::interrupt <- x__ | x__ <- {|interrupt,move__.NID_wait_for_move.in,move__.NID_wait_for_move.in|}]]
+								 [[wait_for_move::interrupt <- x__ | x__ <- {|interrupt,move__.NID_wait_for_move.in|}]]
 								 [[reset_UR::interrupt <- x__ | x__ <- {|interrupt,internal__.NID_reset_UR|}]]
 								 [[f0::interrupt <- x__ | x__ <- {|interrupt|}]]
 								 [[choose_cmd::interrupt <- x__ | x__ <- {|interrupt,internal__.NID_choose_cmd|}]]
-								 [[check_time::interrupt <- x__ | x__ <- {|interrupt,internal__.NID_check_time,internal__.NID_check_time|}]]
 								 [[i0::interrupt <- x__ | x__ <- {|internal__.NID_i0|}]]
 								 [[j0::interrupt <- x__ | x__ <- {|internal__.NID_j0,internal__.NID_j0|}]]
+								 [[j1::interrupt <- x__ | x__ <- {|internal__.NID_j1,internal__.NID_j1|}]]
 								 )
 								  [[ share__ <- x__ | x__ <- {| share__,setR_ur_move |} ]] 
-								  [[set_ur_curr_waypoint <- setL_ur_curr_waypoint,set_ur_move <- setL_ur_move,set_sys_state <- setL_sys_state]]
+								  [[set_ur_move <- setL_ur_move,set_ur_curr_waypoint <- setL_ur_curr_waypoint]]
 								 )
 								 [| union(union(union(flowevts,transSync),{terminate}),{|share__
-								 			,setL_ur_curr_waypoint
 								 			,setL_ur_move
-								 			,setL_sys_state
+								 			,setL_ur_curr_waypoint
 								 			,setR_ur_move
 								 			|}) |]
 								 ((i0::enter -> Transitions(id__,
 								 		    const_UR_ur_n_waypoints))
-								  [[ share__ <- x__ | x__ <- {| share__,setL_ur_curr_waypoint,setL_ur_move,setL_sys_state |} ]]
+								  [[ share__ <- x__ | x__ <- {| share__,setL_ur_move,setL_ur_curr_waypoint |} ]]
 								  [[set_ur_move <- setR_ur_move]]
 								 )
-								)[[setL_ur_curr_waypoint <- set_ur_curr_waypoint,setL_ur_move <- set_ur_move,setL_sys_state <- set_sys_state]]
+								)[[setL_ur_move <- set_ur_move,setL_ur_curr_waypoint <- set_ur_curr_waypoint]]
 								 [[setR_ur_move <- set_ur_move]]
 								)
 							)
@@ -2409,7 +2362,7 @@ module main
 							j0::enter,
 							f0::enter,
 							choose_cmd::enter,
-							check_time::enter
+							j1::enter
 							|}
 							hideSet = union(enterSS,{|exit,exited,internal__|})
 						within 
@@ -2417,7 +2370,7 @@ module main
 								-- IMPLEMENTATION NOTE: the channel set 'enter' is calculated explicitly
 								-- because CSPM modules are used for the semantics of Node.
 								flowevts = union(enterSS,{|exit,exited,interrupt|})
-								transSync = {|internal__.NID_i0,internal__.NID_j0,internal__.NID_j0,internal__.NID_reset_UR,move__.NID_wait_for_move.in,internal__.NID_check_time,internal__.NID_check_time,internal__.NID_choose_cmd,move__.NID_wait_for_move.in|}
+								transSync = {|internal__.NID_i0,internal__.NID_j0,internal__.NID_j0,internal__.NID_reset_UR,internal__.NID_choose_cmd,move__.NID_wait_for_move.in,internal__.NID_j1,internal__.NID_j1|}
 							within
 								((
 								 (((-- RULE composeNodes(nc:NodeContainer)^nops : CSPProcess
@@ -2439,7 +2392,7 @@ module main
 								   choose_cmd::VS_O__(id__,
 								   		    const_UR_ur_n_waypoints)
 								   [| { share__, terminate } |] (
-								   check_time::VS_O__(id__,
+								   j1::VS_O__(id__,
 								   		    const_UR_ur_n_waypoints)
 								   )
 								   )
@@ -2448,29 +2401,28 @@ module main
 								   )
 								   )
 								 )
-								 [[wait_for_move::interrupt <- x__ | x__ <- {|interrupt,move__.NID_wait_for_move.in,move__.NID_wait_for_move.in|}]]
+								 [[wait_for_move::interrupt <- x__ | x__ <- {|interrupt,move__.NID_wait_for_move.in|}]]
 								 [[reset_UR::interrupt <- x__ | x__ <- {|interrupt,internal__.NID_reset_UR|}]]
 								 [[f0::interrupt <- x__ | x__ <- {|interrupt|}]]
 								 [[choose_cmd::interrupt <- x__ | x__ <- {|interrupt,internal__.NID_choose_cmd|}]]
-								 [[check_time::interrupt <- x__ | x__ <- {|interrupt,internal__.NID_check_time,internal__.NID_check_time|}]]
 								 [[i0::interrupt <- x__ | x__ <- {|internal__.NID_i0|}]]
 								 [[j0::interrupt <- x__ | x__ <- {|internal__.NID_j0,internal__.NID_j0|}]]
+								 [[j1::interrupt <- x__ | x__ <- {|internal__.NID_j1,internal__.NID_j1|}]]
 								 )
 								  [[ share__ <- x__ | x__ <- {| share__,setR_ur_move |} ]] 
-								  [[set_ur_curr_waypoint <- setL_ur_curr_waypoint,set_ur_move <- setL_ur_move,set_sys_state <- setL_sys_state]]
+								  [[set_ur_move <- setL_ur_move,set_ur_curr_waypoint <- setL_ur_curr_waypoint]]
 								 )
 								 [| union(union(union(flowevts,transSync),{terminate}),{|share__
-								 			,setL_ur_curr_waypoint
 								 			,setL_ur_move
-								 			,setL_sys_state
+								 			,setL_ur_curr_waypoint
 								 			,setR_ur_move
 								 			|}) |]
 								 ((i0::enter -> Transitions(id__,
 								 		    const_UR_ur_n_waypoints))
-								  [[ share__ <- x__ | x__ <- {| share__,setL_ur_curr_waypoint,setL_ur_move,setL_sys_state |} ]]
+								  [[ share__ <- x__ | x__ <- {| share__,setL_ur_move,setL_ur_curr_waypoint |} ]]
 								  [[set_ur_move <- setR_ur_move]]
 								 )
-								)[[setL_ur_curr_waypoint <- set_ur_curr_waypoint,setL_ur_move <- set_ur_move,setL_sys_state <- set_sys_state]]
+								)[[setL_ur_move <- set_ur_move,setL_ur_curr_waypoint <- set_ur_curr_waypoint]]
 								 [[setR_ur_move <- set_ur_move]]
 								)
 							)
@@ -2654,7 +2606,7 @@ module main
 				channel out_of_sync: InOut
 				
 				-- Declaring call and ret events for undefined operations
-				channel go_to_posCall: core_real.core_real
+				channel go_to_posCall: core_real.core_int
 				
 				enterSS = {|
 				i0::enter,
@@ -2824,8 +2776,8 @@ module main
 						Active 		= share__choice(get_exax_move?exax_move -> true&CALL__go_to_pos(
 									id__,
 								    const_EXAX_n_waypoints,
-									EXAX_move_goal_time(exax_move),
-									EXAX_move_dist(exax_move)
+									EXAX_move_dist(exax_move),
+									EXAX_move_time(exax_move)
 								)) ; 
 								 	  Behaviour ; 
 								 	  share__choice(exit -> SKIP) ; SKIP ; 
@@ -2846,8 +2798,8 @@ module main
 						Active 		= share__choice(get_exax_move?exax_move -> true&CALL__go_to_pos(
 									id__,
 								    const_EXAX_n_waypoints,
-									EXAX_move_goal_time(exax_move),
-									EXAX_move_dist(exax_move)
+									EXAX_move_dist(exax_move),
+									EXAX_move_time(exax_move)
 								)) ; 
 								 	  Behaviour ; 
 								 	  share__choice(exit -> SKIP) ; SKIP ; 
@@ -3036,16 +2988,15 @@ module main
 				-- Transitions
 				Transitions(id__,
 						    const_EXAX_n_waypoints) = ((let
-					Trans = share__choice(get_curr_waypoint?curr_waypoint -> get_exax_move?exax_move -> get_sys_state?sys_state -> (
+					Trans = share__choice(get_exax_move?exax_move -> get_curr_waypoint?curr_waypoint -> (
 						((share__ -> SKIP
 						 [] dbisim((true)&(internal__!NID_i0 -> SKIP ;  ((SKIP ; wait_for_move::enter -> SKIP))))
 						 	 [] dbisim(((curr_waypoint<const_EXAX_n_waypoints))&(internal__!NID_by_position -> SKIP ;  share__choice(exit -> SKIP) ; (share__choice(exited -> SKIP) ; share__choice(share__choice(get_curr_waypoint?curr_waypoint -> true & (share__choice(set_curr_waypoint!Plus(curr_waypoint, 1, core_nat) -> SKIP)))) ; wait_for_move::enter -> SKIP)))
 						 	 [] dbisim(((curr_waypoint>=const_EXAX_n_waypoints))&(internal__!NID_by_position -> SKIP ;  share__choice(exit -> SKIP) ; (share__choice(exited -> SKIP) ; SKIP ; reset_EXAX::enter -> SKIP)))
 						 	 [] dbisim((true)&(internal__!NID_reset_EXAX -> SKIP ;  share__choice(exit -> SKIP) ; (share__choice(exited -> SKIP) ; SKIP ; wait_for_move::enter -> SKIP)))
-						 	 [] dbisim((move__!NID_wait_for_move.in?exax_move:{exax_move|exax_move <- EXAX_move, ((sys_state==SystemState_working) or (sys_state==SystemState_UR_finished))} -> share__choice(set_exax_move!exax_move -> SKIP) ;  share__choice(exit -> SKIP) ; (share__choice(exited -> SKIP) ; SKIP ; j0::enter -> SKIP)))
-						 	 [] dbisim(((EXAX_move_goal_time(exax_move)<0))&(internal__!NID_j0 -> SKIP ;  ((true&(share__choice(out_of_sync.out -> SKIP)) ; f0::enter -> SKIP))))
-						 	 [] dbisim(((EXAX_move_goal_time(exax_move)>=0))&(internal__!NID_j0 -> SKIP ;  ((SKIP ; by_position::enter -> SKIP))))
-						 	 [] dbisim((move__!NID_wait_for_move.in?exax_move:{exax_move|exax_move <- EXAX_move, ((sys_state==SystemState_EXAX_finished) or (sys_state==SystemState_wait_for_start))} -> share__choice(set_exax_move!exax_move -> SKIP) ;  share__choice(exit -> SKIP) ; (share__choice(exited -> SKIP) ; SKIP ; wait_for_move::enter -> SKIP)))
+						 	 [] dbisim((true)&(move__!NID_wait_for_move.in?exax_move:{exax_move|exax_move <- EXAX_move, true} -> share__choice(set_exax_move!exax_move -> SKIP) ;  share__choice(exit -> SKIP) ; (share__choice(exited -> SKIP) ; SKIP ; j0::enter -> SKIP)))
+						 	 [] dbisim(((EXAX_move_time(exax_move)<0))&(internal__!NID_j0 -> SKIP ;  ((true&(share__choice(out_of_sync.out -> SKIP)) ; f0::enter -> SKIP))))
+						 	 [] dbisim(((EXAX_move_time(exax_move)>=0))&(internal__!NID_j0 -> SKIP ;  ((SKIP ; by_position::enter -> SKIP))))
 						 ) ; Trans)
 						 []
 						 (interrupt -> share__choice(exit -> SKIP) ; share__choice(exited -> terminate -> SKIP))
@@ -3086,7 +3037,7 @@ module main
 								-- IMPLEMENTATION NOTE: the channel set 'enter' is calculated explicitly
 								-- because CSPM modules are used for the semantics of Node.
 								flowevts = union(enterSS,{|exit,exited,interrupt|})
-								transSync = {|internal__.NID_i0,internal__.NID_by_position,internal__.NID_by_position,internal__.NID_reset_EXAX,move__.NID_wait_for_move.in,internal__.NID_j0,internal__.NID_j0,move__.NID_wait_for_move.in|}
+								transSync = {|internal__.NID_i0,internal__.NID_by_position,internal__.NID_by_position,internal__.NID_reset_EXAX,move__.NID_wait_for_move.in,internal__.NID_j0,internal__.NID_j0|}
 							within
 								((
 								 (((-- RULE composeNodes(nc:NodeContainer)^nops : CSPProcess
@@ -3113,7 +3064,7 @@ module main
 								   )
 								   )
 								 )
-								 [[wait_for_move::interrupt <- x__ | x__ <- {|interrupt,move__.NID_wait_for_move.in,move__.NID_wait_for_move.in|}]]
+								 [[wait_for_move::interrupt <- x__ | x__ <- {|interrupt,move__.NID_wait_for_move.in|}]]
 								 [[by_position::interrupt <- x__ | x__ <- {|interrupt,internal__.NID_by_position,internal__.NID_by_position|}]]
 								 [[reset_EXAX::interrupt <- x__ | x__ <- {|interrupt,internal__.NID_reset_EXAX|}]]
 								 [[f0::interrupt <- x__ | x__ <- {|interrupt|}]]
@@ -3121,20 +3072,19 @@ module main
 								 [[j0::interrupt <- x__ | x__ <- {|internal__.NID_j0,internal__.NID_j0|}]]
 								 )
 								  [[ share__ <- x__ | x__ <- {| share__,setR_exax_move |} ]] 
-								  [[set_curr_waypoint <- setL_curr_waypoint,set_exax_move <- setL_exax_move,set_sys_state <- setL_sys_state]]
+								  [[set_exax_move <- setL_exax_move,set_curr_waypoint <- setL_curr_waypoint]]
 								 )
 								 [| union(union(union(flowevts,transSync),{terminate}),{|share__
-								 			,setL_curr_waypoint
 								 			,setL_exax_move
-								 			,setL_sys_state
+								 			,setL_curr_waypoint
 								 			,setR_exax_move
 								 			|}) |]
 								 ((i0::enter -> Transitions(id__,
 								 		    const_EXAX_n_waypoints))
-								  [[ share__ <- x__ | x__ <- {| share__,setL_curr_waypoint,setL_exax_move,setL_sys_state |} ]]
+								  [[ share__ <- x__ | x__ <- {| share__,setL_exax_move,setL_curr_waypoint |} ]]
 								  [[set_exax_move <- setR_exax_move]]
 								 )
-								)[[setL_curr_waypoint <- set_curr_waypoint,setL_exax_move <- set_exax_move,setL_sys_state <- set_sys_state]]
+								)[[setL_exax_move <- set_exax_move,setL_curr_waypoint <- set_curr_waypoint]]
 								 [[setR_exax_move <- set_exax_move]]
 								)
 							)
@@ -3215,7 +3165,7 @@ module main
 								-- IMPLEMENTATION NOTE: the channel set 'enter' is calculated explicitly
 								-- because CSPM modules are used for the semantics of Node.
 								flowevts = union(enterSS,{|exit,exited,interrupt|})
-								transSync = {|internal__.NID_i0,internal__.NID_by_position,internal__.NID_by_position,internal__.NID_reset_EXAX,move__.NID_wait_for_move.in,internal__.NID_j0,internal__.NID_j0,move__.NID_wait_for_move.in|}
+								transSync = {|internal__.NID_i0,internal__.NID_by_position,internal__.NID_by_position,internal__.NID_reset_EXAX,move__.NID_wait_for_move.in,internal__.NID_j0,internal__.NID_j0|}
 							within
 								((
 								 (((-- RULE composeNodes(nc:NodeContainer)^nops : CSPProcess
@@ -3242,7 +3192,7 @@ module main
 								   )
 								   )
 								 )
-								 [[wait_for_move::interrupt <- x__ | x__ <- {|interrupt,move__.NID_wait_for_move.in,move__.NID_wait_for_move.in|}]]
+								 [[wait_for_move::interrupt <- x__ | x__ <- {|interrupt,move__.NID_wait_for_move.in|}]]
 								 [[by_position::interrupt <- x__ | x__ <- {|interrupt,internal__.NID_by_position,internal__.NID_by_position|}]]
 								 [[reset_EXAX::interrupt <- x__ | x__ <- {|interrupt,internal__.NID_reset_EXAX|}]]
 								 [[f0::interrupt <- x__ | x__ <- {|interrupt|}]]
@@ -3250,20 +3200,19 @@ module main
 								 [[j0::interrupt <- x__ | x__ <- {|internal__.NID_j0,internal__.NID_j0|}]]
 								 )
 								  [[ share__ <- x__ | x__ <- {| share__,setR_exax_move |} ]] 
-								  [[set_curr_waypoint <- setL_curr_waypoint,set_exax_move <- setL_exax_move,set_sys_state <- setL_sys_state]]
+								  [[set_exax_move <- setL_exax_move,set_curr_waypoint <- setL_curr_waypoint]]
 								 )
 								 [| union(union(union(flowevts,transSync),{terminate}),{|share__
-								 			,setL_curr_waypoint
 								 			,setL_exax_move
-								 			,setL_sys_state
+								 			,setL_curr_waypoint
 								 			,setR_exax_move
 								 			|}) |]
 								 ((i0::enter -> Transitions(id__,
 								 		    const_EXAX_n_waypoints))
-								  [[ share__ <- x__ | x__ <- {| share__,setL_curr_waypoint,setL_exax_move,setL_sys_state |} ]]
+								  [[ share__ <- x__ | x__ <- {| share__,setL_exax_move,setL_curr_waypoint |} ]]
 								  [[set_exax_move <- setR_exax_move]]
 								 )
-								)[[setL_curr_waypoint <- set_curr_waypoint,setL_exax_move <- set_exax_move,setL_sys_state <- set_sys_state]]
+								)[[setL_exax_move <- set_exax_move,setL_curr_waypoint <- set_curr_waypoint]]
 								 [[setR_exax_move <- set_exax_move]]
 								)
 							)
@@ -3852,31 +3801,489 @@ module main
 				
 				sharedVarHide = {||}
 			endmodule
+			module stm_ref3
+			exports
+				transparent diamond
+				transparent sbisim
+				transparent dbisim
+				transparent chase
+			
+				-- Transition identifiers
+				-- declaring identifiers of transitions
+				datatype NIDS = 
+				              NID_i0|
+				              NID_checker
+				
+				channel internal__ : NIDS
+				
+				-- Flow channels		
+				channel interrupt
+				channel exited
+				channel exit
+				channel terminate
+				
+				-- Variable channels
+				channel get_exax_move, set_exax_move, setL_exax_move, setR_exax_move: EXAX_move
+				channel get_ur_move, set_ur_move, setL_ur_move, setR_ur_move: UR_move
+				channel get_sys_state, set_sys_state, setL_sys_state, setR_sys_state: SystemState
+				
+				-- Shared variable channels
+				channel set_EXT_sys_state: SystemState
+				
+				-- Local variable channels for defined operations that are required by the state machine
+				
+				-- Declaring state machine events
+				channel exax_move_in__: NIDS.InOut.EXAX_move
+				channel exax_move_in: InOut.EXAX_move
+				channel ur_move_in__: NIDS.InOut.UR_move
+				channel ur_move_in: InOut.UR_move
+				channel ur_move_out__: NIDS.InOut.UR_move
+				channel ur_move_out: InOut.UR_move
+				channel exax_move_out__: NIDS.InOut.EXAX_move
+				channel exax_move_out: InOut.EXAX_move
+				
+				-- Declaring call and ret events for undefined operations
+				
+				enterSS = {|
+				i0::enter,
+				checker::enter
+				|}
+				
+				enteredSS = 	{|
+				checker::entered
+				|}
+				
+				internal_events = union(enteredSS,union(enterSS,{|interrupt,exited|}))
+				
+				shared_variable_events = {|
+					set_EXT_sys_state
+				|}
+				
+				-- channel set with all visible events
+				sem__events = {|
+					terminate
+				,	set_EXT_sys_state, set_sys_state
+				,	exax_move_in,
+					ur_move_in,
+					ur_move_out,
+					exax_move_out
+					|}
+			
+				-- Nodes --
+				-- declaring all nodes
+				
+				----------------------------------------------------------------------
+				-- Initial: i0
+				module i0
+				exports
+				
+					channel enter, interrupt
+					
+					D__(id__) = 
+						dbisim(let
+							Inactive 	= share__choice(enter -> SKIP [] terminate -> SKIP) ; Active
+							
+							Termination = terminate -> SKIP
+							
+							Active 		= share__choice(interrupt -> SKIP) ; Inactive
+						within
+							Inactive [| {terminate} |> SKIP)
+					
+					VS_O__(id__) = D__(id__)
+				
+				endmodule
+				----------------------------------------------------------------------
+				
+				
+				----------------------------------------------------------------------
+				-- State: checker
+				module checker
+				
+				enterSS = {}
+				
+				enteredSS = {}
+				
+				exports
+				
+					--  Declarations
+					
+					channel enter, entered, interrupt
+					channel enteredL, enteredR
+					
+									
+					
+					--	Nodes
+					-- declaring all nodes
+					
+					
+					--	Rule: behaviours(Node)
+					--  Note that FDR has problems with efficiently compiling the process below
+					-- 	if using a different recursion pattern.
+					D__(id__) = 
+					dbisim(let
+						-- IMPLEMENTATION NOTE: 
+						-- The following should be defined as: Inactive = share__choice(Activation [] Termination),
+						-- however FDR struggles with that form in certain cases. So we use the exception operator
+						-- instead to 'terminate'.
+						
+						Inactive 	= share__choice(enter -> SKIP [] terminate -> SKIP) ; Active
+						
+						Termination = terminate -> SKIP
+						
+						Active 		= SKIP ; 
+								 	  Behaviour ; 
+								 	  share__choice(exit -> SKIP) ; SKIP ; 
+								 	  share__choice(exited -> SKIP) ; Inactive
+					
+						Behaviour 	= entered -> During
+						During 		= ((SKIP ; SStop) /\ interrupt -> SKIP)
+					within
+						Inactive [| {terminate} |> SKIP)
+						
+					VS_O__(id__) = 
+					dbisim(let
+						Inactive 	= share__choice(enter -> SKIP [] terminate -> SKIP) ; Active
+						
+						Termination = terminate -> SKIP
+						
+						Active 		= SKIP ; 
+								 	  Behaviour ; 
+								 	  share__choice(exit -> SKIP) ; SKIP ; 
+								 	  share__choice(exited -> SKIP) ; Inactive
+					
+						Behaviour 	= entered -> During
+						During 		= ((SKIP ; SStop) /\ interrupt -> SKIP)
+					within
+						Inactive [| {terminate} |> SKIP)
+					
+				
+				endmodule
+				----------------------------------------------------------------------
+				
+				-- END of Nodes --
+				
+				-- Operation calls --
+				-- Only the undefined operations are declared here.
+				-- If the state machine is in isolation, all required operations will be undefined.
+				-- If it is in the context of a controller, the required operations not provided by the
+				-- controller will be declared here, and the defined operations will be defined in the
+				-- context of the Controller module, and therefore within scope of the state machine module.
+				
+				-- END of Operation calls --
+				
+				-- STM processes
+				STM(id__) = -- RULE: [[stm:StateMachineDef]]_STM^nops : CSPProcess
+				( 
+					(
+						(
+							(IteratedStateful(id__) \ {terminate} ; share__choice(terminate -> SKIP))
+						 	[[ share__ <- x__ | x__ <- {|set_EXT_sys_state|} ]]
+						)
+					[| {share__} |]
+					SKIP
+					)
+					[| union(sharedVarSync,{terminate}) |]
+					dbisim(sharedVarMemory(id__))
+				)\sharedVarHide
+				
+				STM_VS_O(id__) = -- RULE: [[stm:StateMachineDef]]_STM^nops : CSPProcess
+				( 
+					(
+						(
+							(IteratedStateful_VS_O(id__) \ {terminate} ; share__choice(terminate -> SKIP))
+						 	[[ share__ <- x__ | x__ <- {|set_EXT_sys_state|} ]]
+						)
+					[| {share__} |]
+					SKIP
+					)
+					[| union(sharedVarSync,{terminate}) |]
+					dbisim(sharedVarMemory(id__))
+				)\sharedVarHide
+				
+				-- Transitions
+				Transitions(id__) = ((let
+					Trans = share__choice(get_sys_state?sys_state -> (
+						((share__ -> SKIP
+						 [] dbisim((true)&(internal__!NID_i0 -> SKIP ;  ((SKIP ; checker::enter -> SKIP))))
+						 	 [] dbisim((exax_move_in__!NID_checker.in?exax_move:{exax_move|exax_move <- EXAX_move, (((sys_state==SystemState_working)) or ((sys_state==SystemState_UR_finished)))} -> share__choice(set_exax_move!exax_move -> SKIP) ;  share__choice(exit -> SKIP) ; (share__choice(exited -> SKIP) ; share__choice(get_exax_move?exax_move -> true&(share__choice(exax_move_out.out!exax_move -> SKIP))) ; checker::enter -> SKIP)))
+						 	 [] dbisim((ur_move_in__!NID_checker.in?ur_move:{ur_move|ur_move <- UR_move, (((sys_state==SystemState_working)) or ((sys_state==SystemState_EXAX_finished)))} -> share__choice(set_ur_move!ur_move -> SKIP) ;  share__choice(exit -> SKIP) ; (share__choice(exited -> SKIP) ; share__choice(get_ur_move?ur_move -> true&(share__choice(ur_move_out.out!ur_move -> SKIP))) ; checker::enter -> SKIP)))
+						 ) ; Trans)
+						 []
+						 (interrupt -> share__choice(exit -> SKIP) ; share__choice(exited -> terminate -> SKIP))
+						 []
+						 terminate -> SKIP
+					)
+					)
+				within
+					Trans
+				)
+				)
+				
+				-- Stateful
+				-- RULE: Stateful(stm:StateMachineBody) : CSPProcess
+				
+				-- Named process definitions
+				MachineBody(id__) = 
+					dbisim((
+					let
+						finalNodesEntered = {||}
+					within
+						((let
+							-- IMPLEMENTATION NOTE:
+							-- Here the 'enter' channel set is calculated explicitly because of the use of CSPM 
+							-- modules for defining the semantics of each node.
+							enterSS = {|
+							i0::enter,
+							checker::enter
+							|}
+							hideSet = union(enterSS,{|exit,exited,internal__|})
+						within 
+							((let
+								-- IMPLEMENTATION NOTE: the channel set 'enter' is calculated explicitly
+								-- because CSPM modules are used for the semantics of Node.
+								flowevts = union(enterSS,{|exit,exited,interrupt|})
+								transSync = {|internal__.NID_i0,exax_move_in__.NID_checker.in,ur_move_in__.NID_checker.in|}
+							within
+								((
+								 (((-- RULE composeNodes(nc:NodeContainer)^nops : CSPProcess
+								   i0::D__(id__)
+								   [| { share__, terminate } |] (
+								   checker::D__(id__)
+								   )
+								 )
+								 [[checker::interrupt <- x__ | x__ <- {|interrupt,exax_move_in__.NID_checker.in,ur_move_in__.NID_checker.in|}]]
+								 [[i0::interrupt <- x__ | x__ <- {|internal__.NID_i0|}]]
+								 )
+								  [[ share__ <- x__ | x__ <- {| share__,setR_ur_move,setR_exax_move |} ]] 
+								  [[set_sys_state <- setL_sys_state]]
+								 )
+								 [| union(union(union(flowevts,transSync),{terminate}),{|share__
+								 			,setL_sys_state
+								 			,setR_ur_move
+								 			 			,setR_exax_move
+								 			|}) |]
+								 ((i0::enter -> Transitions(id__))
+								  [[ share__ <- x__ | x__ <- {| share__,setL_sys_state |} ]]
+								  [[set_ur_move <- setR_ur_move,set_exax_move <- setR_exax_move]]
+								 )
+								)[[setL_sys_state <- set_sys_state]]
+								 [[setR_ur_move <- set_ur_move,setR_exax_move <- set_exax_move]]
+								)
+							)
+							 \ hideSet)
+							[[
+								exax_move_in__.x____ <- exax_move_in,
+								ur_move_in__.x____ <- ur_move_in,
+								ur_move_out__.x____ <- ur_move_out,
+								exax_move_out__.x____ <- exax_move_out
+								| x____ <- NIDS
+							]]
+						)
+						 [| {| interrupt |} |] SKIP)
+					)
+					)
+				
+				Behaviour(id__) = 
+					dbisim((MachineBody(id__)\ enteredSS)
+					)
+				
+				IteratedBehaviour(id__) = 
+					dbisim((MachineBody(id__)\ enteredSS)
+					)
+				
+				Stateful(id__) = 
+					((
+						(Behaviour(id__) [| union(getsetLocalChannels,{terminate}) |] varMemory(id__))
+					 	\getsetLocalChannels
+					)
+					)
+				
+				IteratedStateful(id__) =
+					(dbisim(
+						sbisim(
+							dbisim(
+								sbisim(
+									Behaviour(id__)
+									[| {|get_ur_move,set_ur_move,terminate|} |]
+									Memory_ur_move((true,true,true,0,0,0))
+								)\{|get_ur_move,set_ur_move|}
+							)
+							[| {|get_exax_move,set_exax_move,terminate|} |]
+							Memory_exax_move((0,0))
+						)\{|get_exax_move,set_exax_move|}
+					)
+					)
+				
+				-- Visible counterparts
+				MachineBody_VS_O(id__) = 
+					dbisim((
+					let
+						finalNodesEntered = {||}
+					within
+						((let
+							-- IMPLEMENTATION NOTE:
+							-- Here the 'enter' channel set is calculated explicitly because of the use of CSPM 
+							-- modules for defining the semantics of each node.
+							enterSS = {|
+							i0::enter,
+							checker::enter
+							|}
+							hideSet = union(enterSS,{|exit,exited,internal__|})
+						within 
+							((let
+								-- IMPLEMENTATION NOTE: the channel set 'enter' is calculated explicitly
+								-- because CSPM modules are used for the semantics of Node.
+								flowevts = union(enterSS,{|exit,exited,interrupt|})
+								transSync = {|internal__.NID_i0,exax_move_in__.NID_checker.in,ur_move_in__.NID_checker.in|}
+							within
+								((
+								 (((-- RULE composeNodes(nc:NodeContainer)^nops : CSPProcess
+								   i0::VS_O__(id__)
+								   [| { share__, terminate } |] (
+								   checker::VS_O__(id__)
+								   )
+								 )
+								 [[checker::interrupt <- x__ | x__ <- {|interrupt,exax_move_in__.NID_checker.in,ur_move_in__.NID_checker.in|}]]
+								 [[i0::interrupt <- x__ | x__ <- {|internal__.NID_i0|}]]
+								 )
+								  [[ share__ <- x__ | x__ <- {| share__,setR_ur_move,setR_exax_move |} ]] 
+								  [[set_sys_state <- setL_sys_state]]
+								 )
+								 [| union(union(union(flowevts,transSync),{terminate}),{|share__
+								 			,setL_sys_state
+								 			,setR_ur_move
+								 			 			,setR_exax_move
+								 			|}) |]
+								 ((i0::enter -> Transitions(id__))
+								  [[ share__ <- x__ | x__ <- {| share__,setL_sys_state |} ]]
+								  [[set_ur_move <- setR_ur_move,set_exax_move <- setR_exax_move]]
+								 )
+								)[[setL_sys_state <- set_sys_state]]
+								 [[setR_ur_move <- set_ur_move,setR_exax_move <- set_exax_move]]
+								)
+							)
+							 \ hideSet)
+							[[
+								exax_move_in__.x____ <- exax_move_in,
+								ur_move_in__.x____ <- ur_move_in,
+								ur_move_out__.x____ <- ur_move_out,
+								exax_move_out__.x____ <- exax_move_out
+								| x____ <- NIDS
+							]]
+						)
+						 [| {| interrupt |} |] SKIP)
+					)
+					)
+				
+				Behaviour_VS_O(id__) = 
+					dbisim((MachineBody_VS_O(id__))
+					)
+				
+				IteratedBehaviour_VS_O(id__) = 
+					dbisim((MachineBody_VS_O(id__))
+					)
+				
+				Stateful_VS_O(id__) = 
+					dbisim((
+						(Behaviour_VS_O(id__) [| union(getsetLocalChannels,{terminate}) |] varMemory(id__))
+					 	\getsetLocalChannels
+					)
+					)
+				
+				IteratedStateful_VS_O(id__) =
+					(dbisim(
+						sbisim(
+							dbisim(
+								sbisim(
+									Behaviour_VS_O(id__)
+									[| {|get_ur_move,set_ur_move,terminate|} |]
+									Memory_ur_move((true,true,true,0,0,0))
+								)\{|get_ur_move,set_ur_move|}
+							)
+							[| {|get_exax_move,set_exax_move,terminate|} |]
+							Memory_exax_move((0,0))
+						)\{|get_exax_move,set_exax_move|}
+					)
+					)
+				
+				-- END
+				
+				-- Memory
+				-- Memory variables
+				Memory_exax_move(exax_move) =
+					get_exax_move!exax_move -> Memory_exax_move(exax_move)
+					[]
+					set_exax_move?x__ -> Memory_exax_move(x__)
+					[]
+					terminate -> SKIP
+				Memory_ur_move(ur_move) =
+					get_ur_move!ur_move -> Memory_ur_move(ur_move)
+					[]
+					set_ur_move?x__ -> Memory_ur_move(x__)
+					[]
+					terminate -> SKIP
+				
+				-- varMemory process
+				varMemory(id__) = Memory_exax_move((0,0))
+				[| { terminate } |] (
+				Memory_ur_move((true,true,true,0,0,0))
+				)
+				
+				getsetLocalChannels = {|get_exax_move,set_exax_move,get_ur_move,set_ur_move|}
+				
+				-- Definition of the behaviour of state machines (default, optimised, visible, visible and optimised)
+				FVS__(id__) = STM_VS_O(id__)
+				
+				D__(id__) = STM(id__) \ internal_events
+				O__(id__) = sbisim(diamond(D__(id__)))
+				VS__(id__) = FVS__(id__)
+				VS_O__(id__) = sbisim(diamond(FVS__(id__)))
+				HEXT__(id__) = O__(id__) [|shared_variable_events|] SKIP
+				HUP__(id__) = O__(id__) [|{share__}|] SKIP
+				
+				-- Shared memory
+				-- Shared memory variables
+				Memory_sys_state(sys_state) =
+					get_sys_state!sys_state -> Memory_sys_state(sys_state)
+					[]
+					set_sys_state?x__ -> Memory_sys_state(x__)
+					[]
+					set_EXT_sys_state?x__ -> Memory_sys_state(x__)
+					[]
+					terminate -> SKIP
+				
+				-- sharedVarMemory process
+				sharedVarMemory(id__) = Memory_sys_state(SystemState_wait_for_start)
+				
+				sharedVarSync = {|get_sys_state,set_sys_state,set_EXT_sys_state|}
+				
+				sharedVarHide = {|get_sys_state|}
+			endmodule
 			
 				-- undefined operations
-				CALL__moveJ(id__,
-						    param_jd1,
-						    param_jd2,
-						    param_time) 	= moveJCall.param_jd1.param_jd2.param_time -> SKIP
+				CALL__go_to_pos(id__,
+						    param_dist,
+						    param_time_budget) 	= go_to_posCall.param_dist.param_time_budget -> SKIP
 				CALL__moveL(id__,
 						    param_jd1,
 						    param_jd2,
 						    param_time) 	= moveLCall.param_jd1.param_jd2.param_time -> SKIP
-				CALL__go_to_pos(id__,
-						    param_dist,
-						    param_time_budget) 	= go_to_posCall.param_dist.param_time_budget -> SKIP
-				CALL__moveP(id__,
-						    param_jd1,
-						    param_jd2,
-						    param_time) 	= movePCall.param_jd1.param_jd2.param_time -> SKIP
 				CALL__moveL_with_t(id__,
 						    param_jd1,
 						    param_jd2,
 						    param_time) 	= moveL_with_tCall.param_jd1.param_jd2.param_time -> SKIP
+				CALL__moveP(id__,
+						    param_jd1,
+						    param_jd2,
+						    param_time) 	= movePCall.param_jd1.param_jd2.param_time -> SKIP
+				CALL__moveJ(id__,
+						    param_jd1,
+						    param_jd2,
+						    param_time) 	= moveJCall.param_jd1.param_jd2.param_time -> SKIP
 				
 				-- declaring controller memory
 				Memory(id__, sys_state) = (
-				set_EXT_sys_state?x__ -> stm_ref0::set_EXT_sys_state!x__ -> stm_ref1::set_EXT_sys_state!x__ -> stm_ref2::set_EXT_sys_state!x__ -> 
+				set_EXT_sys_state?x__ -> stm_ref0::set_EXT_sys_state!x__ -> stm_ref1::set_EXT_sys_state!x__ -> stm_ref2::set_EXT_sys_state!x__ -> stm_ref3::set_EXT_sys_state!x__ -> 
 				Memory(id__,x__)
 				)
 				
@@ -3901,53 +4308,71 @@ module main
 						(
 							(
 								let
-									const_UR_ur_n_waypoints = 5
+									const_UR_ur_n_waypoints = 3
 								within 
 								stm_ref1::D__(id__,
 										    const_UR_ur_n_waypoints)[[
 									stm_ref1::terminate <- terminate,
-									stm_ref1::move <- next_UR_move,
+									stm_ref1::move.in <- stm_ref3::ur_move_out.out,
+									stm_ref1::move.out <- stm_ref3::ur_move_out.in,
 									stm_ref1::set_sys_state <- set_sys_state,
 									stm_ref1::get_sys_state <- get_sys_state,
-									stm_ref1::moveJCall <- moveJCall,
 									stm_ref1::moveLCall <- moveLCall,
+									stm_ref1::moveL_with_tCall <- moveL_with_tCall,
 									stm_ref1::movePCall <- movePCall,
-									stm_ref1::moveL_with_tCall <- moveL_with_tCall
+									stm_ref1::moveJCall <- moveJCall
 								]]
 							)
-								[|{|terminate, stm_ref1::out_of_sync|}|]
+								[|{|terminate, stm_ref1::out_of_sync, stm_ref3::ur_move_out|}|]
 							(
 								(
 									let
-										const_EXAX_n_waypoints = 3
+										const_EXAX_n_waypoints = 1
 									within 
 									stm_ref2::D__(id__,
 											    const_EXAX_n_waypoints)[[
 										stm_ref2::terminate <- terminate,
-										stm_ref2::move <- next_EXAX_move,
+										stm_ref2::move.in <- stm_ref3::exax_move_out.out,
+										stm_ref2::move.out <- stm_ref3::exax_move_out.in,
 										stm_ref2::set_sys_state <- set_sys_state,
 										stm_ref2::get_sys_state <- get_sys_state,
 										stm_ref2::go_to_posCall <- go_to_posCall
 									]]
 								)
-									[|{|terminate, stm_ref2::out_of_sync|}|]
+									[|{|terminate, stm_ref2::out_of_sync, stm_ref3::exax_move_out|}|]
 								(
-									stm_ref4::D__(id__)[[
-										stm_ref4::terminate <- terminate,
-										stm_ref4::UR_out_of_sync.in <- stm_ref1::out_of_sync.out,
-										stm_ref4::UR_out_of_sync.out <- stm_ref1::out_of_sync.in,
-										stm_ref4::EXAX_out_of_sync.in <- stm_ref2::out_of_sync.out,
-										stm_ref4::EXAX_out_of_sync.out <- stm_ref2::out_of_sync.in
-									]]
+									(
+										stm_ref4::D__(id__)[[
+											stm_ref4::terminate <- terminate,
+											stm_ref4::UR_out_of_sync.in <- stm_ref1::out_of_sync.out,
+											stm_ref4::UR_out_of_sync.out <- stm_ref1::out_of_sync.in,
+											stm_ref4::EXAX_out_of_sync.in <- stm_ref2::out_of_sync.out,
+											stm_ref4::EXAX_out_of_sync.out <- stm_ref2::out_of_sync.in
+										]]
+									)
+										[|{|terminate|}|]
+									(
+										stm_ref3::D__(id__)[[
+											stm_ref3::terminate <- terminate,
+											stm_ref3::ur_move_in <- next_UR_move,
+											stm_ref3::exax_move_in <- next_EXAX_move,
+											stm_ref3::set_sys_state <- set_sys_state,
+											stm_ref3::get_sys_state <- get_sys_state
+										]]
+									)
+								)
+								\diff(
+									{|terminate|},
+									{|terminate|}
 								)
 							)
 							\diff(
-								{|terminate, stm_ref2::out_of_sync|},
+								{|terminate, stm_ref2::out_of_sync, stm_ref3::exax_move_out|},
 								{|terminate|}
 							)
 						)
 						\diff(
-							{|terminate, stm_ref1::out_of_sync|},
+							{|terminate, stm_ref1::out_of_sync, stm_ref3::ur_move_out|},
 							{|terminate|}
 						)
 					)
@@ -3962,7 +4387,8 @@ module main
 								{|
 									stm_ref0::set_EXT_sys_state,
 									stm_ref1::set_EXT_sys_state,
-									stm_ref2::set_EXT_sys_state
+									stm_ref2::set_EXT_sys_state,
+									stm_ref3::set_EXT_sys_state
 								|}
 							)
 						|]
@@ -3974,7 +4400,8 @@ module main
 					{|
 						stm_ref0::set_EXT_sys_state,
 						stm_ref1::set_EXT_sys_state,
-						stm_ref2::set_EXT_sys_state
+						stm_ref2::set_EXT_sys_state,
+						stm_ref3::set_EXT_sys_state
 					|}
 				)
 				[|{|terminate|}|>SKIP
@@ -4001,53 +4428,71 @@ module main
 						(
 							(
 								let
-									const_UR_ur_n_waypoints = 5
+									const_UR_ur_n_waypoints = 3
 								within 
 								stm_ref1::VS__(id__,
 										    const_UR_ur_n_waypoints)[[
 									stm_ref1::terminate <- terminate,
-									stm_ref1::move <- next_UR_move,
+									stm_ref1::move.in <- stm_ref3::ur_move_out.out,
+									stm_ref1::move.out <- stm_ref3::ur_move_out.in,
 									stm_ref1::set_sys_state <- set_sys_state,
 									stm_ref1::get_sys_state <- get_sys_state,
-									stm_ref1::moveJCall <- moveJCall,
 									stm_ref1::moveLCall <- moveLCall,
+									stm_ref1::moveL_with_tCall <- moveL_with_tCall,
 									stm_ref1::movePCall <- movePCall,
-									stm_ref1::moveL_with_tCall <- moveL_with_tCall
+									stm_ref1::moveJCall <- moveJCall
 								]]
 							)
-								[|{|terminate, stm_ref1::out_of_sync|}|]
+								[|{|terminate, stm_ref1::out_of_sync, stm_ref3::ur_move_out|}|]
 							(
 								(
 									let
-										const_EXAX_n_waypoints = 3
+										const_EXAX_n_waypoints = 1
 									within 
 									stm_ref2::VS__(id__,
 											    const_EXAX_n_waypoints)[[
 										stm_ref2::terminate <- terminate,
-										stm_ref2::move <- next_EXAX_move,
+										stm_ref2::move.in <- stm_ref3::exax_move_out.out,
+										stm_ref2::move.out <- stm_ref3::exax_move_out.in,
 										stm_ref2::set_sys_state <- set_sys_state,
 										stm_ref2::get_sys_state <- get_sys_state,
 										stm_ref2::go_to_posCall <- go_to_posCall
 									]]
 								)
-									[|{|terminate, stm_ref2::out_of_sync|}|]
+									[|{|terminate, stm_ref2::out_of_sync, stm_ref3::exax_move_out|}|]
 								(
-									stm_ref4::VS__(id__)[[
-										stm_ref4::terminate <- terminate,
-										stm_ref4::UR_out_of_sync.in <- stm_ref1::out_of_sync.out,
-										stm_ref4::UR_out_of_sync.out <- stm_ref1::out_of_sync.in,
-										stm_ref4::EXAX_out_of_sync.in <- stm_ref2::out_of_sync.out,
-										stm_ref4::EXAX_out_of_sync.out <- stm_ref2::out_of_sync.in
-									]]
+									(
+										stm_ref4::VS__(id__)[[
+											stm_ref4::terminate <- terminate,
+											stm_ref4::UR_out_of_sync.in <- stm_ref1::out_of_sync.out,
+											stm_ref4::UR_out_of_sync.out <- stm_ref1::out_of_sync.in,
+											stm_ref4::EXAX_out_of_sync.in <- stm_ref2::out_of_sync.out,
+											stm_ref4::EXAX_out_of_sync.out <- stm_ref2::out_of_sync.in
+										]]
+									)
+										[|{|terminate|}|]
+									(
+										stm_ref3::VS__(id__)[[
+											stm_ref3::terminate <- terminate,
+											stm_ref3::ur_move_in <- next_UR_move,
+											stm_ref3::exax_move_in <- next_EXAX_move,
+											stm_ref3::set_sys_state <- set_sys_state,
+											stm_ref3::get_sys_state <- get_sys_state
+										]]
+									)
+								)
+								\diff(
+									{|terminate|},
+									{|terminate|}
 								)
 							)
 							\diff(
-								{|terminate, stm_ref2::out_of_sync|},
+								{|terminate, stm_ref2::out_of_sync, stm_ref3::exax_move_out|},
 								{|terminate|}
 							)
 						)
 						\diff(
-							{|terminate, stm_ref1::out_of_sync|},
+							{|terminate, stm_ref1::out_of_sync, stm_ref3::ur_move_out|},
 							{|terminate|}
 						)
 					)
@@ -4062,7 +4507,8 @@ module main
 								{|
 									stm_ref0::set_EXT_sys_state,
 									stm_ref1::set_EXT_sys_state,
-									stm_ref2::set_EXT_sys_state
+									stm_ref2::set_EXT_sys_state,
+									stm_ref3::set_EXT_sys_state
 								|}
 							)
 						|]
@@ -4074,7 +4520,8 @@ module main
 					{|
 						stm_ref0::set_EXT_sys_state,
 						stm_ref1::set_EXT_sys_state,
-						stm_ref2::set_EXT_sys_state
+						stm_ref2::set_EXT_sys_state,
+						stm_ref3::set_EXT_sys_state
 					|}
 				)
 				[|{|terminate|}|>SKIP
@@ -4101,53 +4548,71 @@ module main
 						(
 							(
 								let
-									const_UR_ur_n_waypoints = 5
+									const_UR_ur_n_waypoints = 3
 								within 
 								stm_ref1::O__(id__,
 										    const_UR_ur_n_waypoints)[[
 									stm_ref1::terminate <- terminate,
-									stm_ref1::move <- next_UR_move,
+									stm_ref1::move.in <- stm_ref3::ur_move_out.out,
+									stm_ref1::move.out <- stm_ref3::ur_move_out.in,
 									stm_ref1::set_sys_state <- set_sys_state,
 									stm_ref1::get_sys_state <- get_sys_state,
-									stm_ref1::moveJCall <- moveJCall,
 									stm_ref1::moveLCall <- moveLCall,
+									stm_ref1::moveL_with_tCall <- moveL_with_tCall,
 									stm_ref1::movePCall <- movePCall,
-									stm_ref1::moveL_with_tCall <- moveL_with_tCall
+									stm_ref1::moveJCall <- moveJCall
 								]]
 							)
-								[|{|terminate, stm_ref1::out_of_sync|}|]
+								[|{|terminate, stm_ref1::out_of_sync, stm_ref3::ur_move_out|}|]
 							(
 								(
 									let
-										const_EXAX_n_waypoints = 3
+										const_EXAX_n_waypoints = 1
 									within 
 									stm_ref2::O__(id__,
 											    const_EXAX_n_waypoints)[[
 										stm_ref2::terminate <- terminate,
-										stm_ref2::move <- next_EXAX_move,
+										stm_ref2::move.in <- stm_ref3::exax_move_out.out,
+										stm_ref2::move.out <- stm_ref3::exax_move_out.in,
 										stm_ref2::set_sys_state <- set_sys_state,
 										stm_ref2::get_sys_state <- get_sys_state,
 										stm_ref2::go_to_posCall <- go_to_posCall
 									]]
 								)
-									[|{|terminate, stm_ref2::out_of_sync|}|]
+									[|{|terminate, stm_ref2::out_of_sync, stm_ref3::exax_move_out|}|]
 								(
-									stm_ref4::O__(id__)[[
-										stm_ref4::terminate <- terminate,
-										stm_ref4::UR_out_of_sync.in <- stm_ref1::out_of_sync.out,
-										stm_ref4::UR_out_of_sync.out <- stm_ref1::out_of_sync.in,
-										stm_ref4::EXAX_out_of_sync.in <- stm_ref2::out_of_sync.out,
-										stm_ref4::EXAX_out_of_sync.out <- stm_ref2::out_of_sync.in
-									]]
+									(
+										stm_ref4::O__(id__)[[
+											stm_ref4::terminate <- terminate,
+											stm_ref4::UR_out_of_sync.in <- stm_ref1::out_of_sync.out,
+											stm_ref4::UR_out_of_sync.out <- stm_ref1::out_of_sync.in,
+											stm_ref4::EXAX_out_of_sync.in <- stm_ref2::out_of_sync.out,
+											stm_ref4::EXAX_out_of_sync.out <- stm_ref2::out_of_sync.in
+										]]
+									)
+										[|{|terminate|}|]
+									(
+										stm_ref3::O__(id__)[[
+											stm_ref3::terminate <- terminate,
+											stm_ref3::ur_move_in <- next_UR_move,
+											stm_ref3::exax_move_in <- next_EXAX_move,
+											stm_ref3::set_sys_state <- set_sys_state,
+											stm_ref3::get_sys_state <- get_sys_state
+										]]
+									)
+								)
+								\diff(
+									{|terminate|},
+									{|terminate|}
 								)
 							)
 							\diff(
-								{|terminate, stm_ref2::out_of_sync|},
+								{|terminate, stm_ref2::out_of_sync, stm_ref3::exax_move_out|},
 								{|terminate|}
 							)
 						)
 						\diff(
-							{|terminate, stm_ref1::out_of_sync|},
+							{|terminate, stm_ref1::out_of_sync, stm_ref3::ur_move_out|},
 							{|terminate|}
 						)
 					)
@@ -4162,7 +4627,8 @@ module main
 								{|
 									stm_ref0::set_EXT_sys_state,
 									stm_ref1::set_EXT_sys_state,
-									stm_ref2::set_EXT_sys_state
+									stm_ref2::set_EXT_sys_state,
+									stm_ref3::set_EXT_sys_state
 								|}
 							)
 						|]
@@ -4174,7 +4640,8 @@ module main
 					{|
 						stm_ref0::set_EXT_sys_state,
 						stm_ref1::set_EXT_sys_state,
-						stm_ref2::set_EXT_sys_state
+						stm_ref2::set_EXT_sys_state,
+						stm_ref3::set_EXT_sys_state
 					|}
 				)
 				[|{|terminate|}|>SKIP
@@ -4202,53 +4669,71 @@ module main
 						(
 							(
 								let
-									const_UR_ur_n_waypoints = 5
+									const_UR_ur_n_waypoints = 3
 								within 
 								stm_ref1::VS_O__(id__,
 										    const_UR_ur_n_waypoints)[[
 									stm_ref1::terminate <- terminate,
-									stm_ref1::move <- next_UR_move,
+									stm_ref1::move.in <- stm_ref3::ur_move_out.out,
+									stm_ref1::move.out <- stm_ref3::ur_move_out.in,
 									stm_ref1::set_sys_state <- set_sys_state,
 									stm_ref1::get_sys_state <- get_sys_state,
-									stm_ref1::moveJCall <- moveJCall,
 									stm_ref1::moveLCall <- moveLCall,
+									stm_ref1::moveL_with_tCall <- moveL_with_tCall,
 									stm_ref1::movePCall <- movePCall,
-									stm_ref1::moveL_with_tCall <- moveL_with_tCall
+									stm_ref1::moveJCall <- moveJCall
 								]]
 							)
-								[|{|terminate, stm_ref1::out_of_sync|}|]
+								[|{|terminate, stm_ref1::out_of_sync, stm_ref3::ur_move_out|}|]
 							(
 								(
 									let
-										const_EXAX_n_waypoints = 3
+										const_EXAX_n_waypoints = 1
 									within 
 									stm_ref2::VS_O__(id__,
 											    const_EXAX_n_waypoints)[[
 										stm_ref2::terminate <- terminate,
-										stm_ref2::move <- next_EXAX_move,
+										stm_ref2::move.in <- stm_ref3::exax_move_out.out,
+										stm_ref2::move.out <- stm_ref3::exax_move_out.in,
 										stm_ref2::set_sys_state <- set_sys_state,
 										stm_ref2::get_sys_state <- get_sys_state,
 										stm_ref2::go_to_posCall <- go_to_posCall
 									]]
 								)
-									[|{|terminate, stm_ref2::out_of_sync|}|]
+									[|{|terminate, stm_ref2::out_of_sync, stm_ref3::exax_move_out|}|]
 								(
-									stm_ref4::VS_O__(id__)[[
-										stm_ref4::terminate <- terminate,
-										stm_ref4::UR_out_of_sync.in <- stm_ref1::out_of_sync.out,
-										stm_ref4::UR_out_of_sync.out <- stm_ref1::out_of_sync.in,
-										stm_ref4::EXAX_out_of_sync.in <- stm_ref2::out_of_sync.out,
-										stm_ref4::EXAX_out_of_sync.out <- stm_ref2::out_of_sync.in
-									]]
+									(
+										stm_ref4::VS_O__(id__)[[
+											stm_ref4::terminate <- terminate,
+											stm_ref4::UR_out_of_sync.in <- stm_ref1::out_of_sync.out,
+											stm_ref4::UR_out_of_sync.out <- stm_ref1::out_of_sync.in,
+											stm_ref4::EXAX_out_of_sync.in <- stm_ref2::out_of_sync.out,
+											stm_ref4::EXAX_out_of_sync.out <- stm_ref2::out_of_sync.in
+										]]
+									)
+										[|{|terminate|}|]
+									(
+										stm_ref3::VS_O__(id__)[[
+											stm_ref3::terminate <- terminate,
+											stm_ref3::ur_move_in <- next_UR_move,
+											stm_ref3::exax_move_in <- next_EXAX_move,
+											stm_ref3::set_sys_state <- set_sys_state,
+											stm_ref3::get_sys_state <- get_sys_state
+										]]
+									)
+								)
+								\diff(
+									{|terminate|},
+									{|terminate|}
 								)
 							)
 							\diff(
-								{|terminate, stm_ref2::out_of_sync|},
+								{|terminate, stm_ref2::out_of_sync, stm_ref3::exax_move_out|},
 								{|terminate|}
 							)
 						)
 						\diff(
-							{|terminate, stm_ref1::out_of_sync|},
+							{|terminate, stm_ref1::out_of_sync, stm_ref3::ur_move_out|},
 							{|terminate|}
 						)
 					)
@@ -4263,7 +4748,8 @@ module main
 								{|
 									stm_ref0::set_EXT_sys_state,
 									stm_ref1::set_EXT_sys_state,
-									stm_ref2::set_EXT_sys_state
+									stm_ref2::set_EXT_sys_state,
+									stm_ref3::set_EXT_sys_state
 								|}
 							)
 						|]
@@ -4275,7 +4761,8 @@ module main
 					{|
 						stm_ref0::set_EXT_sys_state,
 						stm_ref1::set_EXT_sys_state,
-						stm_ref2::set_EXT_sys_state
+						stm_ref2::set_EXT_sys_state,
+						stm_ref3::set_EXT_sys_state
 					|}
 				)
 				[|{|terminate|}|>SKIP
@@ -4313,11 +4800,11 @@ module main
 							Controller::next_EXAX_move <- next_EXAX_move,
 							Controller::set_sys_state <- set_sys_state,
 							Controller::get_sys_state <- get_sys_state,
-							Controller::moveJCall <- moveJCall,
-							Controller::moveLCall <- moveLCall,
 							Controller::go_to_posCall <- go_to_posCall,
+							Controller::moveLCall <- moveLCall,
+							Controller::moveL_with_tCall <- moveL_with_tCall,
 							Controller::movePCall <- movePCall,
-							Controller::moveL_with_tCall <- moveL_with_tCall
+							Controller::moveJCall <- moveJCall
 						]]
 					)
 						[|
@@ -4366,11 +4853,11 @@ module main
 							Controller::next_EXAX_move <- next_EXAX_move,
 							Controller::set_sys_state <- set_sys_state,
 							Controller::get_sys_state <- get_sys_state,
-							Controller::moveJCall <- moveJCall,
-							Controller::moveLCall <- moveLCall,
 							Controller::go_to_posCall <- go_to_posCall,
+							Controller::moveLCall <- moveLCall,
+							Controller::moveL_with_tCall <- moveL_with_tCall,
 							Controller::movePCall <- movePCall,
-							Controller::moveL_with_tCall <- moveL_with_tCall
+							Controller::moveJCall <- moveJCall
 						]]
 					)
 						[|
@@ -4419,11 +4906,11 @@ module main
 							Controller::next_EXAX_move <- next_EXAX_move,
 							Controller::set_sys_state <- set_sys_state,
 							Controller::get_sys_state <- get_sys_state,
-							Controller::moveJCall <- moveJCall,
-							Controller::moveLCall <- moveLCall,
 							Controller::go_to_posCall <- go_to_posCall,
+							Controller::moveLCall <- moveLCall,
+							Controller::moveL_with_tCall <- moveL_with_tCall,
 							Controller::movePCall <- movePCall,
-							Controller::moveL_with_tCall <- moveL_with_tCall
+							Controller::moveJCall <- moveJCall
 						]]
 					)
 						[|
@@ -4473,11 +4960,11 @@ module main
 							Controller::next_EXAX_move <- next_EXAX_move,
 							Controller::set_sys_state <- set_sys_state,
 							Controller::get_sys_state <- get_sys_state,
-							Controller::moveJCall <- moveJCall,
-							Controller::moveLCall <- moveLCall,
 							Controller::go_to_posCall <- go_to_posCall,
+							Controller::moveLCall <- moveLCall,
+							Controller::moveL_with_tCall <- moveL_with_tCall,
 							Controller::movePCall <- movePCall,
-							Controller::moveL_with_tCall <- moveL_with_tCall
+							Controller::moveJCall <- moveJCall
 						]]
 					)
 						[|
@@ -4527,11 +5014,11 @@ module main
 							Controller::next_EXAX_move <- next_EXAX_move,
 							Controller::set_sys_state <- set_sys_state,
 							Controller::get_sys_state <- get_sys_state,
-							Controller::moveJCall <- moveJCall,
-							Controller::moveLCall <- moveLCall,
 							Controller::go_to_posCall <- go_to_posCall,
+							Controller::moveLCall <- moveLCall,
+							Controller::moveL_with_tCall <- moveL_with_tCall,
 							Controller::movePCall <- movePCall,
-							Controller::moveL_with_tCall <- moveL_with_tCall
+							Controller::moveJCall <- moveJCall
 						]]
 					)
 						[|

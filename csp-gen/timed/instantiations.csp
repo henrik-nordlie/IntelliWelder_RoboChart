@@ -4,7 +4,10 @@ check_big_dist(jd1,jd2) =
     jd1L = abs(jd1)
     jd2L = abs(jd2)
   within
-    jd1L == 2 or jd2L == 2
+    jd1L == 1 or jd2L == 1
+
+-- generate nat not
+nametype core_nat = {0..3}
 
 -- generate abs not
 abs(num) = if (num >= 0) then num else -num
@@ -12,8 +15,8 @@ abs(num) = if (num >= 0) then num else -num
 -- generate real not
 nametype core_real = { -1..1}
 
--- generate nat not
-nametype core_nat = {0..3}
+-- generate int not
+nametype core_int = { 0..2}
 
 -- VECTOR TYPES AND OPERATIONS
 
@@ -123,10 +126,6 @@ const_UR_ur_n_waypoints = 0
 
 -- generate go_to_velocity_BOUND
 go_to_velocity_BOUND = 2
-
--- generate int
-nametype core_int = union({ -2..2},{calc_type_min(Union(
-			{{0},{Plus(curr_waypoint, 1, core_nat)|curr_waypoint <- {0..2}},{0},{Plus(ur_curr_waypoint, 1, core_nat)|ur_curr_waypoint <- {0..2}},{0},{0..2},{1},{0..2},{3},{0..2},{0},{0..2}}))..calc_type_max(Union({{0},{Plus(curr_waypoint, 1, core_nat)|curr_waypoint <- {0..2}},{0},{Plus(ur_curr_waypoint, 1, core_nat)|ur_curr_waypoint <- {0..2}},{0},{0..2},{1},{0..2},{3},{0..2},{0},{0..2}}))})
 
 -- generate Div
 Div(e1,e2,T) = if member(e1/e2,T) then e1/e2 else e1

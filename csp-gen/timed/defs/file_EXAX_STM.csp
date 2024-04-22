@@ -1,7 +1,7 @@
 
 --
 -- RoboChart generator version 3.0.0.202311281716
--- Automatically generated on 20-04-2024 11:37:58
+-- Automatically generated on 22-04-2024 21:15:24
 --
 -- Iterated compression status: true
 -- Assertions compression status: false
@@ -54,7 +54,7 @@ exports
 	channel out_of_sync: InOut
 	
 	-- Declaring call and ret events for undefined operations
-	channel go_to_posCall: core_real.core_real
+	channel go_to_posCall: core_real.core_int
 	
 	enterSS = {|
 	i0::enter,
@@ -94,12 +94,22 @@ exports
 	
 	
 	channel get_CLID_wait_for_move : core_clock_type 
+	channel get_CLID_reset_EXAX : core_clock_type 
 	channel get_CLID_by_position : core_clock_type 
 	channel get_CLID_f0 : core_clock_type 
-	channel get_CLID_reset_EXAX : core_clock_type 
 	--channel increment__
 	
 	CLID_wait_for_move_clock_type(id__,
+			          const_EXAX_n_waypoints) = 
+		let
+			max = (clock_type_max(Union({
+	{}
+	}))+1)
+		ctype = {0..max}
+	within
+		if member(max,core_clock_type) then ctype else error("core_clock_type is not wide enough")
+	
+	CLID_reset_EXAX_clock_type(id__,
 			          const_EXAX_n_waypoints) = 
 		let
 			max = (clock_type_max(Union({
@@ -120,16 +130,6 @@ exports
 		if member(max,core_clock_type) then ctype else error("core_clock_type is not wide enough")
 	
 	CLID_f0_clock_type(id__,
-			          const_EXAX_n_waypoints) = 
-		let
-			max = (clock_type_max(Union({
-	{}
-	}))+1)
-		ctype = {0..max}
-	within
-		if member(max,core_clock_type) then ctype else error("core_clock_type is not wide enough")
-	
-	CLID_reset_EXAX_clock_type(id__,
 			          const_EXAX_n_waypoints) = 
 		let
 			max = (clock_type_max(Union({
@@ -295,8 +295,8 @@ exports
 					Active 		= share__choice(get_exax_move?exax_move -> true&CALL__go_to_pos(
 								id__,
 							    const_EXAX_n_waypoints,
-								EXAX_move_goal_time(exax_move),
-								EXAX_move_dist(exax_move)
+								EXAX_move_dist(exax_move),
+								EXAX_move_time(exax_move)
 							)) ; 
 							 	  Behaviour ; 
 							 	  share__choice(exit -> SKIP) ; SKIP ; 
@@ -317,8 +317,8 @@ exports
 					Active 		= share__choice(get_exax_move?exax_move -> true&CALL__go_to_pos(
 								id__,
 							    const_EXAX_n_waypoints,
-								EXAX_move_goal_time(exax_move),
-								EXAX_move_dist(exax_move)
+								EXAX_move_dist(exax_move),
+								EXAX_move_time(exax_move)
 							)) ; 
 							 	  Behaviour ; 
 							 	  share__choice(exit -> SKIP) ; SKIP ; 
@@ -534,16 +534,15 @@ exports
 		-- Transitions
 		Transitions(id__,
 				    const_EXAX_n_waypoints) = ((let
-			Trans = share__choice(get_curr_waypoint?curr_waypoint -> get_exax_move?exax_move -> get_sys_state?sys_state -> TimeOut_1(
+			Trans = share__choice(get_exax_move?exax_move -> get_curr_waypoint?curr_waypoint -> TimeOut_1(
 				 (share__ -> SKIP
 				 [] dbisim((true)&(internal__!NID_i0 -> SKIP ;  ((SKIP ; wait_for_move::enter -> SKIP))))
 				 [] dbisim(((curr_waypoint<const_EXAX_n_waypoints))&(internal__!NID_by_position -> SKIP ;  share__choice(exit -> SKIP) ; (share__choice(exited -> SKIP) ; share__choice(share__choice(get_curr_waypoint?curr_waypoint -> true & (share__choice(set_curr_waypoint!Plus(curr_waypoint, 1, core_nat) -> SKIP)))) ; wait_for_move::enter -> SKIP)))
 				 [] dbisim(((curr_waypoint>=const_EXAX_n_waypoints))&(internal__!NID_by_position -> SKIP ;  share__choice(exit -> SKIP) ; (share__choice(exited -> SKIP) ; SKIP ; reset_EXAX::enter -> SKIP)))
 				 [] dbisim((true)&(internal__!NID_reset_EXAX -> SKIP ;  share__choice(exit -> SKIP) ; (share__choice(exited -> SKIP) ; SKIP ; wait_for_move::enter -> SKIP)))
-				 [] dbisim((move__!NID_wait_for_move.in?exax_move:{exax_move|exax_move <- EXAX_move, ((sys_state==SystemState_working) or (sys_state==SystemState_UR_finished))} -> share__choice(set_exax_move!exax_move -> SKIP) ;  share__choice(exit -> SKIP) ; (share__choice(exited -> SKIP) ; SKIP ; j0::enter -> SKIP)))
-				 [] dbisim(((EXAX_move_goal_time(exax_move)<0))&(internal__!NID_j0 -> SKIP ;  ((true&(share__choice(out_of_sync.out -> SKIP)) ; f0::enter -> SKIP))))
-				 [] dbisim(((EXAX_move_goal_time(exax_move)>=0))&(internal__!NID_j0 -> SKIP ;  ((SKIP ; by_position::enter -> SKIP))))
-				 [] dbisim((move__!NID_wait_for_move.in?exax_move:{exax_move|exax_move <- EXAX_move, ((sys_state==SystemState_EXAX_finished) or (sys_state==SystemState_wait_for_start))} -> share__choice(set_exax_move!exax_move -> SKIP) ;  share__choice(exit -> SKIP) ; (share__choice(exited -> SKIP) ; SKIP ; wait_for_move::enter -> SKIP)))
+				 [] dbisim((true)&(move__!NID_wait_for_move.in?exax_move:{exax_move|exax_move <- EXAX_move, true} -> share__choice(set_exax_move!exax_move -> SKIP) ;  share__choice(exit -> SKIP) ; (share__choice(exited -> SKIP) ; SKIP ; j0::enter -> SKIP)))
+				 [] dbisim(((EXAX_move_time(exax_move)<0))&(internal__!NID_j0 -> SKIP ;  ((true&(share__choice(out_of_sync.out -> SKIP)) ; f0::enter -> SKIP))))
+				 [] dbisim(((EXAX_move_time(exax_move)>=0))&(internal__!NID_j0 -> SKIP ;  ((SKIP ; by_position::enter -> SKIP))))
 				 []
 				 (interrupt -> share__choice(exit -> SKIP) ; share__choice(exited -> terminate -> SKIP))
 				 []
@@ -584,7 +583,7 @@ exports
 						-- IMPLEMENTATION NOTE: the channel set 'enter' is calculated explicitly
 						-- because CSPM modules are used for the semantics of Node.
 						flowevts = union(enterSS,{|exit,exited,interrupt|})
-						transSync = {|internal__.NID_i0,internal__.NID_by_position,internal__.NID_by_position,internal__.NID_reset_EXAX,move__.NID_wait_for_move.in,internal__.NID_j0,internal__.NID_j0,move__.NID_wait_for_move.in|}
+						transSync = {|internal__.NID_i0,internal__.NID_by_position,internal__.NID_by_position,internal__.NID_reset_EXAX,move__.NID_wait_for_move.in,internal__.NID_j0,internal__.NID_j0|}
 					within
 						((
 						 (((-- RULE composeNodes(nc:NodeContainer)^nops : CSPProcess
@@ -611,7 +610,7 @@ exports
 						   )
 						   )
 						 )
-						 [[wait_for_move::interrupt <- x__ | x__ <- {|interrupt,move__.NID_wait_for_move.in,move__.NID_wait_for_move.in|}]]
+						 [[wait_for_move::interrupt <- x__ | x__ <- {|interrupt,move__.NID_wait_for_move.in|}]]
 						 [[by_position::interrupt <- x__ | x__ <- {|interrupt,internal__.NID_by_position,internal__.NID_by_position|}]]
 						 [[reset_EXAX::interrupt <- x__ | x__ <- {|interrupt,internal__.NID_reset_EXAX|}]]
 						 [[f0::interrupt <- x__ | x__ <- {|interrupt|}]]
@@ -619,20 +618,19 @@ exports
 						 [[j0::interrupt <- x__ | x__ <- {|internal__.NID_j0,internal__.NID_j0|}]]
 						 )
 						  [[ share__ <- x__ | x__ <- {| share__,setR_exax_move |} ]] 
-						  [[set_curr_waypoint <- setL_curr_waypoint,set_exax_move <- setL_exax_move,set_sys_state <- setL_sys_state]]
+						  [[set_exax_move <- setL_exax_move,set_curr_waypoint <- setL_curr_waypoint]]
 						 )
 						 [| union(union(union(flowevts,transSync),{terminate}),{|share__
-						 			,setL_curr_waypoint
 						 			,setL_exax_move
-						 			,setL_sys_state
+						 			,setL_curr_waypoint
 						 			,setR_exax_move
 						 			|}) |]
 						 ((i0::enter -> Transitions(id__,
 						 		    const_EXAX_n_waypoints))
-						  [[ share__ <- x__ | x__ <- {| share__,setL_curr_waypoint,setL_exax_move,setL_sys_state |} ]]
+						  [[ share__ <- x__ | x__ <- {| share__,setL_exax_move,setL_curr_waypoint |} ]]
 						  [[set_exax_move <- setR_exax_move]]
 						 )
-						)[[setL_curr_waypoint <- set_curr_waypoint,setL_exax_move <- set_exax_move,setL_sys_state <- set_sys_state]]
+						)[[setL_exax_move <- set_exax_move,setL_curr_waypoint <- set_curr_waypoint]]
 						 [[setR_exax_move <- set_exax_move]]
 						)
 					)
@@ -656,7 +654,7 @@ exports
 		Behaviour(id__,
 				    const_EXAX_n_waypoints) = 
 			dbisim((let
-				stateClockSync = {|get_CLID_wait_for_move,wait_for_move::entered,get_CLID_by_position,by_position::entered,get_CLID_reset_EXAX,reset_EXAX::entered|}
+				stateClockSync = {|get_CLID_wait_for_move,wait_for_move::entered,get_CLID_reset_EXAX,reset_EXAX::entered,get_CLID_by_position,by_position::entered|}
 			 within
 				(MachineBody(id__,
 						    const_EXAX_n_waypoints) [| union(stateClockSync,{terminate}) |] StateClocks(id__,
@@ -667,7 +665,7 @@ exports
 		IteratedBehaviour(id__,
 				    const_EXAX_n_waypoints) = 
 			dbisim((let
-				stateClockSync = {|get_CLID_wait_for_move,wait_for_move::entered,get_CLID_by_position,by_position::entered,get_CLID_reset_EXAX,reset_EXAX::entered|}
+				stateClockSync = {|get_CLID_wait_for_move,wait_for_move::entered,get_CLID_reset_EXAX,reset_EXAX::entered,get_CLID_by_position,by_position::entered|}
 			 within
 				(dbisim(
 					sbisim(
@@ -677,15 +675,15 @@ exports
 									sbisim(
 										MachineBody(id__,
 												    const_EXAX_n_waypoints)
-										[| {|get_CLID_reset_EXAX,reset_EXAX::entered,terminate|} |]
-										dbisim(Clock_CLID_reset_EXAX(id__,0,
+										[| {|get_CLID_by_position,by_position::entered,terminate|} |]
+										dbisim(Clock_CLID_by_position(id__,0,
 												          const_EXAX_n_waypoints))
-									)\{|get_CLID_reset_EXAX|}
+									)\{|get_CLID_by_position|}
 								)
-								[| {|get_CLID_by_position,by_position::entered,terminate|} |]
-								dbisim(Clock_CLID_by_position(id__,0,
+								[| {|get_CLID_reset_EXAX,reset_EXAX::entered,terminate|} |]
+								dbisim(Clock_CLID_reset_EXAX(id__,0,
 										          const_EXAX_n_waypoints))
-							)\{|get_CLID_by_position|}
+							)\{|get_CLID_reset_EXAX|}
 						)
 						[| {|get_CLID_wait_for_move,wait_for_move::entered,terminate|} |]
 						dbisim(Clock_CLID_wait_for_move(id__,0,
@@ -756,7 +754,7 @@ exports
 						-- IMPLEMENTATION NOTE: the channel set 'enter' is calculated explicitly
 						-- because CSPM modules are used for the semantics of Node.
 						flowevts = union(enterSS,{|exit,exited,interrupt|})
-						transSync = {|internal__.NID_i0,internal__.NID_by_position,internal__.NID_by_position,internal__.NID_reset_EXAX,move__.NID_wait_for_move.in,internal__.NID_j0,internal__.NID_j0,move__.NID_wait_for_move.in|}
+						transSync = {|internal__.NID_i0,internal__.NID_by_position,internal__.NID_by_position,internal__.NID_reset_EXAX,move__.NID_wait_for_move.in,internal__.NID_j0,internal__.NID_j0|}
 					within
 						((
 						 (((-- RULE composeNodes(nc:NodeContainer)^nops : CSPProcess
@@ -783,7 +781,7 @@ exports
 						   )
 						   )
 						 )
-						 [[wait_for_move::interrupt <- x__ | x__ <- {|interrupt,move__.NID_wait_for_move.in,move__.NID_wait_for_move.in|}]]
+						 [[wait_for_move::interrupt <- x__ | x__ <- {|interrupt,move__.NID_wait_for_move.in|}]]
 						 [[by_position::interrupt <- x__ | x__ <- {|interrupt,internal__.NID_by_position,internal__.NID_by_position|}]]
 						 [[reset_EXAX::interrupt <- x__ | x__ <- {|interrupt,internal__.NID_reset_EXAX|}]]
 						 [[f0::interrupt <- x__ | x__ <- {|interrupt|}]]
@@ -791,20 +789,19 @@ exports
 						 [[j0::interrupt <- x__ | x__ <- {|internal__.NID_j0,internal__.NID_j0|}]]
 						 )
 						  [[ share__ <- x__ | x__ <- {| share__,setR_exax_move |} ]] 
-						  [[set_curr_waypoint <- setL_curr_waypoint,set_exax_move <- setL_exax_move,set_sys_state <- setL_sys_state]]
+						  [[set_exax_move <- setL_exax_move,set_curr_waypoint <- setL_curr_waypoint]]
 						 )
 						 [| union(union(union(flowevts,transSync),{terminate}),{|share__
-						 			,setL_curr_waypoint
 						 			,setL_exax_move
-						 			,setL_sys_state
+						 			,setL_curr_waypoint
 						 			,setR_exax_move
 						 			|}) |]
 						 ((i0::enter -> Transitions(id__,
 						 		    const_EXAX_n_waypoints))
-						  [[ share__ <- x__ | x__ <- {| share__,setL_curr_waypoint,setL_exax_move,setL_sys_state |} ]]
+						  [[ share__ <- x__ | x__ <- {| share__,setL_exax_move,setL_curr_waypoint |} ]]
 						  [[set_exax_move <- setR_exax_move]]
 						 )
-						)[[setL_curr_waypoint <- set_curr_waypoint,setL_exax_move <- set_exax_move,setL_sys_state <- set_sys_state]]
+						)[[setL_exax_move <- set_exax_move,setL_curr_waypoint <- set_curr_waypoint]]
 						 [[setR_exax_move <- set_exax_move]]
 						)
 					)
@@ -828,7 +825,7 @@ exports
 		Behaviour_VS_O(id__,
 				    const_EXAX_n_waypoints) = 
 			dbisim((let
-				stateClockSync = {|get_CLID_wait_for_move,wait_for_move::entered,get_CLID_by_position,by_position::entered,get_CLID_reset_EXAX,reset_EXAX::entered|}
+				stateClockSync = {|get_CLID_wait_for_move,wait_for_move::entered,get_CLID_reset_EXAX,reset_EXAX::entered,get_CLID_by_position,by_position::entered|}
 			 within
 				(MachineBody_VS_O(id__,
 						    const_EXAX_n_waypoints) [| union(stateClockSync,{terminate}) |] StateClocks(id__,
@@ -839,7 +836,7 @@ exports
 		IteratedBehaviour_VS_O(id__,
 				    const_EXAX_n_waypoints) = 
 			dbisim((let
-				stateClockSync = {|get_CLID_wait_for_move,wait_for_move::entered,get_CLID_by_position,by_position::entered,get_CLID_reset_EXAX,reset_EXAX::entered|}
+				stateClockSync = {|get_CLID_wait_for_move,wait_for_move::entered,get_CLID_reset_EXAX,reset_EXAX::entered,get_CLID_by_position,by_position::entered|}
 			 within
 				(dbisim(
 					sbisim(
@@ -849,15 +846,15 @@ exports
 									sbisim(
 										MachineBody_VS_O(id__,
 												    const_EXAX_n_waypoints)
-										[| {|get_CLID_reset_EXAX,reset_EXAX::entered,terminate|} |]
-										dbisim(Clock_CLID_reset_EXAX(id__,0,
+										[| {|get_CLID_by_position,by_position::entered,terminate|} |]
+										dbisim(Clock_CLID_by_position(id__,0,
 												          const_EXAX_n_waypoints))
-									)\{|get_CLID_reset_EXAX|}
+									)\{|get_CLID_by_position|}
 								)
-								[| {|get_CLID_by_position,by_position::entered,terminate|} |]
-								dbisim(Clock_CLID_by_position(id__,0,
+								[| {|get_CLID_reset_EXAX,reset_EXAX::entered,terminate|} |]
+								dbisim(Clock_CLID_reset_EXAX(id__,0,
 										          const_EXAX_n_waypoints))
-							)\{|get_CLID_by_position|}
+							)\{|get_CLID_reset_EXAX|}
 						)
 						[| {|get_CLID_wait_for_move,wait_for_move::entered,terminate|} |]
 						dbisim(Clock_CLID_wait_for_move(id__,0,
@@ -974,18 +971,6 @@ exports
 				terminate -> SKIP,Clock_CLID_wait_for_move(id__,clock_type_plus(x__,1,CLID_wait_for_move_clock_type(id__,
 						          const_EXAX_n_waypoints)),
 						          const_EXAX_n_waypoints))
-		Clock_CLID_by_position(id__,x__,
-				          const_EXAX_n_waypoints) = 
-			TimeOut_1(
-				by_position::entered -> Clock_CLID_by_position(id__,0,
-						          const_EXAX_n_waypoints)
-				[]
-				get_CLID_by_position!x__ -> Clock_CLID_by_position(id__,x__,
-						          const_EXAX_n_waypoints)
-				[]
-				terminate -> SKIP,Clock_CLID_by_position(id__,clock_type_plus(x__,1,CLID_by_position_clock_type(id__,
-						          const_EXAX_n_waypoints)),
-						          const_EXAX_n_waypoints))
 		Clock_CLID_reset_EXAX(id__,x__,
 				          const_EXAX_n_waypoints) = 
 			TimeOut_1(
@@ -998,20 +983,32 @@ exports
 				terminate -> SKIP,Clock_CLID_reset_EXAX(id__,clock_type_plus(x__,1,CLID_reset_EXAX_clock_type(id__,
 						          const_EXAX_n_waypoints)),
 						          const_EXAX_n_waypoints))
+		Clock_CLID_by_position(id__,x__,
+				          const_EXAX_n_waypoints) = 
+			TimeOut_1(
+				by_position::entered -> Clock_CLID_by_position(id__,0,
+						          const_EXAX_n_waypoints)
+				[]
+				get_CLID_by_position!x__ -> Clock_CLID_by_position(id__,x__,
+						          const_EXAX_n_waypoints)
+				[]
+				terminate -> SKIP,Clock_CLID_by_position(id__,clock_type_plus(x__,1,CLID_by_position_clock_type(id__,
+						          const_EXAX_n_waypoints)),
+						          const_EXAX_n_waypoints))
 		
 		StateClocks(id__,
 				          const_EXAX_n_waypoints) = dbisim(Clock_CLID_wait_for_move(id__,0,
 				          const_EXAX_n_waypoints))
 		[| { terminate } |] (
-		dbisim(Clock_CLID_by_position(id__,0,
+		dbisim(Clock_CLID_reset_EXAX(id__,0,
 				          const_EXAX_n_waypoints))
 		[| { terminate } |] (
-		dbisim(Clock_CLID_reset_EXAX(id__,0,
+		dbisim(Clock_CLID_by_position(id__,0,
 				          const_EXAX_n_waypoints))
 		)
 		)
 		
-		stateClockSync = {|get_CLID_wait_for_move,wait_for_move::entered,get_CLID_by_position,by_position::entered,get_CLID_reset_EXAX,reset_EXAX::entered|}
+		stateClockSync = {|get_CLID_wait_for_move,wait_for_move::entered,get_CLID_reset_EXAX,reset_EXAX::entered,get_CLID_by_position,by_position::entered|}
 		
 		-- Shared memory
 		-- Shared memory variables

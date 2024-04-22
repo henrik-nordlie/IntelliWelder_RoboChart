@@ -1,29 +1,52 @@
+timed csp EXAX2 csp-begin
+Timed(OneStep) {
+  EXAX2 = EXAX::D__(0, 1) \ {| EXAX::go_to_posCall |}
+}
+csp-end
+
+csp EXAXConstrained associated to EXAX csp-begin
+EXAXConstrained = (EXAX::D__(0, 1) [| {| EXAX::out_of_sync |} |] SKIP)
+csp-end
+
+timed csp ADeadline csp-begin
+Timed(OneStep) {
+	ADeadline(E,d) = (CHAOS(Events) ||| Deadline(SKIP,d)) [|E|> SKIP
+}
+csp-end
+
 timed csp SpecA1 csp-begin
 Timed (OneStep) {
-	ADeadline(E,d) = (CHAOS(Events) ||| WAIT(d)) [|E|> SKIP
 	SpecA1 = let
-				Def = CHAOS(Events) [| {|EXAX::move.in|} |> ADeadline({|EXAX::go_to_posCall|}, 0); Def
+				Def = (CHAOS(Events) [| {|EXAX::move.in|} |> ADeadline({|EXAX::go_to_posCall|}, 0)); Def
 			 within
 				timed_priority(Def)
 }
 csp-end
 
 timed assertion A1: EXAX refines SpecA1 in the traces model.
-assertion A2: EXAX is timelock-free.
+assertion A2: EXAX2 is timelock-free.
 
+timed csp UR2 csp-begin
+Timed(OneStep) {
+  UR2 = UR::D__(0, 3) \ {| UR::moveJCall, UR::movePCall, UR::moveLCall, UR::moveL_with_tCall |}
+}
+csp-end
+
+csp URConstrained associated to UR csp-begin
+URConstrained = (UR::D__(0, 3) [| {| UR::out_of_sync |} |] SKIP)
+csp-end
 
 timed csp SpecA3 csp-begin
-	Timed (OneStep) {
-	BDeadline(E,d) = (CHAOS(Events) ||| WAIT(d)) [|E|> SKIP
+	Timed(OneStep) {
 	SpecA3 = let
-				Def = CHAOS(Events) [| {|UR::move.in|} |> BDeadline({|UR::moveJCall, UR::movePCall,UR::moveLCall, UR::moveL_with_tCall|}, 0); Def
+				Def = (CHAOS(Events) [| {|UR::move.in|} |> ADeadline({|UR::moveJCall, UR::movePCall, UR::moveLCall, UR::moveL_with_tCall|}, 0)); Def
 			 within
 			 	timed_priority(Def)
 	}
 csp-end
 
 timed assertion A3: UR refines SpecA3 in the traces model.
-assertion A4: UR is timelock-free.
+assertion A4: UR2 is timelock-free.
 
 
 csp SysTerminates associated to System csp-begin
@@ -32,13 +55,10 @@ csp SysTerminates associated to System csp-begin
 csp-end
 
 csp EXAXTerminates associated to EXAX csp-begin
-	EXAXConstrained = (EXAX::D__(0, 1) [| {| EXAX::out_of_sync |} |] SKIP)
 	EXAXTerminates = (EXAXConstrained ; EXAX::terminate -> SKIP) |\ {| EXAX::terminate |}
 csp-end
 
-
 csp URTerminates associated to UR csp-begin
-	URConstrained = (UR::D__(0, 3) [| {| UR::out_of_sync |} |] SKIP)
 	URTerminates = (URConstrained ; UR::terminate -> SKIP) |\ {| UR::terminate |}
 csp-end
 

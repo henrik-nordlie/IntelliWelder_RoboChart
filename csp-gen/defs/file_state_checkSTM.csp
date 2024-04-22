@@ -1,7 +1,7 @@
 
 --
 -- RoboChart generator version 3.0.0.202311281716
--- Automatically generated on 22-04-2024 19:25:40
+-- Automatically generated on 22-04-2024 21:05:36
 --
 -- Iterated compression status: true
 -- Assertions compression status: false
@@ -10,7 +10,7 @@
 
 
 
-module out_of_sync_relaySTM
+module state_check
 exports
 	transparent diamond
 	transparent sbisim
@@ -20,9 +20,8 @@ exports
 	-- Transition identifiers
 	-- declaring identifiers of transitions
 	datatype NIDS = 
-	              NID_in_sync|
-	              NID_out_of_sync|
-	              NID_i0
+	              NID_i0|
+	              NID_checker
 	
 	channel internal__ : NIDS
 	
@@ -33,179 +32,54 @@ exports
 	channel terminate
 	
 	-- Variable channels
+	channel get_exax_move, set_exax_move, setL_exax_move, setR_exax_move: EXAX_move
+	channel get_ur_move, set_ur_move, setL_ur_move, setR_ur_move: UR_move
+	channel get_sys_state, set_sys_state, setL_sys_state, setR_sys_state: SystemState
 	
 	-- Shared variable channels
+	channel set_EXT_sys_state: SystemState
 	
 	-- Local variable channels for defined operations that are required by the state machine
 	
 	-- Declaring state machine events
-	channel EXAX_out_of_sync__: NIDS.InOut
-	channel EXAX_out_of_sync: InOut
-	channel UR_out_of_sync__: NIDS.InOut
-	channel UR_out_of_sync: InOut
-	channel system_out_of_sync__: NIDS.InOut
-	channel system_out_of_sync: InOut
+	channel exax_move_in__: NIDS.InOut.EXAX_move
+	channel exax_move_in: InOut.EXAX_move
+	channel ur_move_in__: NIDS.InOut.UR_move
+	channel ur_move_in: InOut.UR_move
+	channel ur_move_out__: NIDS.InOut.UR_move
+	channel ur_move_out: InOut.UR_move
+	channel exax_move_out__: NIDS.InOut.EXAX_move
+	channel exax_move_out: InOut.EXAX_move
 	
 	-- Declaring call and ret events for undefined operations
 	
 	enterSS = {|
-	in_sync::enter,
-	out_of_sync::enter,
-	i0::enter
+	i0::enter,
+	checker::enter
 	|}
 	
 	enteredSS = 	{|
-	in_sync::entered,
-	out_of_sync::entered
+	checker::entered
 	|}
 	
 	internal_events = union(enteredSS,union(enterSS,{|interrupt,exited|}))
 	
 	shared_variable_events = {|
+		set_EXT_sys_state
 	|}
 	
 	-- channel set with all visible events
 	sem__events = {|
 		terminate
-	,	EXAX_out_of_sync,
-		UR_out_of_sync,
-		system_out_of_sync
+	,	set_EXT_sys_state, set_sys_state
+	,	exax_move_in,
+		ur_move_in,
+		ur_move_out,
+		exax_move_out
 		|}
 
 	-- Nodes --
 	-- declaring all nodes
-	
-	----------------------------------------------------------------------
-	-- State: in_sync
-	module in_sync
-	
-	enterSS = {}
-	
-	enteredSS = {}
-	
-	exports
-	
-		--  Declarations
-		
-		channel enter, entered, interrupt
-		channel enteredL, enteredR
-		
-						
-		
-		--	Nodes
-		-- declaring all nodes
-		
-		
-		--	Rule: behaviours(Node)
-		--  Note that FDR has problems with efficiently compiling the process below
-		-- 	if using a different recursion pattern.
-		D__(id__) = 
-		dbisim(let
-			-- IMPLEMENTATION NOTE: 
-			-- The following should be defined as: Inactive = share__choice(Activation [] Termination),
-			-- however FDR struggles with that form in certain cases. So we use the exception operator
-			-- instead to 'terminate'.
-			
-			Inactive 	= share__choice(enter -> SKIP [] terminate -> SKIP) ; Active
-			
-			Termination = terminate -> SKIP
-			
-			Active 		= SKIP ; 
-					 	  Behaviour ; 
-					 	  share__choice(exit -> SKIP) ; SKIP ; 
-					 	  share__choice(exited -> SKIP) ; Inactive
-		
-			Behaviour 	= entered -> During
-			During 		= ((SKIP ; SStop) /\ interrupt -> SKIP)
-		within
-			Inactive [| {terminate} |> SKIP)
-			
-		VS_O__(id__) = 
-		dbisim(let
-			Inactive 	= share__choice(enter -> SKIP [] terminate -> SKIP) ; Active
-			
-			Termination = terminate -> SKIP
-			
-			Active 		= SKIP ; 
-					 	  Behaviour ; 
-					 	  share__choice(exit -> SKIP) ; SKIP ; 
-					 	  share__choice(exited -> SKIP) ; Inactive
-		
-			Behaviour 	= entered -> During
-			During 		= ((SKIP ; SStop) /\ interrupt -> SKIP)
-		within
-			Inactive [| {terminate} |> SKIP)
-		
-	
-	endmodule
-	----------------------------------------------------------------------
-	
-	
-	----------------------------------------------------------------------
-	-- State: out_of_sync
-	module out_of_sync
-	
-	enterSS = {}
-	
-	enteredSS = {}
-	
-	exports
-	
-		--  Declarations
-		
-		channel enter, entered, interrupt
-		channel enteredL, enteredR
-		
-						
-		
-		--	Nodes
-		-- declaring all nodes
-		
-		
-		--	Rule: behaviours(Node)
-		--  Note that FDR has problems with efficiently compiling the process below
-		-- 	if using a different recursion pattern.
-		D__(id__) = 
-		dbisim(let
-			-- IMPLEMENTATION NOTE: 
-			-- The following should be defined as: Inactive = share__choice(Activation [] Termination),
-			-- however FDR struggles with that form in certain cases. So we use the exception operator
-			-- instead to 'terminate'.
-			
-			Inactive 	= share__choice(enter -> SKIP [] terminate -> SKIP) ; Active
-			
-			Termination = terminate -> SKIP
-			
-			Active 		= true&(share__choice(system_out_of_sync.out -> SKIP)) ; 
-					 	  Behaviour ; 
-					 	  share__choice(exit -> SKIP) ; SKIP ; 
-					 	  share__choice(exited -> SKIP) ; Inactive
-		
-			Behaviour 	= entered -> During
-			During 		= ((SKIP ; SStop) /\ interrupt -> SKIP)
-		within
-			Inactive [| {terminate} |> SKIP)
-			
-		VS_O__(id__) = 
-		dbisim(let
-			Inactive 	= share__choice(enter -> SKIP [] terminate -> SKIP) ; Active
-			
-			Termination = terminate -> SKIP
-			
-			Active 		= true&(share__choice(system_out_of_sync.out -> SKIP)) ; 
-					 	  Behaviour ; 
-					 	  share__choice(exit -> SKIP) ; SKIP ; 
-					 	  share__choice(exited -> SKIP) ; Inactive
-		
-			Behaviour 	= entered -> During
-			During 		= ((SKIP ; SStop) /\ interrupt -> SKIP)
-		within
-			Inactive [| {terminate} |> SKIP)
-		
-	
-	endmodule
-	----------------------------------------------------------------------
-	
 	
 	----------------------------------------------------------------------
 	-- Initial: i0
@@ -229,6 +103,72 @@ exports
 	endmodule
 	----------------------------------------------------------------------
 	
+	
+	----------------------------------------------------------------------
+	-- State: checker
+	module checker
+	
+	enterSS = {}
+	
+	enteredSS = {}
+	
+	exports
+	
+		--  Declarations
+		
+		channel enter, entered, interrupt
+		channel enteredL, enteredR
+		
+						
+		
+		--	Nodes
+		-- declaring all nodes
+		
+		
+		--	Rule: behaviours(Node)
+		--  Note that FDR has problems with efficiently compiling the process below
+		-- 	if using a different recursion pattern.
+		D__(id__) = 
+		dbisim(let
+			-- IMPLEMENTATION NOTE: 
+			-- The following should be defined as: Inactive = share__choice(Activation [] Termination),
+			-- however FDR struggles with that form in certain cases. So we use the exception operator
+			-- instead to 'terminate'.
+			
+			Inactive 	= share__choice(enter -> SKIP [] terminate -> SKIP) ; Active
+			
+			Termination = terminate -> SKIP
+			
+			Active 		= SKIP ; 
+					 	  Behaviour ; 
+					 	  share__choice(exit -> SKIP) ; SKIP ; 
+					 	  share__choice(exited -> SKIP) ; Inactive
+		
+			Behaviour 	= entered -> During
+			During 		= ((SKIP ; SStop) /\ interrupt -> SKIP)
+		within
+			Inactive [| {terminate} |> SKIP)
+			
+		VS_O__(id__) = 
+		dbisim(let
+			Inactive 	= share__choice(enter -> SKIP [] terminate -> SKIP) ; Active
+			
+			Termination = terminate -> SKIP
+			
+			Active 		= SKIP ; 
+					 	  Behaviour ; 
+					 	  share__choice(exit -> SKIP) ; SKIP ; 
+					 	  share__choice(exited -> SKIP) ; Inactive
+		
+			Behaviour 	= entered -> During
+			During 		= ((SKIP ; SStop) /\ interrupt -> SKIP)
+		within
+			Inactive [| {terminate} |> SKIP)
+		
+	
+	endmodule
+	----------------------------------------------------------------------
+	
 	-- END of Nodes --
 	
 	-- Operation calls --
@@ -246,7 +186,7 @@ exports
 		(
 			(
 				(IteratedStateful(id__) \ {terminate} ; share__choice(terminate -> SKIP))
-			 	[[ share__ <- x__ | x__ <- {||} ]]
+			 	[[ share__ <- x__ | x__ <- {|set_EXT_sys_state|} ]]
 			)
 		[| {share__} |]
 		SKIP
@@ -260,7 +200,7 @@ exports
 		(
 			(
 				(IteratedStateful_VS_O(id__) \ {terminate} ; share__choice(terminate -> SKIP))
-			 	[[ share__ <- x__ | x__ <- {||} ]]
+			 	[[ share__ <- x__ | x__ <- {|set_EXT_sys_state|} ]]
 			)
 		[| {share__} |]
 		SKIP
@@ -271,16 +211,17 @@ exports
 	
 	-- Transitions
 	Transitions(id__) = ((let
-		Trans = (
+		Trans = share__choice(get_sys_state?sys_state -> (
 			((share__ -> SKIP
-			 [] dbisim((true)&(internal__!NID_i0 -> SKIP ;  ((SKIP ; in_sync::enter -> SKIP))))
-			 	 [] dbisim((true)&(EXAX_out_of_sync__!NID_in_sync.in -> SKIP ;  share__choice(exit -> SKIP) ; (share__choice(exited -> SKIP) ; SKIP ; out_of_sync::enter -> SKIP)))
-			 	 [] dbisim((true)&(UR_out_of_sync__!NID_in_sync.in -> SKIP ;  share__choice(exit -> SKIP) ; (share__choice(exited -> SKIP) ; SKIP ; out_of_sync::enter -> SKIP)))
+			 [] dbisim((true)&(internal__!NID_i0 -> SKIP ;  ((SKIP ; checker::enter -> SKIP))))
+			 	 [] dbisim((exax_move_in__!NID_checker.in?exax_move:{exax_move|exax_move <- EXAX_move, (((sys_state==SystemState_working)) or ((sys_state==SystemState_UR_finished)))} -> share__choice(set_exax_move!exax_move -> SKIP) ;  share__choice(exit -> SKIP) ; (share__choice(exited -> SKIP) ; share__choice(get_exax_move?exax_move -> true&(share__choice(exax_move_out.out!exax_move -> SKIP))) ; checker::enter -> SKIP)))
+			 	 [] dbisim((ur_move_in__!NID_checker.in?ur_move:{ur_move|ur_move <- UR_move, (((sys_state==SystemState_working)) or ((sys_state==SystemState_EXAX_finished)))} -> share__choice(set_ur_move!ur_move -> SKIP) ;  share__choice(exit -> SKIP) ; (share__choice(exited -> SKIP) ; share__choice(get_ur_move?ur_move -> true&(share__choice(ur_move_out.out!ur_move -> SKIP))) ; checker::enter -> SKIP)))
 			 ) ; Trans)
 			 []
 			 (interrupt -> share__choice(exit -> SKIP) ; share__choice(exited -> terminate -> SKIP))
 			 []
 			 terminate -> SKIP
+		)
 		)
 	within
 		Trans
@@ -301,9 +242,8 @@ exports
 				-- Here the 'enter' channel set is calculated explicitly because of the use of CSPM 
 				-- modules for defining the semantics of each node.
 				enterSS = {|
-				in_sync::enter,
-				out_of_sync::enter,
-				i0::enter
+				i0::enter,
+				checker::enter
 				|}
 				hideSet = union(enterSS,{|exit,exited,internal__|})
 			within 
@@ -311,37 +251,40 @@ exports
 					-- IMPLEMENTATION NOTE: the channel set 'enter' is calculated explicitly
 					-- because CSPM modules are used for the semantics of Node.
 					flowevts = union(enterSS,{|exit,exited,interrupt|})
-					transSync = {|internal__.NID_i0,EXAX_out_of_sync__.NID_in_sync.in,UR_out_of_sync__.NID_in_sync.in|}
+					transSync = {|internal__.NID_i0,exax_move_in__.NID_checker.in,ur_move_in__.NID_checker.in|}
 				within
 					((
 					 (((-- RULE composeNodes(nc:NodeContainer)^nops : CSPProcess
-					   in_sync::D__(id__)
-					   [| { share__, terminate } |] (
-					   out_of_sync::D__(id__)
-					   [| { share__, terminate } |] (
 					   i0::D__(id__)
-					   )
+					   [| { share__, terminate } |] (
+					   checker::D__(id__)
 					   )
 					 )
-					 [[in_sync::interrupt <- x__ | x__ <- {|interrupt,EXAX_out_of_sync__.NID_in_sync.in,UR_out_of_sync__.NID_in_sync.in|}]]
-					 [[out_of_sync::interrupt <- x__ | x__ <- {|interrupt|}]]
+					 [[checker::interrupt <- x__ | x__ <- {|interrupt,exax_move_in__.NID_checker.in,ur_move_in__.NID_checker.in|}]]
 					 [[i0::interrupt <- x__ | x__ <- {|internal__.NID_i0|}]]
 					 )
-					  [[ share__ <- x__ | x__ <- {| share__ |} ]] 
+					  [[ share__ <- x__ | x__ <- {| share__,setR_ur_move,setR_exax_move |} ]] 
+					  [[set_sys_state <- setL_sys_state]]
 					 )
 					 [| union(union(union(flowevts,transSync),{terminate}),{|share__
-					|}) |]
+					 			,setL_sys_state
+					 			,setR_ur_move
+					 			 			,setR_exax_move
+					 			|}) |]
 					 ((i0::enter -> Transitions(id__))
-					  [[ share__ <- x__ | x__ <- {| share__ |} ]]
+					  [[ share__ <- x__ | x__ <- {| share__,setL_sys_state |} ]]
+					  [[set_ur_move <- setR_ur_move,set_exax_move <- setR_exax_move]]
 					 )
-					)
+					)[[setL_sys_state <- set_sys_state]]
+					 [[setR_ur_move <- set_ur_move,setR_exax_move <- set_exax_move]]
 					)
 				)
 				 \ hideSet)
 				[[
-					EXAX_out_of_sync__.x____ <- EXAX_out_of_sync,
-					UR_out_of_sync__.x____ <- UR_out_of_sync,
-					system_out_of_sync__.x____ <- system_out_of_sync
+					exax_move_in__.x____ <- exax_move_in,
+					ur_move_in__.x____ <- ur_move_in,
+					ur_move_out__.x____ <- ur_move_out,
+					exax_move_out__.x____ <- exax_move_out
 					| x____ <- NIDS
 				]]
 			)
@@ -365,7 +308,20 @@ exports
 		)
 	
 	IteratedStateful(id__) =
-		(Behaviour(id__))
+		(dbisim(
+			sbisim(
+				dbisim(
+					sbisim(
+						Behaviour(id__)
+						[| {|get_ur_move,set_ur_move,terminate|} |]
+						Memory_ur_move((true,true,true,0,0,0))
+					)\{|get_ur_move,set_ur_move|}
+				)
+				[| {|get_exax_move,set_exax_move,terminate|} |]
+				Memory_exax_move((0,0))
+			)\{|get_exax_move,set_exax_move|}
+		)
+		)
 	
 	-- Visible counterparts
 	MachineBody_VS_O(id__) = 
@@ -378,9 +334,8 @@ exports
 				-- Here the 'enter' channel set is calculated explicitly because of the use of CSPM 
 				-- modules for defining the semantics of each node.
 				enterSS = {|
-				in_sync::enter,
-				out_of_sync::enter,
-				i0::enter
+				i0::enter,
+				checker::enter
 				|}
 				hideSet = union(enterSS,{|exit,exited,internal__|})
 			within 
@@ -388,37 +343,40 @@ exports
 					-- IMPLEMENTATION NOTE: the channel set 'enter' is calculated explicitly
 					-- because CSPM modules are used for the semantics of Node.
 					flowevts = union(enterSS,{|exit,exited,interrupt|})
-					transSync = {|internal__.NID_i0,EXAX_out_of_sync__.NID_in_sync.in,UR_out_of_sync__.NID_in_sync.in|}
+					transSync = {|internal__.NID_i0,exax_move_in__.NID_checker.in,ur_move_in__.NID_checker.in|}
 				within
 					((
 					 (((-- RULE composeNodes(nc:NodeContainer)^nops : CSPProcess
-					   in_sync::VS_O__(id__)
-					   [| { share__, terminate } |] (
-					   out_of_sync::VS_O__(id__)
-					   [| { share__, terminate } |] (
 					   i0::VS_O__(id__)
-					   )
+					   [| { share__, terminate } |] (
+					   checker::VS_O__(id__)
 					   )
 					 )
-					 [[in_sync::interrupt <- x__ | x__ <- {|interrupt,EXAX_out_of_sync__.NID_in_sync.in,UR_out_of_sync__.NID_in_sync.in|}]]
-					 [[out_of_sync::interrupt <- x__ | x__ <- {|interrupt|}]]
+					 [[checker::interrupt <- x__ | x__ <- {|interrupt,exax_move_in__.NID_checker.in,ur_move_in__.NID_checker.in|}]]
 					 [[i0::interrupt <- x__ | x__ <- {|internal__.NID_i0|}]]
 					 )
-					  [[ share__ <- x__ | x__ <- {| share__ |} ]] 
+					  [[ share__ <- x__ | x__ <- {| share__,setR_ur_move,setR_exax_move |} ]] 
+					  [[set_sys_state <- setL_sys_state]]
 					 )
 					 [| union(union(union(flowevts,transSync),{terminate}),{|share__
-					|}) |]
+					 			,setL_sys_state
+					 			,setR_ur_move
+					 			 			,setR_exax_move
+					 			|}) |]
 					 ((i0::enter -> Transitions(id__))
-					  [[ share__ <- x__ | x__ <- {| share__ |} ]]
+					  [[ share__ <- x__ | x__ <- {| share__,setL_sys_state |} ]]
+					  [[set_ur_move <- setR_ur_move,set_exax_move <- setR_exax_move]]
 					 )
-					)
+					)[[setL_sys_state <- set_sys_state]]
+					 [[setR_ur_move <- set_ur_move,setR_exax_move <- set_exax_move]]
 					)
 				)
 				 \ hideSet)
 				[[
-					EXAX_out_of_sync__.x____ <- EXAX_out_of_sync,
-					UR_out_of_sync__.x____ <- UR_out_of_sync,
-					system_out_of_sync__.x____ <- system_out_of_sync
+					exax_move_in__.x____ <- exax_move_in,
+					ur_move_in__.x____ <- ur_move_in,
+					ur_move_out__.x____ <- ur_move_out,
+					exax_move_out__.x____ <- exax_move_out
 					| x____ <- NIDS
 				]]
 			)
@@ -442,17 +400,45 @@ exports
 		)
 	
 	IteratedStateful_VS_O(id__) =
-		(Behaviour_VS_O(id__))
+		(dbisim(
+			sbisim(
+				dbisim(
+					sbisim(
+						Behaviour_VS_O(id__)
+						[| {|get_ur_move,set_ur_move,terminate|} |]
+						Memory_ur_move((true,true,true,0,0,0))
+					)\{|get_ur_move,set_ur_move|}
+				)
+				[| {|get_exax_move,set_exax_move,terminate|} |]
+				Memory_exax_move((0,0))
+			)\{|get_exax_move,set_exax_move|}
+		)
+		)
 	
 	-- END
 	
 	-- Memory
 	-- Memory variables
+	Memory_exax_move(exax_move) =
+		get_exax_move!exax_move -> Memory_exax_move(exax_move)
+		[]
+		set_exax_move?x__ -> Memory_exax_move(x__)
+		[]
+		terminate -> SKIP
+	Memory_ur_move(ur_move) =
+		get_ur_move!ur_move -> Memory_ur_move(ur_move)
+		[]
+		set_ur_move?x__ -> Memory_ur_move(x__)
+		[]
+		terminate -> SKIP
 	
 	-- varMemory process
-	varMemory(id__) = terminate -> SKIP
+	varMemory(id__) = Memory_exax_move((0,0))
+	[| { terminate } |] (
+	Memory_ur_move((true,true,true,0,0,0))
+	)
 	
-	getsetLocalChannels = {||}
+	getsetLocalChannels = {|get_exax_move,set_exax_move,get_ur_move,set_ur_move|}
 	
 	-- Definition of the behaviour of state machines (default, optimised, visible, visible and optimised)
 	FVS__(id__) = STM_VS_O(id__)
@@ -466,13 +452,21 @@ exports
 	
 	-- Shared memory
 	-- Shared memory variables
+	Memory_sys_state(sys_state) =
+		get_sys_state!sys_state -> Memory_sys_state(sys_state)
+		[]
+		set_sys_state?x__ -> Memory_sys_state(x__)
+		[]
+		set_EXT_sys_state?x__ -> Memory_sys_state(x__)
+		[]
+		terminate -> SKIP
 	
 	-- sharedVarMemory process
-	sharedVarMemory(id__) = terminate -> SKIP
+	sharedVarMemory(id__) = Memory_sys_state(SystemState_wait_for_start)
 	
-	sharedVarSync = {||}
+	sharedVarSync = {|get_sys_state,set_sys_state,set_EXT_sys_state|}
 	
-	sharedVarHide = {||}
+	sharedVarHide = {|get_sys_state|}
 endmodule
 
 

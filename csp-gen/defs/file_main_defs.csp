@@ -1,14 +1,14 @@
 
 --
 -- RoboChart generator version 3.0.0.202311281716
--- Automatically generated on 18-04-2024 11:09:30
+-- Automatically generated on 22-04-2024 21:58:23
 --
 -- Iterated compression status: true
 -- Assertions compression status: false
 --
 
 -- data definitions used by platform:/resource/fifth_version/main.rct
-nametype UR_move = (core_boolean,core_boolean,core_boolean,core_real,core_real,core_real)
+nametype UR_move = (core_boolean,core_boolean,core_boolean,core_real,core_real,core_int)
 UR_move_blending((blending,large_offset,sharp_corner,jd1,jd2,goal_time)) = blending
 update_UR_move_blending((blending,large_offset,sharp_corner,jd1,jd2,goal_time),v__) = (v__,large_offset,sharp_corner,jd1,jd2,goal_time)
 UR_move_large_offset((blending,large_offset,sharp_corner,jd1,jd2,goal_time)) = large_offset
@@ -21,11 +21,11 @@ UR_move_jd2((blending,large_offset,sharp_corner,jd1,jd2,goal_time)) = jd2
 update_UR_move_jd2((blending,large_offset,sharp_corner,jd1,jd2,goal_time),v__) = (blending,large_offset,sharp_corner,jd1,v__,goal_time)
 UR_move_goal_time((blending,large_offset,sharp_corner,jd1,jd2,goal_time)) = goal_time
 update_UR_move_goal_time((blending,large_offset,sharp_corner,jd1,jd2,goal_time),v__) = (blending,large_offset,sharp_corner,jd1,jd2,v__)
-nametype EXAX_move = (core_real,core_real)
-EXAX_move_dist((dist,goal_time)) = dist
-update_EXAX_move_dist((dist,goal_time),v__) = (v__,goal_time)
-EXAX_move_goal_time((dist,goal_time)) = goal_time
-update_EXAX_move_goal_time((dist,goal_time),v__) = (dist,v__)
+nametype EXAX_move = (core_real,core_int)
+EXAX_move_dist((dist,time)) = dist
+update_EXAX_move_dist((dist,time),v__) = (v__,time)
+EXAX_move_time((dist,time)) = time
+update_EXAX_move_time((dist,time),v__) = (dist,v__)
 datatype SystemState = SystemState_wait_for_start | SystemState_working | SystemState_UR_finished | SystemState_EXAX_finished
 SystemState_is(SystemState_wait_for_start,SystemState_wait_for_start) = true
 SystemState_is(_,SystemState_wait_for_start) = false

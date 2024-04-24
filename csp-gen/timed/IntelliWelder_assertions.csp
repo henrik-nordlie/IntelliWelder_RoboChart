@@ -1,7 +1,7 @@
 
 --
 -- RoboChart generator version 3.0.0.202311281716
--- Automatically generated on 22-04-2024 22:04:25
+-- Automatically generated on 24-04-2024 09:25:54
 --
 -- Iterated compression status: true
 -- Assertions compression status: false
@@ -27,12 +27,6 @@ include "defs/relation_toolkit_defs.csp"
 channel r__
 
 Timed(OneStep) {
-  EXAX2 = EXAX::D__(0, 1) \ {| EXAX::go_to_posCall |}
-}
-
-EXAXConstrained = (EXAX::D__(0, 1) [| {| EXAX::out_of_sync |} |] SKIP)
-
-Timed(OneStep) {
 	ADeadline(E,d) = (CHAOS(Events) ||| Deadline(SKIP,d)) [|E|> SKIP
 }
 
@@ -44,10 +38,12 @@ Timed (OneStep) {
 }
 
 Timed(OneStep) {
-  UR2 = UR::D__(0, 3) \ {| UR::moveJCall, UR::movePCall, UR::moveLCall, UR::moveL_with_tCall |}
+  EXAX2 = EXAX::D__(0, 1) \ {| EXAX::go_to_posCall |}
 }
 
-URConstrained = (UR::D__(0, 3) [| {| UR::out_of_sync |} |] SKIP)
+Timed(OneStep) {
+  UR2 = UR::D__(0, 3) \ {| UR::moveJCall, UR::movePCall, UR::moveLCall, UR::moveL_with_tCall |}
+}
 
 Timed(OneStep) {
 	SpecA3 = let
@@ -59,9 +55,11 @@ Timed(OneStep) {
 SysConstrained = (System::D__(0) [| {| System::out_of_sync |} |] SKIP)
 	SysTerminates = (SysConstrained ; System::terminate -> SKIP) |\ {| System::terminate |}
 
-EXAXTerminates = (EXAXConstrained ; EXAX::terminate -> SKIP) |\ {| EXAX::terminate |}
+EXAXConstrained = (EXAX::D__(0, 1) [| {| EXAX::out_of_sync |} |] SKIP)
+	EXAXTerminates = (EXAXConstrained ; EXAX::terminate -> SKIP) |\ {| EXAX::terminate |}
 
-URTerminates = (URConstrained ; UR::terminate -> SKIP) |\ {| UR::terminate |}
+URConstrained = (UR::D__(0, 3) [| {| UR::out_of_sync |} |] SKIP)
+	URTerminates = (URConstrained ; UR::terminate -> SKIP) |\ {| UR::terminate |}
 
 Stop = STOP
 

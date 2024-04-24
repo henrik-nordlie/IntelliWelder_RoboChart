@@ -31,12 +31,15 @@ initial i0
 	transition t6 {
 		from choose_cmd
 		to j0
-	}junction j0
+	condition choosing == false
+	}
+	junction j0
 
 	transition t1 {
 		from wait_for_move
 		to j1
-		trigger move ? ur_move
+		trigger 
+	move ? ur_move
 	}
 	transition t4 {
 		from j1
@@ -62,20 +65,25 @@ event move : UR_move
 		initial i0
 		state moveP {
 			entry moveP( ur_move .jd1, ur_move .jd2, ur_move .goal_time)
+			exit choosing=false
 		}
 		state big_dist_check {
-		entry big_dist = check_big_dist ( ur_move . jd1 , ur_move . jd2 )		}
+			entry big_dist = check_big_dist ( ur_move . jd1 , ur_move . jd2 )
+		}
 		state moveL {
 			entry moveL( ur_move .jd1, ur_move .jd2, ur_move .goal_time)
+			exit choosing=false
 		}
 		final f0
 		junction j0
 		junction j1
 		state moveL_with_t {
 			entry moveL_with_t( ur_move .jd1, ur_move .jd2, ur_move .goal_time)
+			exit choosing=false
 		}
 		state moveJ {
 			entry moveJ( ur_move .jd1, ur_move .jd2, ur_move .goal_time)
+			exit choosing=false
 		}
 		junction j2
 		junction j3
@@ -147,9 +155,11 @@ event move : UR_move
 		transition t14 {
 			from i0
 			to j4
+		action choosing = true
 		}
 	}
 	junction j1
 event out_of_sync
+var choosing : boolean
 }
 

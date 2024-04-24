@@ -1,13 +1,3 @@
-timed csp EXAX2 csp-begin
-Timed(OneStep) {
-  EXAX2 = EXAX::D__(0, 1) \ {| EXAX::go_to_posCall |}
-}
-csp-end
-
-csp EXAXConstrained associated to EXAX csp-begin
-EXAXConstrained = (EXAX::D__(0, 1) [| {| EXAX::out_of_sync |} |] SKIP)
-csp-end
-
 timed csp ADeadline csp-begin
 Timed(OneStep) {
 	ADeadline(E,d) = (CHAOS(Events) ||| Deadline(SKIP,d)) [|E|> SKIP
@@ -24,6 +14,12 @@ Timed (OneStep) {
 csp-end
 
 timed assertion A1: EXAX refines SpecA1 in the traces model.
+
+timed csp EXAX2 csp-begin
+Timed(OneStep) {
+  EXAX2 = EXAX::D__(0, 1) \ {| EXAX::go_to_posCall |}
+}
+csp-end
 assertion A2: EXAX2 is timelock-free.
 
 timed csp UR2 csp-begin
@@ -32,9 +28,6 @@ Timed(OneStep) {
 }
 csp-end
 
-csp URConstrained associated to UR csp-begin
-URConstrained = (UR::D__(0, 3) [| {| UR::out_of_sync |} |] SKIP)
-csp-end
 
 timed csp SpecA3 csp-begin
 	Timed(OneStep) {
@@ -55,10 +48,12 @@ csp SysTerminates associated to System csp-begin
 csp-end
 
 csp EXAXTerminates associated to EXAX csp-begin
+	EXAXConstrained = (EXAX::D__(0, 1) [| {| EXAX::out_of_sync |} |] SKIP)
 	EXAXTerminates = (EXAXConstrained ; EXAX::terminate -> SKIP) |\ {| EXAX::terminate |}
 csp-end
 
 csp URTerminates associated to UR csp-begin
+	URConstrained = (UR::D__(0, 3) [| {| UR::out_of_sync |} |] SKIP)
 	URTerminates = (URConstrained ; UR::terminate -> SKIP) |\ {| UR::terminate |}
 csp-end
 
@@ -69,3 +64,4 @@ csp-end
 assertion A5: SysTerminates refines Stop in the traces model.
 assertion A6: EXAXTerminates refines Stop in the traces model.
 assertion A7: URTerminates refines Stop in the traces model.
+

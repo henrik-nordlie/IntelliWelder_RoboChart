@@ -1,7 +1,7 @@
 
 --
 -- RoboChart generator version 3.0.0.202311281716
--- Automatically generated on 22-04-2024 22:04:25
+-- Automatically generated on 24-04-2024 09:25:54
 --
 -- Iterated compression status: true
 -- Assertions compression status: false
@@ -26,16 +26,14 @@
 	
 	channel r__
 	
-	EXAXConstrained = (EXAX::D__(0, 1) [| {| EXAX::out_of_sync |} |] SKIP)
-	
-	URConstrained = (UR::D__(0, 3) [| {| UR::out_of_sync |} |] SKIP)
-	
 	SysConstrained = (System::D__(0) [| {| System::out_of_sync |} |] SKIP)
 		SysTerminates = (SysConstrained ; System::terminate -> SKIP) |\ {| System::terminate |}
 	
-	EXAXTerminates = (EXAXConstrained ; EXAX::terminate -> SKIP) |\ {| EXAX::terminate |}
+	EXAXConstrained = (EXAX::D__(0, 1) [| {| EXAX::out_of_sync |} |] SKIP)
+		EXAXTerminates = (EXAXConstrained ; EXAX::terminate -> SKIP) |\ {| EXAX::terminate |}
 	
-	URTerminates = (URConstrained ; UR::terminate -> SKIP) |\ {| UR::terminate |}
+	URConstrained = (UR::D__(0, 3) [| {| UR::out_of_sync |} |] SKIP)
+		URTerminates = (URConstrained ; UR::terminate -> SKIP) |\ {| UR::terminate |}
 	
 	Stop = STOP
 	

@@ -1,16 +1,16 @@
 [
 	{
-		"name": "SysTerminates refines Stop (A5) [traces model]",
-		"type": "refines",
-		"negated": false 
+		"name": "EXAX does not terminate (A5)",
+		"type": "terminates",
+		"negated": true 
 	},
 	{
-		"name": "EXAXTerminates refines Stop (A6) [traces model]",
-		"type": "refines",
-		"negated": false 
+		"name": "UR does not terminate (A6)",
+		"type": "terminates",
+		"negated": true 
 	},
 	{
-		"name": "URTerminates refines Stop (A7) [traces model]",
+		"name": "SysTerminates refines Stop (A7) [traces model]",
 		"type": "refines",
 		"negated": false 
 	}

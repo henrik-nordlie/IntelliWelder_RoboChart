@@ -16,7 +16,7 @@ abs(num) = if (num >= 0) then num else -num
 nametype core_real = { -1..1}
 
 -- generate int not
-nametype core_int = { 0..2}
+nametype core_int = {0..2}
 
 -- VECTOR TYPES AND OPERATIONS
 

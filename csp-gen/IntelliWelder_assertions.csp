@@ -1,7 +1,7 @@
 
 --
 -- RoboChart generator version 3.0.0.202311281716
--- Automatically generated on 24-04-2024 09:25:54
+-- Automatically generated on 24-04-2024 12:25:49
 --
 -- Iterated compression status: true
 -- Assertions compression status: false
@@ -29,24 +29,34 @@
 	SysConstrained = (System::D__(0) [| {| System::out_of_sync |} |] SKIP)
 		SysTerminates = (SysConstrained ; System::terminate -> SKIP) |\ {| System::terminate |}
 	
-	EXAXConstrained = (EXAX::D__(0, 1) [| {| EXAX::out_of_sync |} |] SKIP)
-		EXAXTerminates = (EXAXConstrained ; EXAX::terminate -> SKIP) |\ {| EXAX::terminate |}
-	
-	URConstrained = (UR::D__(0, 3) [| {| UR::out_of_sync |} |] SKIP)
-		URTerminates = (URConstrained ; UR::terminate -> SKIP) |\ {| UR::terminate |}
-	
 	Stop = STOP
 	
 	
 	
 	
 	
-	-- A5 - refinement
-	assert Stop [T= SysTerminates
+	-- A5 - non terminating
+	assert STOP [T= let 
+		id__ = 0
+		
+		
+		const_EXAX_n_waypoints = 1
+		
+	within
+		EXAX::D__(id__,
+				    const_EXAX_n_waypoints)\Events;r__ -> SKIP
 	
-	-- A6 - refinement
-	assert Stop [T= EXAXTerminates
+	-- A6 - non terminating
+	assert STOP [T= let 
+		id__ = 0
+		
+		
+		const_UR_ur_n_waypoints = 3
+		
+	within
+		UR::D__(id__,
+				    const_UR_ur_n_waypoints)\Events;r__ -> SKIP
 	
 	-- A7 - refinement
-	assert Stop [T= URTerminates
+	assert Stop [T= SysTerminates
 	

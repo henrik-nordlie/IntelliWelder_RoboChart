@@ -47,21 +47,12 @@ csp SysTerminates associated to System csp-begin
 	SysTerminates = (SysConstrained ; System::terminate -> SKIP) |\ {| System::terminate |}
 csp-end
 
-csp EXAXTerminates associated to EXAX csp-begin
-	EXAXConstrained = (EXAX::D__(0, 1) [| {| EXAX::out_of_sync |} |] SKIP)
-	EXAXTerminates = (EXAXConstrained ; EXAX::terminate -> SKIP) |\ {| EXAX::terminate |}
-csp-end
-
-csp URTerminates associated to UR csp-begin
-	URConstrained = (UR::D__(0, 3) [| {| UR::out_of_sync |} |] SKIP)
-	URTerminates = (URConstrained ; UR::terminate -> SKIP) |\ {| UR::terminate |}
-csp-end
-
 csp Stop csp-begin
 	Stop = STOP
 csp-end
 
-assertion A5: SysTerminates refines Stop in the traces model.
-assertion A6: EXAXTerminates refines Stop in the traces model.
-assertion A7: URTerminates refines Stop in the traces model.
+assertion A5: EXAX does not terminate.
+assertion A6: UR does not terminate.
+assertion A7: SysTerminates refines Stop in the traces model.
+
 

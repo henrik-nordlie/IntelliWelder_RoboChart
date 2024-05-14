@@ -1,7 +1,7 @@
 
 --
 -- RoboChart generator version 3.0.0.202311281716
--- Automatically generated on 24-04-2024 08:44:50
+-- Automatically generated on 14-05-2024 09:23:34
 --
 -- Iterated compression status: true
 -- Assertions compression status: false
@@ -74,11 +74,11 @@ exports
 	localClockResets = {||}
 	
 	
-	channel get_CLID_in_sync : core_clock_type 
 	channel get_CLID_out_of_sync : core_clock_type 
+	channel get_CLID_in_sync : core_clock_type 
 	--channel increment__
 	
-	CLID_in_sync_clock_type(id__) = 
+	CLID_out_of_sync_clock_type(id__) = 
 		let
 			max = (clock_type_max(Union({
 	}))+1)
@@ -86,7 +86,7 @@ exports
 	within
 		if member(max,core_clock_type) then ctype else error("core_clock_type is not wide enough")
 	
-	CLID_out_of_sync_clock_type(id__) = 
+	CLID_in_sync_clock_type(id__) = 
 		let
 			max = (clock_type_max(Union({
 	}))+1)
@@ -406,7 +406,7 @@ exports
 		
 		Behaviour(id__) = 
 			dbisim((let
-				stateClockSync = {|get_CLID_in_sync,in_sync::entered,get_CLID_out_of_sync,out_of_sync::entered|}
+				stateClockSync = {|get_CLID_out_of_sync,out_of_sync::entered,get_CLID_in_sync,in_sync::entered|}
 			 within
 				(MachineBody(id__) [| union(stateClockSync,{terminate}) |] StateClocks(id__)) \ union(stateClockSync,enteredSS)
 			)
@@ -414,20 +414,20 @@ exports
 		
 		IteratedBehaviour(id__) = 
 			dbisim((let
-				stateClockSync = {|get_CLID_in_sync,in_sync::entered,get_CLID_out_of_sync,out_of_sync::entered|}
+				stateClockSync = {|get_CLID_out_of_sync,out_of_sync::entered,get_CLID_in_sync,in_sync::entered|}
 			 within
 				(dbisim(
 					sbisim(
 						dbisim(
 							sbisim(
 								MachineBody(id__)
-								[| {|get_CLID_out_of_sync,out_of_sync::entered,terminate|} |]
-								dbisim(Clock_CLID_out_of_sync(id__,0))
-							)\{|get_CLID_out_of_sync|}
+								[| {|get_CLID_in_sync,in_sync::entered,terminate|} |]
+								dbisim(Clock_CLID_in_sync(id__,0))
+							)\{|get_CLID_in_sync|}
 						)
-						[| {|get_CLID_in_sync,in_sync::entered,terminate|} |]
-						dbisim(Clock_CLID_in_sync(id__,0))
-					)\{|get_CLID_in_sync|}
+						[| {|get_CLID_out_of_sync,out_of_sync::entered,terminate|} |]
+						dbisim(Clock_CLID_out_of_sync(id__,0))
+					)\{|get_CLID_out_of_sync|}
 				)
 				) \ union(stateClockSync,enteredSS)
 			)
@@ -513,7 +513,7 @@ exports
 		
 		Behaviour_VS_O(id__) = 
 			dbisim((let
-				stateClockSync = {|get_CLID_in_sync,in_sync::entered,get_CLID_out_of_sync,out_of_sync::entered|}
+				stateClockSync = {|get_CLID_out_of_sync,out_of_sync::entered,get_CLID_in_sync,in_sync::entered|}
 			 within
 				(MachineBody_VS_O(id__) [| union(stateClockSync,{terminate}) |] StateClocks(id__)) \ diff(union(stateClockSync,enteredSS),enteredSS)
 			)
@@ -521,20 +521,20 @@ exports
 		
 		IteratedBehaviour_VS_O(id__) = 
 			dbisim((let
-				stateClockSync = {|get_CLID_in_sync,in_sync::entered,get_CLID_out_of_sync,out_of_sync::entered|}
+				stateClockSync = {|get_CLID_out_of_sync,out_of_sync::entered,get_CLID_in_sync,in_sync::entered|}
 			 within
 				(dbisim(
 					sbisim(
 						dbisim(
 							sbisim(
 								MachineBody_VS_O(id__)
-								[| {|get_CLID_out_of_sync,out_of_sync::entered,terminate|} |]
-								dbisim(Clock_CLID_out_of_sync(id__,0))
-							)\{|get_CLID_out_of_sync|}
+								[| {|get_CLID_in_sync,in_sync::entered,terminate|} |]
+								dbisim(Clock_CLID_in_sync(id__,0))
+							)\{|get_CLID_in_sync|}
 						)
-						[| {|get_CLID_in_sync,in_sync::entered,terminate|} |]
-						dbisim(Clock_CLID_in_sync(id__,0))
-					)\{|get_CLID_in_sync|}
+						[| {|get_CLID_out_of_sync,out_of_sync::entered,terminate|} |]
+						dbisim(Clock_CLID_out_of_sync(id__,0))
+					)\{|get_CLID_out_of_sync|}
 				)
 				) \ diff(union(stateClockSync,enteredSS),enteredSS)
 			)
@@ -581,13 +581,6 @@ exports
 		
 		clockSync = {||}
 		
-		Clock_CLID_in_sync(id__,x__) = 
-			TimeOut_1(
-				in_sync::entered -> Clock_CLID_in_sync(id__,0)
-				[]
-				get_CLID_in_sync!x__ -> Clock_CLID_in_sync(id__,x__)
-				[]
-				terminate -> SKIP,Clock_CLID_in_sync(id__,clock_type_plus(x__,1,CLID_in_sync_clock_type(id__))))
 		Clock_CLID_out_of_sync(id__,x__) = 
 			TimeOut_1(
 				out_of_sync::entered -> Clock_CLID_out_of_sync(id__,0)
@@ -595,13 +588,20 @@ exports
 				get_CLID_out_of_sync!x__ -> Clock_CLID_out_of_sync(id__,x__)
 				[]
 				terminate -> SKIP,Clock_CLID_out_of_sync(id__,clock_type_plus(x__,1,CLID_out_of_sync_clock_type(id__))))
+		Clock_CLID_in_sync(id__,x__) = 
+			TimeOut_1(
+				in_sync::entered -> Clock_CLID_in_sync(id__,0)
+				[]
+				get_CLID_in_sync!x__ -> Clock_CLID_in_sync(id__,x__)
+				[]
+				terminate -> SKIP,Clock_CLID_in_sync(id__,clock_type_plus(x__,1,CLID_in_sync_clock_type(id__))))
 		
-		StateClocks(id__) = dbisim(Clock_CLID_in_sync(id__,0))
+		StateClocks(id__) = dbisim(Clock_CLID_out_of_sync(id__,0))
 		[| { terminate } |] (
-		dbisim(Clock_CLID_out_of_sync(id__,0))
+		dbisim(Clock_CLID_in_sync(id__,0))
 		)
 		
-		stateClockSync = {|get_CLID_in_sync,in_sync::entered,get_CLID_out_of_sync,out_of_sync::entered|}
+		stateClockSync = {|get_CLID_out_of_sync,out_of_sync::entered,get_CLID_in_sync,in_sync::entered|}
 		
 		-- Shared memory
 		-- Shared memory variables

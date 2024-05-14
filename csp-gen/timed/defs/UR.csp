@@ -1,7 +1,7 @@
 
 --
 -- RoboChart generator version 3.0.0.202311281716
--- Automatically generated on 24-04-2024 09:07:06
+-- Automatically generated on 14-05-2024 09:23:33
 --
 -- Iterated compression status: true
 -- Assertions compression status: false
@@ -54,10 +54,10 @@ exports
 	channel out_of_sync: InOut
 	
 	-- Declaring call and ret events for undefined operations
-	channel moveL_with_tCall: core_real.core_real.core_int
 	channel moveLCall: core_real.core_real.core_int
-	channel moveJCall: core_real.core_real.core_int
 	channel movePCall: core_real.core_real.core_int
+	channel moveJCall: core_real.core_real.core_int
+	channel moveL_with_tCall: core_real.core_real.core_int
 	
 	enterSS = {|
 	i0::enter,
@@ -89,10 +89,10 @@ exports
 	,	move,
 		done,
 		out_of_sync
-	,	moveL_with_tCall,
-		moveLCall,
+	,	moveLCall,
+		movePCall,
 		moveJCall,
-		movePCall
+		moveL_with_tCall
 		|}
 	
 	channel clockReset, clockResetL, clockResetR 
@@ -100,13 +100,13 @@ exports
 	localClockResets = {||}
 	
 	
-	channel get_CLID_reset_UR : core_clock_type 
-	channel get_CLID_choose_cmd : core_clock_type 
-	channel get_CLID_f0 : core_clock_type 
 	channel get_CLID_wait_for_move : core_clock_type 
+	channel get_CLID_reset_UR : core_clock_type 
+	channel get_CLID_f0 : core_clock_type 
+	channel get_CLID_choose_cmd : core_clock_type 
 	--channel increment__
 	
-	CLID_reset_UR_clock_type(id__,
+	CLID_wait_for_move_clock_type(id__,
 			          const_UR_ur_n_waypoints) = 
 		let
 			max = (clock_type_max(Union({
@@ -116,7 +116,7 @@ exports
 	within
 		if member(max,core_clock_type) then ctype else error("core_clock_type is not wide enough")
 	
-	CLID_choose_cmd_clock_type(id__,
+	CLID_reset_UR_clock_type(id__,
 			          const_UR_ur_n_waypoints) = 
 		let
 			max = (clock_type_max(Union({
@@ -136,7 +136,7 @@ exports
 	within
 		if member(max,core_clock_type) then ctype else error("core_clock_type is not wide enough")
 	
-	CLID_wait_for_move_clock_type(id__,
+	CLID_choose_cmd_clock_type(id__,
 			          const_UR_ur_n_waypoints) = 
 		let
 			max = (clock_type_max(Union({
@@ -450,14 +450,14 @@ exports
 			channel done__: NIDS.InOut
 			channel out_of_sync__: NIDS.InOut
 			
-			channel get_CLID_moveL_with_t : core_clock_type 
-			channel get_CLID_moveP : core_clock_type 
 			channel get_CLID_big_dist_check : core_clock_type 
-			channel get_CLID_moveJ : core_clock_type 
+			channel get_CLID_moveP : core_clock_type 
 			channel get_CLID_moveL : core_clock_type 
+			channel get_CLID_moveL_with_t : core_clock_type 
+			channel get_CLID_moveJ : core_clock_type 
 			--channel increment__
 			
-			CLID_moveL_with_t_clock_type(id__,
+			CLID_big_dist_check_clock_type(id__,
 					          const_UR_ur_n_waypoints) = 
 				let
 					max = (clock_type_max(Union({
@@ -477,7 +477,17 @@ exports
 			within
 				if member(max,core_clock_type) then ctype else error("core_clock_type is not wide enough")
 			
-			CLID_big_dist_check_clock_type(id__,
+			CLID_moveL_clock_type(id__,
+					          const_UR_ur_n_waypoints) = 
+				let
+					max = (clock_type_max(Union({
+			{}
+			}))+1)
+				ctype = {0..max}
+			within
+				if member(max,core_clock_type) then ctype else error("core_clock_type is not wide enough")
+			
+			CLID_moveL_with_t_clock_type(id__,
 					          const_UR_ur_n_waypoints) = 
 				let
 					max = (clock_type_max(Union({
@@ -488,16 +498,6 @@ exports
 				if member(max,core_clock_type) then ctype else error("core_clock_type is not wide enough")
 			
 			CLID_moveJ_clock_type(id__,
-					          const_UR_ur_n_waypoints) = 
-				let
-					max = (clock_type_max(Union({
-			{}
-			}))+1)
-				ctype = {0..max}
-			within
-				if member(max,core_clock_type) then ctype else error("core_clock_type is not wide enough")
-			
-			CLID_moveL_clock_type(id__,
 					          const_UR_ur_n_waypoints) = 
 				let
 					max = (clock_type_max(Union({
@@ -1272,17 +1272,17 @@ exports
 						 												 [[j4::interrupt <- x__ | x__ <- {|internal__.NID_j4,internal__.NID_j4|}]]
 						 												 )
 						 												  [[ share__ <- x__ | x__ <- {| share__ |} ]] 
-						 												  [[set_ur_move <- setL_ur_move,set_big_dist <- setL_big_dist]]
+						 												  [[set_big_dist <- setL_big_dist,set_ur_move <- setL_ur_move]]
 						 												 )
 						 												 [| union(union(union(flowevts,transSync),{terminate}),{|share__
-						 												 			,setL_ur_move
 						 												 			,setL_big_dist
+						 												 			,setL_ur_move
 						 												|}) |]
 						 												 ((i0::enter -> Transitions(id__,
 						 												 		    const_UR_ur_n_waypoints))
-						 												  [[ share__ <- x__ | x__ <- {| share__,setL_ur_move,setL_big_dist |} ]]
+						 												  [[ share__ <- x__ | x__ <- {| share__,setL_big_dist,setL_ur_move |} ]]
 						 												 )
-						 												)[[setL_ur_move <- set_ur_move,setL_big_dist <- set_big_dist]]
+						 												)[[setL_big_dist <- set_big_dist,setL_ur_move <- set_ur_move]]
 						 												)
 						 											)
 						 											 \ hideSet)
@@ -1293,53 +1293,53 @@ exports
 						 												| x____ <- NIDS
 						 											]]
 						 										)
-						 										[| {|get_CLID_moveL,moveL::entered,terminate|} |]
-						 										dbisim(Clock_CLID_moveL(id__,0,
+						 										[| {|get_CLID_moveJ,moveJ::entered,terminate|} |]
+						 										dbisim(Clock_CLID_moveJ(id__,0,
 						 												          const_UR_ur_n_waypoints))
-						 									)\{|get_CLID_moveL|}
+						 									)\{|get_CLID_moveJ|}
 						 								)
-						 								[| {|get_CLID_moveJ,moveJ::entered,terminate|} |]
-						 								dbisim(Clock_CLID_moveJ(id__,0,
+						 								[| {|get_CLID_moveL_with_t,moveL_with_t::entered,terminate|} |]
+						 								dbisim(Clock_CLID_moveL_with_t(id__,0,
 						 										          const_UR_ur_n_waypoints))
-						 							)\{|get_CLID_moveJ|}
+						 							)\{|get_CLID_moveL_with_t|}
 						 						)
-						 						[| {|get_CLID_big_dist_check,big_dist_check::entered,terminate|} |]
-						 						dbisim(Clock_CLID_big_dist_check(id__,0,
+						 						[| {|get_CLID_moveL,moveL::entered,terminate|} |]
+						 						dbisim(Clock_CLID_moveL(id__,0,
 						 								          const_UR_ur_n_waypoints))
-						 					)\{|get_CLID_big_dist_check|}
+						 					)\{|get_CLID_moveL|}
 						 				)
 						 				[| {|get_CLID_moveP,moveP::entered,terminate|} |]
 						 				dbisim(Clock_CLID_moveP(id__,0,
 						 						          const_UR_ur_n_waypoints))
 						 			)\{|get_CLID_moveP|}
 						 		)
-						 		[| {|get_CLID_moveL_with_t,moveL_with_t::entered,terminate|} |]
-						 		dbisim(Clock_CLID_moveL_with_t(id__,0,
+						 		[| {|get_CLID_big_dist_check,big_dist_check::entered,terminate|} |]
+						 		dbisim(Clock_CLID_big_dist_check(id__,0,
 						 				          const_UR_ur_n_waypoints))
-						 	)\{|get_CLID_moveL_with_t|}
+						 	)\{|get_CLID_big_dist_check|}
 						 )
 						 ))
-						  [[ share__ <- x__ | x__ <- {| share__,setR_ur_curr_waypoint,setR_ur_move,setR_choosing,setR_sys_state,setR_big_dist |} ]] 
-						  [[set_ur_curr_waypoint <- setL_ur_curr_waypoint,set_ur_move <- setL_ur_move,set_choosing <- setL_choosing,set_sys_state <- setL_sys_state,set_big_dist <- setL_big_dist]]
+						  [[ share__ <- x__ | x__ <- {| share__,setR_big_dist,setR_choosing,setR_ur_move,setR_ur_curr_waypoint,setR_sys_state |} ]] 
+						  [[set_big_dist <- setL_big_dist,set_choosing <- setL_choosing,set_ur_move <- setL_ur_move,set_ur_curr_waypoint <- setL_ur_curr_waypoint,set_sys_state <- setL_sys_state]]
 						 )
 						 [| union(union(enteredSS,{| interrupt, terminate |}),{|share__
-						 			,setL_ur_curr_waypoint
-						 			,setL_ur_move
-						 			,setL_choosing
-						 			,setL_sys_state
 						 			,setL_big_dist
-						 			,setR_ur_curr_waypoint
-						 			 			,setR_ur_move
+						 			,setL_choosing
+						 			,setL_ur_move
+						 			,setL_ur_curr_waypoint
+						 			,setL_sys_state
+						 			,setR_big_dist
 						 			 			,setR_choosing
+						 			 			,setR_ur_move
+						 			 			,setR_ur_curr_waypoint
 						 			 			,setR_sys_state
-						 			 			,setR_big_dist
 						 			|}) |]
 						 ((During)
-						  [[ share__ <- x__ | x__ <- {| share__,setL_ur_curr_waypoint,setL_ur_move,setL_choosing,setL_sys_state,setL_big_dist |} ]]
-						  [[set_ur_curr_waypoint <- setR_ur_curr_waypoint,set_ur_move <- setR_ur_move,set_choosing <- setR_choosing,set_sys_state <- setR_sys_state,set_big_dist <- setR_big_dist]]
+						  [[ share__ <- x__ | x__ <- {| share__,setL_big_dist,setL_choosing,setL_ur_move,setL_ur_curr_waypoint,setL_sys_state |} ]]
+						  [[set_big_dist <- setR_big_dist,set_choosing <- setR_choosing,set_ur_move <- setR_ur_move,set_ur_curr_waypoint <- setR_ur_curr_waypoint,set_sys_state <- setR_sys_state]]
 						 )
-						)[[setL_ur_curr_waypoint <- set_ur_curr_waypoint,setL_ur_move <- set_ur_move,setL_choosing <- set_choosing,setL_sys_state <- set_sys_state,setL_big_dist <- set_big_dist]]
-						 [[setR_ur_curr_waypoint <- set_ur_curr_waypoint,setR_ur_move <- set_ur_move,setR_choosing <- set_choosing,setR_sys_state <- set_sys_state,setR_big_dist <- set_big_dist]]
+						)[[setL_big_dist <- set_big_dist,setL_choosing <- set_choosing,setL_ur_move <- set_ur_move,setL_ur_curr_waypoint <- set_ur_curr_waypoint,setL_sys_state <- set_sys_state]]
+						 [[setR_big_dist <- set_big_dist,setR_choosing <- set_choosing,setR_ur_move <- set_ur_move,setR_ur_curr_waypoint <- set_ur_curr_waypoint,setR_sys_state <- set_sys_state]]
 						)\union(enteredSS,{terminate}) 
 					)
 					During 		= share__choice(([] e__ : enteredSS @ e__ -> SKIP))
@@ -1461,17 +1461,17 @@ exports
 						 												 [[j4::interrupt <- x__ | x__ <- {|internal__.NID_j4,internal__.NID_j4|}]]
 						 												 )
 						 												  [[ share__ <- x__ | x__ <- {| share__ |} ]] 
-						 												  [[set_ur_move <- setL_ur_move,set_big_dist <- setL_big_dist]]
+						 												  [[set_big_dist <- setL_big_dist,set_ur_move <- setL_ur_move]]
 						 												 )
 						 												 [| union(union(union(flowevts,transSync),{terminate}),{|share__
-						 												 			,setL_ur_move
 						 												 			,setL_big_dist
+						 												 			,setL_ur_move
 						 												|}) |]
 						 												 ((i0::enter -> Transitions(id__,
 						 												 		    const_UR_ur_n_waypoints))
-						 												  [[ share__ <- x__ | x__ <- {| share__,setL_ur_move,setL_big_dist |} ]]
+						 												  [[ share__ <- x__ | x__ <- {| share__,setL_big_dist,setL_ur_move |} ]]
 						 												 )
-						 												)[[setL_ur_move <- set_ur_move,setL_big_dist <- set_big_dist]]
+						 												)[[setL_big_dist <- set_big_dist,setL_ur_move <- set_ur_move]]
 						 												)
 						 											)
 						 											 \ hideSet)
@@ -1482,53 +1482,53 @@ exports
 						 												| x____ <- NIDS
 						 											]]
 						 										)
-						 										[| {|get_CLID_moveL,moveL::entered,terminate|} |]
-						 										dbisim(Clock_CLID_moveL(id__,0,
+						 										[| {|get_CLID_moveJ,moveJ::entered,terminate|} |]
+						 										dbisim(Clock_CLID_moveJ(id__,0,
 						 												          const_UR_ur_n_waypoints))
-						 									)\{|get_CLID_moveL|}
+						 									)\{|get_CLID_moveJ|}
 						 								)
-						 								[| {|get_CLID_moveJ,moveJ::entered,terminate|} |]
-						 								dbisim(Clock_CLID_moveJ(id__,0,
+						 								[| {|get_CLID_moveL_with_t,moveL_with_t::entered,terminate|} |]
+						 								dbisim(Clock_CLID_moveL_with_t(id__,0,
 						 										          const_UR_ur_n_waypoints))
-						 							)\{|get_CLID_moveJ|}
+						 							)\{|get_CLID_moveL_with_t|}
 						 						)
-						 						[| {|get_CLID_big_dist_check,big_dist_check::entered,terminate|} |]
-						 						dbisim(Clock_CLID_big_dist_check(id__,0,
+						 						[| {|get_CLID_moveL,moveL::entered,terminate|} |]
+						 						dbisim(Clock_CLID_moveL(id__,0,
 						 								          const_UR_ur_n_waypoints))
-						 					)\{|get_CLID_big_dist_check|}
+						 					)\{|get_CLID_moveL|}
 						 				)
 						 				[| {|get_CLID_moveP,moveP::entered,terminate|} |]
 						 				dbisim(Clock_CLID_moveP(id__,0,
 						 						          const_UR_ur_n_waypoints))
 						 			)\{|get_CLID_moveP|}
 						 		)
-						 		[| {|get_CLID_moveL_with_t,moveL_with_t::entered,terminate|} |]
-						 		dbisim(Clock_CLID_moveL_with_t(id__,0,
+						 		[| {|get_CLID_big_dist_check,big_dist_check::entered,terminate|} |]
+						 		dbisim(Clock_CLID_big_dist_check(id__,0,
 						 				          const_UR_ur_n_waypoints))
-						 	)\{|get_CLID_moveL_with_t|}
+						 	)\{|get_CLID_big_dist_check|}
 						 )
 						 ))
-						  [[ share__ <- x__ | x__ <- {| share__,setR_ur_curr_waypoint,setR_ur_move,setR_choosing,setR_sys_state,setR_big_dist |} ]] 
-						  [[set_ur_curr_waypoint <- setL_ur_curr_waypoint,set_ur_move <- setL_ur_move,set_choosing <- setL_choosing,set_sys_state <- setL_sys_state,set_big_dist <- setL_big_dist]]
+						  [[ share__ <- x__ | x__ <- {| share__,setR_big_dist,setR_choosing,setR_ur_move,setR_ur_curr_waypoint,setR_sys_state |} ]] 
+						  [[set_big_dist <- setL_big_dist,set_choosing <- setL_choosing,set_ur_move <- setL_ur_move,set_ur_curr_waypoint <- setL_ur_curr_waypoint,set_sys_state <- setL_sys_state]]
 						 )
 						 [| union(union(enteredSS,{| interrupt, terminate |}),{|share__
-						 			,setL_ur_curr_waypoint
-						 			,setL_ur_move
-						 			,setL_choosing
-						 			,setL_sys_state
 						 			,setL_big_dist
-						 			,setR_ur_curr_waypoint
-						 			 			,setR_ur_move
+						 			,setL_choosing
+						 			,setL_ur_move
+						 			,setL_ur_curr_waypoint
+						 			,setL_sys_state
+						 			,setR_big_dist
 						 			 			,setR_choosing
+						 			 			,setR_ur_move
+						 			 			,setR_ur_curr_waypoint
 						 			 			,setR_sys_state
-						 			 			,setR_big_dist
 						 			|}) |]
 						 ((During)
-						  [[ share__ <- x__ | x__ <- {| share__,setL_ur_curr_waypoint,setL_ur_move,setL_choosing,setL_sys_state,setL_big_dist |} ]]
-						  [[set_ur_curr_waypoint <- setR_ur_curr_waypoint,set_ur_move <- setR_ur_move,set_choosing <- setR_choosing,set_sys_state <- setR_sys_state,set_big_dist <- setR_big_dist]]
+						  [[ share__ <- x__ | x__ <- {| share__,setL_big_dist,setL_choosing,setL_ur_move,setL_ur_curr_waypoint,setL_sys_state |} ]]
+						  [[set_big_dist <- setR_big_dist,set_choosing <- setR_choosing,set_ur_move <- setR_ur_move,set_ur_curr_waypoint <- setR_ur_curr_waypoint,set_sys_state <- setR_sys_state]]
 						 )
-						)[[setL_ur_curr_waypoint <- set_ur_curr_waypoint,setL_ur_move <- set_ur_move,setL_choosing <- set_choosing,setL_sys_state <- set_sys_state,setL_big_dist <- set_big_dist]]
-						 [[setR_ur_curr_waypoint <- set_ur_curr_waypoint,setR_ur_move <- set_ur_move,setR_choosing <- set_choosing,setR_sys_state <- set_sys_state,setR_big_dist <- set_big_dist]]
+						)[[setL_big_dist <- set_big_dist,setL_choosing <- set_choosing,setL_ur_move <- set_ur_move,setL_ur_curr_waypoint <- set_ur_curr_waypoint,setL_sys_state <- set_sys_state]]
+						 [[setR_big_dist <- set_big_dist,setR_choosing <- set_choosing,setR_ur_move <- set_ur_move,setR_ur_curr_waypoint <- set_ur_curr_waypoint,setR_sys_state <- set_sys_state]]
 						)\{terminate} 
 					)
 					During 		= share__choice(([] e__ : enteredSS @ e__ -> SKIP))
@@ -1538,7 +1538,7 @@ exports
 				
 				Transitions(id__,
 						    const_UR_ur_n_waypoints) = ((let
-					Trans = share__choice(get_ur_move?ur_move -> get_big_dist?big_dist -> TimeOut_1(
+					Trans = share__choice(get_big_dist?big_dist -> get_ur_move?ur_move -> TimeOut_1(
 						 (share__ -> SKIP
 						 [] dbisim(((not (UR_move_blending(ur_move))))&(internal__!NID_j4 -> SKIP ;  ((SKIP ; big_dist_check::enter -> SKIP))))
 						 [] dbisim((UR_move_blending(ur_move))&(internal__!NID_j4 -> SKIP ;  ((SKIP ; j0::enter -> SKIP))))
@@ -1569,16 +1569,16 @@ exports
 				
 				
 				-- Clocks
-				Clock_CLID_moveL_with_t(id__,x__,
+				Clock_CLID_big_dist_check(id__,x__,
 						          const_UR_ur_n_waypoints) = 
 					TimeOut_1(
-						moveL_with_t::entered -> Clock_CLID_moveL_with_t(id__,0,
+						big_dist_check::entered -> Clock_CLID_big_dist_check(id__,0,
 								          const_UR_ur_n_waypoints)
 						[]
-						get_CLID_moveL_with_t!x__ -> Clock_CLID_moveL_with_t(id__,x__,
+						get_CLID_big_dist_check!x__ -> Clock_CLID_big_dist_check(id__,x__,
 								          const_UR_ur_n_waypoints)
 						[]
-						terminate -> SKIP,Clock_CLID_moveL_with_t(id__,clock_type_plus(x__,1,CLID_moveL_with_t_clock_type(id__,
+						terminate -> SKIP,Clock_CLID_big_dist_check(id__,clock_type_plus(x__,1,CLID_big_dist_check_clock_type(id__,
 								          const_UR_ur_n_waypoints)),
 								          const_UR_ur_n_waypoints))
 				Clock_CLID_moveP(id__,x__,
@@ -1593,16 +1593,28 @@ exports
 						terminate -> SKIP,Clock_CLID_moveP(id__,clock_type_plus(x__,1,CLID_moveP_clock_type(id__,
 								          const_UR_ur_n_waypoints)),
 								          const_UR_ur_n_waypoints))
-				Clock_CLID_big_dist_check(id__,x__,
+				Clock_CLID_moveL(id__,x__,
 						          const_UR_ur_n_waypoints) = 
 					TimeOut_1(
-						big_dist_check::entered -> Clock_CLID_big_dist_check(id__,0,
+						moveL::entered -> Clock_CLID_moveL(id__,0,
 								          const_UR_ur_n_waypoints)
 						[]
-						get_CLID_big_dist_check!x__ -> Clock_CLID_big_dist_check(id__,x__,
+						get_CLID_moveL!x__ -> Clock_CLID_moveL(id__,x__,
 								          const_UR_ur_n_waypoints)
 						[]
-						terminate -> SKIP,Clock_CLID_big_dist_check(id__,clock_type_plus(x__,1,CLID_big_dist_check_clock_type(id__,
+						terminate -> SKIP,Clock_CLID_moveL(id__,clock_type_plus(x__,1,CLID_moveL_clock_type(id__,
+								          const_UR_ur_n_waypoints)),
+								          const_UR_ur_n_waypoints))
+				Clock_CLID_moveL_with_t(id__,x__,
+						          const_UR_ur_n_waypoints) = 
+					TimeOut_1(
+						moveL_with_t::entered -> Clock_CLID_moveL_with_t(id__,0,
+								          const_UR_ur_n_waypoints)
+						[]
+						get_CLID_moveL_with_t!x__ -> Clock_CLID_moveL_with_t(id__,x__,
+								          const_UR_ur_n_waypoints)
+						[]
+						terminate -> SKIP,Clock_CLID_moveL_with_t(id__,clock_type_plus(x__,1,CLID_moveL_with_t_clock_type(id__,
 								          const_UR_ur_n_waypoints)),
 								          const_UR_ur_n_waypoints))
 				Clock_CLID_moveJ(id__,x__,
@@ -1617,40 +1629,28 @@ exports
 						terminate -> SKIP,Clock_CLID_moveJ(id__,clock_type_plus(x__,1,CLID_moveJ_clock_type(id__,
 								          const_UR_ur_n_waypoints)),
 								          const_UR_ur_n_waypoints))
-				Clock_CLID_moveL(id__,x__,
-						          const_UR_ur_n_waypoints) = 
-					TimeOut_1(
-						moveL::entered -> Clock_CLID_moveL(id__,0,
-								          const_UR_ur_n_waypoints)
-						[]
-						get_CLID_moveL!x__ -> Clock_CLID_moveL(id__,x__,
-								          const_UR_ur_n_waypoints)
-						[]
-						terminate -> SKIP,Clock_CLID_moveL(id__,clock_type_plus(x__,1,CLID_moveL_clock_type(id__,
-								          const_UR_ur_n_waypoints)),
-								          const_UR_ur_n_waypoints))
 				
 				StateClocks(id__,
-						          const_UR_ur_n_waypoints) = dbisim(Clock_CLID_moveL_with_t(id__,0,
+						          const_UR_ur_n_waypoints) = dbisim(Clock_CLID_big_dist_check(id__,0,
 						          const_UR_ur_n_waypoints))
 				[| { terminate } |] (
 				dbisim(Clock_CLID_moveP(id__,0,
 						          const_UR_ur_n_waypoints))
 				[| { terminate } |] (
-				dbisim(Clock_CLID_big_dist_check(id__,0,
+				dbisim(Clock_CLID_moveL(id__,0,
+						          const_UR_ur_n_waypoints))
+				[| { terminate } |] (
+				dbisim(Clock_CLID_moveL_with_t(id__,0,
 						          const_UR_ur_n_waypoints))
 				[| { terminate } |] (
 				dbisim(Clock_CLID_moveJ(id__,0,
-						          const_UR_ur_n_waypoints))
-				[| { terminate } |] (
-				dbisim(Clock_CLID_moveL(id__,0,
 						          const_UR_ur_n_waypoints))
 				)
 				)
 				)
 				)
 				
-				stateClockSync = {|get_CLID_moveL_with_t,moveL_with_t::entered,get_CLID_moveP,moveP::entered,get_CLID_big_dist_check,big_dist_check::entered,get_CLID_moveJ,moveJ::entered,get_CLID_moveL,moveL::entered|}
+				stateClockSync = {|get_CLID_big_dist_check,big_dist_check::entered,get_CLID_moveP,moveP::entered,get_CLID_moveL,moveL::entered,get_CLID_moveL_with_t,moveL_with_t::entered,get_CLID_moveJ,moveJ::entered|}
 			}
 		
 		endmodule
@@ -1691,26 +1691,26 @@ exports
 		-- If it is in the context of a controller, the required operations not provided by the
 		-- controller will be declared here, and the defined operations will be defined in the
 		-- context of the Controller module, and therefore within scope of the state machine module.
-		CALL__moveL_with_t(id__,
-				    const_UR_ur_n_waypoints,
-					param_jd1,
-					param_jd2,
-					param_time) = EDeadline(moveL_with_tCall.param_jd1.param_jd2.param_time,0)
 		CALL__moveL(id__,
 				    const_UR_ur_n_waypoints,
 					param_jd1,
 					param_jd2,
 					param_time) = EDeadline(moveLCall.param_jd1.param_jd2.param_time,0)
-		CALL__moveJ(id__,
-				    const_UR_ur_n_waypoints,
-					param_jd1,
-					param_jd2,
-					param_time) = EDeadline(moveJCall.param_jd1.param_jd2.param_time,0)
 		CALL__moveP(id__,
 				    const_UR_ur_n_waypoints,
 					param_jd1,
 					param_jd2,
 					param_time) = EDeadline(movePCall.param_jd1.param_jd2.param_time,0)
+		CALL__moveJ(id__,
+				    const_UR_ur_n_waypoints,
+					param_jd1,
+					param_jd2,
+					param_time) = EDeadline(moveJCall.param_jd1.param_jd2.param_time,0)
+		CALL__moveL_with_t(id__,
+				    const_UR_ur_n_waypoints,
+					param_jd1,
+					param_jd2,
+					param_time) = EDeadline(moveL_with_tCall.param_jd1.param_jd2.param_time,0)
 		
 		-- END of Operation calls --
 	
@@ -1754,7 +1754,7 @@ exports
 		-- Transitions
 		Transitions(id__,
 				    const_UR_ur_n_waypoints) = ((let
-			Trans = share__choice(get_ur_curr_waypoint?ur_curr_waypoint -> get_ur_move?ur_move -> get_choosing?choosing -> TimeOut_1(
+			Trans = share__choice(get_choosing?choosing -> get_ur_move?ur_move -> get_ur_curr_waypoint?ur_curr_waypoint -> TimeOut_1(
 				 (share__ -> SKIP
 				 [] dbisim((true)&(internal__!NID_i0 -> SKIP ;  ((SKIP ; wait_for_move::enter -> SKIP))))
 				 [] dbisim(((ur_curr_waypoint>=const_UR_ur_n_waypoints))&(internal__!NID_j0 -> SKIP ;  ((SKIP ; reset_UR::enter -> SKIP))))
@@ -1845,20 +1845,20 @@ exports
 						 [[j1::interrupt <- x__ | x__ <- {|internal__.NID_j1,internal__.NID_j1|}]]
 						 )
 						  [[ share__ <- x__ | x__ <- {| share__,setR_ur_move |} ]] 
-						  [[set_ur_curr_waypoint <- setL_ur_curr_waypoint,set_ur_move <- setL_ur_move,set_choosing <- setL_choosing]]
+						  [[set_choosing <- setL_choosing,set_ur_move <- setL_ur_move,set_ur_curr_waypoint <- setL_ur_curr_waypoint]]
 						 )
 						 [| union(union(union(flowevts,transSync),{terminate}),{|share__
-						 			,setL_ur_curr_waypoint
-						 			,setL_ur_move
 						 			,setL_choosing
+						 			,setL_ur_move
+						 			,setL_ur_curr_waypoint
 						 			,setR_ur_move
 						 			|}) |]
 						 ((i0::enter -> Transitions(id__,
 						 		    const_UR_ur_n_waypoints))
-						  [[ share__ <- x__ | x__ <- {| share__,setL_ur_curr_waypoint,setL_ur_move,setL_choosing |} ]]
+						  [[ share__ <- x__ | x__ <- {| share__,setL_choosing,setL_ur_move,setL_ur_curr_waypoint |} ]]
 						  [[set_ur_move <- setR_ur_move]]
 						 )
-						)[[setL_ur_curr_waypoint <- set_ur_curr_waypoint,setL_ur_move <- set_ur_move,setL_choosing <- set_choosing]]
+						)[[setL_choosing <- set_choosing,setL_ur_move <- set_ur_move,setL_ur_curr_waypoint <- set_ur_curr_waypoint]]
 						 [[setR_ur_move <- set_ur_move]]
 						)
 					)
@@ -1882,7 +1882,7 @@ exports
 		Behaviour(id__,
 				    const_UR_ur_n_waypoints) = 
 			dbisim((let
-				stateClockSync = {|get_CLID_reset_UR,reset_UR::entered,get_CLID_choose_cmd,choose_cmd::entered,get_CLID_wait_for_move,wait_for_move::entered|}
+				stateClockSync = {|get_CLID_wait_for_move,wait_for_move::entered,get_CLID_reset_UR,reset_UR::entered,get_CLID_choose_cmd,choose_cmd::entered|}
 			 within
 				(MachineBody(id__,
 						    const_UR_ur_n_waypoints) [| union(stateClockSync,{terminate}) |] StateClocks(id__,
@@ -1893,7 +1893,7 @@ exports
 		IteratedBehaviour(id__,
 				    const_UR_ur_n_waypoints) = 
 			dbisim((let
-				stateClockSync = {|get_CLID_reset_UR,reset_UR::entered,get_CLID_choose_cmd,choose_cmd::entered,get_CLID_wait_for_move,wait_for_move::entered|}
+				stateClockSync = {|get_CLID_wait_for_move,wait_for_move::entered,get_CLID_reset_UR,reset_UR::entered,get_CLID_choose_cmd,choose_cmd::entered|}
 			 within
 				(dbisim(
 					sbisim(
@@ -1903,20 +1903,20 @@ exports
 									sbisim(
 										MachineBody(id__,
 												    const_UR_ur_n_waypoints)
-										[| {|get_CLID_wait_for_move,wait_for_move::entered,terminate|} |]
-										dbisim(Clock_CLID_wait_for_move(id__,0,
+										[| {|get_CLID_choose_cmd,choose_cmd::entered,terminate|} |]
+										dbisim(Clock_CLID_choose_cmd(id__,0,
 												          const_UR_ur_n_waypoints))
-									)\{|get_CLID_wait_for_move|}
+									)\{|get_CLID_choose_cmd|}
 								)
-								[| {|get_CLID_choose_cmd,choose_cmd::entered,terminate|} |]
-								dbisim(Clock_CLID_choose_cmd(id__,0,
+								[| {|get_CLID_reset_UR,reset_UR::entered,terminate|} |]
+								dbisim(Clock_CLID_reset_UR(id__,0,
 										          const_UR_ur_n_waypoints))
-							)\{|get_CLID_choose_cmd|}
+							)\{|get_CLID_reset_UR|}
 						)
-						[| {|get_CLID_reset_UR,reset_UR::entered,terminate|} |]
-						dbisim(Clock_CLID_reset_UR(id__,0,
+						[| {|get_CLID_wait_for_move,wait_for_move::entered,terminate|} |]
+						dbisim(Clock_CLID_wait_for_move(id__,0,
 								          const_UR_ur_n_waypoints))
-					)\{|get_CLID_reset_UR|}
+					)\{|get_CLID_wait_for_move|}
 				)
 				) \ union(stateClockSync,enteredSS)
 			)
@@ -2037,20 +2037,20 @@ exports
 						 [[j1::interrupt <- x__ | x__ <- {|internal__.NID_j1,internal__.NID_j1|}]]
 						 )
 						  [[ share__ <- x__ | x__ <- {| share__,setR_ur_move |} ]] 
-						  [[set_ur_curr_waypoint <- setL_ur_curr_waypoint,set_ur_move <- setL_ur_move,set_choosing <- setL_choosing]]
+						  [[set_choosing <- setL_choosing,set_ur_move <- setL_ur_move,set_ur_curr_waypoint <- setL_ur_curr_waypoint]]
 						 )
 						 [| union(union(union(flowevts,transSync),{terminate}),{|share__
-						 			,setL_ur_curr_waypoint
-						 			,setL_ur_move
 						 			,setL_choosing
+						 			,setL_ur_move
+						 			,setL_ur_curr_waypoint
 						 			,setR_ur_move
 						 			|}) |]
 						 ((i0::enter -> Transitions(id__,
 						 		    const_UR_ur_n_waypoints))
-						  [[ share__ <- x__ | x__ <- {| share__,setL_ur_curr_waypoint,setL_ur_move,setL_choosing |} ]]
+						  [[ share__ <- x__ | x__ <- {| share__,setL_choosing,setL_ur_move,setL_ur_curr_waypoint |} ]]
 						  [[set_ur_move <- setR_ur_move]]
 						 )
-						)[[setL_ur_curr_waypoint <- set_ur_curr_waypoint,setL_ur_move <- set_ur_move,setL_choosing <- set_choosing]]
+						)[[setL_choosing <- set_choosing,setL_ur_move <- set_ur_move,setL_ur_curr_waypoint <- set_ur_curr_waypoint]]
 						 [[setR_ur_move <- set_ur_move]]
 						)
 					)
@@ -2074,7 +2074,7 @@ exports
 		Behaviour_VS_O(id__,
 				    const_UR_ur_n_waypoints) = 
 			dbisim((let
-				stateClockSync = {|get_CLID_reset_UR,reset_UR::entered,get_CLID_choose_cmd,choose_cmd::entered,get_CLID_wait_for_move,wait_for_move::entered|}
+				stateClockSync = {|get_CLID_wait_for_move,wait_for_move::entered,get_CLID_reset_UR,reset_UR::entered,get_CLID_choose_cmd,choose_cmd::entered|}
 			 within
 				(MachineBody_VS_O(id__,
 						    const_UR_ur_n_waypoints) [| union(stateClockSync,{terminate}) |] StateClocks(id__,
@@ -2085,7 +2085,7 @@ exports
 		IteratedBehaviour_VS_O(id__,
 				    const_UR_ur_n_waypoints) = 
 			dbisim((let
-				stateClockSync = {|get_CLID_reset_UR,reset_UR::entered,get_CLID_choose_cmd,choose_cmd::entered,get_CLID_wait_for_move,wait_for_move::entered|}
+				stateClockSync = {|get_CLID_wait_for_move,wait_for_move::entered,get_CLID_reset_UR,reset_UR::entered,get_CLID_choose_cmd,choose_cmd::entered|}
 			 within
 				(dbisim(
 					sbisim(
@@ -2095,20 +2095,20 @@ exports
 									sbisim(
 										MachineBody_VS_O(id__,
 												    const_UR_ur_n_waypoints)
-										[| {|get_CLID_wait_for_move,wait_for_move::entered,terminate|} |]
-										dbisim(Clock_CLID_wait_for_move(id__,0,
+										[| {|get_CLID_choose_cmd,choose_cmd::entered,terminate|} |]
+										dbisim(Clock_CLID_choose_cmd(id__,0,
 												          const_UR_ur_n_waypoints))
-									)\{|get_CLID_wait_for_move|}
+									)\{|get_CLID_choose_cmd|}
 								)
-								[| {|get_CLID_choose_cmd,choose_cmd::entered,terminate|} |]
-								dbisim(Clock_CLID_choose_cmd(id__,0,
+								[| {|get_CLID_reset_UR,reset_UR::entered,terminate|} |]
+								dbisim(Clock_CLID_reset_UR(id__,0,
 										          const_UR_ur_n_waypoints))
-							)\{|get_CLID_choose_cmd|}
+							)\{|get_CLID_reset_UR|}
 						)
-						[| {|get_CLID_reset_UR,reset_UR::entered,terminate|} |]
-						dbisim(Clock_CLID_reset_UR(id__,0,
+						[| {|get_CLID_wait_for_move,wait_for_move::entered,terminate|} |]
+						dbisim(Clock_CLID_wait_for_move(id__,0,
 								          const_UR_ur_n_waypoints))
-					)\{|get_CLID_reset_UR|}
+					)\{|get_CLID_wait_for_move|}
 				)
 				) \ diff(union(stateClockSync,enteredSS),enteredSS)
 			)
@@ -2240,6 +2240,18 @@ exports
 		
 		clockSync = {||}
 		
+		Clock_CLID_wait_for_move(id__,x__,
+				          const_UR_ur_n_waypoints) = 
+			TimeOut_1(
+				wait_for_move::entered -> Clock_CLID_wait_for_move(id__,0,
+						          const_UR_ur_n_waypoints)
+				[]
+				get_CLID_wait_for_move!x__ -> Clock_CLID_wait_for_move(id__,x__,
+						          const_UR_ur_n_waypoints)
+				[]
+				terminate -> SKIP,Clock_CLID_wait_for_move(id__,clock_type_plus(x__,1,CLID_wait_for_move_clock_type(id__,
+						          const_UR_ur_n_waypoints)),
+						          const_UR_ur_n_waypoints))
 		Clock_CLID_reset_UR(id__,x__,
 				          const_UR_ur_n_waypoints) = 
 			TimeOut_1(
@@ -2264,32 +2276,20 @@ exports
 				terminate -> SKIP,Clock_CLID_choose_cmd(id__,clock_type_plus(x__,1,CLID_choose_cmd_clock_type(id__,
 						          const_UR_ur_n_waypoints)),
 						          const_UR_ur_n_waypoints))
-		Clock_CLID_wait_for_move(id__,x__,
-				          const_UR_ur_n_waypoints) = 
-			TimeOut_1(
-				wait_for_move::entered -> Clock_CLID_wait_for_move(id__,0,
-						          const_UR_ur_n_waypoints)
-				[]
-				get_CLID_wait_for_move!x__ -> Clock_CLID_wait_for_move(id__,x__,
-						          const_UR_ur_n_waypoints)
-				[]
-				terminate -> SKIP,Clock_CLID_wait_for_move(id__,clock_type_plus(x__,1,CLID_wait_for_move_clock_type(id__,
-						          const_UR_ur_n_waypoints)),
-						          const_UR_ur_n_waypoints))
 		
 		StateClocks(id__,
-				          const_UR_ur_n_waypoints) = dbisim(Clock_CLID_reset_UR(id__,0,
+				          const_UR_ur_n_waypoints) = dbisim(Clock_CLID_wait_for_move(id__,0,
+				          const_UR_ur_n_waypoints))
+		[| { terminate } |] (
+		dbisim(Clock_CLID_reset_UR(id__,0,
 				          const_UR_ur_n_waypoints))
 		[| { terminate } |] (
 		dbisim(Clock_CLID_choose_cmd(id__,0,
 				          const_UR_ur_n_waypoints))
-		[| { terminate } |] (
-		dbisim(Clock_CLID_wait_for_move(id__,0,
-				          const_UR_ur_n_waypoints))
 		)
 		)
 		
-		stateClockSync = {|get_CLID_reset_UR,reset_UR::entered,get_CLID_choose_cmd,choose_cmd::entered,get_CLID_wait_for_move,wait_for_move::entered|}
+		stateClockSync = {|get_CLID_wait_for_move,wait_for_move::entered,get_CLID_reset_UR,reset_UR::entered,get_CLID_choose_cmd,choose_cmd::entered|}
 		
 		-- Shared memory
 		-- Shared memory variables

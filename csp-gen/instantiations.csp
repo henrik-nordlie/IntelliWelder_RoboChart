@@ -4,7 +4,7 @@ check_big_dist(jd1,jd2) =
     jd1L = abs(jd1)
     jd2L = abs(jd2)
   within
-    jd1L == 1 or jd2L == 1
+    jd1L >= 1 or jd2L >= 1
 
 -- generate nat not
 nametype core_nat = {0..3}
@@ -17,6 +17,11 @@ nametype core_real = { -1..1}
 
 -- generate int not
 nametype core_int = {0..2}
+
+-- VECTOR TYPES AND OPERATIONS
+
+
+-- CLOCKS
 
 -- generate const_main_Controller_n_waypoints
 const_main_Controller_n_waypoints = 0
@@ -118,11 +123,6 @@ const_main_Controller_stm_ref1_ur_n_waypoints = 0
 
 -- generate const_UR_ur_n_waypoints
 const_UR_ur_n_waypoints = 0
-
--- VECTOR TYPES AND OPERATIONS
-
-
--- CLOCKS
 
 -- generate go_to_velocity_BOUND
 go_to_velocity_BOUND = 2

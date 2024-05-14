@@ -4,7 +4,7 @@ check_big_dist(jd1,jd2) =
     jd1L = abs(jd1)
     jd2L = abs(jd2)
   within
-    jd1L == 1 or jd2L == 1
+    jd1L >= 1 or jd2L >= 1
 
 -- generate nat not
 nametype core_nat = {0..3}
